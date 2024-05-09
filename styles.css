@@ -1,4 +1,14 @@
 /* Sticky navbar */
+
+@font-face {
+  font-family: 'Joystick';
+  src: url('joystix_monospace.otf') format('opentype');
+}
+
+.headingfont {
+  font-family: 'Joystick', monospace;
+}
+
 nav {
   position: fixed;
   width: 100%;
@@ -6,11 +16,9 @@ nav {
   z-index: 1000;
   transition: all 1s ease-in-out;
 }
-
 /* Shrink navbar on scroll */
 .shrink {
   height: 60px;
-  /* Adjust the height as needed */
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -53,6 +61,40 @@ nav {
 #scrollToTop.hidden {
   display: none;
 }
+/* Define slide-in animation */
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Apply animation to each message section */
+.animate-slide-left {
+  animation: slide-in-left 0.5s ease forwards;
+  opacity: 0;
+}
+
+.animate-slide-right {
+  animation: slide-in-right 0.5s ease forwards;
+  opacity: 0;
+}
+
 
 /* Typewriter effect 1 */
 @keyframes typing {
@@ -245,19 +287,19 @@ nav {
   @keyframes sequencePopup {
     0%,
     100% {
-      content: "Partner";
+      content: "Designer";
     }
 
     25% {
-      content: "Cute Friend";
+      content: "Developer";
     }
 
     50% {
-      content: "Babu!";
+      content: "Artist";
     }
 
     75% {
-      content: "Dream<3";
+      content: "Human";
     }
   }
 
