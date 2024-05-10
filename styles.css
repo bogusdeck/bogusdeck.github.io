@@ -18,7 +18,7 @@ nav {
 }
 /* Shrink navbar on scroll */
 .shrink {
-  height: 60px;
+  height: 50px;
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -29,7 +29,11 @@ nav {
 }
 
 .shrink .logo {
-  font-size: 1.5rem;
+  display:none;
+  height: 55px;
+  top:0;
+  margin-bottom: 30px;
+  transition: display 1s ease ;
   /* Adjust the font size as needed */
 }
 

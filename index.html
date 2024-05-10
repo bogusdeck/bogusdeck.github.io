@@ -2,192 +2,187 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MOYE MOYE</title>
-  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" href="/favicon.ico">
   <!-- minify -->
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="bubblechat.css">
   <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
   <!-- latest -->
   <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
   <!-- core style only -->
   <link href="https://unpkg.com/nes.css/css/nes-core.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
-
-
-
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <header>
     <nav class="bg-white border-b-2 border-zinc-300">
-      <div class="container mx-auto flex items-center justify-between">
-        <div class="flex items-center justify-center">
-          <img src="berserk.gif" alt="berserk" class="h-24 navheader" />
-          <div class="flex flex-col items-start">
-            <img src="logo.png" alt="logo" class="h-16 navheader border-2" />
-            <div class="logo-text text-sm pl-4">Software Engineer</div>
+      <div class="grid grid-cols-2">
+        <div class="col-span-1 flex items-center justify-start md:ml-4">
+          <div class="flex items-center justify-start">
+            <img src="berserk.gif" alt="berserk" class="h-20 logo">
+            <div class="flex flex-col items-start">
+              <img src="logo.png" alt="logo" class="navheader border-2 min-[425px]:h-16">
+              <div class="flex logo-text text-[9px] md:text-[10px] text-left ml-3">Software Engineer</div>
+            </div>
           </div>
         </div>
-
-        <div class="hidden md:flex space-x-4 mt-2">
-          <a href="#" class="text-black hover:underline hover:tracking-widest">About</a>
-          <a href="#" class="text-black hover:underline hover:tracking-widest">Projects</a>
-          <a href="#" class="text-black hover:underline hover:tracking-widest">Contact</a>
+        <div class="col-span-1 flex items-center justify-end">
+          <div class="flex items-start justify-start">
+            <button id="menu-toggle" class=" text-black mr-5">
+              ☰
+            </button>
+          </div>
         </div>
-
-        <div class="md:hidden">
-          <button id="menu-toggle" class="nes-btn is-error text-white">
-            ☰
-          </button>
-        </div>
+        <div class="container flex items-center justify-start sm:justify-between"></div>
       </div>
     </nav>
-  </header>
+  </header>w
 
+  <div class="flex flex-col items-center justify-center">
+    <div
+      class="bg-[url('mariobg.gif')] md:bg-[url('mariobgcrop.gif')] bg-repeat-x md:bg-no-repeat bg-contain md:bg-cover w-full h-[90px] md:w-full md:h-screen">
 
-  <div class="flex items-center justify-center">
-    <div class=" bg-[url('mariobgcrop.gif')] bg-no-repeat bg-cover w-full h-screen">
-      <section class="h-full flex items-center justify-center">
-        <section class="message-list space-y-1 w-2/3 bg-gray-900 bg-opacity-80 rounded-[14px] py-2 px-4 mt-[98px]">
+      <div class="hidden md:flex items-center justify-center min-h-screen">
+        <div class="bg-gray-900 bg-opacity-50 py-3 w-full lg:w-2/3 mt-8">
 
-          <section class="message -left flex items-center justify-start">
-            <i class="nes-bcrikko"></i>
-            <!-- Balloon -->
-            <div class="nes-balloon from-left ml-10">
-              <p>Hello!</p>
-            </div>
-          </section>
+          <div class="message flex items-center justify-start ">
+            <img src="pixelboyhead.png" class="h-24 w-24 ml-3 mt-2"></img>
+            <div class="bubble w-fit left shadow h-[50px] text-[25px]">Hello</div>
+          </div>
 
-          <section class="message -right flex items-center justify-end ">
-            <!-- Balloon -->
-            <div class="nes-balloon from-right mr-10 ">
-              <p>Who are you ?</p>
-            </div>
-            <i class="nes-bcrikko "></i>
-          </section>
+          <div class="message flex items-center justify-end">
+            <div class="bubble w-fit right shadow  h-[50px] text-[25px]">Who are you?</div>
+            <img src="boyheadright.png" class="h-24 w-24 mr-3 mt-2"></img>
+          </div>
 
-          <section class="message -left flex items-center justify-start mb-10">
-            <i class="nes-bcrikko "></i>
-            <!-- Balloon -->
-            <div class="nes-balloon from-left  ml-10">
-              <p>I am Tanish Vashisth</p>
-            </div>
-          </section>
+          <div class="message flex items-center justify-start">
+            <img src="pixelboyhead.png" class="h-24 w-24 ml-3 mt-2"></img>
+            <div class="bubble w-fit left shadow   h-[50px] text-[25px]">I am Tanish</div>
+          </div>
 
-          <section class="message -left flex items-center justify-start mb-10">
-            <i class="nes-bcrikko "></i>
-            <!-- Balloon -->
-            <div class="nes-balloon from-left ml-10">
-              <p>I am <span class="typewriter nocaret"></span></p>
-            </div>
-          </section>
+          <div class="message flex items-center justify-start">
+            <img src="pixelboyhead.png" class="h-24 w-24 ml-3 mt-2"></img>
+            <p class="bubble w-fit left shadow   h-[50px] text-[25px]">I am <span class="typewriter nocaret"></span></p>
+          </div>
 
-          <section class="message -right flex items-center justify-end ">
-            <!-- Balloon -->
-            <div class="nes-balloon from-right mr-10">
-              <p>Wow thats great</p>
-            </div>
-            <i class="nes-bcrikko"></i>
-          </section>
+          <div class="message flex items-center justify-end">
+            <div class="bubble right shadow w-fit   h-[50px] text-[25px]">Wow thats great</div>
+            <img src="boyheadright.png" class="h-24 w-24 mr-3 mt-2"></img>
+          </div>
 
-          <section class="message -left flex items-center justify-start mb-10">
-            <i class="nes-bcrikko "></i>
-            <!-- Balloon -->
-            <div class="nes-balloon from-left ml-10">
-              <a href="contact.html">Hire me!</a>
-            </div>
-          </section>
+          <div class="message flex items-center justify-start">
+            <img src="pixelboyhead.png" class="h-24 w-24 ml-3 mt-2"></img>
+            <a href="#" class="bubble w-fit left shadow   h-[50px] text-[25px]">hire me !</a>
+          </div>
 
-        </section>
-      </section>
-    </div>
-  </div>
-
-  <div class="grid grid-cols-2 gap-3 min-h-screen">
-    <div class="col-span-1 flex items-center justify-center min-h-screen text-sm">
-      <div class="border-4 border-[#282828] w-5/6">
-        <p class="title bg-gray-400 p-1 headingfont text-blue-900 text-lg">About me!</p>
-        <p class="text-sm p-2">Hello! I'm Tanish Vashisth, a passionate developer who finds joy in both crafting code and creating art. With a strong foundation in languages like C++, Python, and JavaScript, I specialize in frameworks like Django, Flask, Next.js, React.js, Node.js, and database management with MongoDB and SQL. My projects are driven by a purpose, whether it's building web applications, games using Pygame, or exploring the intersection of technology and art. When I'm not coding, you'll find me lost in the melodies of music, fueling my creativity for the next project. Let's collaborate and bring ideas to life!</p>
+        </div>
       </div>
     </div>
 
+    <div class="bg-gray-900 bg-opacity-50 py-3 w-full flex flex-col md:hidden">
 
+      <div class="message flex items-center justify-start">
+        <img src="pixelboyhead.png" class="h-14 w-14 ml-3"></img>
+        <div class="bubble w-fit left shadow h-[30px] text-[10px]">Hello</div>
+      </div>
 
+      <div class="message flex items-center justify-end">
+        <div class="bubble w-fit right shadow  h-[30px] text-[10px]">Who are you?</div>
+        <img src="boyheadright.png" class="h-14 w-14 mr-3"></img>
+      </div>
+
+      <div class="message flex items-center justify-start">
+        <img src="pixelboyhead.png" class="h-14 w-14 ml-3"></img>
+        <div class="bubble w-fit left shadow  h-[30px] text-[10px]">I am Tanish</div>
+      </div>
+
+      <div class="message flex items-center justify-start">
+        <img src="pixelboyhead.png" class="h-14 w-14 ml-3"></img>
+        <p class="bubble w-fit left shadow  h-[30px] text-[10px]">I am <span class="typewriter nocaret"></span></p>
+      </div>
+
+      <div class="message flex items-center justify-end">
+        <div class="bubble w-fit right shadow  h-[30px] text-[10px]">Wow thats great</div>
+        <img src="boyheadright.png" class="h-14 w-14 mr-3"></img>
+      </div>
+
+      <div class="message flex items-center justify-start">
+        <img src="pixelboyhead.png" class="h-14 w-14 ml-3"></img>
+        <a href="#" class="bubble w-fit left shadow  h-[30px] text-[10px]">hire me !</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-2 min-h-screen">
+    <div class="col-span-1 flex items-center justify-center md:min-h-screen">
+      <div class="border-4 border-[#282828] w-5/6">
+        <p class="title bg-gray-400 p-1 headingfont text-blue-900 text-md">About me!</p>
+        <p class="text-[9px] md:text-[12px] p-1">Hello! I'm Tanish Vashisth, a passionate developer who finds joy in
+          both crafting code
+          and creating art. With a strong foundation in languages like C++, Python, and JavaScript, I specialize in
+          frameworks like Django, Flask, Next.js, React.js, Node.js, and database management with MongoDB and SQL. My
+          projects are driven by a purpose, whether it's building web applications, games using Pygame, or exploring the
+          intersection of technology and art. When I'm not coding, you'll find me lost in the melodies of music, fueling
+          my creativity for the next project. Let's collaborate and bring ideas to life!</p>
+      </div>
+    </div>
     <div class="col-span-1 flex flex-col items-center justify-center">
-      <div class="border-4 border-black w-[400px] lg:w-[700px] h-[40px]">
+
+      <div class="border-4 border-black w-11/12  h-[40px]">
         <div class="flex">
           <div class="flex items-center justify-start mt-[4px] ml-1 gap-1">
-            <div class="rounded-full bg-red-600 w-6 h-6"></div>
-            <div class="rounded-full bg-yellow-400 w-6 h-6"></div>
-            <div class="rounded-full bg-green-600 w-6 h-6"></div>
+            <div class="rounded-full bg-red-600 w-4 h-4"></div>
+            <div class="rounded-full bg-yellow-400 w-4 h-4"></div>
+            <div class="rounded-full bg-green-600 w-4 h-4"></div>
           </div>
           <div class="flex items-center justify-center w-full ">
-            <div class="mt-[4px] text-center ">
+            <div class="mt-[5px] text-center text-[14px] headingfont ">
               /home/mypc
             </div>
           </div>
         </div>
       </div>
-
-      <div id="terminal" class="p-3 bg-[#282828] text-[#33FF33] w-[400px] h-[400px] lg:w-[700px]  text-left text-sm">
+      <div id="terminal"
+        class="p-3 bg-[#282828] text-[#33FF33] w-11/12 h-[200px] md:h-[300px] text-left text-[10px] md:text-[14px]">
       </div>
       <!-- <audio id="typing-sound" src="typing-sound.mp3" preload="auto"></audio> -->
-
     </div>
   </div>
+  <!-- 
+        <div class="min-h-screen flex flex-col items-center justify-center">
+            
+            <div class="border-4 border-black w-[600px] h-[40px]">
+                <div class="flex">
+                    <div class="flex items-center justify-start mt-[4px] ml-1 gap-1"></div>
+                    <div class="flex items-center justify-center w-full ">
+                        <div class=" text-center headingfont text-xl">
+                            SKILLS.NES
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-3 bg-[url('duckhunt.png')] bg-no-repeat bg-contain w-[600px] h-[600px] border-4"></div>
+        </div> -->
 
-  <div class="min-h-screen flex flex-col items-center justify-center">
-
-    <!-- <div class="flex flex-col items-center justify-center min-h-screen">
-      <p class="bg-gray-400 p-1 headingfont text-blue-900 text-center w-1/6 h-1/6 border-4 border-[#282828]">Skills.nes
-      </p>
-
-      <div class="bg-url('mariobgcrop.gif') bg-no-repeat bg-fit w-[700px] h-[700px]">
-        <div class="border-4 border-[#282828]">
-
-        </div>
-      </div>
-    </div> -->
-
-
-    <div class="border-4 border-black w-[600px] h-[40px]">
-      <div class="flex">
-        <div class="flex items-center justify-start mt-[4px] ml-1 gap-1">
-        </div>
-        <div class="flex items-center justify-center w-full ">
-          <div class=" text-center headingfont text-xl">
-            SKILLS.NES
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="terminal" class="p-3 bg-[url('duckhunt.png')] bg-no-repeat bg-contain w-[600px] h-[600px] border-4">
-    </div>
-
-  </div>
-
-  <footer class="flex items-center justify-center bg-gray-900 py-4">
-    <p class="text-white text-sm mr-2">Copyright © 2024 --</p>
-    <a href="mailto:tanishvashisth@" class="text-white text-sm underline">tanishvashisth</a>
+  <footer class="flex items-center justify-center bg-gray-900 py-4 w-full">
+    <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] mr-2">Copyright © 2024 --</p>
+    <a href="mailto:tanishvashisth@" class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth</a>
   </footer>
-
-
-
 
   <button id="scrollToTop" type="button" class="nes-btn is-error">
     ↑
   </button>
-
   <script src="script.js"></script>
-
 </body>
 
 </html>

@@ -1,162 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MOYE MOYE</title>
-        <link rel="icon" href="/favicon.ico">
-        <!-- minify -->
-        <link rel="stylesheet" href="styles.css">
-        <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
-        <!-- latest -->
-        <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet">
-        <!-- core style only -->
-        <link href="https://unpkg.com/nes.css/css/nes-core.min.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <header>
-            <nav class="bg-white border-b-2 border-zinc-300">
-                <div class="grid grid-cols-1 md:grid-cols-2">
-                    <div class="col-span-1 flex items-center justify-center md:justify-start md:ml-4">
-                        <div class="flex items-center justify-center">
-                            <img src="berserk.gif" alt="berserk" class="h-20 navheader">
-                            <div class="flex flex-col items-start">
-                                <img src="logo.png" alt="logo" class="h-14 navheader border-2">
-                                <div class="logo-text text-[9px] text-left ml-2 ">Software Engineer</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-1 flex items-center justify-center md:justify-end">
-                        <div class="flex text-[10px] md:text-md space-x-4 mt-2 md:mr-7">
-                            <a href="#" class="text-black hover:underline hover:tracking-widest">About</a>
-                            <a href="#" class="text-black hover:underline hover:tracking-widest">Projects</a>
-                            <a href="#" class="text-black hover:underline hover:tracking-widest">Contact</a>
-                        </div>
-                        <div class="hidden  items-start justify-start">
-                            <button id="menu-toggle" class="nes-btn is-error text-white mr-5">
-                                ☰
-                            </button>
-                        </div>
-                    </div>
-                    <div class="container flex items-center justify-start sm:justify-between"></div>
-                </div>
-            </nav>
-        </header>
 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOYE MOYE</title>
+  <link rel="icon" href="/favicon.ico" />
+  <!-- minify -->
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+  <!-- latest -->
+  <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+  <!-- core style only -->
+  <link href="https://unpkg.com/nes.css/css/nes-core.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+
+
+
+
+</head>
+
+<body>
+  <header>
+    <nav class="bg-white border-b-2 border-zinc-300">
+      <div class="container mx-auto flex items-center justify-between">
         <div class="flex items-center justify-center">
-            <div class="bg-[url('mariobg.gif')] md:bg-[url('mariobgcrop.gif')] bg-repeat-x md:bg-no-repeat mt-[80px] bg-contain md:bg-cover w-[1440px] h-[216px] md:w-full md:h-screen">
-              <section class="hidden md:flex items-center justify-center">
-                <section class="message-list space-y-1 md:w-2/3 bg-gray-900 bg-opacity-80 rounded-[14px] py-2 px-4 lg:mt-[98px]">
-                  <section class="message -left flex items-center justify-start">
-                    <i class="nes-bcrikko"></i>
-                    <!-- Balloon -->
-                    <div class="nes-balloon from-left ml-10">
-                      <p>Hello!</p>
-                    </div>
-                  </section>
-        
-                  <section class="message -right flex items-center justify-end ">
-                    <!-- Balloon -->
-                    <div class="nes-balloon from-right mr-10 ">
-                      <p>Who are you ?</p>
-                    </div>
-                    <i class="nes-bcrikko "></i>
-                  </section>
-        
-                  <section class="message -left flex items-center justify-start mb-10">
-                    <i class="nes-bcrikko "></i>
-                    <!-- Balloon -->
-                    <div class="nes-balloon from-left  ml-10">
-                      <p>I am Tanish Vashisth</p>
-                    </div>
-                  </section>
-        
-                  <section class="message -left flex items-center justify-start mb-10">
-                    <i class="nes-bcrikko "></i>
-                    <!-- Balloon -->
-                    <div class="nes-balloon from-left ml-10">
-                      <p>I am <span class="typewriter nocaret"></span></p>
-                    </div>
-                  </section>
-        
-                  <section class="message -right flex items-center justify-end ">
-                    <!-- Balloon -->
-                    <div class="nes-balloon from-right mr-10">
-                      <p>Wow thats great</p>
-                    </div>
-                    <i class="nes-bcrikko"></i>
-                  </section>
-        
-                  <section class="message -left flex items-center justify-start mb-10">
-                    <i class="nes-bcrikko "></i>
-                    <!-- Balloon -->
-                    <div class="nes-balloon from-left ml-10">
-                      <a href="contact.html">Hire me!</a>
-                    </div>
-                  </section>
-        
-                </section>
-              </section>
-
-
-
-            </div>
+          <img src="berserk.gif" alt="berserk" class="h-24 navheader" />
+          <div class="flex flex-col items-start">
+            <img src="logo.png" alt="logo" class="h-16 navheader border-2" />
+            <div class="logo-text text-sm pl-4">Software Engineer</div>
+          </div>
         </div>
-        
-        <!-- <div class="grid grid-cols-2 gap-3 min-h-screen">
-            <div class="col-span-1 flex items-center justify-center min-h-screen text-sm">
-                <div class="border-4 border-[#282828] w-5/6">
-                    <p class="title bg-gray-400 p-1 headingfont text-blue-900 text-lg">About me!</p>
-                    <p class="text-sm p-2">Hello! I'm Tanish Vashisth, a passionate developer who finds joy in both crafting code and creating art. With a strong foundation in languages like C++, Python, and JavaScript, I specialize in frameworks like Django, Flask, Next.js, React.js, Node.js, and database management with MongoDB and SQL. My projects are driven by a purpose, whether it's building web applications, games using Pygame, or exploring the intersection of technology and art. When I'm not coding, you'll find me lost in the melodies of music, fueling my creativity for the next project. Let's collaborate and bring ideas to life!</p>
-                </div>
-            </div>
-            <div class="col-span-1 flex flex-col items-center justify-center">
-                <div class="border-4 border-black w-[400px] lg:w-[700px] h-[40px]">
-                    <div class="flex">
-                        <div class="flex items-center justify-start mt-[4px] ml-1 gap-1">
-                            <div class="rounded-full bg-red-600 w-6 h-6"></div>
-                            <div class="rounded-full bg-yellow-400 w-6 h-6"></div>
-                            <div class="rounded-full bg-green-600 w-6 h-6"></div>
-                        </div>
-                        <div class="flex items-center justify-center w-full ">
-                            <div class="mt-[4px] text-center ">
-                                /home/mypc
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="terminal" class="p-3 bg-[#282828] text-[#33FF33] w-[400px] h-[400px] lg:w-[700px]  text-left text-sm"></div>
-                <audio id="typing-sound" src="typing-sound.mp3" preload="auto"></audio>
-            </div>
-        </div> -->
-<!-- 
-        <div class="min-h-screen flex flex-col items-center justify-center">
-            
-            <div class="border-4 border-black w-[600px] h-[40px]">
-                <div class="flex">
-                    <div class="flex items-center justify-start mt-[4px] ml-1 gap-1"></div>
-                    <div class="flex items-center justify-center w-full ">
-                        <div class=" text-center headingfont text-xl">
-                            SKILLS.NES
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-3 bg-[url('duckhunt.png')] bg-no-repeat bg-contain w-[600px] h-[600px] border-4"></div>
-        </div> -->
 
-        <!-- <footer class="flex items-center justify-center bg-gray-900 py-4">
-            <p class="text-white text-sm mr-2">Copyright © 2024 --</p>
-            <a href="mailto:tanishvashisth@" class="text-white text-sm underline">tanishvashisth</a>
-        </footer> -->
-        <button id="scrollToTop" type="button" class="nes-btn is-error">
-            ↑
-        </button>
-        <script src="script.js"></script>
-    </body>
+        <div class="hidden md:flex space-x-4 mt-2">
+          <a href="#" class="text-black hover:underline hover:tracking-widest">About</a>
+          <a href="#" class="text-black hover:underline hover:tracking-widest">Projects</a>
+          <a href="#" class="text-black hover:underline hover:tracking-widest">Contact</a>
+        </div>
+
+        <div class="md:hidden">
+          <button id="menu-toggle" class="nes-btn is-error text-white">
+            ☰
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <div class="flex items-center justify-center">
+    <div class=" bg-[url('mariobgcrop.gif')] bg-no-repeat bg-cover w-full h-screen">
+      <section class="h-full flex items-center justify-center">
+        <section class="message-list space-y-1 w-2/3 bg-gray-900 bg-opacity-80 rounded-[14px] py-2 px-4 mt-[98px]">
+
+          <section class="message -left flex items-center justify-start">
+            <i class="nes-bcrikko"></i>
+            <!-- Balloon -->
+            <div class="nes-balloon from-left ml-10">
+              <p>Hello!</p>
+            </div>
+          </section>
+
+          <section class="message -right flex items-center justify-end ">
+            <!-- Balloon -->
+            <div class="nes-balloon from-right mr-10 ">
+              <p>Who are you ?</p>
+            </div>
+            <i class="nes-bcrikko "></i>
+          </section>
+
+          <section class="message -left flex items-center justify-start mb-10">
+            <i class="nes-bcrikko "></i>
+            <!-- Balloon -->
+            <div class="nes-balloon from-left  ml-10">
+              <p>I am Tanish Vashisth</p>
+            </div>
+          </section>
+
+          <section class="message -left flex items-center justify-start mb-10">
+            <i class="nes-bcrikko "></i>
+            <!-- Balloon -->
+            <div class="nes-balloon from-left ml-10">
+              <p>I am <span class="typewriter nocaret"></span></p>
+            </div>
+          </section>
+
+          <section class="message -right flex items-center justify-end ">
+            <!-- Balloon -->
+            <div class="nes-balloon from-right mr-10">
+              <p>Wow thats great</p>
+            </div>
+            <i class="nes-bcrikko"></i>
+          </section>
+
+          <section class="message -left flex items-center justify-start mb-10">
+            <i class="nes-bcrikko "></i>
+            <!-- Balloon -->
+            <div class="nes-balloon from-left ml-10">
+              <a href="contact.html">Hire me!</a>
+            </div>
+          </section>
+
+        </section>
+      </section>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 gap-3 min-h-screen">
+    <div class="col-span-1 flex items-center justify-center min-h-screen text-sm">
+      <div class="border-4 border-[#282828] w-5/6">
+        <p class="title bg-gray-400 p-1 headingfont text-blue-900 text-lg">About me!</p>
+        <p class="text-sm p-2">Hello! I'm Tanish Vashisth, a passionate developer who finds joy in both crafting code and creating art. With a strong foundation in languages like C++, Python, and JavaScript, I specialize in frameworks like Django, Flask, Next.js, React.js, Node.js, and database management with MongoDB and SQL. My projects are driven by a purpose, whether it's building web applications, games using Pygame, or exploring the intersection of technology and art. When I'm not coding, you'll find me lost in the melodies of music, fueling my creativity for the next project. Let's collaborate and bring ideas to life!</p>
+      </div>
+    </div>
+
+
+
+    <div class="col-span-1 flex flex-col items-center justify-center">
+      <div class="border-4 border-black w-[400px] lg:w-[700px] h-[40px]">
+        <div class="flex">
+          <div class="flex items-center justify-start mt-[4px] ml-1 gap-1">
+            <div class="rounded-full bg-red-600 w-6 h-6"></div>
+            <div class="rounded-full bg-yellow-400 w-6 h-6"></div>
+            <div class="rounded-full bg-green-600 w-6 h-6"></div>
+          </div>
+          <div class="flex items-center justify-center w-full ">
+            <div class="mt-[4px] text-center ">
+              /home/mypc
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="terminal" class="p-3 bg-[#282828] text-[#33FF33] w-[400px] h-[400px] lg:w-[700px]  text-left text-sm">
+      </div>
+      <!-- <audio id="typing-sound" src="typing-sound.mp3" preload="auto"></audio> -->
+
+    </div>
+  </div>
+
+  <div class="min-h-screen flex flex-col items-center justify-center">
+
+    <!-- <div class="flex flex-col items-center justify-center min-h-screen">
+      <p class="bg-gray-400 p-1 headingfont text-blue-900 text-center w-1/6 h-1/6 border-4 border-[#282828]">Skills.nes
+      </p>
+
+      <div class="bg-url('mariobgcrop.gif') bg-no-repeat bg-fit w-[700px] h-[700px]">
+        <div class="border-4 border-[#282828]">
+
+        </div>
+      </div>
+    </div> -->
+
+
+    <div class="border-4 border-black w-[600px] h-[40px]">
+      <div class="flex">
+        <div class="flex items-center justify-start mt-[4px] ml-1 gap-1">
+        </div>
+        <div class="flex items-center justify-center w-full ">
+          <div class=" text-center headingfont text-xl">
+            SKILLS.NES
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="terminal" class="p-3 bg-[url('duckhunt.png')] bg-no-repeat bg-contain w-[600px] h-[600px] border-4">
+    </div>
+
+  </div>
+
+  <footer class="flex items-center justify-center bg-gray-900 py-4">
+    <p class="text-white text-sm mr-2">Copyright © 2024 --</p>
+    <a href="mailto:tanishvashisth@" class="text-white text-sm underline">tanishvashisth</a>
+  </footer>
+
+
+
+
+  <button id="scrollToTop" type="button" class="nes-btn is-error">
+    ↑
+  </button>
+
+  <script src="script.js"></script>
+
+</body>
+
 </html>
