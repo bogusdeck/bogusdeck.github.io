@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duck Hunt Game</title>
+<style>
+    #game-container {
+        width: 800px;
+        height: 600px;
+        background-color: #87CEEB; /* sky blue */
+        position: relative;
+        border: 2px solid #000;
+        margin: 0 auto;
+    }
+    #duck {
+        width: 50px;
+        height: 50px;
+        background-color: yellow;
+        border-radius: 50%;
+        position: absolute;
+    }
+</style>
+</head>
+<body>
+
+<div id="game-container">
+    <div id="duck"></div>
+</div>
+
+<script>
+    const gameContainer = document.getElementById('game-container');
+    const duck = document.getElementById('duck');
+    let score = 0;
+
+    // Function to move the duck continuously in one direction
+    function moveDuckContinuous() {
+        const maxX = gameContainer.clientWidth - duck.clientWidth;
+        const maxY = gameContainer.clientHeight - duck.clientHeight;
+
+        // Set a fixed direction for continuous movement
+        const deltaX = 2; // Move 2 pixels in x-direction
+        const deltaY = 0; // Don't move in y-direction
+
+        // Calculate new position
+        let newX = duck.offsetLeft + deltaX;
+        let newY = duck.offsetTop + deltaY;
+
+        // Ensure the duck stays within the game container
+        newX = Math.max(0, Math.min(newX, maxX));
+        newY = Math.max(0, Math.min(newY, maxY));
+
+        // Update the duck's position
+        duck.style.left = newX + 'px';
+        duck.style.top = newY + 'px';
+    }
+
+    // Function to move the duck in random direction
+    function moveDuckRandom() {
+        // Generate random movement in x and y directions
+        const deltaX = Math.random() * 6 - 3; // Random value between -3 and 3
+        const deltaY = Math.random() * 6 - 3; // Random value between -3 and 3
+
+        // Calculate new position
+        let newX = duck.offsetLeft + deltaX;
+        let newY = duck.offsetTop + deltaY;
+
+        // Ensure the duck stays within the game container
+        const maxX = gameContainer.clientWidth - duck.clientWidth;
+        const maxY = gameContainer.clientHeight - duck.clientHeight;
+        newX = Math.max(0, Math.min(newX, maxX));
+        newY = Math.max(0, Math.min(newY, maxY));
+
+        // Update the duck's position
+        duck.style.left = newX + 'px';
+        duck.style.top = newY + 'px';
+    }
+
+    // Function to handle shooting the duck
+    function shootDuck(event) {
+        const mouseX = event.clientX - gameContainer.offsetLeft;
+        const mouseY = event.clientY - gameContainer.offsetTop;
+
+        const duckX = duck.offsetLeft + duck.clientWidth / 2;
+        const duckY = duck.offsetTop + duck.clientHeight / 2;
+
+        const distance = Math.sqrt((mouseX - duckX) ** 2 + (mouseY - duckY) ** 2);
+
+        if (distance < duck.clientWidth / 2) {
+            score++;
+            alert('You hit the duck! Score: ' + score);
+        }
+    }
+
+    // Event listener to shoot the duck when clicked
+    gameContainer.addEventListener('click', shootDuck);
+
+    // Move the duck continuously in one direction every 100 milliseconds
+    setInterval(moveDuckContinuous, 100);
+
+    // Change direction randomly after 10 seconds
+    setTimeout(() => {
+        setInterval(moveDuckRandom, 100); // Change direction every 100 milliseconds
+    }, 10000); // Delay of 10 seconds (10000 milliseconds)
+</script>
+
+</body>
+</html>

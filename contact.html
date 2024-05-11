@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden Text Behind Brick</title>
+    <style>
+        #container {
+            position: relative;
+            width: 400px;
+            /* Adjust as per your requirement */
+            height: 300px;
+            /* Adjust as per your requirement */
+        }
+
+        #brick {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        #hiddenText {
+            opacity: 0; /* Initially hidden */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            transition: opacity 1s ease; /* Smooth transition */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <img id="brick" src="brick.jpg" alt="Brick">
+        <div id="hiddenText">Your hidden text here.</div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('brick').addEventListener('click', function () {
+                // Fade in the hidden text
+                document.getElementById('hiddenText').style.opacity = 1;
+            });
+        });
+    </script>
+</body>
+
+</html>
