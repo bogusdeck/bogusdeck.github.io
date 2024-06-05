@@ -1,0 +1,17 @@
+/* hehe.css */
+.hidden {
+    display: none;
+}
+
+.bird {
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+}
+
+.word-container {
+    white-space: nowrap;
+}
+
+.fall {
+    transition: transform 2s ease-in;
+}
