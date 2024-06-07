@@ -9,6 +9,7 @@
   <!-- minify -->
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="bubblechat.css">
+  <link rel="stylesheet" href="mario.css">
   <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
   <!-- latest -->
   <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
@@ -70,7 +71,8 @@
 
           <div class="message flex items-center justify-start">
             <img src="pixelboyhead.png" class="h-20 w-20 ml-3 mt-2"></img>
-            <p class="bubble w-fit left shadow    h-[40px] lg:h-[50px] text-[15px] lg:text-[20px]">I am <span class="typewriter nocaret"></span></p>
+            <p class="bubble w-fit left shadow    h-[40px] lg:h-[50px] text-[15px] lg:text-[20px]">I am <span
+                class="typewriter nocaret"></span></p>
           </div>
 
           <div class="message flex items-center justify-end">
@@ -127,7 +129,8 @@
     <div class="col-span-1 flex items-center justify-center md:min-h-screen">
       <div class="border-4 border-[#282828] w-5/6 m-5 md:m-1">
         <p class="title bg-gray-400 p-1 headingfont text-blue-900 text-md">About me!</p>
-        <p class="text-[9px] md:text-[12px] lg:text-[1] text-start p-1">Hello! I'm Tanish Vashisth, a passionate developer who finds joy in
+        <p class="text-[9px] md:text-[12px] lg:text-[1] text-start p-1">Hello! I'm Tanish Vashisth, a passionate
+          developer who finds joy in
           both crafting code
           and creating art. With a strong foundation in languages like C++, Python, and JavaScript, I specialize in
           frameworks like Django, Flask, Next.js, React.js, Node.js, and database management with MongoDB and SQL. My
@@ -158,8 +161,8 @@
       <!-- <audio id="typing-sound" src="typing-sound.mp3" preload="auto"></audio> -->
     </div>
   </div>
-  
-        <div class="min-h-screen flex flex-col items-center justify-center">
+
+  <!-- <div class="min-h-screen flex flex-col items-center justify-center">
             <div class="border-4 border-black w-11/12 h-11/12">
                 <div class="flex">
                     <div class="flex items-center justify-center w-full ">
@@ -170,15 +173,44 @@
                 </div>
             </div>
             <div class="p-3 bg-[url('duckhunt.png')] bg-no-repeat bg-contain w-[256px] h-[239px]   "></div>
+        </div> -->
+
+  <div class="min-h-screen bg-orange-400 flex flex-col items-center justify-center">
+    <div class="border-4 border-black w-11/12 h-11/12">
+        <div id="canvas">
+          <div id="timeline-area"></div>
+          <div id="blocks-container">
+            <div id="block-set">
+              <div class="brick" id="brick1"></div>
+              <div id="mystery-block"></div>
+              <div class="brick" id="brick2"></div>
+              <div id="timeline-item">
+                <div class="item-date">September 1985</div>
+                <div class="item-content">Super Mario Brothers</div>
+              </div>
+            </div>
+          </div>
+          <div id="mario-container">
+            <div id="mario1"></div>
+            <div id="mario2"></div>
+            <div id="mario3"></div>
+            <div id="mario4"></div>
+          </div>
         </div>
-      
-  
+
+      </div>
+    </div>
+  </div>
+
+
+
 
 
 
   <footer class="flex items-center justify-center bg-gray-900 py-4 w-full mt-10">
     <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] mr-2">Copyright © 2024 --</p>
-    <a href="mailto:tanishvashisth@" class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth</a>
+    <a href="mailto:tanishvashisth@"
+      class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth</a>
   </footer>
 
   <button id="scrollToTop" type="button" class="nes-btn is-error">

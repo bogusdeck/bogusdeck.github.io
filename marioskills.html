@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hidden Text Behind Brick</title>
+    <style>
+      #canvas {
+        background-color: #5e99ff;
+        font-family: "Press Start 2P", cursive;
+        height: 100vh;
+      }
+
+      #mario-container {
+        display: flex;
+        position: relative;
+        top: 20%;
+        -webkit-animation: jump 3s;
+        animation: jump 3s;
+        animation-iteration-count: 24;
+      }
+
+      #mario1 {
+        -webkit-animation: run1 3s infinite;
+        animation: run1 3s infinite;
+      }
+
+      #mario2 {
+        -webkit-animation: run2 3s infinite;
+        animation: run2 3s infinite;
+      }
+
+      #mario3 {
+        -webkit-animation: run3 3s infinite;
+        animation: run3 3s infinite;
+      }
+
+      #mario4 {
+        -webkit-animation: run4 3s infinite;
+        animation: run4 3s infinite;
+      }
+
+      #mario1,
+      #mario2,
+      #mario3,
+      #mario4 {
+        display: flex;
+        flex-wrap: wrap;
+        position: absolute;
+        width: 100%;
+      }
+
+      .row {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .pixel {
+        height: 9px;
+        width: 9px;
+      }
+
+      #blocks-container {
+        display: flex;
+        height: 144px;
+        justify-content: center;
+        position: relative;
+        width: 100%;
+      }
+
+      #block-set {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        -webkit-animation: traverse 3s;
+        animation: traverse 3s;
+        animation-iteration-count: 24;
+      }
+
+      .brick {
+        background-color: #824517;
+        height: 144px;
+        width: 144px;
+        z-index: 100;
+      }
+
+      #mystery-block {
+        background-color: #f1ba04;
+        position: relative;
+        z-index: 100;
+        -webkit-animation: bump 3s;
+        animation: bump 3s;
+        animation-iteration-count: 24;
+      }
+
+      #timeline-area {
+        height: 200px;
+      }
+
+      #timeline-item {
+        list-style: none;
+        position: absolute;
+        text-align: center;
+        -webkit-animation: text-reveal 3s;
+        animation: text-reveal 3s;
+        animation-iteration-count: 24;
+      }
+
+      .item-date {
+        color: #824517;
+        font-size: 24px;
+        padding-bottom: 10px;
+        text-shadow: 1px 1px #000000;
+      }
+
+      .item-content {
+        font-size: 28px;
+      }
+
+      /* pixel art */
+
+      #mario1 .row:nth-of-type(1) .pixel:nth-of-type(6),
+      #mario1 .row:nth-of-type(1) .pixel:nth-of-type(7),
+      #mario1 .row:nth-of-type(1) .pixel:nth-of-type(8),
+      #mario1 .row:nth-of-type(1) .pixel:nth-of-type(9),
+      #mario1 .row:nth-of-type(1) .pixel:nth-of-type(10),
+      #mario1 .row:nth-of-type(2) .pixel:nth-of-type(5),
+      #mario1 .row:nth-of-type(2) .pixel:nth-of-type(6),
+      #mario1 .row:nth-of-type(2) .pixel:nth-of-type(7),
+      #mario1 .row:nth-of-type(2) .pixel:nth-of-type(8),
+      #mario1 .row:nth-of-type(2) .pixel:nth-of-type(9),
+      #mario1 .row:nth-of-type(2) .pixel:nth-of-type(10),
+      #mario1 .row:nth-of-type(2) .pixel:nth-of-type(11),
+      #mario1 .row:nth-of-type(2) .pixel:nth-of-type(12),
+      #mario1 .row:nth-of-type(2) .pixel:nth-of-type(13),
+      #mario1 .row:nth-of-type(8) .pixel:nth-of-type(5),
+      #mario1 .row:nth-of-type(8) .pixel:nth-of-type(6),
+      #mario1 .row:nth-of-type(8) .pixel:nth-of-type(7),
+      #mario1 .row:nth-of-type(8) .pixel:nth-of-type(8),
+      #mario1 .row:nth-of-type(8) .pixel:nth-of-type(10),
+      #mario1 .row:nth-of-type(9) .pixel:nth-of-type(5),
+      #mario1 .row:nth-of-type(9) .pixel:nth-of-type(6),
+      #mario1 .row:nth-of-type(9) .pixel:nth-of-type(7),
+      #mario1 .row:nth-of-type(9) .pixel:nth-of-type(8),
+      #mario1 .row:nth-of-type(9) .pixel:nth-of-type(9),
+      #mario1 .row:nth-of-type(9) .pixel:nth-of-type(10),
+      #mario1 .row:nth-of-type(10) .pixel:nth-of-type(6),
+      #mario1 .row:nth-of-type(10) .pixel:nth-of-type(7),
+      #mario1 .row:nth-of-type(10) .pixel:nth-of-type(8),
+      #mario1 .row:nth-of-type(10) .pixel:nth-of-type(9),
+      #mario1 .row:nth-of-type(10) .pixel:nth-of-type(10) {
+        background-color: red;
+      }
+
+      #mario1 .row:nth-of-type(3) .pixel:nth-of-type(8),
+      #mario1 .row:nth-of-type(3) .pixel:nth-of-type(9),
+      #mario1 .row:nth-of-type(3) .pixel:nth-of-type(11),
+      #mario1 .row:nth-of-type(4) .pixel:nth-of-type(5),
+      #mario1 .row:nth-of-type(4) .pixel:nth-of-type(7),
+      #mario1 .row:nth-of-type(4) .pixel:nth-of-type(8),
+      #mario1 .row:nth-of-type(4) .pixel:nth-of-type(9),
+      #mario1 .row:nth-of-type(4) .pixel:nth-of-type(11),
+      #mario1 .row:nth-of-type(4) .pixel:nth-of-type(12),
+      #mario1 .row:nth-of-type(4) .pixel:nth-of-type(13),
+      #mario1 .row:nth-of-type(5) .pixel:nth-of-type(5),
+      #mario1 .row:nth-of-type(5) .pixel:nth-of-type(8),
+      #mario1 .row:nth-of-type(5) .pixel:nth-of-type(9),
+      #mario1 .row:nth-of-type(5) .pixel:nth-of-type(10),
+      #mario1 .row:nth-of-type(5) .pixel:nth-of-type(12),
+      #mario1 .row:nth-of-type(5) .pixel:nth-of-type(13),
+      #mario1 .row:nth-of-type(5) .pixel:nth-of-type(14),
+      #mario1 .row:nth-of-type(6) .pixel:nth-of-type(6),
+      #mario1 .row:nth-of-type(6) .pixel:nth-of-type(7),
+      #mario1 .row:nth-of-type(6) .pixel:nth-of-type(8),
+      #mario1 .row:nth-of-type(6) .pixel:nth-of-type(9),
+      #mario1 .row:nth-of-type(7) .pixel:nth-of-type(6),
+      #mario1 .row:nth-of-type(7) .pixel:nth-of-type(7),
+      #mario1 .row:nth-of-type(7) .pixel:nth-of-type(8),
+      #mario1 .row:nth-of-type(7) .pixel:nth-of-type(9),
+      #mario1 .row:nth-of-type(7) .pixel:nth-of-type(10),
+      #mario1 .row:nth-of-type(7) .pixel:nth-of-type(11),
+      #mario1 .row:nth-of-type(7) .pixel:nth-of-type(12),
+      #mario1 .row:nth-of-type(8) .pixel:nth-of-type(12),
+      #mario1 .row:nth-of-type(9) .pixel:nth-of-type(4),
+      #mario1 .row:nth-of-type(9) .pixel:nth-of-type(11),
+      #mario1 .row:nth-of-type(9) .pixel:nth-of-type(12),
+      #mario1 .row:nth-of-type(9) .pixel:nth-of-type(13),
+      #mario1 .row:nth-of-type(10) .pixel:nth-of-type(3),
+      #mario1 .row:nth-of-type(10) .pixel:nth-of-type(4),
+      #mario1 .row:nth-of-type(10) .pixel:nth-of-type(11),
+      #mario1 .row:nth-of-type(10) .pixel:nth-of-type(12) {
+        background-color: #f0caad;
+      }
+
+      #mario1 .row:nth-of-type(3) .pixel:nth-of-type(5),
+      #mario1 .row:nth-of-type(3) .pixel:nth-of-type(6),
+      #mario1 .row:nth-of-type(3) .pixel:nth-of-type(7),
+      #mario1 .row:nth-of-type(4) .pixel:nth-of-type(4),
+      #mario1 .row:nth-of-type(4) .pixel:nth-of-type(6),
+      #mario1 .row:nth-of-type(5) .pixel:nth-of-type(4),
+      #mario1 .row:nth-of-type(5) .pixel:nth-of-type(6),
+      #mario1 .row:nth-of-type(5) .pixel:nth-of-type(7),
+      #mario1 .row:nth-of-type(6) .pixel:nth-of-type(4),
+      #mario1 .row:nth-of-type(6) .pixel:nth-of-type(5),
+      #mario1 .row:nth-of-type(11) .pixel:nth-of-type(3),
+      #mario1 .row:nth-of-type(11) .pixel:nth-of-type(4),
+      #mario1 .row:nth-of-type(12) .pixel:nth-of-type(3),
+      #mario1 .row:nth-of-type(13) .pixel:nth-of-type(2),
+      #mario1 .row:nth-of-type(13) .pixel:nth-of-type(3),
+      #mario1 .row:nth-of-type(14) .pixel:nth-of-type(2),
+      #mario1 .row:nth-of-type(14) .pixel:nth-of-type(7),
+      #mario1 .row:nth-of-type(14) .pixel:nth-of-type(8),
+      #mario1 .row:nth-of-type(14) .pixel:nth-of-type(9),
+      #mario1 .row:nth-of-type(15) .pixel:nth-of-type(7),
+      #mario1 .row:nth-of-type(15) .pixel:nth-of-type(8),
+      #mario1 .row:nth-of-type(15) .pixel:nth-of-type(9),
+      #mario1 .row:nth-of-type(15) .pixel:nth-of-type(10) {
+        background-color: #824517;
+      }
+
+      #mario1 .row:nth-of-type(3) .pixel:nth-of-type(10),
+      #mario1 .row:nth-of-type(4) .pixel:nth-of-type(10),
+      #mario1 .row:nth-of-type(5) .pixel:nth-of-type(11),
+      #mario1 .row:nth-of-type(6) .pixel:nth-of-type(10),
+      #mario1 .row:nth-of-type(6) .pixel:nth-of-type(11),
+      #mario1 .row:nth-of-type(6) .pixel:nth-of-type(12),
+      #mario1 .row:nth-of-type(6) .pixel:nth-of-type(13) {
+        background-color: black;
+      }
+
+      #mario1 .row:nth-of-type(8) .pixel:nth-of-type(9),
+      #mario1 .row:nth-of-type(10) .pixel:nth-of-type(5),
+      #mario1 .row:nth-of-type(11) .pixel:nth-of-type(5),
+      #mario1 .row:nth-of-type(11) .pixel:nth-of-type(6),
+      #mario1 .row:nth-of-type(11) .pixel:nth-of-type(7),
+      #mario1 .row:nth-of-type(11) .pixel:nth-of-type(8),
+      #mario1 .row:nth-of-type(11) .pixel:nth-of-type(9),
+      #mario1 .row:nth-of-type(11) .pixel:nth-of-type(10),
+      #mario1 .row:nth-of-type(11) .pixel:nth-of-type(11),
+      #mario1 .row:nth-of-type(12) .pixel:nth-of-type(4),
+      #mario1 .row:nth-of-type(12) .pixel:nth-of-type(5),
+      #mario1 .row:nth-of-type(12) .pixel:nth-of-type(6),
+      #mario1 .row:nth-of-type(12) .pixel:nth-of-type(7),
+      #mario1 .row:nth-of-type(12) .pixel:nth-of-type(8),
+      #mario1 .row:nth-of-type(12) .pixel:nth-of-type(9),
+      #mario1 .row:nth-of-type(12) .pixel:nth-of-type(10),
+      #mario1 .row:nth-of-type(12) .pixel:nth-of-type(11),
+      #mario1 .row:nth-of-type(13) .pixel:nth-of-type(4),
+      #mario1 .row:nth-of-type(13) .pixel:nth-of-type(5),
+      #mario1 .row:nth-of-type(13) .pixel:nth-of-type(6),
+      #mario1 .row:nth-of-type(13) .pixel:nth-of-type(8),
+      #mario1 .row:nth-of-type(13) .pixel:nth-of-type(9),
+      #mario1 .row:nth-of-type(13) .pixel:nth-of-type(10) {
+        background-color: blue;
+      }
+
+      #mario2 .row:nth-of-type(1) .pixel:nth-of-type(6),
+      #mario2 .row:nth-of-type(1) .pixel:nth-of-type(7),
+      #mario2 .row:nth-of-type(1) .pixel:nth-of-type(8),
+      #mario2 .row:nth-of-type(1) .pixel:nth-of-type(9),
+      #mario2 .row:nth-of-type(1) .pixel:nth-of-type(10),
+      #mario2 .row:nth-of-type(2) .pixel:nth-of-type(5),
+      #mario2 .row:nth-of-type(2) .pixel:nth-of-type(6),
+      #mario2 .row:nth-of-type(2) .pixel:nth-of-type(7),
+      #mario2 .row:nth-of-type(2) .pixel:nth-of-type(8),
+      #mario2 .row:nth-of-type(2) .pixel:nth-of-type(9),
+      #mario2 .row:nth-of-type(2) .pixel:nth-of-type(10),
+      #mario2 .row:nth-of-type(2) .pixel:nth-of-type(11),
+      #mario2 .row:nth-of-type(2) .pixel:nth-of-type(12),
+      #mario2 .row:nth-of-type(2) .pixel:nth-of-type(13),
+      #mario2 .row:nth-of-type(8) .pixel:nth-of-type(5),
+      #mario2 .row:nth-of-type(8) .pixel:nth-of-type(6),
+      #mario2 .row:nth-of-type(8) .pixel:nth-of-type(8),
+      #mario2 .row:nth-of-type(8) .pixel:nth-of-type(9),
+      #mario2 .row:nth-of-type(8) .pixel:nth-of-type(10),
+      #mario2 .row:nth-of-type(9) .pixel:nth-of-type(4),
+      #mario2 .row:nth-of-type(9) .pixel:nth-of-type(5),
+      #mario2 .row:nth-of-type(9) .pixel:nth-of-type(6),
+      #mario2 .row:nth-of-type(9) .pixel:nth-of-type(7),
+      #mario2 .row:nth-of-type(9) .pixel:nth-of-type(10),
+      #mario2 .row:nth-of-type(9) .pixel:nth-of-type(11),
+      #mario2 .row:nth-of-type(10) .pixel:nth-of-type(4),
+      #mario2 .row:nth-of-type(10) .pixel:nth-of-type(5),
+      #mario2 .row:nth-of-type(10) .pixel:nth-of-type(6),
+      #mario2 .row:nth-of-type(11) .pixel:nth-of-type(4),
+      #mario2 .row:nth-of-type(11) .pixel:nth-of-type(5),
+      #mario2 .row:nth-of-type(11) .pixel:nth-of-type(6),
+      #mario2 .row:nth-of-type(11) .pixel:nth-of-type(7),
+      #mario2 .row:nth-of-type(12) .pixel:nth-of-type(5),
+      #mario2 .row:nth-of-type(12) .pixel:nth-of-type(6),
+      #mario2 .row:nth-of-type(13) .pixel:nth-of-type(6) {
+        background-color: red;
+      }
+
+      #mario2 .row:nth-of-type(3) .pixel:nth-of-type(8),
+      #mario2 .row:nth-of-type(3) .pixel:nth-of-type(9),
+      #mario2 .row:nth-of-type(3) .pixel:nth-of-type(11),
+      #mario2 .row:nth-of-type(4) .pixel:nth-of-type(5),
+      #mario2 .row:nth-of-type(4) .pixel:nth-of-type(7),
+      #mario2 .row:nth-of-type(4) .pixel:nth-of-type(8),
+      #mario2 .row:nth-of-type(4) .pixel:nth-of-type(9),
+      #mario2 .row:nth-of-type(4) .pixel:nth-of-type(11),
+      #mario2 .row:nth-of-type(4) .pixel:nth-of-type(12),
+      #mario2 .row:nth-of-type(4) .pixel:nth-of-type(13),
+      #mario2 .row:nth-of-type(5) .pixel:nth-of-type(5),
+      #mario2 .row:nth-of-type(5) .pixel:nth-of-type(8),
+      #mario2 .row:nth-of-type(5) .pixel:nth-of-type(9),
+      #mario2 .row:nth-of-type(5) .pixel:nth-of-type(10),
+      #mario2 .row:nth-of-type(5) .pixel:nth-of-type(12),
+      #mario2 .row:nth-of-type(5) .pixel:nth-of-type(13),
+      #mario2 .row:nth-of-type(5) .pixel:nth-of-type(14),
+      #mario2 .row:nth-of-type(6) .pixel:nth-of-type(6),
+      #mario2 .row:nth-of-type(6) .pixel:nth-of-type(7),
+      #mario2 .row:nth-of-type(6) .pixel:nth-of-type(8),
+      #mario2 .row:nth-of-type(6) .pixel:nth-of-type(9),
+      #mario2 .row:nth-of-type(7) .pixel:nth-of-type(6),
+      #mario2 .row:nth-of-type(7) .pixel:nth-of-type(7),
+      #mario2 .row:nth-of-type(7) .pixel:nth-of-type(8),
+      #mario2 .row:nth-of-type(7) .pixel:nth-of-type(9),
+      #mario2 .row:nth-of-type(7) .pixel:nth-of-type(10),
+      #mario2 .row:nth-of-type(7) .pixel:nth-of-type(11),
+      #mario2 .row:nth-of-type(7) .pixel:nth-of-type(12),
+      #mario2 .row:nth-of-type(10) .pixel:nth-of-type(12),
+      #mario2 .row:nth-of-type(12) .pixel:nth-of-type(7),
+      #mario2 .row:nth-of-type(12) .pixel:nth-of-type(8),
+      #mario2 .row:nth-of-type(12) .pixel:nth-of-type(9),
+      #mario2 .row:nth-of-type(13) .pixel:nth-of-type(7),
+      #mario2 .row:nth-of-type(13) .pixel:nth-of-type(8) {
+        background-color: #f0caad;
+      }
+
+      #mario2 .row:nth-of-type(3) .pixel:nth-of-type(5),
+      #mario2 .row:nth-of-type(3) .pixel:nth-of-type(6),
+      #mario2 .row:nth-of-type(3) .pixel:nth-of-type(7),
+      #mario2 .row:nth-of-type(4) .pixel:nth-of-type(4),
+      #mario2 .row:nth-of-type(4) .pixel:nth-of-type(6),
+      #mario2 .row:nth-of-type(5) .pixel:nth-of-type(4),
+      #mario2 .row:nth-of-type(5) .pixel:nth-of-type(6),
+      #mario2 .row:nth-of-type(5) .pixel:nth-of-type(7),
+      #mario2 .row:nth-of-type(6) .pixel:nth-of-type(4),
+      #mario2 .row:nth-of-type(6) .pixel:nth-of-type(5),
+      #mario2 .row:nth-of-type(14) .pixel:nth-of-type(9),
+      #mario2 .row:nth-of-type(14) .pixel:nth-of-type(10),
+      #mario2 .row:nth-of-type(14) .pixel:nth-of-type(11),
+      #mario2 .row:nth-of-type(15) .pixel:nth-of-type(6),
+      #mario2 .row:nth-of-type(15) .pixel:nth-of-type(7),
+      #mario2 .row:nth-of-type(15) .pixel:nth-of-type(8),
+      #mario2 .row:nth-of-type(15) .pixel:nth-of-type(9),
+      #mario2 .row:nth-of-type(15) .pixel:nth-of-type(10),
+      #mario2 .row:nth-of-type(15) .pixel:nth-of-type(11),
+      #mario2 .row:nth-of-type(15) .pixel:nth-of-type(12),
+      #mario2 .row:nth-of-type(16) .pixel:nth-of-type(6),
+      #mario2 .row:nth-of-type(16) .pixel:nth-of-type(7),
+      #mario2 .row:nth-of-type(16) .pixel:nth-of-type(8),
+      #mario2 .row:nth-of-type(16) .pixel:nth-of-type(9) {
+        background-color: #824517;
+      }
+
+      #mario2 .row:nth-of-type(3) .pixel:nth-of-type(10),
+      #mario2 .row:nth-of-type(4) .pixel:nth-of-type(10),
+      #mario2 .row:nth-of-type(5) .pixel:nth-of-type(11),
+      #mario2 .row:nth-of-type(6) .pixel:nth-of-type(10),
+      #mario2 .row:nth-of-type(6) .pixel:nth-of-type(11),
+      #mario2 .row:nth-of-type(6) .pixel:nth-of-type(12),
+      #mario2 .row:nth-of-type(6) .pixel:nth-of-type(13) {
+        background-color: black;
+      }
+
+      #mario2 .row:nth-of-type(8) .pixel:nth-of-type(7),
+      #mario2 .row:nth-of-type(9) .pixel:nth-of-type(8),
+      #mario2 .row:nth-of-type(9) .pixel:nth-of-type(9),
+      #mario2 .row:nth-of-type(10) .pixel:nth-of-type(7),
+      #mario2 .row:nth-of-type(10) .pixel:nth-of-type(8),
+      #mario2 .row:nth-of-type(10) .pixel:nth-of-type(10),
+      #mario2 .row:nth-of-type(10) .pixel:nth-of-type(11),
+      #mario2 .row:nth-of-type(11) .pixel:nth-of-type(8),
+      #mario2 .row:nth-of-type(11) .pixel:nth-of-type(9),
+      #mario2 .row:nth-of-type(11) .pixel:nth-of-type(10),
+      #mario2 .row:nth-of-type(11) .pixel:nth-of-type(11),
+      #mario2 .row:nth-of-type(11) .pixel:nth-of-type(12),
+      #mario2 .row:nth-of-type(12) .pixel:nth-of-type(10),
+      #mario2 .row:nth-of-type(12) .pixel:nth-of-type(11),
+      #mario2 .row:nth-of-type(12) .pixel:nth-of-type(12),
+      #mario2 .row:nth-of-type(13) .pixel:nth-of-type(9),
+      #mario2 .row:nth-of-type(13) .pixel:nth-of-type(10),
+      #mario2 .row:nth-of-type(13) .pixel:nth-of-type(11),
+      #mario2 .row:nth-of-type(14) .pixel:nth-of-type(6),
+      #mario2 .row:nth-of-type(14) .pixel:nth-of-type(7),
+      #mario2 .row:nth-of-type(14) .pixel:nth-of-type(8) {
+        background-color: blue;
+      }
+
+      #mario2 .row:nth-of-type(10) .pixel:nth-of-type(9) {
+        background-color: gold;
+      }
+
+      #mario3 .row:nth-of-type(1) .pixel:nth-of-type(6),
+      #mario3 .row:nth-of-type(1) .pixel:nth-of-type(7),
+      #mario3 .row:nth-of-type(1) .pixel:nth-of-type(8),
+      #mario3 .row:nth-of-type(1) .pixel:nth-of-type(9),
+      #mario3 .row:nth-of-type(1) .pixel:nth-of-type(10),
+      #mario3 .row:nth-of-type(2) .pixel:nth-of-type(5),
+      #mario3 .row:nth-of-type(2) .pixel:nth-of-type(6),
+      #mario3 .row:nth-of-type(2) .pixel:nth-of-type(7),
+      #mario3 .row:nth-of-type(2) .pixel:nth-of-type(8),
+      #mario3 .row:nth-of-type(2) .pixel:nth-of-type(9),
+      #mario3 .row:nth-of-type(2) .pixel:nth-of-type(10),
+      #mario3 .row:nth-of-type(2) .pixel:nth-of-type(11),
+      #mario3 .row:nth-of-type(2) .pixel:nth-of-type(12),
+      #mario3 .row:nth-of-type(2) .pixel:nth-of-type(13),
+      #mario3 .row:nth-of-type(8) .pixel:nth-of-type(3),
+      #mario3 .row:nth-of-type(8) .pixel:nth-of-type(4),
+      #mario3 .row:nth-of-type(8) .pixel:nth-of-type(5),
+      #mario3 .row:nth-of-type(8) .pixel:nth-of-type(6),
+      #mario3 .row:nth-of-type(8) .pixel:nth-of-type(9),
+      #mario3 .row:nth-of-type(8) .pixel:nth-of-type(10),
+      #mario3 .row:nth-of-type(9) .pixel:nth-of-type(3),
+      #mario3 .row:nth-of-type(9) .pixel:nth-of-type(4),
+      #mario3 .row:nth-of-type(9) .pixel:nth-of-type(5),
+      #mario3 .row:nth-of-type(9) .pixel:nth-of-type(6),
+      #mario3 .row:nth-of-type(9) .pixel:nth-of-type(10),
+      #mario3 .row:nth-of-type(9) .pixel:nth-of-type(11),
+      #mario3 .row:nth-of-type(9) .pixel:nth-of-type(12),
+      #mario3 .row:nth-of-type(10) .pixel:nth-of-type(5),
+      #mario3 .row:nth-of-type(10) .pixel:nth-of-type(6),
+      #mario3 .row:nth-of-type(10) .pixel:nth-of-type(12),
+      #mario3 .row:nth-of-type(10) .pixel:nth-of-type(13) {
+        background-color: red;
+      }
+
+      #mario3 .row:nth-of-type(3) .pixel:nth-of-type(8),
+      #mario3 .row:nth-of-type(3) .pixel:nth-of-type(9),
+      #mario3 .row:nth-of-type(3) .pixel:nth-of-type(11),
+      #mario3 .row:nth-of-type(4) .pixel:nth-of-type(5),
+      #mario3 .row:nth-of-type(4) .pixel:nth-of-type(7),
+      #mario3 .row:nth-of-type(4) .pixel:nth-of-type(8),
+      #mario3 .row:nth-of-type(4) .pixel:nth-of-type(9),
+      #mario3 .row:nth-of-type(4) .pixel:nth-of-type(11),
+      #mario3 .row:nth-of-type(4) .pixel:nth-of-type(12),
+      #mario3 .row:nth-of-type(4) .pixel:nth-of-type(13),
+      #mario3 .row:nth-of-type(5) .pixel:nth-of-type(5),
+      #mario3 .row:nth-of-type(5) .pixel:nth-of-type(8),
+      #mario3 .row:nth-of-type(5) .pixel:nth-of-type(9),
+      #mario3 .row:nth-of-type(5) .pixel:nth-of-type(10),
+      #mario3 .row:nth-of-type(5) .pixel:nth-of-type(12),
+      #mario3 .row:nth-of-type(5) .pixel:nth-of-type(13),
+      #mario3 .row:nth-of-type(5) .pixel:nth-of-type(14),
+      #mario3 .row:nth-of-type(6) .pixel:nth-of-type(6),
+      #mario3 .row:nth-of-type(6) .pixel:nth-of-type(7),
+      #mario3 .row:nth-of-type(6) .pixel:nth-of-type(8),
+      #mario3 .row:nth-of-type(6) .pixel:nth-of-type(9),
+      #mario3 .row:nth-of-type(7) .pixel:nth-of-type(6),
+      #mario3 .row:nth-of-type(7) .pixel:nth-of-type(7),
+      #mario3 .row:nth-of-type(7) .pixel:nth-of-type(8),
+      #mario3 .row:nth-of-type(7) .pixel:nth-of-type(9),
+      #mario3 .row:nth-of-type(7) .pixel:nth-of-type(10),
+      #mario3 .row:nth-of-type(7) .pixel:nth-of-type(11),
+      #mario3 .row:nth-of-type(7) .pixel:nth-of-type(12),
+      #mario3 .row:nth-of-type(9) .pixel:nth-of-type(1),
+      #mario3 .row:nth-of-type(9) .pixel:nth-of-type(2),
+      #mario3 .row:nth-of-type(9) .pixel:nth-of-type(13),
+      #mario3 .row:nth-of-type(9) .pixel:nth-of-type(14),
+      #mario3 .row:nth-of-type(9) .pixel:nth-of-type(15),
+      #mario3 .row:nth-of-type(10) .pixel:nth-of-type(1),
+      #mario3 .row:nth-of-type(10) .pixel:nth-of-type(2),
+      #mario3 .row:nth-of-type(10) .pixel:nth-of-type(3),
+      #mario3 .row:nth-of-type(10) .pixel:nth-of-type(14),
+      #mario3 .row:nth-of-type(10) .pixel:nth-of-type(15),
+      #mario3 .row:nth-of-type(11) .pixel:nth-of-type(1),
+      #mario3 .row:nth-of-type(11) .pixel:nth-of-type(2) {
+        background-color: #f0caad;
+      }
+
+      #mario3 .row:nth-of-type(3) .pixel:nth-of-type(5),
+      #mario3 .row:nth-of-type(3) .pixel:nth-of-type(6),
+      #mario3 .row:nth-of-type(3) .pixel:nth-of-type(7),
+      #mario3 .row:nth-of-type(4) .pixel:nth-of-type(4),
+      #mario3 .row:nth-of-type(4) .pixel:nth-of-type(6),
+      #mario3 .row:nth-of-type(5) .pixel:nth-of-type(4),
+      #mario3 .row:nth-of-type(5) .pixel:nth-of-type(6),
+      #mario3 .row:nth-of-type(5) .pixel:nth-of-type(7),
+      #mario3 .row:nth-of-type(6) .pixel:nth-of-type(4),
+      #mario3 .row:nth-of-type(6) .pixel:nth-of-type(5),
+      #mario3 .row:nth-of-type(11) .pixel:nth-of-type(14),
+      #mario3 .row:nth-of-type(12) .pixel:nth-of-type(13),
+      #mario3 .row:nth-of-type(12) .pixel:nth-of-type(14),
+      #mario3 .row:nth-of-type(13) .pixel:nth-of-type(13),
+      #mario3 .row:nth-of-type(13) .pixel:nth-of-type(14),
+      #mario3 .row:nth-of-type(14) .pixel:nth-of-type(2),
+      #mario3 .row:nth-of-type(14) .pixel:nth-of-type(3),
+      #mario3 .row:nth-of-type(14) .pixel:nth-of-type(13),
+      #mario3 .row:nth-of-type(14) .pixel:nth-of-type(14),
+      #mario3 .row:nth-of-type(15) .pixel:nth-of-type(2),
+      #mario3 .row:nth-of-type(15) .pixel:nth-of-type(3),
+      #mario3 .row:nth-of-type(15) .pixel:nth-of-type(4),
+      #mario3 .row:nth-of-type(16) .pixel:nth-of-type(3),
+      #mario3 .row:nth-of-type(16) .pixel:nth-of-type(4),
+      #mario3 .row:nth-of-type(16) .pixel:nth-of-type(5) {
+        background-color: #824517;
+      }
+
+      #mario3 .row:nth-of-type(3) .pixel:nth-of-type(10),
+      #mario3 .row:nth-of-type(4) .pixel:nth-of-type(10),
+      #mario3 .row:nth-of-type(5) .pixel:nth-of-type(11),
+      #mario3 .row:nth-of-type(6) .pixel:nth-of-type(10),
+      #mario3 .row:nth-of-type(6) .pixel:nth-of-type(11),
+      #mario3 .row:nth-of-type(6) .pixel:nth-of-type(12),
+      #mario3 .row:nth-of-type(6) .pixel:nth-of-type(13) {
+        background-color: black;
+      }
+
+      #mario3 .row:nth-of-type(8) .pixel:nth-of-type(7),
+      #mario3 .row:nth-of-type(8) .pixel:nth-of-type(8),
+      #mario3 .row:nth-of-type(9) .pixel:nth-of-type(7),
+      #mario3 .row:nth-of-type(9) .pixel:nth-of-type(8),
+      #mario3 .row:nth-of-type(9) .pixel:nth-of-type(9),
+      #mario3 .row:nth-of-type(10) .pixel:nth-of-type(7),
+      #mario3 .row:nth-of-type(10) .pixel:nth-of-type(9),
+      #mario3 .row:nth-of-type(10) .pixel:nth-of-type(10),
+      #mario3 .row:nth-of-type(10) .pixel:nth-of-type(11),
+      #mario3 .row:nth-of-type(11) .pixel:nth-of-type(5),
+      #mario3 .row:nth-of-type(11) .pixel:nth-of-type(6),
+      #mario3 .row:nth-of-type(11) .pixel:nth-of-type(7),
+      #mario3 .row:nth-of-type(11) .pixel:nth-of-type(8),
+      #mario3 .row:nth-of-type(11) .pixel:nth-of-type(9),
+      #mario3 .row:nth-of-type(11) .pixel:nth-of-type(10),
+      #mario3 .row:nth-of-type(11) .pixel:nth-of-type(11),
+      #mario3 .row:nth-of-type(12) .pixel:nth-of-type(4),
+      #mario3 .row:nth-of-type(12) .pixel:nth-of-type(5),
+      #mario3 .row:nth-of-type(12) .pixel:nth-of-type(6),
+      #mario3 .row:nth-of-type(12) .pixel:nth-of-type(7),
+      #mario3 .row:nth-of-type(12) .pixel:nth-of-type(8),
+      #mario3 .row:nth-of-type(12) .pixel:nth-of-type(9),
+      #mario3 .row:nth-of-type(12) .pixel:nth-of-type(10),
+      #mario3 .row:nth-of-type(12) .pixel:nth-of-type(11),
+      #mario3 .row:nth-of-type(12) .pixel:nth-of-type(12),
+      #mario3 .row:nth-of-type(13) .pixel:nth-of-type(3),
+      #mario3 .row:nth-of-type(13) .pixel:nth-of-type(4),
+      #mario3 .row:nth-of-type(13) .pixel:nth-of-type(5),
+      #mario3 .row:nth-of-type(13) .pixel:nth-of-type(6),
+      #mario3 .row:nth-of-type(13) .pixel:nth-of-type(7),
+      #mario3 .row:nth-of-type(13) .pixel:nth-of-type(8),
+      #mario3 .row:nth-of-type(13) .pixel:nth-of-type(9),
+      #mario3 .row:nth-of-type(13) .pixel:nth-of-type(10),
+      #mario3 .row:nth-of-type(13) .pixel:nth-of-type(11),
+      #mario3 .row:nth-of-type(13) .pixel:nth-of-type(12),
+      #mario3 .row:nth-of-type(14) .pixel:nth-of-type(4),
+      #mario3 .row:nth-of-type(14) .pixel:nth-of-type(5),
+      #mario3 .row:nth-of-type(14) .pixel:nth-of-type(6),
+      #mario3 .row:nth-of-type(14) .pixel:nth-of-type(10),
+      #mario3 .row:nth-of-type(14) .pixel:nth-of-type(11),
+      #mario3 .row:nth-of-type(14) .pixel:nth-of-type(12) {
+        background-color: blue;
+      }
+
+      #mario3 .row:nth-of-type(10) .pixel:nth-of-type(8) {
+        background-color: gold;
+      }
+
+      /*jumping*/
+
+      #mario4 .row:nth-of-type(1) .pixel:nth-of-type(6),
+      #mario4 .row:nth-of-type(1) .pixel:nth-of-type(7),
+      #mario4 .row:nth-of-type(1) .pixel:nth-of-type(8),
+      #mario4 .row:nth-of-type(1) .pixel:nth-of-type(9),
+      #mario4 .row:nth-of-type(1) .pixel:nth-of-type(10),
+      #mario4 .row:nth-of-type(2) .pixel:nth-of-type(5),
+      #mario4 .row:nth-of-type(2) .pixel:nth-of-type(6),
+      #mario4 .row:nth-of-type(2) .pixel:nth-of-type(7),
+      #mario4 .row:nth-of-type(2) .pixel:nth-of-type(8),
+      #mario4 .row:nth-of-type(2) .pixel:nth-of-type(9),
+      #mario4 .row:nth-of-type(2) .pixel:nth-of-type(10),
+      #mario4 .row:nth-of-type(2) .pixel:nth-of-type(11),
+      #mario4 .row:nth-of-type(2) .pixel:nth-of-type(12),
+      #mario4 .row:nth-of-type(2) .pixel:nth-of-type(13),
+      #mario4 .row:nth-of-type(3) .pixel:nth-of-type(13),
+      #mario4 .row:nth-of-type(3) .pixel:nth-of-type(14),
+      #mario4 .row:nth-of-type(3) .pixel:nth-of-type(15),
+      #mario4 .row:nth-of-type(4) .pixel:nth-of-type(14),
+      #mario4 .row:nth-of-type(4) .pixel:nth-of-type(15),
+      #mario4 .row:nth-of-type(5) .pixel:nth-of-type(15),
+      #mario4 .row:nth-of-type(6) .pixel:nth-of-type(14),
+      #mario4 .row:nth-of-type(7) .pixel:nth-of-type(13),
+      #mario4 .row:nth-of-type(7) .pixel:nth-of-type(14),
+      #mario4 .row:nth-of-type(8) .pixel:nth-of-type(3),
+      #mario4 .row:nth-of-type(8) .pixel:nth-of-type(4),
+      #mario4 .row:nth-of-type(8) .pixel:nth-of-type(5),
+      #mario4 .row:nth-of-type(8) .pixel:nth-of-type(6),
+      #mario4 .row:nth-of-type(8) .pixel:nth-of-type(8),
+      #mario4 .row:nth-of-type(8) .pixel:nth-of-type(9),
+      #mario4 .row:nth-of-type(8) .pixel:nth-of-type(10),
+      #mario4 .row:nth-of-type(8) .pixel:nth-of-type(12),
+      #mario4 .row:nth-of-type(8) .pixel:nth-of-type(13),
+      #mario4 .row:nth-of-type(9) .pixel:nth-of-type(3),
+      #mario4 .row:nth-of-type(9) .pixel:nth-of-type(4),
+      #mario4 .row:nth-of-type(9) .pixel:nth-of-type(5),
+      #mario4 .row:nth-of-type(9) .pixel:nth-of-type(6),
+      #mario4 .row:nth-of-type(9) .pixel:nth-of-type(7),
+      #mario4 .row:nth-of-type(9) .pixel:nth-of-type(9),
+      #mario4 .row:nth-of-type(9) .pixel:nth-of-type(10),
+      #mario4 .row:nth-of-type(9) .pixel:nth-of-type(11),
+      #mario4 .row:nth-of-type(10) .pixel:nth-of-type(4),
+      #mario4 .row:nth-of-type(10) .pixel:nth-of-type(5),
+      #mario4 .row:nth-of-type(10) .pixel:nth-of-type(6),
+      #mario4 .row:nth-of-type(10) .pixel:nth-of-type(7) {
+        background-color: red;
+      }
+
+      #mario4 .row:nth-of-type(1) .pixel:nth-of-type(13),
+      #mario4 .row:nth-of-type(1) .pixel:nth-of-type(14),
+      #mario4 .row:nth-of-type(1) .pixel:nth-of-type(15),
+      #mario4 .row:nth-of-type(2) .pixel:nth-of-type(14),
+      #mario4 .row:nth-of-type(2) .pixel:nth-of-type(15),
+      #mario4 .row:nth-of-type(3) .pixel:nth-of-type(8),
+      #mario4 .row:nth-of-type(3) .pixel:nth-of-type(9),
+      #mario4 .row:nth-of-type(3) .pixel:nth-of-type(11),
+      #mario4 .row:nth-of-type(4) .pixel:nth-of-type(5),
+      #mario4 .row:nth-of-type(4) .pixel:nth-of-type(7),
+      #mario4 .row:nth-of-type(4) .pixel:nth-of-type(8),
+      #mario4 .row:nth-of-type(4) .pixel:nth-of-type(9),
+      #mario4 .row:nth-of-type(4) .pixel:nth-of-type(11),
+      #mario4 .row:nth-of-type(4) .pixel:nth-of-type(12),
+      #mario4 .row:nth-of-type(4) .pixel:nth-of-type(13),
+      #mario4 .row:nth-of-type(5) .pixel:nth-of-type(5),
+      #mario4 .row:nth-of-type(5) .pixel:nth-of-type(8),
+      #mario4 .row:nth-of-type(5) .pixel:nth-of-type(9),
+      #mario4 .row:nth-of-type(5) .pixel:nth-of-type(10),
+      #mario4 .row:nth-of-type(5) .pixel:nth-of-type(12),
+      #mario4 .row:nth-of-type(5) .pixel:nth-of-type(13),
+      #mario4 .row:nth-of-type(5) .pixel:nth-of-type(14),
+      #mario4 .row:nth-of-type(6) .pixel:nth-of-type(6),
+      #mario4 .row:nth-of-type(6) .pixel:nth-of-type(7),
+      #mario4 .row:nth-of-type(6) .pixel:nth-of-type(8),
+      #mario4 .row:nth-of-type(6) .pixel:nth-of-type(9),
+      #mario4 .row:nth-of-type(7) .pixel:nth-of-type(6),
+      #mario4 .row:nth-of-type(7) .pixel:nth-of-type(7),
+      #mario4 .row:nth-of-type(7) .pixel:nth-of-type(8),
+      #mario4 .row:nth-of-type(7) .pixel:nth-of-type(9),
+      #mario4 .row:nth-of-type(7) .pixel:nth-of-type(10),
+      #mario4 .row:nth-of-type(7) .pixel:nth-of-type(11),
+      #mario4 .row:nth-of-type(7) .pixel:nth-of-type(12),
+      #mario4 .row:nth-of-type(9) .pixel:nth-of-type(1),
+      #mario4 .row:nth-of-type(9) .pixel:nth-of-type(2),
+      #mario4 .row:nth-of-type(10) .pixel:nth-of-type(1),
+      #mario4 .row:nth-of-type(10) .pixel:nth-of-type(2),
+      #mario4 .row:nth-of-type(10) .pixel:nth-of-type(3),
+      #mario4 .row:nth-of-type(11) .pixel:nth-of-type(2) {
+        background-color: #f0caad;
+      }
+
+      #mario4 .row:nth-of-type(3) .pixel:nth-of-type(5),
+      #mario4 .row:nth-of-type(3) .pixel:nth-of-type(6),
+      #mario4 .row:nth-of-type(3) .pixel:nth-of-type(7),
+      #mario4 .row:nth-of-type(4) .pixel:nth-of-type(4),
+      #mario4 .row:nth-of-type(4) .pixel:nth-of-type(6),
+      #mario4 .row:nth-of-type(5) .pixel:nth-of-type(4),
+      #mario4 .row:nth-of-type(5) .pixel:nth-of-type(6),
+      #mario4 .row:nth-of-type(5) .pixel:nth-of-type(7),
+      #mario4 .row:nth-of-type(6) .pixel:nth-of-type(4),
+      #mario4 .row:nth-of-type(6) .pixel:nth-of-type(5),
+      #mario4 .row:nth-of-type(8) .pixel:nth-of-type(16),
+      #mario4 .row:nth-of-type(9) .pixel:nth-of-type(15),
+      #mario4 .row:nth-of-type(9) .pixel:nth-of-type(16),
+      #mario4 .row:nth-of-type(10) .pixel:nth-of-type(15),
+      #mario4 .row:nth-of-type(10) .pixel:nth-of-type(16),
+      #mario4 .row:nth-of-type(11) .pixel:nth-of-type(15),
+      #mario4 .row:nth-of-type(11) .pixel:nth-of-type(16),
+      #mario4 .row:nth-of-type(12) .pixel:nth-of-type(3),
+      #mario4 .row:nth-of-type(12) .pixel:nth-of-type(4),
+      #mario4 .row:nth-of-type(12) .pixel:nth-of-type(15),
+      #mario4 .row:nth-of-type(12) .pixel:nth-of-type(16),
+      #mario4 .row:nth-of-type(13) .pixel:nth-of-type(2),
+      #mario4 .row:nth-of-type(13) .pixel:nth-of-type(3),
+      #mario4 .row:nth-of-type(13) .pixel:nth-of-type(4),
+      #mario4 .row:nth-of-type(14) .pixel:nth-of-type(2),
+      #mario4 .row:nth-of-type(14) .pixel:nth-of-type(3) {
+        background-color: #824517;
+      }
+
+      #mario4 .row:nth-of-type(3) .pixel:nth-of-type(10),
+      #mario4 .row:nth-of-type(4) .pixel:nth-of-type(10),
+      #mario4 .row:nth-of-type(5) .pixel:nth-of-type(11),
+      #mario4 .row:nth-of-type(6) .pixel:nth-of-type(10),
+      #mario4 .row:nth-of-type(6) .pixel:nth-of-type(11),
+      #mario4 .row:nth-of-type(6) .pixel:nth-of-type(12),
+      #mario4 .row:nth-of-type(6) .pixel:nth-of-type(13) {
+        background-color: black;
+      }
+
+      #mario4 .row:nth-of-type(8) .pixel:nth-of-type(7),
+      #mario4 .row:nth-of-type(8) .pixel:nth-of-type(11),
+      #mario4 .row:nth-of-type(9) .pixel:nth-of-type(8),
+      #mario4 .row:nth-of-type(9) .pixel:nth-of-type(12),
+      #mario4 .row:nth-of-type(10) .pixel:nth-of-type(8),
+      #mario4 .row:nth-of-type(10) .pixel:nth-of-type(9),
+      #mario4 .row:nth-of-type(10) .pixel:nth-of-type(10),
+      #mario4 .row:nth-of-type(10) .pixel:nth-of-type(11),
+      #mario4 .row:nth-of-type(10) .pixel:nth-of-type(13),
+      #mario4 .row:nth-of-type(10) .pixel:nth-of-type(14),
+      #mario4 .row:nth-of-type(11) .pixel:nth-of-type(5),
+      #mario4 .row:nth-of-type(11) .pixel:nth-of-type(6),
+      #mario4 .row:nth-of-type(11) .pixel:nth-of-type(7),
+      #mario4 .row:nth-of-type(11) .pixel:nth-of-type(8),
+      #mario4 .row:nth-of-type(11) .pixel:nth-of-type(10),
+      #mario4 .row:nth-of-type(11) .pixel:nth-of-type(11),
+      #mario4 .row:nth-of-type(11) .pixel:nth-of-type(12),
+      #mario4 .row:nth-of-type(11) .pixel:nth-of-type(13),
+      #mario4 .row:nth-of-type(11) .pixel:nth-of-type(14),
+      #mario4 .row:nth-of-type(12) .pixel:nth-of-type(5),
+      #mario4 .row:nth-of-type(12) .pixel:nth-of-type(6),
+      #mario4 .row:nth-of-type(12) .pixel:nth-of-type(7),
+      #mario4 .row:nth-of-type(12) .pixel:nth-of-type(8),
+      #mario4 .row:nth-of-type(12) .pixel:nth-of-type(9),
+      #mario4 .row:nth-of-type(12) .pixel:nth-of-type(10),
+      #mario4 .row:nth-of-type(12) .pixel:nth-of-type(11),
+      #mario4 .row:nth-of-type(12) .pixel:nth-of-type(12),
+      #mario4 .row:nth-of-type(12) .pixel:nth-of-type(13),
+      #mario4 .row:nth-of-type(12) .pixel:nth-of-type(14),
+      #mario4 .row:nth-of-type(13) .pixel:nth-of-type(5),
+      #mario4 .row:nth-of-type(13) .pixel:nth-of-type(6),
+      #mario4 .row:nth-of-type(13) .pixel:nth-of-type(7),
+      #mario4 .row:nth-of-type(13) .pixel:nth-of-type(8),
+      #mario4 .row:nth-of-type(13) .pixel:nth-of-type(9),
+      #mario4 .row:nth-of-type(13) .pixel:nth-of-type(10) {
+        background-color: blue;
+      }
+
+      #mario4 .row:nth-of-type(10) .pixel:nth-of-type(12),
+      #mario4 .row:nth-of-type(11) .pixel:nth-of-type(9) {
+        background-color: gold;
+      }
+
+      #mystery-block .row:nth-of-type(1),
+      #mystery-block .row:nth-of-type(2) .pixel:nth-of-type(1),
+      #mystery-block .row:nth-of-type(3) .pixel:nth-of-type(1),
+      #mystery-block .row:nth-of-type(4) .pixel:nth-of-type(1),
+      #mystery-block .row:nth-of-type(5) .pixel:nth-of-type(1),
+      #mystery-block .row:nth-of-type(6) .pixel:nth-of-type(1),
+      #mystery-block .row:nth-of-type(7) .pixel:nth-of-type(1),
+      #mystery-block .row:nth-of-type(8) .pixel:nth-of-type(1),
+      #mystery-block .row:nth-of-type(9) .pixel:nth-of-type(1),
+      #mystery-block .row:nth-of-type(10) .pixel:nth-of-type(1),
+      #mystery-block .row:nth-of-type(11) .pixel:nth-of-type(1),
+      #mystery-block .row:nth-of-type(12) .pixel:nth-of-type(1),
+      #mystery-block .row:nth-of-type(13) .pixel:nth-of-type(1),
+      #mystery-block .row:nth-of-type(14) .pixel:nth-of-type(1),
+      #mystery-block .row:nth-of-type(15) .pixel:nth-of-type(1),
+      #mystery-block .row:nth-of-type(4) .pixel:nth-of-type(6),
+      #mystery-block .row:nth-of-type(4) .pixel:nth-of-type(7),
+      #mystery-block .row:nth-of-type(4) .pixel:nth-of-type(8),
+      #mystery-block .row:nth-of-type(4) .pixel:nth-of-type(9),
+      #mystery-block .row:nth-of-type(4) .pixel:nth-of-type(10),
+      #mystery-block .row:nth-of-type(5) .pixel:nth-of-type(5),
+      #mystery-block .row:nth-of-type(5) .pixel:nth-of-type(6),
+      #mystery-block .row:nth-of-type(5) .pixel:nth-of-type(10),
+      #mystery-block .row:nth-of-type(5) .pixel:nth-of-type(11),
+      #mystery-block .row:nth-of-type(6) .pixel:nth-of-type(5),
+      #mystery-block .row:nth-of-type(6) .pixel:nth-of-type(6),
+      #mystery-block .row:nth-of-type(6) .pixel:nth-of-type(10),
+      #mystery-block .row:nth-of-type(6) .pixel:nth-of-type(11),
+      #mystery-block .row:nth-of-type(7) .pixel:nth-of-type(5),
+      #mystery-block .row:nth-of-type(7) .pixel:nth-of-type(6),
+      #mystery-block .row:nth-of-type(7) .pixel:nth-of-type(10),
+      #mystery-block .row:nth-of-type(7) .pixel:nth-of-type(11),
+      #mystery-block .row:nth-of-type(8) .pixel:nth-of-type(9),
+      #mystery-block .row:nth-of-type(8) .pixel:nth-of-type(10),
+      #mystery-block .row:nth-of-type(8) .pixel:nth-of-type(11),
+      #mystery-block .row:nth-of-type(9) .pixel:nth-of-type(8),
+      #mystery-block .row:nth-of-type(9) .pixel:nth-of-type(9),
+      #mystery-block .row:nth-of-type(10) .pixel:nth-of-type(8),
+      #mystery-block .row:nth-of-type(10) .pixel:nth-of-type(9),
+      #mystery-block .row:nth-of-type(12) .pixel:nth-of-type(8),
+      #mystery-block .row:nth-of-type(12) .pixel:nth-of-type(9),
+      #mystery-block .row:nth-of-type(13) .pixel:nth-of-type(8),
+      #mystery-block .row:nth-of-type(13) .pixel:nth-of-type(9) {
+        background-color: #824517;
+      }
+
+      #mystery-block .row:nth-of-type(1) .pixel:nth-of-type(1),
+      #mystery-block .row:nth-of-type(1) .pixel:nth-of-type(16) {
+        background-color: #5e99ff;
+      }
+
+      #mystery-block .row:nth-of-type(2) .pixel:nth-of-type(16),
+      #mystery-block .row:nth-of-type(3) .pixel:nth-of-type(16),
+      #mystery-block .row:nth-of-type(4) .pixel:nth-of-type(16),
+      #mystery-block .row:nth-of-type(5) .pixel:nth-of-type(16),
+      #mystery-block .row:nth-of-type(6) .pixel:nth-of-type(16),
+      #mystery-block .row:nth-of-type(7) .pixel:nth-of-type(16),
+      #mystery-block .row:nth-of-type(8) .pixel:nth-of-type(16),
+      #mystery-block .row:nth-of-type(9) .pixel:nth-of-type(16),
+      #mystery-block .row:nth-of-type(10) .pixel:nth-of-type(16),
+      #mystery-block .row:nth-of-type(11) .pixel:nth-of-type(16),
+      #mystery-block .row:nth-of-type(12) .pixel:nth-of-type(16),
+      #mystery-block .row:nth-of-type(13) .pixel:nth-of-type(16),
+      #mystery-block .row:nth-of-type(14) .pixel:nth-of-type(16),
+      #mystery-block .row:nth-of-type(15) .pixel:nth-of-type(16),
+      #mystery-block .row:nth-of-type(16),
+      #mystery-block .row:nth-of-type(3) .pixel:nth-of-type(3),
+      #mystery-block .row:nth-of-type(3) .pixel:nth-of-type(14),
+      #mystery-block .row:nth-of-type(14) .pixel:nth-of-type(3),
+      #mystery-block .row:nth-of-type(14) .pixel:nth-of-type(14),
+      #mystery-block .row:nth-of-type(5) .pixel:nth-of-type(7),
+      #mystery-block .row:nth-of-type(5) .pixel:nth-of-type(8),
+      #mystery-block .row:nth-of-type(5) .pixel:nth-of-type(9),
+      #mystery-block .row:nth-of-type(6) .pixel:nth-of-type(7),
+      #mystery-block .row:nth-of-type(6) .pixel:nth-of-type(12),
+      #mystery-block .row:nth-of-type(7) .pixel:nth-of-type(7),
+      #mystery-block .row:nth-of-type(7) .pixel:nth-of-type(12),
+      #mystery-block .row:nth-of-type(8) .pixel:nth-of-type(6),
+      #mystery-block .row:nth-of-type(8) .pixel:nth-of-type(7),
+      #mystery-block .row:nth-of-type(8) .pixel:nth-of-type(12),
+      #mystery-block .row:nth-of-type(9) .pixel:nth-of-type(10),
+      #mystery-block .row:nth-of-type(9) .pixel:nth-of-type(11),
+      #mystery-block .row:nth-of-type(9) .pixel:nth-of-type(12),
+      #mystery-block .row:nth-of-type(10) .pixel:nth-of-type(10),
+      #mystery-block .row:nth-of-type(11) .pixel:nth-of-type(9),
+      #mystery-block .row:nth-of-type(11) .pixel:nth-of-type(10),
+      #mystery-block .row:nth-of-type(13) .pixel:nth-of-type(10),
+      #mystery-block .row:nth-of-type(14) .pixel:nth-of-type(9),
+      #mystery-block .row:nth-of-type(14) .pixel:nth-of-type(10) {
+        background-color: black;
+      }
+
+      .brick .row:nth-of-type(4n),
+      .brick .row:nth-of-type(1) .pixel:nth-of-type(8),
+      .brick .row:nth-of-type(2) .pixel:nth-of-type(8),
+      .brick .row:nth-of-type(3) .pixel:nth-of-type(8),
+      .brick .row:nth-of-type(5) .pixel:nth-of-type(4),
+      .brick .row:nth-of-type(6) .pixel:nth-of-type(4),
+      .brick .row:nth-of-type(7) .pixel:nth-of-type(4),
+      .brick .row:nth-of-type(5) .pixel:nth-of-type(12),
+      .brick .row:nth-of-type(6) .pixel:nth-of-type(12),
+      .brick .row:nth-of-type(7) .pixel:nth-of-type(12),
+      .brick .row:nth-of-type(9) .pixel:nth-of-type(8),
+      .brick .row:nth-of-type(10) .pixel:nth-of-type(8),
+      .brick .row:nth-of-type(11) .pixel:nth-of-type(8),
+      .brick .row:nth-of-type(13) .pixel:nth-of-type(4),
+      .brick .row:nth-of-type(14) .pixel:nth-of-type(4),
+      .brick .row:nth-of-type(15) .pixel:nth-of-type(4),
+      .brick .row:nth-of-type(13) .pixel:nth-of-type(12),
+      .brick .row:nth-of-type(14) .pixel:nth-of-type(12),
+      .brick .row:nth-of-type(15) .pixel:nth-of-type(12) {
+        background-color: black;
+      }
+
+      @keyframes run1 {
+        0% {
+          opacity: 100;
+        }
+        7% {
+          opacity: 100;
+        }
+        8% {
+          opacity: 0;
+        }
+        27% {
+          opacity: 0;
+        }
+        28% {
+          opacity: 100;
+        }
+        35% {
+          opacity: 100;
+        }
+        36% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes run2 {
+        0% {
+          opacity: 0;
+        }
+        6% {
+          opacity: 0;
+        }
+        7% {
+          opacity: 100;
+        }
+        14% {
+          opacity: 100;
+        }
+        15% {
+          opacity: 0;
+        }
+        20% {
+          opacity: 0;
+        }
+        21% {
+          opacity: 100;
+        }
+        28% {
+          opacity: 100;
+        }
+        29% {
+          opacity: 0;
+        }
+        34% {
+          opacity: 0;
+        }
+        35% {
+          opacity: 100;
+        }
+        42% {
+          opacity: 100;
+        }
+        43% {
+          opacity: 0;
+        }
+        48% {
+          opacity: 0;
+        }
+        49% {
+          opacity: 100;
+        }
+        56% {
+          opacity: 100;
+        }
+        57% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes run3 {
+        0% {
+          opacity: 0;
+        }
+        13% {
+          opacity: 0;
+        }
+        14% {
+          opacity: 100;
+        }
+        21% {
+          opacity: 100;
+        }
+        22% {
+          opacity: 0;
+        }
+        41% {
+          opacity: 0;
+        }
+        42% {
+          opacity: 100;
+        }
+        49% {
+          opacity: 100;
+        }
+        50% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes run4 {
+        0% {
+          opacity: 0;
+        }
+        55% {
+          opacity: 0;
+        }
+        56% {
+          opacity: 100;
+        }
+        100% {
+          opacity: 100;
+        }
+      }
+
+      @keyframes jump {
+        0% {
+          top: 20%;
+        }
+        55% {
+          top: 20%;
+        }
+        69% {
+          top: 0%;
+        }
+        79% {
+          top: 0%;
+        }
+        100% {
+          top: 20%;
+        }
+      }
+
+      @keyframes bump {
+        0% {
+          bottom: 0%;
+        }
+        67% {
+          bottom: 0%;
+        }
+        68% {
+          bottom: 20%;
+        }
+        70% {
+          bottom: 20%;
+        }
+        100% {
+          bottom: 0%;
+        }
+      }
+
+      @keyframes text-reveal {
+        0% {
+          bottom: 0%;
+        }
+        67% {
+          bottom: 0%;
+        }
+        70% {
+          bottom: 120%;
+        }
+        100% {
+          bottom: 120%;
+        }
+      }
+
+      @keyframes traverse {
+        0% {
+          left: 100%;
+        }
+        70% {
+          left: 0;
+        }
+        95% {
+          left: 0;
+        }
+        100% {
+          left: -100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="canvas">
+      <div id="timeline-area"></div>
+      <div id="blocks-container">
+        <div id="block-set">
+          <div class="brick" id="brick1"></div>
+          <div id="mystery-block"></div>
+          <div class="brick" id="brick2"></div>
+          <div id="timeline-item">
+            <div class="item-date">September 1985</div>
+            <div class="item-content">Super Mario Brothers</div>
+          </div>
+        </div>
+      </div>
+      <div id="mario-container">
+        <div id="mario1"></div>
+        <div id="mario2"></div>
+        <div id="mario3"></div>
+        <div id="mario4"></div>
+      </div>
+    </div>
+    <script>
+
+      const mario1 = document.getElementById("mario1");
+      const mario2 = document.getElementById("mario2");
+      const mario3 = document.getElementById("mario3");
+      const mario4 = document.getElementById("mario4");
+      const brick1 = document.getElementById("brick1");
+      const brick2 = document.getElementById("brick2");
+      const mysteryBlock = document.getElementById("mystery-block");
+      const itemDate = document.querySelector(".item-date");
+      const itemContent = document.querySelector(".item-content");
+
+      for (let i = 0; i < 16; i++) {
+        const mario1Row = document.createElement("div");
+        mario1Row.className = "row";
+        mario1.appendChild(mario1Row);
+
+        const mario2Row = document.createElement("div");
+        mario2Row.className = "row";
+        mario2.appendChild(mario2Row);
+
+        const mario3Row = document.createElement("div");
+        mario3Row.className = "row";
+        mario3.appendChild(mario3Row);
+
+        const mario4Row = document.createElement("div");
+        mario4Row.className = "row";
+        mario4.appendChild(mario4Row);
+
+        const brick1Row = document.createElement("div");
+        brick1Row.className = "row";
+        brick1.appendChild(brick1Row);
+
+        const brick2Row = document.createElement("div");
+        brick2Row.className = "row";
+        brick2.appendChild(brick2Row);
+
+        const mysteryRow = document.createElement("div");
+        mysteryRow.className = "row";
+        mysteryBlock.appendChild(mysteryRow);
+
+        for (let i = 0; i < 16; i++) {
+          const mario1Pixel = document.createElement("div");
+          mario1Pixel.className = "pixel";
+          mario1Row.appendChild(mario1Pixel);
+
+          const mario2Pixel = document.createElement("div");
+          mario2Pixel.className = "pixel";
+          mario2Row.appendChild(mario2Pixel);
+
+          const mario3Pixel = document.createElement("div");
+          mario3Pixel.className = "pixel";
+          mario3Row.appendChild(mario3Pixel);
+
+          const mario4Pixel = document.createElement("div");
+          mario4Pixel.className = "pixel";
+          mario4Row.appendChild(mario4Pixel);
+
+          const brick1Pixel = document.createElement("div");
+          brick1Pixel.className = "pixel";
+          brick1Row.appendChild(brick1Pixel);
+
+          const brick2Pixel = document.createElement("div");
+          brick2Pixel.className = "pixel";
+          brick2Row.appendChild(brick2Pixel);
+
+          const mysteryPixel = document.createElement("div");
+          mysteryPixel.className = "pixel";
+          mysteryRow.appendChild(mysteryPixel);
+        }
+      }
+
+      let timelineItems = [
+        { date: "June 1986", content: "Super Mario Bros: The Lost Levels" },
+        { date: "October 1988", content: "Super Mario Bros. 2" },
+        { date: "October 1988", content: "Super Mario Bros. 3" },
+        { date: "April 1989", content: "Super Mario Land" },
+        { date: "November 1990", content: "Super Mario World" },
+        { date: "October 1992", content: "Super Mario Land: 6 Golden Coins" },
+        { date: "August 1995", content: "Super Mario World 2: Yoshi's Island" },
+        { date: "June 1996", content: "Super Mario 64" },
+        { date: "July 2002", content: "Super Mario Sunshine" },
+        { date: "May 2006", content: "New Super Mario Bros." },
+        { date: "November 2007", content: "Super Mario Galaxy" },
+        { date: "November 2009", content: "New Super Mario Bros. Wii" },
+        { date: "May 2010", content: "Super Mario Galaxy 2" },
+        { date: "November 2011", content: "Super Mario 3D Land" },
+        { date: "July 2012", content: "New Super Mario Bros 2" },
+        { date: "November 2012", content: "New Super Mario Bros. U" },
+        { date: "November 2013", content: "Super Mario 3D World" },
+        { date: "September 2015", content: "Super Mario Maker" },
+        { date: "December 2016", content: "Super Mario Run" },
+        { date: "October 2017", content: "Super Mario Odyssey" },
+        { date: "June 2019", content: "Super Mario Maker 2" },
+        {
+          date: "February 2021",
+          content: "Super Mario 3D World + Bowser's Fury",
+        },
+        { date: "?", content: "???" },
+      ];
+
+      for (var i = 0; i < timelineItems.length; i++) {
+        let k = i;
+        setTimeout(function () {
+          itemDate.innerText = timelineItems[k]["date"];
+          itemContent.innerText = timelineItems[k]["content"];
+        }, 3000 * (k + 1));
+      }
+    </script>
+  </body>
+</html>

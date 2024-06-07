@@ -1,54 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hidden Text Behind Brick</title>
-    <style>
-        #container {
-            position: relative;
-            width: 400px;
-            /* Adjust as per your requirement */
-            height: 300px;
-            /* Adjust as per your requirement */
-        }
-
-        #brick {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-        }
-
-        #hiddenText {
-            opacity: 0; /* Initially hidden */
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 24px;
-            transition: opacity 1s ease; /* Smooth transition */
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brick Animation</title>
+  <style>
+    /* Define styles for brick pieces */
+    .brick-piece {
+      position: absolute;
+      transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    }
+  </style>
 </head>
-
 <body>
-    <div id="container">
-        <img id="brick" src="brick.jpg" alt="Brick">
-        <div id="hiddenText">Your hidden text here.</div>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('brick').addEventListener('click', function () {
-                // Fade in the hidden text
-                document.getElementById('hiddenText').style.opacity = 1;
-            });
-        });
-    </script>
-</body>
+  <div id="container" style="position: relative;">
+    <!-- Your brick image -->
+    <img id="brick" src="brick.png" alt="Brick" style="position: absolute; top: 0; left: 0; width: 100px; height: 100px; cursor: pointer;" />
+  </div>
 
+  <script>
+    // Function to animate brick pieces
+    function animateBrickPieces(brickX, brickY) {
+      var container = document.getElementById('container');
+
+      // Create and position brick pieces
+      for (var i = 0; i < 4; i++) {
+        var piece = document.createElement('img');
+        piece.src = 'debris1.png';
+        piece.classList.add('brick-piece');
+        piece.style.position = 'absolute';
+        piece.style.width = '25px';
+        piece.style.height = '25px';
+        piece.style.left = (brickX - 12.5) + 'px'; // Adjusted position to center the pieces around the click
+        piece.style.top = (brickY - 12.5) + 'px'; // Adjusted position to center the pieces around the click
+        container.appendChild(piece);
+
+        // Animate brick pieces
+        var offsetX = (i % 2 === 0) ? -25 : 25; // Adjusted offset for better spreading
+        var offsetY = (i < 2) ? -25 : 25; // Adjusted offset for better spreading
+        animatePiece(piece, offsetX, offsetY);
+      }
+
+      // Animate individual brick piece
+      function animatePiece(piece, offsetX, offsetY) {
+        setTimeout(function() {
+          piece.style.transform = 'translate(' + offsetX + 'px, ' + offsetY + 'px)'; // Start animation
+          piece.style.opacity = 0; // Fade out the piece
+        }, 100); // Delay the animation start to allow the previous piece to spread out
+      }
+    }
+
+    // Click event handler for the brick
+    document.getElementById('brick').addEventListener('click', function(event) {
+      var brickX = event.clientX - this.getBoundingClientRect().left; // X-coordinate relative to brick
+      var brickY = event.clientY - this.getBoundingClientRect().top; // Y-coordinate relative to brick
+      animateBrickPieces(brickX, brickY);
+    });
+  </script>
+</body>
 </html>
