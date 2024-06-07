@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const bird = document.querySelector('.bird');
     const duckhuntBg = document.querySelector('.duckhunt-bg');
-    const wordContainer = document.querySelector('.word-container');
+    const gameContainer = document.querySelector('.game-container');
+    const wordBox = document.querySelector('.word-box');
     const clickSound = document.getElementById('click-sound');
     const flySound = document.getElementById('fly-sound');
     const shotSound = document.getElementById('shot-sound');
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function getRandomYPosition() {
         const bgRect = duckhuntBg.getBoundingClientRect();
         const birdRect = bird.getBoundingClientRect();
-        const skyHeight = bgRect.height * 0.6; // 70% of the image height
+        const skyHeight = bgRect.height * 0.6; // 60% of the image height
         const maxY = skyHeight - birdRect.height;
         const y = Math.random() * maxY;
         return y;
@@ -41,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         flySound.play();
 
         moveInterval = setInterval(() => {
-            birdX += 5; 
+            birdX += 5; // Move the bird to the right
             bird.style.left = `${birdX}px`;
 
             if (birdX > bgRect.width) {
@@ -61,16 +62,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayNextWord() {
         if (wordIndex < words.length) {
-            const word = document.createElement('div');
-            word.textContent = words[wordIndex++];
-            wordContainer.appendChild(word);
+            const wordBox = document.createElement('div');
+            wordBox.classList.add('word-container');
+            wordBox.textContent = words[wordIndex++];
+            document.querySelector('.word-box').appendChild(wordBox);
         } else {
-            // All words are displayed, show the center image
+            // All words are displayed, clear the game container except for the word container
+            const bgImg = document.querySelector('.duckhunt-bg');
+            gameContainer.innerHTML = ''; // Clear all elements in the game container
+
+            // Append the background image and the laughing dog
+            gameContainer.appendChild(bgImg);
+
             const centerImg = document.createElement('img');
             centerImg.src = centerImage;
             centerImg.classList.add('center-image');
-            duckhuntBg.appendChild(centerImg);
+            gameContainer.appendChild(centerImg);
+
             resetBird();
+
+            // Apply the sliding effect after a short delay
+            setTimeout(() => {
+                centerImg.classList.add('show');
+            }, 100); // Adjust the delay as needed
         }
     }
 
