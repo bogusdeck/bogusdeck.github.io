@@ -15,3 +15,21 @@
 .fall {
     transition: transform 2s ease-in;
 }
+
+.word-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-template-rows: repeat(2, 1fr); /* 2 rows */
+    gap: 10px; /* Adjust the gap between words as needed */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; /* Adjust height as needed */
+    background: rgba(0, 0, 0, 0.5); /* Optional: to make words stand out */
+    color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    align-items: center; /* Center items vertically */
+    justify-items: center; /* Center items horizontally */
+}

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +8,8 @@
     <!-- minify -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="bubblechat.css">
+    <link rel="stylesheet" href="hehe.css">
+
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
     <!-- latest -->
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet">
@@ -159,23 +160,26 @@
         </div>
     </div>
 
-    <div class="min-h-screen flex flex-col items-center justify-center">
-        <div class="border-4 border-black w-full max-w-screen-lg mx-auto">
-            <div class="flex items-center justify-center w-full h-full">
-                <div class="text-center headingfont text-xl">
-                    SKILLS.NES
-                </div>
-            </div>
-        </div>
-        <div class="w-full max-w-screen-lg mx-auto">
-            <div class="relative" style="padding-top: 56.25%;">
-                <div class="bg-orange-300 absolute inset-0 flex items-center justify-center">
-                    <img src="duckhuntbg.png" class="h-full" alt="Duck Hunt">
-                </div>
+   <div class="flex flex-col items-center justify-center h-screen">
+    <div class="border-4 border-black w-full max-w-screen-lg mx-auto">
+        <div class="flex items-center justify-center w-full h-full">
+            <div class="text-center headingfont text-xl">
+                SKILLS.NES
             </div>
         </div>
     </div>
-
+    <div class="w-full max-w-screen-lg mx-auto relative">
+        <div class="game-container bg-orange-300">
+            <img src="duckhuntbg.png" class="duckhunt-bg h-full w-full object-cover" alt="Duck Hunt">
+            <img src="flyduck.gif" class="bird hidden absolute w-20 h-20" alt="Bird">
+            <div class="word-container"></div> <!-- Word container here -->
+        </div>
+    </div>    
+    <audio id="click-sound" src="sound/shot.mp3"></audio>
+    <audio id="fly-sound" src="sound/wingFlap20sec.mp3" loop></audio>
+    <audio id="shot-sound" src="sound/shot.mp3"></audio>
+    <audio id="fall-sound" src="sound/duckHittingGround.mp3"></audio>
+    </div>
 
     <footer class="flex items-center justify-center bg-gray-900 py-4 w-full mt-10">
         <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] mr-2">Copyright © 2024 --</p>
@@ -185,6 +189,7 @@
     <button id="scrollToTop" type="button" class="nes-btn is-error">
         ↑
     </button>
+    <script src="hehe.js"></script>
     <script src="script.js"></script>
 </body>
 
