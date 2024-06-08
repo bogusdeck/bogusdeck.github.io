@@ -1,4 +1,3 @@
-/* hehe.css */
 .hidden {
     display: none;
 }
@@ -12,65 +11,36 @@
     transition: transform 2s ease-in;
 }
 
-.word-box {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px; /* Gap between word boxes */
-    justify-content: center; /* Center the word boxes horizontally */
-    margin-top: 10px; /* Margin above the word box container */
-}
-
-.word-container {
-    border: 2px solid black; /* Border around each word box */
-    padding: 10px; /* Padding inside each word box */
-    background: white; /* Background color of each word box */
-    box-sizing: border-box; /* Ensure padding doesn't affect size */
-    text-align: center; /* Center text inside the box */
-}
-
-.center-image {
-    position: absolute;
-    bottom: 30%; /* Position the image 10px from the bottom */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px; /* Adjust size as needed */
-    height: auto;
-    z-index: 10;
-    transition: transform 1s ease-in-out; /* Sliding effect */
-    transform: translate(-50%, 100%); /* Start off-screen */
-}
-
-.center-image.show {
-    transform: translate(-50%, 0); /* Slide up into view */
-}
-
-
 .bulbula {
-	position: relative;
-	display: inline-block;
-	margin: 20px 30px 20px 30px;
-	text-align: center;
-	font-family: 'Press Start 2P', cursive;
-	background-color: #fff;
-	color: #000;
-	padding:10px 10px 10px 10px;
-	box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
-	box-sizing: border-box;
-	width: 50px;
-}
-
-.bulbula::after {
-	content: '';
-	display: block;
-	position: absolute;
-	box-sizing: border-box;
-}
-
-
-.bulbula.shadow {
-	box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000, 4px 12px rgba(0, 0, 0, 0.1), 12px 12px rgba(0, 0, 0, 0.1), 8px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #fff;
+    color: #000;
+    padding: 5px;
+    box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
+    box-sizing: border-box;
+    width: 40px;
 }
 
 .bulbula.medium {
-	width: 100px;
+    width: 100px;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.word-container {
+    display: inline-block;
+    animation: slide-in 1s ease-in-out;
 }

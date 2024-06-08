@@ -1,32 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Duck Hunt Game</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="skills.nes/hehe.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .bird {
+            cursor: pointer;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .fall {
+            transition: transform 1s ease-in;
+        }
+
+        .bulbula {
+            position: relative;
+            text-align: center;
+            font-family: 'Press Start 2P', cursive;
+            background-color: #fff;
+            color: #000;
+            padding: 5px;
+            box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
+            box-sizing: border-box;
+            
+        }
+        
+        .bulbula.animation{
+            animation: slide-in 1s ease-in-out;
+        }
+        .bulbula.medium {
+            width: 100px;
+        }
+        .bulbula.word {
+            margin-right: 20px;
+            width: 100px;
+        }
+
+        @keyframes slide-in {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        #start-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 4;
+            padding: 5px 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .word-container {
+            display: inline-block;
+            animation: slide-in 1s ease-in-out;
+        }
+    </style>
 </head>
-<body class="flex flex-col items-center justify-center h-screen">
-    <div class="border-4 border-black w-full max-w-screen-lg mx-auto">
-        <div class="flex items-center justify-center w-full h-full">
-            <div class="text-center font-mono text-xl">
-                SKILLS.NES
+
+<body>
+
+    <div class="flex flex-col items-center justify-center h-screen ">
+
+    </div>
+
+    <div class="flex flex-col items-center justify-center h-screen ">
+        <div class="border-4 border-black w-full max-w-screen-lg mx-auto">
+            <div class="flex items-center justify-center w-full h-full">
+                <div class="text-center font-mono text-xl">
+                    SKILLS.NES
+                </div>
             </div>
         </div>
-    </div>
-    <div class="w-full max-w-screen-lg mx-auto relative">
-        <div class="game-container bg-orange-300">
-            <img src="skills.nes/duckhuntbg.png" class="duckhunt-bg h-full w-full object-cover" alt="Duck Hunt">
-            <img src="skills.nes/flyduck.gif" class="bird hidden absolute w-20 h-20" alt="Bird">
+        <div class="w-full max-w-screen-lg mx-auto relative">
+            <div class="game-container relative" style="background-color: #63adff;">
+                <img src="skills.nes/duckhuntbg.png" class="duckhunt-bg h-full w-full object-cover" alt="Duck Hunt">
+                <img src="skills.nes/centerimage.gif" class="gameend-bg hidden h-full w-full object-cover"
+                    alt="Game End">
+                <img src="skills.nes/flyduck.gif" class="bird hidden absolute w-20 h-20" alt="Bird">
+                <button id="start-button" class="bulbula medium w-fit">Start Game</button>
+            </div>
         </div>
+        <div class="word-box flex flex-wrap gap-4 justify-start mt-2 w-full max-w-screen-lg mx-auto bg-white p-2 ">
+        </div>
+        <audio id="loop-sound" src="skills.nes/Intro.mp3" loop></audio>
+        <audio id="duckinit-sound" src="skills.nes/duckinit.mp3" loop></audio>
+        <audio id="game-end-sound" src="skills.nes/gameend.mp3"></audio>
+        <audio id="click-sound" src="skills.nes/shot.mp3"></audio>
+        <audio id="fly-sound" src="skills.nes/wingFlap20sec.mp3" loop></audio>
+        <audio id="shot-sound" src="skills.nes/shot.mp3"></audio>
+        <audio id="fall-sound" src="skills.nes/duckFalling.mp3"></audio>
+        <script src="skills.nes/hehe.js" defer></script>
     </div>
-    <div class="word-box border-white p-2rrr w-full max-w-screen-lg mx-auto bg-white">
-    </div>
-    <audio id="click-sound" src="skills.nes/shot.mp3"></audio>
-    <audio id="fly-sound" src="skills.nes/wingFlap20sec.mp3" loop></audio>
-    <audio id="shot-sound" src="skills.nes/shot.mp3"></audio>
-    <audio id="fall-sound" src="skills.nes/duckHittingGround.mp3"></audio>
-    <script src="skills.nes/hehe.js"></script>
+
+
+
 </body>
+
 </html>

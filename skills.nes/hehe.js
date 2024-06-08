@@ -1,19 +1,23 @@
-addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const bird = document.querySelector('.bird');
     const duckhuntBg = document.querySelector('.duckhunt-bg');
+    const gameEndBg = document.querySelector('.gameend-bg');
     const gameContainer = document.querySelector('.game-container');
     const wordBox = document.querySelector('.word-box');
+    const startButton = document.getElementById('start-button');
+    const loopSound = document.getElementById('loop-sound');
     const clickSound = document.getElementById('click-sound');
+    const duckInit = document.getElementById('duckinit-sound');
     const flySound = document.getElementById('fly-sound');
     const shotSound = document.getElementById('shot-sound');
     const fallSound = document.getElementById('fall-sound');
+    const gameEndSound = document.getElementById('game-end-sound'); // New end game sound
     let moveInterval;
     let wordIndex = 0;
     const words = ["Nextjs", "Flask", "C++"];
     const defaultBirdImage = 'skills.nes/flyduck.gif'; // Default bird image
     const shotBirdImage = 'skills.nes/shotduck.png'; // Image when the bird is shot
     const deadBirdImage = 'skills.nes/deadduck.gif'; // Image when the bird is falling
-    const centerImage = 'skills.nes/laughingdog.gif'; // Image to show after all words
 
     function getRandomYPosition() {
         const bgRect = duckhuntBg.getBoundingClientRect();
@@ -25,33 +29,43 @@ addEventListener('DOMContentLoaded', () => {
     }
 
     function startBirdMovement() {
-        if (wordIndex >= words.length) {
-            // All words are displayed, stop bird spawning
-            clearInterval(moveInterval);
-            return;
-        }
-
-        const bgRect = duckhuntBg.getBoundingClientRect();
-        let birdX = -bird.getBoundingClientRect().width; // Start from the left outside the container
-        const birdY = getRandomYPosition();
-
+        // Play the sound effect
+   
+        flySound.play();
+        
+        // Get the dimensions of the game container and the bird
+        const gameContainerRect = gameContainer.getBoundingClientRect();
+        const birdRect = bird.getBoundingClientRect();
+        
+        // Calculate the maximum position for the bird to spawn inside the container
+        const maxX = gameContainerRect.width - birdRect.width;
+        const maxY = gameContainerRect.height/2//- birdRect.height;
+        
+        // Set the initial position of the bird to the left side of the container
+        const birdX = 0;
+        const birdY = Math.random() * maxY;
+        
+        // Set the initial position of the bird
         bird.style.left = `${birdX}px`;
         bird.style.top = `${birdY}px`;
-        bird.src = defaultBirdImage; // Set the default bird image
+        
+        // Make the bird visible
         bird.classList.remove('hidden');
-        flySound.play();
-
+        
+        // Move the bird within the container
         moveInterval = setInterval(() => {
-            birdX += 5; // Move the bird to the right
-            bird.style.left = `${birdX}px`;
-
-            if (birdX > bgRect.width) {
-                // If the bird goes out of bounds, reset it
-                birdX = -bird.getBoundingClientRect().width;
-                bird.style.top = `${getRandomYPosition()}px`;
+            // Move the bird to the right
+            const currentX = parseFloat(bird.style.left) || 0;
+            bird.style.left = `${currentX + 5}px`;
+            
+            // If the bird reaches the right edge, reset its position to the left edge
+            if (parseFloat(bird.style.left) > maxX) {
+                bird.style.left = `-${birdRect.width}px`;
+                bird.style.top = `${Math.random() * maxY}px`;
             }
         }, 50); // Adjust the speed of the bird here
     }
+ 
 
     function resetBird() {
         clearInterval(moveInterval);
@@ -62,30 +76,16 @@ addEventListener('DOMContentLoaded', () => {
 
     function displayNextWord() {
         if (wordIndex < words.length) {
-            const wordBox = document.createElement('div');
-            // wordBox.classList.add('word-container');
-            wordBox.classList.add('bulbula', 'medium');
-            wordBox.textContent = words[wordIndex++];
-            document.querySelector('.word-box').appendChild(wordBox);
+            const wordBoxElement = document.createElement('div');
+            wordBoxElement.classList.add('word-container','bulbula', 'medium', 'word');
+            wordBoxElement.textContent = words[wordIndex++];
+            wordBox.appendChild(wordBoxElement);
         } else {
-            // All words are displayed, clear the game container except for the word container
-            const bgImg = document.querySelector('.duckhunt-bg');
-            gameContainer.innerHTML = ''; // Clear all elements in the game container
-
-            // Append the background image and the laughing dog
-            gameContainer.appendChild(bgImg);
-
-            const centerImg = document.createElement('img');
-            centerImg.src = centerImage;
-            centerImg.classList.add('center-image');
-            gameContainer.appendChild(centerImg);
-
+            // All words are displayed, show game end background
             resetBird();
-
-            // Apply the sliding effect after a short delay
-            setTimeout(() => {
-                centerImg.classList.add('show');
-            }, 100); // Adjust the delay as needed
+            duckhuntBg.classList.add('hidden');
+            gameEndBg.classList.remove('hidden');
+            gameEndSound.play(); // Play the end game sound
         }
     }
 
@@ -102,7 +102,10 @@ addEventListener('DOMContentLoaded', () => {
             // Change to falling image and start falling animation
             bird.src = deadBirdImage;
             bird.classList.add('fall');
-            bird.style.transform = `translateY(${window.innerHeight - bird.getBoundingClientRect().bottom}px)`;
+            const gameContainerRect = gameContainer.getBoundingClientRect();
+            const birdRect = bird.getBoundingClientRect();
+            const distanceToBottom = gameContainerRect.bottom - birdRect.bottom;
+            bird.style.transform = `translateY(${distanceToBottom}px)`;
             fallSound.play();
 
             // Reset the bird after falling animation
@@ -110,9 +113,11 @@ addEventListener('DOMContentLoaded', () => {
                 bird.classList.remove('fall');
                 bird.style.transform = 'none';
                 bird.src = defaultBirdImage; // Reset to default bird image
-                displayNextWord(); // Display the next word or center image
-                startBirdMovement(); // Start bird movement again if needed
-            }, 2000); // Duration should match the CSS transition
+                displayNextWord(); // Display the next word or end the game
+                if (wordIndex < words.length) {
+                    startBirdMovement(); // Start bird movement again if needed
+                }
+            }, 1400); // Duration should match the CSS transition
         }, 1000); // Show shot image for 1 second
     }
 
@@ -124,5 +129,24 @@ addEventListener('DOMContentLoaded', () => {
         clickSound.play();
     });
 
-    startBirdMovement();
+    startButton.addEventListener('click', () => {
+        loopSound.pause();
+        loopSound.currentTime = 0;
+        startButton.classList.add('hidden');
+        startBirdMovement();
+    });
+
+    // Play the loop sound when the game container is in view
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                loopSound.play();
+            } else {
+                loopSound.pause();
+                loopSound.currentTime = 0;
+            }
+        });
+    });
+
+    observer.observe(gameContainer);
 });
