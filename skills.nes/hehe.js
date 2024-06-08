@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+addEventListener('DOMContentLoaded', () => {
     const bird = document.querySelector('.bird');
     const duckhuntBg = document.querySelector('.duckhunt-bg');
     const gameContainer = document.querySelector('.game-container');
@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let moveInterval;
     let wordIndex = 0;
     const words = ["Nextjs", "Flask", "C++"];
-    const defaultBirdImage = 'flyduck.gif'; // Default bird image
-    const shotBirdImage = 'shotduck.png'; // Image when the bird is shot
-    const deadBirdImage = 'deadduck.gif'; // Image when the bird is falling
-    const centerImage = 'laughingdog.gif'; // Image to show after all words
+    const defaultBirdImage = 'skills.nes/flyduck.gif'; // Default bird image
+    const shotBirdImage = 'skills.nes/shotduck.png'; // Image when the bird is shot
+    const deadBirdImage = 'skills.nes/deadduck.gif'; // Image when the bird is falling
+    const centerImage = 'skills.nes/laughingdog.gif'; // Image to show after all words
 
     function getRandomYPosition() {
         const bgRect = duckhuntBg.getBoundingClientRect();
