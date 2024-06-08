@@ -43,3 +43,34 @@
 .center-image.show {
     transform: translate(-50%, 0); /* Slide up into view */
 }
+
+
+.bulbula {
+	position: relative;
+	display: inline-block;
+	margin: 20px 30px 20px 30px;
+	text-align: center;
+	font-family: 'Press Start 2P', cursive;
+	background-color: #fff;
+	color: #000;
+	padding:10px 10px 10px 10px;
+	box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
+	box-sizing: border-box;
+	width: 50px;
+}
+
+.bulbula::after {
+	content: '';
+	display: block;
+	position: absolute;
+	box-sizing: border-box;
+}
+
+
+.bulbula.shadow {
+	box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000, 4px 12px rgba(0, 0, 0, 0.1), 12px 12px rgba(0, 0, 0, 0.1), 8px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bulbula.medium {
+	width: 100px;
+}

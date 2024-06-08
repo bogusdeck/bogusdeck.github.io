@@ -63,7 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayNextWord() {
         if (wordIndex < words.length) {
             const wordBox = document.createElement('div');
-            wordBox.classList.add('word-container');
+            // wordBox.classList.add('word-container');
+            wordBox.classList.add('bulbula', 'medium');
             wordBox.textContent = words[wordIndex++];
             document.querySelector('.word-box').appendChild(wordBox);
         } else {
