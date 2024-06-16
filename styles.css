@@ -345,11 +345,11 @@ nav {
   width:100px;
 }
 .bulbula.medium {
-  width: 100px;
+  width: 120 px;
 }
 .bulbula.word {
   margin-right: 20px;
-  width: 100px;
+  width: 120px;
 }
 
 @keyframes slide-in {

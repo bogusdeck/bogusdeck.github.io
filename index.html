@@ -53,7 +53,7 @@
         <div
             class="bg-[url('indexass/mariobg.gif')] md:bg-[url('indexass/mariobgcrop.gif')] bg-repeat-x md:bg-no-repeat bg-contain md:bg-cover w-full h-[90px] md:w-full md:h-screen mt-10 md:mt-5">
             <div class="hidden md:flex items-center justify-center h-11/12 lg:h-full mt-14 lg:mt-5 ">
-                <div class="bg-gray-900 bg-opacity-50 w-11/12 p-3">
+                <div class="bg-gray-900 bg-opacity-50 w-11/12 p-3 rounded-[14px]">
                     <div class="message flex items-center justify-start ">
                         <img src="indexass/pixelboyhead.png" class="h-16 w-16 lg:h-20 lg:w-20 ml-3 mt-2"></img>
                         <div class="bubble w-fit left shadow h-[30px] lg:h-[50px] text-[14px] lg:text-[20px] ">Hello
@@ -118,11 +118,12 @@
             </div>
         </div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 min-h-screen">
-        <div class="col-span-1 flex items-center justify-center md:min-h-screen">
-            <div class="border-4 border-[#282828] w-5/6 m-5 md:m-1">
-                <p class="title bg-gray-400 p-1 headingfont text-blue-900 text-md">About me!</p>
-                <p class="text-[9px] md:text-[12px] lg:text-[1] text-start p-1">
+
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <div class="flex-1 flex items-center justify-center md:min-h-screen  border-b-4 md:border-r-4 border-black ">
+            <div class="border-4 border-[#282828] w-11/12 h-11/12 m-5 md:m-1 bg-[#5f5fec] text-white">
+                <p class="title bg-black p-1 headingfont text-white text-[9px] md:text-[16px] lg:text-[23px] border-b-4 border-black">About me!</p>
+                <p class="text-[9px] md:text-[14px] lg:text-[20px] text-start p-1 my-5">
                     Hello! I'm Tanish Vashisth, a passionate developer who finds joy in
                     both crafting code
                     and creating art. With a strong foundation in languages like C++, Python, and JavaScript, I
@@ -137,16 +138,17 @@
                 </p>
             </div>
         </div>
-        <div class="col-span-1 flex flex-col items-center justify-center">
-            <div class="border-4 border-black w-11/12  h-[40px]">
+        
+        <div class="flex-1 flex flex-col items-center justify-center border-b-4 border-black">
+            <div class="border-4 border-black w-11/12 h-2/12">
                 <div class="flex">
                     <div class="flex items-center justify-start mt-[4px] ml-1 gap-1">
                         <div class="rounded-full bg-red-600 w-4 h-4"></div>
                         <div class="rounded-full bg-yellow-400 w-4 h-4"></div>
                         <div class="rounded-full bg-green-600 w-4 h-4"></div>
                     </div>
-                    <div class="flex items-center justify-center w-full ">
-                        <div class="mt-[5px] text-center text-[14px] headingfont ">
+                    <div class="flex items-center justify-center w-full">
+                        <div class="mt-[5px] text-center text-[14px] headingfont">
                             /home/mypc
                         </div>
                     </div>
@@ -158,16 +160,18 @@
             <!-- <audio id="typing-sound" src="typing-sound.mp3" preload="auto"></audio> -->
         </div>
     </div>
+    
+    
 
     <div class="flex flex-col items-center justify-center h-screen ">
-        <div class="border-4 border-black w-full max-w-screen-lg mx-auto">
+        <div class="border-t-4 border-l-4 border-r-4 border-black w-full max-w-screen-lg mx-auto">
             <div class="flex items-center justify-center w-full h-full">
                 <div class="text-center headingfont text-xl">
                     SKILLS.NES
                 </div>
             </div>
         </div>
-        <div class="w-full max-w-screen-lg mx-auto relative">
+        <div class="w-full max-w-screen-lg mx-auto relative border-4 border-black">
             <div class="game-container relative" style="background-color: #63adff;">
                 <img src="skills.nes/duckhuntbg.png" class="duckhunt-bg h-full w-full object-cover" alt="Duck Hunt">
                 <img src="skills.nes/centerimage.gif" class="gameend-bg hidden h-full w-full object-cover"

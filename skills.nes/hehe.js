@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameEndSound = document.getElementById('game-end-sound'); // New end game sound
     let moveInterval;
     let wordIndex = 0;
-    const words = [];
+    const words = ['python','html','css','js','sql','mongoDB','Lua'];
     const defaultBirdImage = 'skills.nes/flyduck.gif'; // Default bird image
     const shotBirdImage = 'skills.nes/shotduck.png'; // Image when the bird is shot
     const deadBirdImage = 'skills.nes/deadduck.gif'; // Image when the bird is falling
