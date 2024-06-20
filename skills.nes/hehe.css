@@ -14,7 +14,7 @@
 .bulbula {
     position: relative;
     display: inline-block;
-    margin-right: 20px;
+    margin-right: 10px;
     text-align: center;
     font-family: 'Press Start 2P', cursive;
     background-color: #fff;
@@ -22,11 +22,11 @@
     padding: 5px;
     box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
     box-sizing: border-box;
-    width: 40px;
+    width: fit-content;
 }
 
 .bulbula.medium {
-    width: 100px;
+    width: fit-content;
 }
 
 @keyframes slide-in {
