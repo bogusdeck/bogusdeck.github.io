@@ -163,24 +163,40 @@
     
     
 
-    <div class="flex flex-col items-center justify-center h-screen ">
-        <div class="border-t-4 border-l-4 border-r-4 border-black w-full max-w-screen-lg mx-auto">
-            <div class="flex items-center justify-center w-full h-full">
-                <div class="text-center headingfont text-xl">
-                    SKILLS.NES
+    <div class="flex flex-col items-center justify-center min-h-screen" id="skills section">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="col-span-1">
+                <div class="flex flex-col w-full p-4 bg-white border-4 border-black order-1 md:order-1">
+                    <div class="text-center headingfont text-lg mb-2">Programming Languages</div>
+                    <div class="word-box flex flex-wrap gap-4 justify-start"></div>
+                </div>
+            </div>
+            <div class="col-span-2">
+                <div class="border-t-4 border-l-4 border-r-4 border-black w-full max-w-screen-lg mx-auto">
+                    <div class="flex items-center justify-center w-full h-full">
+                        <div class="text-center headingfont text-xl">
+                            SKILLS.NES
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full max-w-screen-lg mx-auto relative border-4 border-black flex flex-col md:flex-row">
+                    <div class="game-container relative w-full md:w-1/2 order-3 md:order-2" style="background-color: #63adff;">
+                        <img src="skills.nes/duckhuntbg.png" class="duckhunt-bg h-full w-full object-cover" alt="Duck Hunt">
+                        <img src="skills.nes/centerimage.gif" class="gameend-bg hidden h-full w-full object-cover" alt="Game End">
+                        <img src="skills.nes/flyduck.gif" class="bird hidden absolute w-20 h-20" alt="Bird">
+                        <button id="start-button" class="bulbula medium buton headingfont">Start Game</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-1">
+                <div class="flex flex-col w-full p-4 bg-white border-4 border-black order-2 md:order-3">
+                    <div class="text-center headingfont text-lg mb-2">Frameworks</div>
+                    <div class="word-box-2 flex flex-wrap gap-4 justify-start"></div>
                 </div>
             </div>
         </div>
-        <div class="w-full max-w-screen-lg mx-auto relative border-4 border-black">
-            <div class="game-container relative" style="background-color: #63adff;">
-                <img src="skills.nes/duckhuntbg.png" class="duckhunt-bg h-full w-full object-cover" alt="Duck Hunt">
-                <img src="skills.nes/centerimage.gif" class="gameend-bg hidden h-full w-full object-cover"
-                    alt="Game End">
-                <img src="skills.nes/flyduck.gif" class="bird hidden absolute w-20 h-20" alt="Bird">
-                <button id="start-button" class="bulbula medium buton headingfont">Start Game</button>
-            </div>
-        </div>
-        <div class="word-box flex flex-wrap gap-4 justify-start mt-2 w-full max-w-screen-lg mx-auto bg-white p-2"></div>
+   
+        
         <audio id="loop-sound" src="skills.nes/Intro.mp3" loop></audio>
         <audio id="duckinit-sound" src="skills.nes/duckinit.mp3" loop></audio>
         <audio id="game-end-sound" src="skills.nes/gameend.mp3"></audio>
@@ -190,7 +206,8 @@
         <audio id="fall-sound" src="skills.nes/duckFalling.mp3"></audio>
         <script src="skills.nes/hehe.js" defer></script>
     </div>
-
+    
+    
     <footer class="flex items-center justify-center bg-gray-900 py-4 w-full mt-10">
         <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] mr-2">Copyright © 2024 --</p>
         <a href="mailto:tanishvashisth@"
@@ -204,3 +221,4 @@
 </body>
 
 </html>
+

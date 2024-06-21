@@ -16,6 +16,7 @@ nav {
   z-index: 1000;
   transition: all 1s ease-in-out;
 }
+
 /* Shrink navbar on scroll */
 .shrink {
   height: 50px;
@@ -29,11 +30,11 @@ nav {
 }
 
 .shrink .logo {
-  display:none;
+  display: none;
   height: 55px;
-  top:0;
+  top: 0;
   margin-bottom: 30px;
-  transition: display 1s ease ;
+  transition: display 1s ease;
   /* Adjust the font size as needed */
 }
 
@@ -65,12 +66,14 @@ nav {
 #scrollToTop.hidden {
   display: none;
 }
+
 /* Define slide-in animation */
 @keyframes slide-in-left {
   from {
     transform: translateX(-100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -82,6 +85,7 @@ nav {
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -102,6 +106,7 @@ nav {
 
 /* Typewriter effect 1 */
 @keyframes typing {
+
   0.0000%,
   27.3488% {
     content: "a";
@@ -254,6 +259,7 @@ nav {
 }
 
 @keyframes blink {
+
   0%,
   100% {
     opacity: 1;
@@ -289,6 +295,7 @@ nav {
   }
 
   @keyframes sequencePopup {
+
     0%,
     100% {
       content: "Designer";
@@ -336,18 +343,21 @@ nav {
   padding: 5px;
   box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
   box-sizing: border-box;
-  width :fit-content;
+  width: fit-content;
 }
 
-.bulbula.animation{
+.bulbula.animation {
   animation: slide-in 1s ease-in-out;
 }
-.bulbula.buton{
-  width:fit-content;
+
+.bulbula.buton {
+  width: fit-content;
 }
+
 .bulbula.medium {
   width: fit-content;
 }
+
 .bulbula.word {
   margin-right: 20px;
   width: fit-content;
@@ -355,13 +365,13 @@ nav {
 
 @keyframes slide-in {
   from {
-      transform: translateX(100%);
-      opacity: 0;
+    transform: translateX(100%);
+    opacity: 0;
   }
 
   to {
-      transform: translateX(0);
-      opacity: 1;
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
@@ -379,4 +389,75 @@ nav {
 .word-container {
   display: inline-block;
   animation: slide-in 1s ease-in-out;
+}
+
+@media (min-width: 768px) {
+  .game-container {
+    order: 2;
+  }
+}
+
+@media (max-width: 767px) {
+  .game-container {
+    order: 1;
+  }
+
+  .word-box,
+  .word-box-2 {
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+}
+
+.word-box,
+.word-box-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.headingfont {
+  font-weight: bold;
+}
+
+.game-container {
+  order: 2;
+}
+
+@media (min-width: 768px) {
+  .game-container {
+      order: 2;
+  }
+
+  .word-box, .word-box-2 {
+      order: 1;
+  }
+}
+
+@media (max-width: 767px) {
+  .game-container {
+      order: 1;
+  }
+
+  .word-box, .word-box-2 {
+      order: 2;
+  }
+
+  .word-box, .word-box-2 {
+      flex-direction: column;
+      margin-top: 1rem;
+  }
+}
+
+.word-box, .word-box-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
