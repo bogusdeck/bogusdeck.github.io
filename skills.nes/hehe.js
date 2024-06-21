@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const y = Math.random() * maxY;
         return y;
     }
-
+    
     function startBirdMovement() {
         // Play the sound effect
    
