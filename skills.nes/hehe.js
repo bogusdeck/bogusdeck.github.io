@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const wordBox = document.querySelector('.word-box');
     const wordBox2 = document.querySelector('.word-box-2');
     const startButton = document.getElementById('start-button');
+    const skipButton = document.getElementById('skip-button');
     const loopSound = document.getElementById('loop-sound');
     const clickSound = document.getElementById('click-sound');
     const duckInit = document.getElementById('duckinit-sound');
@@ -59,12 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentX = parseFloat(bird.style.left) || 0;
             bird.style.left = `${currentX + 5}px`;
             
-            // If the bird reaches the right edge, reset its position to the left edge
+           
             if (parseFloat(bird.style.left) > maxX) {
                 bird.style.left = `-${birdRect.width}px`;
                 bird.style.top = `${Math.random() * maxY}px`;
             }
-        }, 50); // Adjust the speed of the bird here
+        }, 50); 
     }
 
     function resetBird() {
@@ -93,6 +94,34 @@ document.addEventListener('DOMContentLoaded', () => {
             gameEndSound.play(); // Play the end game sound
         }
     }
+
+    function displayAllWords() {
+        // Clear existing word boxes
+        wordBox.innerHTML = '';
+        wordBox2.innerHTML = '';
+        
+        // Display all words from both arrays
+        words1.forEach(word => {
+            const wordBoxElement = document.createElement('div');
+            wordBoxElement.classList.add('word-container', 'bulbula', 'medium', 'word');
+            wordBoxElement.textContent = word;
+            wordBox.appendChild(wordBoxElement);
+        });
+        
+        words2.forEach(word => {
+            const wordBoxElement = document.createElement('div');
+            wordBoxElement.classList.add('word-container', 'bulbula', 'medium', 'word');
+            wordBoxElement.textContent = word;
+            wordBox2.appendChild(wordBoxElement);
+        });
+
+        // Show game end background
+        resetBird();
+        duckhuntBg.classList.add('hidden');
+        gameEndBg.classList.remove('hidden');
+        gameEndSound.play(); // Play the end game sound
+    }
+
 
     function birdShot() {
         // Stop the bird's movement
@@ -140,6 +169,11 @@ document.addEventListener('DOMContentLoaded', () => {
         startButton.classList.add('hidden');
         startBirdMovement();
     });
+
+    skipButton.addEventListener('click', () => {
+        displayAllWords();
+    });
+
 
     // Play the loop sound when the game container is in view
     const observer = new IntersectionObserver((entries) => {
