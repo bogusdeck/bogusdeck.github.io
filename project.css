@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden; /* Disable vertical scrolling */
+}
+
+#game-level {
+    background-image: url('level_1.png');
+    background-size: cover; /* Adjust background size as needed */
+    background-repeat: repeat-x;
+    height: 100vh; /* Make sure it covers the full viewport height */
+    width: 300vw; /* Adjust the width as needed */
+}
+
+#character img {
+    transition: transform 0.1s;
+}
+
+#character {
+    position: absolute;
+    bottom: 10%; /* Adjust vertical position as needed */
+    left: 20px; /* Adjust horizontal position as needed */
+    z-index: 100; /* Ensure character is above other elements */
+}
+
+
+@font-face {
+    font-family: 'Joystick';
+    src: url('joystix_monospace.otf') format('opentype');
+}
+
+.headingfont {
+    font-family: 'Joystick', monospace;
+}
+
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 1s ease-in-out;
+}
+
+/* Shrink navbar on scroll */
+.shrink {
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.shrink .navheader {
+    height: 50px;
+    /* Adjust the image height as needed */
+}
+
+.shrink .logo {
+    display: none;
+    height: 55px;
+    top: 0;
+    margin-bottom: 30px;
+    transition: display 1s ease;
+    /* Adjust the font size as needed */
+}
+
+.logo-text {
+    opacity: 1;
+    transition: opacity 1s ease;
+    /* Adjust the transition duration for smoother effect */
+}
+
+.logo-text.hidden {
+    opacity: 0;
+}
+
+/* Scroll to top button */
+#scrollToTop {
+    position: fixed;
+    bottom: -50px;
+    right: 20px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, bottom 0.3s ease;
+}
+
+#scrollToTop.visible {
+    bottom: 20px;
+    transform: translateY(0);
+}
+
+#scrollToTop.hidden {
+    display: none;
+}
+
+#modal-bg {
+    z-index: 1000;
+}

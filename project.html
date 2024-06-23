@@ -1,28 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOYE MOYE</title>
     <link rel="icon" href="/favicon.ico">
-    <!-- minify -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="bubblechat.css">
-    <link rel="stylesheet" href="hehe.css">
-
+    <link rel="stylesheet" href="project.css">
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
-    <!-- latest -->
-    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet">
-    <!-- core style only -->
-    <link href="https://unpkg.com/nes.css/css/nes-core.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.0.6/dist/locomotive-scroll.min.js"></script>
 </head>
 
-<body class="flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen overflow-hidden">
     <header>
         <nav class="bg-white border-b-2 border-zinc-300">
             <div class="grid grid-cols-2">
@@ -50,16 +44,29 @@
         </nav>
     </header>
 
+
+    <div id="character" class="bottom-20 left-10 h-20 w-20">
+        <img src="mariorest.png" alt="Character" class="character h-full w-full">
+    </div>
     <!-- Main content container -->
-    <main class="flex-grow">
-        <!-- Your main content goes here -->
+    <main class="flex-grow overflow-x-auto">
+        <div id="game-level" class="flex h-full">
+
+            <!-- Add your project items here -->
+            <div class="flex-shrink-0 h-3/6 w-3/6">
+                <h1 class="text-white text-center text-3xl">Project 1</h1>
+            </div>
+
+            <!-- Add more projects as needed -->
+        </div>
     </main>
 
     <!-- Modal Structure -->
     <div id="modal-bg" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
         <div id="mobile-menu-modal" class="bg-white nes-container with-title is-centered">
             <a href="/about.html" class="block px-4 py-2 text-black hover:underline hover:tracking-widest">About</a>
-            <a href="/project.html" class="block px-4 py-2 text-black hover:underline hover:tracking-widest">Projects</a>
+            <a href="/project.html"
+                class="block px-4 py-2 text-black hover:underline hover:tracking-widest">Projects</a>
             <button id="close-modal" class="mt-4 bulbula px-4 py-2 text-white bg-red-500 shadow">Close</button>
         </div>
     </div>
@@ -67,13 +74,12 @@
     <footer class="bg-gray-900 py-4 w-full">
         <div class="flex items-center justify-center">
             <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] mr-2">Copyright © 2024 --</p>
-            <a href="mailto:tanishvashisth@" class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth</a>
+            <a href="mailto:tanishvashisth@"
+                class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth</a>
         </div>
     </footer>
 
-    <button id="scrollToTop" type="button" class="nes-btn is-error">
-        ↑
-    </button>
-    <script src="script.js"></script>
+    <script src="project.js"></script>
 </body>
+
 </html>
