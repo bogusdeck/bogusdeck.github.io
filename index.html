@@ -36,12 +36,12 @@
                     </a>
                 </div>
                 <div class="col-span-1 flex items-center justify-end mr-4">
-                    <div class="hidden md:flex space-x-6 mt-2 ">
+                    <div class="hidden md:flex space-x-6 mt-2">
                         <a href="/about.html" class="text-black hover:underline hover:tracking-widest">About</a>
                         <a href="/project.html" class="text-black hover:underline hover:tracking-widest">Projects</a>
                     </div>
                     <div class="md:hidden">
-                        <button id="menu-toggle" class=" text-black mr-5">
+                        <button id="menu-toggle" class="text-black mr-5 font-bold">
                             ☰
                         </button>
                     </div>
@@ -49,6 +49,17 @@
             </div>
         </nav>
     </header>
+    
+    <!-- Modal Structure -->
+    <div id="modal-bg" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div id="mobile-menu-modal" class="bg-white nes-container with-title is-centered">
+            <a href="/about.html" class="block px-4 py-2 text-black hover:underline hover:tracking-widest">About</a>
+            <a href="/project.html" class="block px-4 py-2 text-black hover:underline hover:tracking-widest">Projects</a>
+            <button id="close-modal" class="mt-4 bulbula  px-4 py-2 text-white bg-red-500 shadow">Close</button>
+        </div>
+    </div>
+    
+    
     <div class="flex flex-col items-center justify-center">
         <div
             class="bg-[url('indexass/mariobg.gif')] md:bg-[url('indexass/mariobgcrop.gif')] bg-repeat-x md:bg-no-repeat bg-contain md:bg-cover w-full h-[90px] md:w-full md:h-screen mt-10 md:mt-5">
@@ -121,7 +132,7 @@
 
     <div class="flex flex-col md:flex-row min-h-screen">
         <div class="flex-1 flex items-center justify-center md:min-h-screen  border-b-4 md:border-r-4 border-black ">
-            <div class="border-4 border-[#282828] w-11/12 h-9/12 m-5 md:m-1 bg-[#5f5fec] text-white">
+            <div class="border-4 border-[#282828] w-11/12 h-9/12 m-5 md:my-10 bg-[#5f5fec] text-white">
                 <p class="title bg-black p-1 headingfont text-white text-[9px] md:text-[16px] lg:text-[23px] border-b-4 border-black">About me!</p>
                 <p class="text-[9px] md:text-[14px] lg:text-[18px] text-start p-1 my-5">
                     Hello! I'm Tanish Vashisth, a passionate developer who finds joy in
@@ -167,9 +178,9 @@
         <div class="grid grid-cols-1 md:grid-cols-4  mt-4">
 
             <div class="col-span-1 order-2 md:order-1 mx-2 my-2 md:my-0">
-                <div class="flex flex-col w-full h-full py-2 bg-white border-4 border-black">
-                    <div class="text-center headingfont text-[12px] md:text-[16px] mb-2 border-b-4 border-black w-full">Programming Languages</div>
-                    <div class="word-box flex flex-row md:flex-col flex-wrap gap-4 justify-start md:justify-center md:items-center text-[9px] md:text-[14px] mt-2"></div>
+                <div class="flex flex-col w-full h-full border-4 border-black">
+                    <div class="text-center headingfont text-[12px] md:text-[16px] mb-2 py-1 border-b-4 border-black w-full text-white bg-black">Programming Languages</div>
+                    <div class="word-box flex flex-row md:flex-col flex-wrap gap-4 justify-start md:justify-center md:items-center text-[9px] md:text-[14px] mt-2 ml-4"></div>
                 </div>
             </div>
 
@@ -185,17 +196,17 @@
                     <div class="game-container relative w-full" style="background-color: #63adff;">
                         <img src="skills.nes/duckhuntbg.png" class="duckhunt-bg h-full w-full object-cover" alt="Duck Hunt">
                         <img src="skills.nes/centerimage.gif" class="gameend-bg hidden h-full w-full object-cover" alt="Game End">
-                        <img src="skills.nes/flyduck.gif" class="bird hidden absolute w-12 h-12 md:w-20 md:h-20" alt="Bird">
-                        <button id="start-button" class="bulbula medium buton headingfont">Start Game</button>
-                        <button id="skip-button" class="bulbula medium buton headingfont skip-button scale-5">Skip Game</button>
+                        <img src="skills.nes/flyduck.gif" class="bird hidden absolute w-12 h-12 md:w-20 md:h-20 nes-pointer" alt="Bird">
+                        <button id="start-button" class="bulbula medium buton headingfont nes-pointer">Start Game</button>
+                        <button id="skip-button" class="bulbula  buton headingfont skip-button nes-pointer">Skip Game</button>
                     </div>
                 </div>
             </div>
 
             <div class="col-span-1 order-3 md:order-3 mx-2 my-2 md:my-0">
-                <div class="flex flex-col w-full h-full py-2 bg-white border-4 border-black">
-                    <div class="text-center headingfont text-[12px] md:text-[16px] mb-2 border-b-4 border-black w-full">Frameworks</div>
-                    <div class="word-box-2 flex flex-row md:flex-col flex-wrap gap-4 justify-start md:justify-center md:items-center text-[9px] md:text-[14px] mt-2"></div>
+                <div class="flex flex-col w-full h-full border-4 border-black">
+                    <div class="text-center headingfont text-[12px] md:text-[16px] mb-2 border-b-4 border-black w-full bg-black text-white py-1">Frameworks</div>
+                    <div class="word-box-2 flex flex-row md:flex-col flex-wrap gap-4 justify-start md:justify-center md:items-center text-[9px] md:text-[14px] mt-2 ml-4"></div>
                 </div>
             </div>
 

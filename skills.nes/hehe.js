@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayNextWord() {
         if (wordIndex < words1.length + words2.length) {
             const wordBoxElement = document.createElement('div');
+            skipButton.classList.add("hidden")
             wordBoxElement.classList.add('word-container', 'bulbula', 'medium', 'word');
             if (wordIndex < words1.length) {
                 wordBoxElement.textContent = words1[wordIndex++];
@@ -118,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show game end background
         resetBird();
         duckhuntBg.classList.add('hidden');
+        startButton.classList.add('hidden');
         gameEndBg.classList.remove('hidden');
         gameEndSound.play(); // Play the end game sound
     }
