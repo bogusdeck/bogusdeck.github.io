@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Level</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.min.css">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Hide vertical scrollbars */
+            white-space: nowrap;
+            background: url('level.png') repeat-x;
+            background-size: cover;
+        }
+
+        .section {
+            width: 100vw;
+            height: 100vh;
+            display: inline-block;
+            vertical-align: top;
+            text-align: center; /* Center text horizontally */
+            position: relative; /* Add position relative for correct background positioning */
+        }
+
+        #mario {
+            background-size: contain;
+            width: 100px;
+            height: 100px;
+            position: fixed;
+            bottom: 12%;
+            left: 50%; /* Center Mario horizontally */
+            transform: translateX(-50%);
+            transition: right 0.5s ease, background-image 0.5s ease; /* Smooth transition for left position and background image */
+        }
+
+        #mario .mario-head {
+            position: relative; /* Make the head relative for child positioning */
+        }
+
+        #scroll-position {
+            position: absolute;
+            top: -30px; /* Adjust based on Mario's dimensions */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 8px;
+            font-size: 14px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body data-scroll-container>
+    <div id="section1" class="section">
+        <h1 class="text-4xl pt-40">Title</h1>
+    </div>
+    <div id="section2" class="section">
+        <h2 class="text-3xl pt-40">Subtitle 1</h2>
+    </div>
+    <div id="section3" class="section">
+        <h2 class="text-3xl pt-40">Subtitle 2</h2>
+    </div>
+    <div id="section4" class="section">
+        <h2 class="text-3xl pt-40">Subtitle 3</h2>
+    </div>
+    <div id="section5" class="section">
+        <h2 class="text-3xl pt-40">Subtitle 4</h2>
+    </div>
+    <div id="mario">
+        <div id="scroll-position" class="text-white text-sm">Scroll Position: 0</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.min.js"></script>
+    <script>
+        const scroll = new LocomotiveScroll({
+            el: document.querySelector('[data-scroll-container]'),
+            smooth: true,
+            smoothMobile: false, // Disable smooth scrolling on mobile if desired
+            direction: 'horizontal', // Set scrolling direction to horizontal
+            reloadOnContextChange: true, // Reload scroll on context change (e.g., resize)
+        });
+
+        let isScrolling = false; // Flag to track scrolling state
+        let scrollTimeout; // Timeout for scroll end detection
+
+        // Define positions where Mario should jump (adjust these as needed)
+        const jumpPositions = [1000, 2000, 3000]; // Adjust these scroll positions where Mario should jump
+
+        scroll.on('scroll', (instance) => {
+            const scrollX = instance.scroll.x; // Get horizontal scroll position
+
+            // Update Mario's position to keep him centered
+            const mario = document.getElementById('mario');
+            mario.style.left = `${500 + scrollX}px`; // Center Mario and adjust with scroll
+
+            // Update scroll position indicator
+            const scrollPositionIndicator = document.getElementById('scroll-position');
+            scrollPositionIndicator.textContent = `Scroll Position: ${Math.round(scrollX)}px`;
+
+            // Check if Mario should jump at current scroll position
+            if (jumpPositions.includes(Math.round(scrollX))) {
+                jumpMario(mario); // Trigger jump animation
+            }
+
+            // Show mariorunning.gif while scrolling
+            if (!isScrolling) {
+                mario.style.backgroundImage = 'url("mariorunning.gif")';
+                isScrolling = true; // Set scrolling flag
+            }
+
+            // Move background with sections
+            document.body.style.backgroundPosition = `-${scrollX}px bottom`;
+
+            // Clear previous scroll timeout and set a new one
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                isScrolling = false; // Reset scrolling flag after scroll stops
+                mario.style.backgroundImage = 'url("mario.png")'; // Show mario.png when not scrolling
+            }, 150); // Adjust timeout duration as needed
+        });
+
+        // Reset Mario to mario.png when scrolling stops
+        scroll.on('scrollStop', () => {
+            const mario = document.getElementById('mario');
+            mario.style.backgroundImage = 'url("mario.png")'; // Show mario.png when not scrolling
+        });
+
+        // Function to animate Mario jumping
+        function jumpMario(mario) {
+            mario.style.backgroundImage = 'url("mariojump.gif")'; // Replace with jump animation image
+            setTimeout(() => {
+                mario.style.backgroundImage = 'url("mariorunning.gif")'; // Return to running animation after jump
+            }, 500); // Adjust duration of jump animation as needed
+        }
+    </script>
+</body>
+</html>
+
+
+

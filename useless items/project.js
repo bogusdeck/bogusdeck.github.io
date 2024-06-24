@@ -17,11 +17,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateCharacterImage() {
         const scrollPosition = locoScroll.scroll.x; // Get horizontal scroll position
 
-        // Toggle character image based on scroll
         if (scrollPosition !== 0) {
-            characterImg.src = 'mario.gif'; // Set running animation when scrolling
+            characterImg.src = 'mariorest.png'; // Set running animation when scrolling
         } else {
-            characterImg.src = 'mariorest.png'; // Set stop image when not scrolling
+            characterImg.src = 'mario.gif'; // Set stop image when not scrolling
         }
     }
 
