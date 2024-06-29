@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Disable both vertical and horizontal scrolling */
+    overflow: hidden; /* Disable vertical scrolling */
     background: url('bg.png') repeat-x; /* Background image set to repeat horizontally */
     background-size: auto 100%; /* Cover the entire viewport */
     transition: background-position 0.3s ease-out; /* Smooth transition for background position */
@@ -9,11 +9,17 @@ body {
     image-rendering: crisp-edges; /* For most browsers */
     image-rendering: pixelated; /* For Firefox */
 }
-.section-wrapper {
-    display: flex;
+.scroll-container { /* Added scroll-container */
+    width: 100vw;
+    height: 100vh;
     overflow-x: auto; /* Enable horizontal scrolling */
     overflow-y: hidden; /* Disable vertical scrolling */
     white-space: nowrap; /* Prevent line breaks for horizontal scroll */
+    position: relative; /* Ensure it acts as a reference for fixed elements */
+}
+.section-wrapper {
+    display: flex;
+    height: 100vh; /* Full viewport height */
 }
 .section {
     flex: 0 0 100vw; /* Each section takes up full viewport width */
@@ -24,7 +30,7 @@ body {
     background-color: transparent; /* No background color */
 }
 .hills {
-    position: fixed;
+    position: absolute;
     bottom: 10vh; /* Adjust based on floor height */
     left: 0;
     width: 100%; /* Full width of the viewport */
@@ -36,9 +42,10 @@ body {
     image-rendering: -webkit-optimize-contrast; /* For Chrome (optional) */
     image-rendering: crisp-edges; /* For most browsers */
     image-rendering: pixelated; /* For Firefox */
+    pointer-events: none; /* Allow scrolling through this element */
 }
 .floor {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100%; /* Full width of the viewport */
@@ -47,18 +54,20 @@ body {
     background-size: auto 100%; 
     transition: background-position 0.3s ease-out; /* Smooth transition for background position */
     z-index: 2; /* Ensure floor is above hills */
+    pointer-events: none; /* Allow scrolling through this element */
 }
 .character {
-    position: fixed;
+    position: absolute;
     bottom: 10vh; /* Adjust based on floor height */
     left: 50%;
     transform: translateX(-50%);
     z-index: 3; /* Ensure character is above floor and hills */
     transition: transform 0.3s ease-out; /* Smooth transition for character transform */
+    pointer-events: none; /* Allow scrolling through this element */
 }
 .castle {
     position: absolute;
-    bottom: 7vh; /* Adjust based on floor height */
+    bottom: 18vh; /* Adjust based on floor height */
     left: 50%;
     transform: translateX(-50%);
     z-index: 1; /* Ensure castle is above floor and hills */
@@ -76,75 +85,7 @@ img {
     .hills{
         height: 20vh;
     }
-}
-
-@font-face {
-    font-family: 'Joystick';
-    src: url('joystix_monospace.otf') format('opentype');
-}
-
-.headingfont {
-    font-family: 'Joystick', monospace;
-}
-
-nav {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    transition: all 1s ease-in-out;
-}
-
-/* Shrink navbar on scroll */
-.shrink {
-    height: 50px;
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.shrink .navheader {
-    height: 50px;
-    /* Adjust the image height as needed */
-}
-
-.shrink .logo {
-    display: none;
-    height: 55px;
-    top: 0;
-    margin-bottom: 30px;
-    transition: display 1s ease;
-    /* Adjust the font size as needed */
-}
-
-.logo-text {
-    opacity: 1;
-    transition: opacity 1s ease;
-    /* Adjust the transition duration for smoother effect */
-}
-
-.logo-text.hidden {
-    opacity: 0;
-}
-
-/* Scroll to top button */
-#scrollToTop {
-    position: fixed;
-    bottom: -50px;
-    right: 20px;
-    z-index: 1000;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out, bottom 0.3s ease;
-}
-
-#scrollToTop.visible {
-    bottom: 20px;
-    transform: translateY(0);
-}
-
-#scrollToTop.hidden {
-    display: none;
-}
-
-#modal-bg {
-    z-index: 1000;
+    .castle{
+        bottom:20vh;
+    }
 }
