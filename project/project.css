@@ -1,0 +1,150 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Disable both vertical and horizontal scrolling */
+    background: url('bg.png') repeat-x; /* Background image set to repeat horizontally */
+    background-size: auto 100%; /* Cover the entire viewport */
+    transition: background-position 0.3s ease-out; /* Smooth transition for background position */
+    image-rendering: -webkit-optimize-contrast; /* For Chrome (optional) */
+    image-rendering: crisp-edges; /* For most browsers */
+    image-rendering: pixelated; /* For Firefox */
+}
+.section-wrapper {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: hidden; /* Disable vertical scrolling */
+    white-space: nowrap; /* Prevent line breaks for horizontal scroll */
+}
+.section {
+    flex: 0 0 100vw; /* Each section takes up full viewport width */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent; /* No background color */
+}
+.hills {
+    position: fixed;
+    bottom: 10vh; /* Adjust based on floor height */
+    left: 0;
+    width: 100%; /* Full width of the viewport */
+    height: 25vh; /* Adjust height as needed */
+    background: url('bghills.png') repeat-x;
+    background-size: auto 100%; /* Ensure vertical stretching of background */
+    transition: background-position 0.3s ease-out; /* Smooth transition for background position */
+    z-index: 0; /* Ensure hills are behind character */
+    image-rendering: -webkit-optimize-contrast; /* For Chrome (optional) */
+    image-rendering: crisp-edges; /* For most browsers */
+    image-rendering: pixelated; /* For Firefox */
+}
+.floor {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Full width of the viewport */
+    height: 10vh; /* Adjust height as needed */
+    background: url('floor.png') repeat-x;
+    background-size: auto 100%; 
+    transition: background-position 0.3s ease-out; /* Smooth transition for background position */
+    z-index: 2; /* Ensure floor is above hills */
+}
+.character {
+    position: fixed;
+    bottom: 10vh; /* Adjust based on floor height */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3; /* Ensure character is above floor and hills */
+    transition: transform 0.3s ease-out; /* Smooth transition for character transform */
+}
+.castle {
+    position: absolute;
+    bottom: 7vh; /* Adjust based on floor height */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1; /* Ensure castle is above floor and hills */
+}
+img {
+    image-rendering: -webkit-optimize-contrast; /* For Chrome (optional) */
+    image-rendering: crisp-edges; /* For most browsers */
+    image-rendering: pixelated; /* For Firefox */
+}
+@media (max-width: 768px) {
+    body {
+        background: url('bgsm.png') repeat-x;
+        background-size: auto 100%; /* Ensure proper scaling */
+    }
+    .hills{
+        height: 20vh;
+    }
+}
+
+@font-face {
+    font-family: 'Joystick';
+    src: url('joystix_monospace.otf') format('opentype');
+}
+
+.headingfont {
+    font-family: 'Joystick', monospace;
+}
+
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 1s ease-in-out;
+}
+
+/* Shrink navbar on scroll */
+.shrink {
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.shrink .navheader {
+    height: 50px;
+    /* Adjust the image height as needed */
+}
+
+.shrink .logo {
+    display: none;
+    height: 55px;
+    top: 0;
+    margin-bottom: 30px;
+    transition: display 1s ease;
+    /* Adjust the font size as needed */
+}
+
+.logo-text {
+    opacity: 1;
+    transition: opacity 1s ease;
+    /* Adjust the transition duration for smoother effect */
+}
+
+.logo-text.hidden {
+    opacity: 0;
+}
+
+/* Scroll to top button */
+#scrollToTop {
+    position: fixed;
+    bottom: -50px;
+    right: 20px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, bottom 0.3s ease;
+}
+
+#scrollToTop.visible {
+    bottom: 20px;
+    transform: translateY(0);
+}
+
+#scrollToTop.hidden {
+    display: none;
+}
+
+#modal-bg {
+    z-index: 1000;
+}

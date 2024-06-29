@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOYE MOYE</title>
     <link rel="icon" href="/favicon.ico">
-    <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="project/project.css">
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -45,21 +45,43 @@
     </header>
 
 
-    <div id="character" class="bottom-20 left-10 h-20 w-20">
-        <img src="mariorest.png" alt="Character" class="character h-full w-full">
-    </div>
-    <!-- Main content container -->
-    <main class="flex-grow overflow-x-auto">
-        <div id="game-level" class="flex h-full">
-
-            <!-- Add your project items here -->
-            <div class="flex-shrink-0 h-3/6 w-3/6">
-                <h1 class="text-white text-center text-3xl">Project 1</h1>
-            </div>
-
-            <!-- Add more projects as needed -->
+    <div class="section-wrapper" id="sectionWrapper">
+        <div class="section">
+            <h1 class="text-white text-center mt-4">Projects</h1>
         </div>
-    </main>
+        <div class="section">
+            <h1 class="text-white text-center mt-4">Project 1</h1>
+        </div>
+        <div class="section">
+            <h1 class="text-white text-center mt-4">Project 2</h1>
+        </div>
+        <div class="section">
+            <h1 class="text-white text-center mt-4">Project 3</h1>
+        </div>
+        <div class="section">
+            <h1 class="text-white text-center mt-4">Project 4</h1>
+        </div>
+        <div class="section">
+            <h1 class="text-white text-center mt-4">Project 5</h1>
+        </div>
+        <div class="section relative">
+            <h1 class="text-white text-center mt-4">Castle</h1>
+            <img id="castleImg" src="project/castle.png" alt="Castle" class="castle lg:w-64 lg:h-64 md:w-48 md:h-48 w-32 h-32" />
+        </div>
+    </div>
+    <div class="hills"></div>
+    <div class="floor"></div>
+    <div class="character">
+        <img id="characterImg" src="project/mario.png" alt="Character" class="lg:w-32 lg:h-32 md:w-20 md:h-20 w-16 h-16" />
+    </div>
+
+    <!-- Background Sound -->
+    <audio id="backgroundSound" src="project/sounds/mariobgm.mp3" preload="auto" autoplay loop volume="0.3"></audio>
+
+    <!-- Sound Effects -->
+    <audio id="sectionAppearSound" src="project/sounds/smb_coin.wav" preload="auto"></audio>
+    <audio id="characterDisappearSound" src="project/sounds/smb_stage_clear.wav" preload="auto"></audio>
+   
 
     <!-- Modal Structure -->
     <div id="modal-bg" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
@@ -79,7 +101,7 @@
         </div>
     </footer>
 
-    <script src="project.js"></script>
+    <script src="project/project.js"></script>
 </body>
 
-</html>
+</html> 
