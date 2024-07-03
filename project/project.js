@@ -10,11 +10,37 @@ const sectionWrapper = document.getElementById("sectionWrapper");
     const characterDisappearSound = document.getElementById(
       "characterDisappearSound",
     );
+    const muteButton = document.getElementById("muteButton");
+    
+    let isMuted = true; 
+    backgroundSound.volume = 0; 
 
     backgroundSound.play();
 
+    characterDisappearSound.addEventListener("play", function () {
+      showModal();
+    });
+
     let scrollTimeout;
     let isScrolling = false;
+
+    muteButton.addEventListener("click", function () {
+      if (isMuted) {
+        isMuted = false;
+        muteButton.classList.remove("muted");
+        muteButton.classList.add("unmuted");
+        backgroundSound.volume = 1; // Set volume to 0.5 when unmuted
+        sectionAppearSound.volume = 1;
+        characterDisappearSound.volume = 1;
+      } else {
+        isMuted = true;
+        muteButton.classList.remove("unmuted");
+        muteButton.classList.add("muted");
+        backgroundSound.volume = 0; // Mute background sound
+        sectionAppearSound.volume = 0;
+        characterDisappearSound.volume = 0;
+      }
+    });
 
     scrollContainer.addEventListener("wheel", function (e) {
       e.preventDefault();
@@ -108,3 +134,29 @@ const sectionWrapper = document.getElementById("sectionWrapper");
     });
 
     updateBackgrounds();
+
+    function showModal() {
+      const modalBg = document.getElementById("modal-bg");
+      modalBg.classList.remove("hidden");
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.getElementById('menu-toggle');
+      const modalBg = document.getElementById('modal-bg');
+      const closeModal = document.getElementById('close-modal');
+    
+      menuToggle.addEventListener('click', () => {
+          modalBg.classList.remove('hidden');
+      });
+    
+      closeModal.addEventListener('click', () => {
+          modalBg.classList.add('hidden');
+      });
+    
+      modalBg.addEventListener('click', (e) => {
+          if (e.target === modalBg) {
+              modalBg.classList.add('hidden');
+          }
+      });
+    });
+    

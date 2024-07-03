@@ -17,7 +17,6 @@
     font-family: 'Joystick', monospace;
 }
 
-
 body {
     margin: 0;
     padding: 0;
@@ -261,3 +260,56 @@ img {
         right: 14px;
     }
 }
+
+.bulbula {
+    position: relative;
+    text-align: center;
+    /* font-family: 'Press Start 2P', cursive; */
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
+    box-sizing: border-box;
+    width: fit-content;
+  }
+  
+  .bulbula.shadow {
+      box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000, 4px 12px rgba(0, 0, 0, 0.1), 12px 12px rgba(0, 0, 0, 0.1), 8px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .bulbula.animation {
+    animation: slide-in 1s ease-in-out;
+  }
+  
+  .bulbula.buton {
+    width: fit-content;
+  }
+  
+  .bulbula.medium {
+    width: fit-content;
+    padding: 2px;
+  }
+  
+  .bulbula.word {
+    margin-right: 20px;
+    margin-bottom: 10px;
+    width: fit-content;
+  }
+
+  .mute-button {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 50;
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .mute-button.unmuted {
+    background-image: url('qblock.gif');
+  }
+
+  .mute-button.muted {
+    background-image: url('Starman.gif');
+  }
