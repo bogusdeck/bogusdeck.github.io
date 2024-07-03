@@ -1,91 +1,263 @@
+@font-face {
+    font-family: "mariofont";
+    src: url("../fonts/Super Plumber Brothers.ttf");
+}
+
+.fonty {
+    font-family: "mariofont";
+}
+
+
+@font-face {
+    font-family: 'Joystick';
+    src: url('../fonts/joystix_monospace.otf') format('opentype');
+}
+
+.desctext {
+    font-family: 'Joystick', monospace;
+}
+
+
 body {
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Disable vertical scrolling */
-    background: url('bg.png') repeat-x; /* Background image set to repeat horizontally */
-    background-size: auto 100%; /* Cover the entire viewport */
-    transition: background-position 0.3s ease-out; /* Smooth transition for background position */
-    image-rendering: -webkit-optimize-contrast; /* For Chrome (optional) */
-    image-rendering: crisp-edges; /* For most browsers */
-    image-rendering: pixelated; /* For Firefox */
+    overflow: hidden;
+    background: url("bg.png") repeat-x;
+    background-size: auto 100%;
+    transition: background-position 0.3s ease-out;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
 }
-.scroll-container { /* Added scroll-container */
+
+.scroll-container {
     width: 100vw;
     height: 100vh;
-    overflow-x: auto; /* Enable horizontal scrolling */
-    overflow-y: hidden; /* Disable vertical scrolling */
-    white-space: nowrap; /* Prevent line breaks for horizontal scroll */
-    position: relative; /* Ensure it acts as a reference for fixed elements */
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* white-space: nowrap; */
+    position: relative;
 }
+
 .section-wrapper {
     display: flex;
-    height: 100vh; /* Full viewport height */
+    height: 100vh;
 }
+
 .section {
-    flex: 0 0 100vw; /* Each section takes up full viewport width */
-    height: 100vh; /* Full viewport height */
+    flex: 0 0 100vw;
+    height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: transparent; /* No background color */
+    background-color: transparent;
 }
+
 .hills {
     position: absolute;
-    bottom: 10vh; /* Adjust based on floor height */
+    bottom: 10vh;
     left: 0;
-    width: 100%; /* Full width of the viewport */
-    height: 25vh; /* Adjust height as needed */
-    background: url('bghills.png') repeat-x;
-    background-size: auto 100%; /* Ensure vertical stretching of background */
-    transition: background-position 0.3s ease-out; /* Smooth transition for background position */
-    z-index: 0; /* Ensure hills are behind character */
-    image-rendering: -webkit-optimize-contrast; /* For Chrome (optional) */
-    image-rendering: crisp-edges; /* For most browsers */
-    image-rendering: pixelated; /* For Firefox */
-    pointer-events: none; /* Allow scrolling through this element */
+    width: 100%;
+    height: 25vh;
+    background: url("bghills.png") repeat-x;
+    background-size: auto 100%;
+    transition: background-position 0.3s ease-out;
+    z-index: 0;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    pointer-events: none;
 }
+
 .floor {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%; /* Full width of the viewport */
-    height: 10vh; /* Adjust height as needed */
-    background: url('floor.png') repeat-x;
-    background-size: auto 100%; 
-    transition: background-position 0.3s ease-out; /* Smooth transition for background position */
-    z-index: 2; /* Ensure floor is above hills */
-    pointer-events: none; /* Allow scrolling through this element */
+    width: 100%;
+    height: 10vh;
+    background: url("floor.png") repeat-x;
+    background-size: auto 100%;
+    transition: background-position 0.3s ease-out;
+    z-index: 2;
+    pointer-events: none;
 }
+
 .character {
     position: absolute;
-    bottom: 10vh; /* Adjust based on floor height */
+    bottom: 10vh;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 3; /* Ensure character is above floor and hills */
-    transition: transform 0.3s ease-out; /* Smooth transition for character transform */
-    pointer-events: none; /* Allow scrolling through this element */
+    z-index: 3;
+    transition: transform 0.3s ease-out;
+    pointer-events: none;
 }
+
 .castle {
     position: absolute;
-    bottom: 18vh; /* Adjust based on floor height */
+    bottom: -11vh;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1; /* Ensure castle is above floor and hills */
+    z-index: 1;
 }
+
 img {
-    image-rendering: -webkit-optimize-contrast; /* For Chrome (optional) */
-    image-rendering: crisp-edges; /* For most browsers */
-    image-rendering: pixelated; /* For Firefox */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
 }
+
 @media (max-width: 768px) {
     body {
-        background: url('bgsm.png') repeat-x;
-        background-size: auto 100%; /* Ensure proper scaling */
+        background: url("bgsm.png") repeat-x;
+        background-size: auto 100%;
     }
-    .hills{
+
+    .hills {
         height: 20vh;
     }
-    .castle{
-        bottom:20vh;
+}
+
+.box {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-color: #c94d0c;
+    border: none;
+    box-shadow:
+        5px 0 0 0 #010001,
+        0 5px 0 0 #010001,
+        -5px 0 0 0 #FCBCB0,
+        0 -5px 0 0 #FCBCB0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fcbcb0;
+    font-size: 16px;
+}
+
+.content {
+    z-index: 1;
+    /* Ensures text appears above corners */
+}
+
+.corner {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #FCBCB0;
+    box-shadow: 4px 4px 0px 0px #010001;
+}
+
+.top-left {
+    top: 10px;
+    left: 10px;
+}
+
+.top-right {
+    top: 10px;
+    right: 10px;
+}
+
+.bottom-left {
+    bottom: 10px;
+    left: 10px;
+}
+
+.bottom-right {
+    bottom: 10px;
+    right: 10px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 600px) {
+    .box {
+        font-size: 25px;
+    }
+
+    .corner {
+        width: 12px;
+        height: 12px;
+    }
+
+    .top-left {
+        top: 8px;
+        left: 8px;
+    }
+
+    .top-right {
+        top: 8px;
+        right: 8px;
+    }
+
+    .bottom-left {
+        bottom: 8px;
+        left: 8px;
+    }
+
+    .bottom-right {
+        bottom: 8px;
+        right: 8px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1200px) {
+    .box {
+        font-size: 30px;
+    }
+
+    .corner {
+        width: 12px;
+        height: 12px;
+    }
+
+    .top-left {
+        top: 12px;
+        left: 12px;
+    }
+
+    .top-right {
+        top: 12px;
+        right: 12px;
+    }
+
+    .bottom-left {
+        bottom: 12px;
+        left: 12px;
+    }
+
+    .bottom-right {
+        bottom: 12px;
+        right: 12px;
+    }
+}
+
+@media (min-width: 1201px) {
+    .box {
+        font-size: 50px;
+    }
+
+    .corner {
+        width: 12px;
+        height: 12px;
+    }
+
+    .top-left {
+        top: 14px;
+        left: 14px;
+    }
+
+    .top-right {
+        top: 14px;
+        right: 14px;
+    }
+
+    .bottom-left {
+        bottom: 14px;
+        left: 14px;
+    }
+
+    .bottom-right {
+        bottom: 14px;
+        right: 14px;
     }
 }
