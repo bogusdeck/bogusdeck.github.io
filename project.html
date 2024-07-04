@@ -17,32 +17,34 @@
 </head>
 
 <body class="flex flex-col min-h-screen overflow-hidden">
-    <header>
-        <nav class="bg-white border-b-2 border-zinc-300">
-            <div class="grid grid-cols-2">
-                <div class="col-span-1 flex items-center justify-start md:ml-4">
-                    <a href="/index.html" class="flex items-center justify-start">
-                        <img src="indexass/berserk.gif" alt="berserk" class="h-20 logo">
-                        <div class="flex flex-col items-start">
-                            <img src="indexass/logo.png" alt="logo" class="navheader border-2 min-[425px]:h-16">
-                            <div class="flex logo-text text-[9px] md:text-[10px] text-left ml-3">Software Engineer</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-span-1 flex items-center justify-end mr-4">
-                    <div class="hidden md:flex space-x-6 mt-2">
-                        <a href="/about.html" class="text-black hover:underline hover:tracking-widest">About</a>
-                        <a href="/project.html" class="text-black hover:underline hover:tracking-widest">Projects</a>
-                    </div>
-                    <div class="md:hidden">
-                        <button id="menu-toggle" class="text-black mr-5 font-bold">
-                            ☰
-                        </button>
-                    </div>
-                </div>
+    <header class="floating-header">
+        <div class="hidden md:flex items-center justify-start md:justify-between w-full">
+            <div class="flex items-center space-x-4">
+                <a class="nav-item" href="work.html">Work</a>
+                <a class="nav-item" href="project.html">Projects</a>
             </div>
-        </nav>
+            <a href="/index.html" class="flex items-center justify-center">
+                <img src="indexass/logo.png" alt="logo" class="h-12">
+            </a>
+            <div class="flex items-center space-x-4">
+                <a class="nav-item" href="about.html">About</a>
+                <a class="nav-item" href="contact.html">Contact</a>
+            </div>
+        </div>
+    
+        <!-- Hamburger menu for modal toggle -->
+        <div class="grid grid-cols-2 w-full md:hidden">
+          <a href="/index.html" class="flex items-center justify-start col-span-1">
+            <img src="indexass/logo.png" alt="logo" class="h-12">
+        </a> 
+          <button id="menu-toggle" class="col-span-1 flex items-center justify-end">
+            <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
     </header>
+    
 
     <div class="scroll-container" id="scrollContainer">
         <div class="section-wrapper" id="sectionWrapper">

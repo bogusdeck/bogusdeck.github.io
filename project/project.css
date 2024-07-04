@@ -30,6 +30,65 @@ body {
 }
 
 
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.floating-header {
+    position: fixed;
+    top: 15px;
+    /* Margin from the top */
+    left: 20px;
+    /* Margin from the left */
+    right: 20px;
+    /* Margin from the right */
+    z-index: 1000;
+    background-color: white;
+    border: 2px solid #d4d4d4;
+    /* Border around the header */
+    border-radius: 8px;
+    /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Shadow for the floating effect */
+    height: 60px;
+    /* Slimmer height */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Distribute items at the ends */
+    padding: 0 20px;
+    /* Padding inside the header */
+}
+
+
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+}
+
 .scroll-container {
     width: 100vw;
     height: 100vh;

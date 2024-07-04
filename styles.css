@@ -9,43 +9,55 @@
   font-family: 'Joystick', monospace;
 }
 
-nav {
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.floating-header {
   position: fixed;
-  width: 100%;
-  top: 0;
+  top: 15px; /* Margin from the top */
+  left: 20px; /* Margin from the left */
+  right: 20px; /* Margin from the right */
   z-index: 1000;
-  transition: all 1s ease-in-out;
+  background-color: white;
+  border: 2px solid #d4d4d4; /* Border around the header */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for the floating effect */
+  height: 60px; /* Slimmer height */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Distribute items at the ends */
+  padding: 0 20px; /* Padding inside the header */
 }
 
-/* Shrink navbar on scroll */
-.shrink {
-  height: 50px;
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.nav-item {
+  margin: 0 10px;
 }
 
-.shrink .navheader {
-  height: 50px;
-  /* Adjust the image height as needed */
-}
-
-.shrink .logo {
+/* Modal styles */
+.modal {
   display: none;
-  height: 55px;
+  position: fixed;
   top: 0;
-  margin-bottom: 30px;
-  transition: display 1s ease;
-  /* Adjust the font size as needed */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
 }
 
-.logo-text {
-  opacity: 1;
-  transition: opacity 1s ease;
-  /* Adjust the transition duration for smoother effect */
-}
-
-.logo-text.hidden {
-  opacity: 0;
+.modal-content {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
 }
 
 /* Scroll to top button */
@@ -432,12 +444,6 @@ nav {
   gap: 0.5rem;
 }
 
-body, html {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
 
 .headingfont {
   font-weight: bold;
