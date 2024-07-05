@@ -29,43 +29,58 @@
         .visible-section {
             transform: translateX(0) translateY(0);
         }
+
+        .hidden {
+            display: none;
+        }
+
+        .section {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Buttons visibility */
+        button.hidden {
+            display: none;
+        }
     </style>
 </head>
 <body class="overflow-hidden">
-    <div class="relative h-screen w-full">
-        <div id="main-section" class="absolute w-full h-full bg-gray-200 flex items-center justify-center">
-            <h1 class="text-4xl">Main Section</h1>
-        </div>
+    <div id="main-section" class="section bg-gray-200 flex items-center justify-center">
+        <h1 class="text-4xl">Main Section</h1>
+    </div>
 
-        <div id="section-1" class="absolute w-full h-full bg-red-300 hidden-section from-left flex items-center justify-center">
-            <h1 class="text-4xl">Section 1</h1>
-        </div>
+    <div id="section-1" class="section bg-red-300 hidden-section from-left flex items-center justify-center hidden">
+        <h1 class="text-4xl">Section 1</h1>
+    </div>
 
-        <div id="section-2" class="absolute w-full h-full bg-blue-300 hidden-section from-right flex items-center justify-center">
-            <h1 class="text-4xl">Section 2</h1>
-        </div>
+    <div id="section-2" class="section bg-blue-300 hidden-section from-right flex items-center justify-center hidden">
+        <h1 class="text-4xl">Section 2</h1>
+    </div>
 
-        <div id="section-3" class="absolute w-full h-full bg-green-300 hidden-section from-top flex items-center justify-center">
-            <h1 class="text-4xl">Section 3</h1>
-        </div>
+    <div id="section-3" class="section bg-green-300 hidden-section from-top flex items-center justify-center hidden">
+        <h1 class="text-4xl">Section 3</h1>
+    </div>
 
-        <div id="section-4" class="absolute w-full h-full bg-yellow-300 hidden-section from-bottom flex items-center justify-center">
-            <h1 class="text-4xl">Section 4</h1>
-        </div>
+    <div id="section-4" class="section bg-yellow-300 hidden-section from-bottom flex items-center justify-center hidden">
+        <h1 class="text-4xl">Section 4</h1>
+    </div>
 
-        <!-- Buttons -->
-        <div class="absolute top-1/2 left-0 transform -translate-y-1/2">
-            <button onclick="handleButtonClick(1)" class="bg-gray-800 text-white px-4 py-2">1</button>
-        </div>
-        <div class="absolute top-1/2 right-0 transform -translate-y-1/2">
-            <button onclick="handleButtonClick(2)" class="bg-gray-800 text-white px-4 py-2">2</button>
-        </div>
-        <div class="absolute top-0 left-1/2 transform -translate-x-1/2">
-            <button onclick="handleButtonClick(3)" class="bg-gray-800 text-white px-4 py-2">3</button>
-        </div>
-        <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2">
-            <button onclick="handleButtonClick(4)" class="bg-gray-800 text-white px-4 py-2">4</button>
-        </div>
+    <!-- Buttons -->
+    <div class="fixed top-1/2 left-0 transform -translate-y-1/2">
+        <button id="button-1" onclick="handleButtonClick(1)" class="bg-gray-800 text-white px-4 py-2">1</button>
+    </div>
+    <div class="fixed top-1/2 right-0 transform -translate-y-1/2">
+        <button id="button-2" onclick="handleButtonClick(2)" class="bg-gray-800 text-white px-4 py-2">2</button>
+    </div>
+    <div class="fixed top-0 left-1/2 transform -translate-x-1/2">
+        <button id="button-3" onclick="handleButtonClick(3)" class="bg-gray-800 text-white px-4 py-2">3</button>
+    </div>
+    <div class="fixed bottom-0 left-1/2 transform -translate-x-1/2">
+        <button id="button-4" onclick="handleButtonClick(4)" class="bg-gray-800 text-white px-4 py-2">4</button>
     </div>
 
     <script>
@@ -90,24 +105,50 @@
                     currentSection = `section-${sectionNumber}`;
                 }
             }
+            updateButtons();
         }
 
         function showSection(sectionNumber) {
             // Hide all sections
             document.querySelectorAll('.hidden-section').forEach(section => {
                 section.classList.remove('visible-section');
+                section.classList.add('hidden');
             });
 
             // Show the selected section
-            document.getElementById(`section-${sectionNumber}`).classList.add('visible-section');
+            const section = document.getElementById(`section-${sectionNumber}`);
+            section.classList.remove('hidden');
+            section.classList.add('visible-section');
         }
 
         function showMainSection() {
             // Hide all sections
             document.querySelectorAll('.hidden-section').forEach(section => {
                 section.classList.remove('visible-section');
+                section.classList.add('hidden');
             });
         }
+
+        function updateButtons() {
+            // Show all buttons
+            document.querySelectorAll('button[id^="button-"]').forEach(button => {
+                button.classList.remove('hidden');
+                button.innerText = button.id.split('-')[1]; // Reset button text to section number
+            });
+
+            // Hide the button corresponding to the current section
+            if (currentSection !== 'main') {
+                const sectionNumber = currentSection.split('-')[1];
+                document.getElementById(`button-${sectionNumber}`).classList.add('hidden');
+
+                // Change the opposite button text to "Main"
+                const oppositeButtonNumber = oppositeButtons[currentSection];
+                const oppositeButton = document.getElementById(`button-${oppositeButtonNumber}`);
+                oppositeButton.innerText = 'Main';
+            }
+        }
+
+        updateButtons(); // Initialize button visibility
     </script>
 </body>
 </html>
