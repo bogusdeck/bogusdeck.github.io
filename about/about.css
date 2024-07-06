@@ -42,7 +42,6 @@ html {
 }
 
 
-
 /* Modal styles */
 .modal {
     display: none;
@@ -64,4 +63,8 @@ html {
     max-width: 90%;
     max-height: 90%;
     overflow-y: auto;
+}
+
+#modal-bg {
+    z-index: 1000;
 }

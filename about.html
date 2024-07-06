@@ -6,14 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOYE MOYE</title>
     <link rel="icon" href="/favicon.ico">
-    <!-- minify -->
     <link rel="stylesheet" href="about/about.css">
     <link rel="stylesheet" href="bubblechat.css">
-
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
-    <!-- latest -->
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet">
-    <!-- core style only -->
     <link href="https://unpkg.com/nes.css/css/nes-core.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -29,6 +25,11 @@
 
         .section {
             transition: transform 0.5s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         .z-1 {
@@ -48,7 +49,6 @@
         }
     </style>
 </head>
-</head>
 
 <body>
     <header class="floating-header">
@@ -65,42 +65,43 @@
                 <a class="nav-item" href="contact.html">Contact</a>
             </div>
         </div>
-    
+
         <!-- Hamburger menu for modal toggle -->
         <div class="grid grid-cols-2 w-full md:hidden">
-          <a href="/index.html" class="flex items-center justify-start col-span-1">
-            <img src="indexass/logo.png" alt="logo" class="h-12">
-        </a> 
-          <button id="menu-toggle" class="col-span-1 flex items-center justify-end">
-            <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-            </svg>
-          </button>
+            <a href="/index.html" class="flex items-center justify-start col-span-1">
+                <img src="indexass/logo.png" alt="logo" class="h-12">
+            </a>
+            <button id="menu-toggle" class="col-span-1 flex items-center justify-end">
+                <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
         </div>
     </header>
+
+
     <div id="modal-bg" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
         <div id="mobile-menu-modal" class="bg-white nes-container with-title is-centered">
             <a href="/about.html" class="block px-4 py-2 text-black hover:underline hover:tracking-widest">About</a>
-            <a href="/project.html" class="block px-4 py-2 text-black hover:underline hover:tracking-widest">Projects</a>
+            <a href="/project.html"
+                class="block px-4 py-2 text-black hover:underline hover:tracking-widest">Projects</a>
             <button id="close-modal" class="mt-4 bulbula  px-4 py-2 text-white bg-red-500 shadow">Close</button>
         </div>
     </div>
 
-    <main class=""> 
-        <div id="main" class="section absolute inset-0 flex items-center justify-center bg-gray-200 z-3">Main Section</div>
-        <div id="left"
-            class="section absolute inset-0 flex items-center justify-center bg-red-400 transform -translate-x-full z-1">
+    <main class="relative w-full h-full overflow-hidden">
+        <div id="main" class="section flex items-center justify-center bg-gray-200 z-3">Main Section</div>
+        <div id="left" class="section flex items-center justify-center bg-red-400 transform -translate-x-full z-1">
             Left Section</div>
-        <div id="right"
-            class="section absolute inset-0 flex items-center justify-center bg-green-400 transform translate-x-full z-1">
+        <div id="right" class="section flex items-center justify-center bg-green-400 transform translate-x-full z-1">
             Right Section</div>
-        <div id="top"
-            class="section absolute inset-0 flex items-center justify-center bg-blue-400 transform -translate-y-full z-1">
+        <div id="top" class="section flex items-center justify-center bg-blue-400 transform -translate-y-full z-1">
             Top Section</div>
-        <div id="bottom"
-            class="section absolute inset-0 flex items-center justify-center bg-yellow-400 transform translate-y-full z-1">
+        <div id="bottom" class="section flex items-center justify-center bg-yellow-400 transform translate-y-full z-1">
             Bottom Section</div>
-    
+
         <button id="navigate-left"
             class="navigate-button absolute top-1/2 left-0 transform -translate-y-1/2 p-2 bg-black bg-opacity-50 text-white z-4">Left</button>
         <button id="navigate-right"
@@ -111,49 +112,50 @@
             class="navigate-button absolute bottom-0 left-1/2 transform -translate-x-1/2 p-2 bg-black bg-opacity-50 text-white z-4">Bottom</button>
     </main>
 
-
-    <!-- <footer class="flex items-center justify-center bg-gray-900 py-4 w-full mt-10">
-        <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] mr-2">Copyright © 2024 --</p>
-        <a href="mailto:tanishvashisth@"
-            class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth</a>
-    </footer> -->
     <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('.section');
             let currentSection = 'main';
 
-            document.getElementById('navigate-left').addEventListener('click', () => {
-                if (currentSection === 'main') {
-                    navigateToSection('left');
-                } else if (currentSection === 'right') {
-                    navigateToSection('main');
-                }
-            });
+            const buttons = {
+                left: document.getElementById('navigate-left'),
+                right: document.getElementById('navigate-right'),
+                top: document.getElementById('navigate-top'),
+                bottom: document.getElementById('navigate-bottom')
+            };
 
-            document.getElementById('navigate-right').addEventListener('click', () => {
-                if (currentSection === 'main') {
-                    navigateToSection('right');
-                } else if (currentSection === 'left') {
-                    navigateToSection('main');
+            function updateButtons() {
+                Object.values(buttons).forEach(button => button.classList.add('hidden'));
+                switch (currentSection) {
+                    case 'main':
+                        buttons.left.classList.remove('hidden');
+                        buttons.right.classList.remove('hidden');
+                        buttons.top.classList.remove('hidden');
+                        buttons.bottom.classList.remove('hidden');
+                        buttons.left.textContent = 'Left';
+                        buttons.right.textContent = 'Right';
+                        buttons.top.textContent = 'Top';
+                        buttons.bottom.textContent = 'Bottom';
+                        break;
+                    case 'left':
+                        buttons.right.classList.remove('hidden');
+                        buttons.right.textContent = 'MAIN';
+                        break;
+                    case 'right':
+                        buttons.left.classList.remove('hidden');
+                        buttons.left.textContent = 'MAIN';
+                        break;
+                    case 'top':
+                        buttons.bottom.classList.remove('hidden');
+                        buttons.bottom.textContent = 'MAIN';
+                        break;
+                    case 'bottom':
+                        buttons.top.classList.remove('hidden');
+                        buttons.top.textContent = 'MAIN';
+                        break;
                 }
-            });
-
-            document.getElementById('navigate-top').addEventListener('click', () => {
-                if (currentSection === 'main') {
-                    navigateToSection('top');
-                } else if (currentSection === 'bottom') {
-                    navigateToSection('main');
-                }
-            });
-
-            document.getElementById('navigate-bottom').addEventListener('click', () => {
-                if (currentSection === 'main') {
-                    navigateToSection('bottom');
-                } else if (currentSection === 'top') {
-                    navigateToSection('main');
-                }
-            });
+            }
 
             function navigateToSection(sectionId) {
                 sections.forEach(section => {
@@ -197,8 +199,57 @@
                     }
                 });
                 currentSection = sectionId;
+                updateButtons();
             }
+
+            buttons.left.addEventListener('click', () => {
+                if (currentSection === 'main') {
+                    navigateToSection('left');
+                } else if (currentSection === 'right') {
+                    navigateToSection('main');
+                }
+            });
+
+            buttons.right.addEventListener('click', () => {
+                if (currentSection === 'main') {
+                    navigateToSection('right');
+                } else if (currentSection === 'left') {
+                    navigateToSection('main');
+                }
+            });
+
+            buttons.top.addEventListener('click', () => {
+                if (currentSection === 'main') {
+                    navigateToSection('top');
+                } else if (currentSection === 'bottom') {
+                    navigateToSection('main');
+                }
+            });
+
+            buttons.bottom.addEventListener('click', () => {
+                if (currentSection === 'main') {
+                    navigateToSection('bottom');
+                } else if (currentSection === 'top') {
+                    navigateToSection('main');
+                }
+            });
+
+            const menuToggle = document.getElementById('menu-toggle');
+            const modalBg = document.getElementById('modal-bg');
+            const closeModal = document.getElementById('close-modal');
+
+            menuToggle.addEventListener('click', () => {
+                modalBg.classList.toggle('hidden');
+            });
+
+            closeModal.addEventListener('click', () => {
+                modalBg.classList.add('hidden');
+            });
+
+            updateButtons();
         });
+        
+
     </script>
 </body>
 
