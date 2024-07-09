@@ -9,28 +9,35 @@
   font-family: 'Joystick', monospace;
 }
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-image: url('bg.png');
+  background-size: 100% auto;
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  
 }
 
 
 .floating-header {
   position: fixed;
-  top: 15px; /* Margin from the top */
-  left: 20px; /* Margin from the left */
-  right: 20px; /* Margin from the right */
+  top: 15px;
+  left: 20px;
+  right: 20px;
   z-index: 1000;
   background-color: white;
-  border: 2px solid #d4d4d4; /* Border around the header */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for the floating effect */
-  height: 60px; /* Slimmer height */
+  border: 2px solid #d4d4d4;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 50px;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Distribute items at the ends */
-  padding: 0 20px; /* Padding inside the header */
+  justify-content: space-between;
+  padding: 0 10px;
 }
 
 .nav-item {
@@ -361,7 +368,7 @@ body, html {
 }
 
 .bulbula.shadow {
-	box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000, 4px 12px rgba(0, 0, 0, 0.1), 12px 12px rgba(0, 0, 0, 0.1), 8px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000, 4px 12px rgba(0, 0, 0, 0.1), 12px 12px rgba(0, 0, 0, 0.1), 8px 8px rgba(0, 0, 0, 0.1);
 }
 
 .bulbula.animation {
@@ -433,7 +440,7 @@ body, html {
 
   .word-box,
   .word-box-2 {
-    
+
     margin-top: 1rem;
   }
 }
@@ -455,29 +462,33 @@ body, html {
 
 @media (min-width: 768px) {
   .game-container {
-      order: 2;
+    order: 2;
   }
 
-  .word-box, .word-box-2 {
-      order: 1;
+  .word-box,
+  .word-box-2 {
+    order: 1;
   }
 }
 
 @media (max-width: 767px) {
   .game-container {
-      order: 1;
+    order: 1;
   }
 
-  .word-box, .word-box-2 {
-      order: 2;
+  .word-box,
+  .word-box-2 {
+    order: 2;
   }
 
-  .word-box, .word-box-2 {
-      margin-top: 1rem;
+  .word-box,
+  .word-box-2 {
+    margin-top: 1rem;
   }
 }
 
-.word-box, .word-box-2 {
+.word-box,
+.word-box-2 {
   display: flex;
   gap: 0.5rem;
 }
@@ -486,7 +497,7 @@ body, html {
   width: 100%;
   height: 100%;
   perspective: 800px;
-  background-color: black;
+
 }
 
 .bogusimage {
