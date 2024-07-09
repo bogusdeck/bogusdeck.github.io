@@ -94,3 +94,30 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   });
 });
+
+(function () {
+  "use strict";
+
+  var image = document.getElementById('image'),
+    width = window.innerWidth,
+    height = window.innerHeight;
+
+  function bindMouse() {
+    document.addEventListener('mousemove', (event) => {
+      let x = (event.clientX / width - 0.5) * 2;
+      let y = (event.clientY / height - 0.5) * 2;
+
+      tilt(x, y);
+    });
+  }
+
+  function tilt(x, y) {
+    let force = 10; // Reduced the movement by lowering the force value
+    let rx = y * force;
+    let ry = -x * force;
+
+    image.style.transform = 'rotateY(' + ry + 'deg) rotateX(' + rx + 'deg)';
+  }
+
+  bindMouse();
+})();
