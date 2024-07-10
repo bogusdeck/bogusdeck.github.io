@@ -25,7 +25,7 @@ html {
 
 .floating-header {
   position: fixed;
-  top: 15px;
+  top: 10px;
   left: 20px;
   right: 20px;
   z-index: 1000;
@@ -39,6 +39,7 @@ html {
   justify-content: space-between;
   padding: 0 10px;
 }
+
 
 .nav-item {
   margin: 0 10px;

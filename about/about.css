@@ -12,33 +12,52 @@ html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.section {
+    transition: transform 0.5s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.z-1 {
+    z-index: 1;
+}
+
+.z-2 {
+    z-index: 2;
+}
+
+.z-3 {
+    z-index: 3;
+}
+
+.z-4 {
+    z-index: 4;
 }
 
 
 .floating-header {
     position: fixed;
-    top: 15px;
-    /* Margin from the top */
+    top: 10px;
     left: 20px;
-    /* Margin from the left */
     right: 20px;
-    /* Margin from the right */
     z-index: 1000;
     background-color: white;
     border: 2px solid #d4d4d4;
-    /* Border around the header */
     border-radius: 8px;
-    /* Rounded corners */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* Shadow for the floating effect */
-    height: 60px;
-    /* Slimmer height */
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* Distribute items at the ends */
-    padding: 0 20px;
-    /* Padding inside the header */
+    padding: 0 10px;
 }
 
 
@@ -67,4 +86,57 @@ html {
 
 #modal-bg {
     z-index: 1000;
+}
+
+.artwork-container {
+    overflow-y: auto;
+    max-height: 83vh;
+}
+
+.artwork-container img {
+    width: 100%;
+    height: auto;
+    border: 4px solid #000;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.pagination-controls {
+    display: absolute;
+    bottom:4px;
+    align-items: center;
+}
+
+/* .nes-btn {
+    color: #000;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.nes-btn[disabled] {
+    cursor: not-allowed;
+} */
+
+
+.resume-container {
+    width: 100%;
+    height: 70vh; 
+    border: 4px solid #000;
+    
+}
+.resume-container object {
+    width: 100%;
+    height: 100%;
+}
+
+.nes-btn {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #2196F3;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.nes-btn:hover {
+    background-color: #0D47A1;
 }

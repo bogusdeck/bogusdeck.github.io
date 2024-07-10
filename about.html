@@ -16,38 +16,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <style>
-        html,
-        body {
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .section {
-            transition: transform 0.5s ease-in-out;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .z-1 {
-            z-index: 1;
-        }
-
-        .z-2 {
-            z-index: 2;
-        }
-
-        .z-3 {
-            z-index: 3;
-        }
-
-        .z-4 {
-            z-index: 4;
-        }
-    </style>
 </head>
 
 <body>
@@ -97,12 +65,47 @@
         </div>
         <div id="left" class="section flex items-center justify-center bg-red-400 transform -translate-x-full z-1">
             Left Section</div>
-        <div id="right" class="section flex items-center justify-center bg-green-400 transform translate-x-full z-1">
-            Right Section</div>
+        <div id="right" class="section flex items-center justify-center bg-green-400 transform translate-x-full z-1 p-4">
+            <div class="flex flex-col md:flex-row items-center justify-center h-full mt-10 md:gap-2">
+                <div class="resume-container p-4 h-[70vh] md:h-[80vh] w-[45vh] md:w-full lg:w-[100vh]">
+                    <object data="about/Tanish vashisth IT.pdf" type="application/pdf" width="100%" height="100%">
+                        <p>It appears you don't have a PDF plugin for this browser. You can <a href="about/Tanish vashisth IT.pdf">click here to download the PDF file.</a></p>
+                    </object>
+                </div>
+                <div class="flex flex-col items-center justify-center w-full gap-0 md:gap-4">
+                    <a href="about/Tanish vashisth IT.pdf" download="Tanish_Vashisth_CV.pdf" class="nes-btn mt-4 ">
+                        Download Resume
+                    </a>
+                    <div class="p-2">
+                        <a href="#">GH</a>
+                        <a href="#">LD</a>
+                        <a href="#">RL</a>
+                        <a href="#">DV</a>
+                        <a href="#">NO</a>
+                    </div>
+                </div>
+            </div>            
+        </div>
+
+
         <div id="top" class="section flex items-center justify-center bg-blue-400 transform -translate-y-full z-1">
             Top Section</div>
+
+
         <div id="bottom" class="section flex items-center justify-center bg-yellow-400 transform translate-y-full z-1">
-            Bottom Section</div>
+            <div style="text-orientation: upright; writing-mode: vertical-lr;">
+                <h2 class="text-lg mx-1 md:text-2xl md:mx-4  tracking-[16px]">MY ARTWORK</h2>
+            </div>
+            <div class="artwork-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 mt-4 pr-2">
+                <!-- Artwork images will be dynamically loaded here -->
+            </div>
+            <div class="pagination-controls mt-4 absolute bottom-0 w-fit flex items-center justify-center m-1">
+                <button id="prev-page" class="nes-btn text-[5px]" disabled>Previous</button>
+                <span id="page-info" class="mx-4">1</span>
+                <button id="next-page" class="nes-btn text-[5px]">Next</button>
+            </div>
+        </div>
+
 
         <button id="navigate-left"
             class="navigate-button absolute top-1/2 left-0 transform -translate-y-1/2 p-2 bg-black bg-opacity-50 text-white z-4">Left</button>
@@ -111,148 +114,10 @@
         <button id="navigate-top"
             class="navigate-button absolute top-20 left-1/2 transform -translate-x-1/2 p-2 bg-black bg-opacity-50 text-white z-4">Top</button>
         <button id="navigate-bottom"
-            class="navigate-button absolute bottom-0 left-1/2 transform -translate-x-1/2 p-2 bg-black bg-opacity-50 text-white z-4">Bottom</button>
+            class="navigate-button absolute bottom-0 left-1/2 transform -translate-x-1/2 p-2 bg-black bg-opacity-50 text-white z-4">Artwork</button>
     </main>
 
-    <script src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.section');
-            let currentSection = 'main';
-
-            const buttons = {
-                left: document.getElementById('navigate-left'),
-                right: document.getElementById('navigate-right'),
-                top: document.getElementById('navigate-top'),
-                bottom: document.getElementById('navigate-bottom')
-            };
-
-            function updateButtons() {
-                Object.values(buttons).forEach(button => button.classList.add('hidden'));
-                switch (currentSection) {
-                    case 'main':
-                        buttons.left.classList.remove('hidden');
-                        buttons.right.classList.remove('hidden');
-                        buttons.top.classList.remove('hidden');
-                        buttons.bottom.classList.remove('hidden');
-                        buttons.left.textContent = 'Left';
-                        buttons.right.textContent = 'Right';
-                        buttons.top.textContent = 'Top';
-                        buttons.bottom.textContent = 'Bottom';
-                        break;
-                    case 'left':
-                        buttons.right.classList.remove('hidden');
-                        buttons.right.textContent = 'MAIN';
-                        break;
-                    case 'right':
-                        buttons.left.classList.remove('hidden');
-                        buttons.left.textContent = 'MAIN';
-                        break;
-                    case 'top':
-                        buttons.bottom.classList.remove('hidden');
-                        buttons.bottom.textContent = 'MAIN';
-                        break;
-                    case 'bottom':
-                        buttons.top.classList.remove('hidden');
-                        buttons.top.textContent = 'MAIN';
-                        break;
-                }
-            }
-
-            function navigateToSection(sectionId) {
-                sections.forEach(section => {
-                    if (section.id === sectionId) {
-                        section.style.transform = 'translate(0, 0)';
-                        section.classList.add('z-2');
-                        section.classList.remove('z-1');
-                    } else if (section.id === 'main' && sectionId !== 'main') {
-                        switch (sectionId) {
-                            case 'left':
-                                section.style.transform = 'translateX(100vw)';
-                                break;
-                            case 'right':
-                                section.style.transform = 'translateX(-100vw)';
-                                break;
-                            case 'top':
-                                section.style.transform = 'translateY(100vh)';
-                                break;
-                            case 'bottom':
-                                section.style.transform = 'translateY(-100vh)';
-                                break;
-                        }
-                        section.classList.add('z-2');
-                    } else {
-                        section.classList.add('z-1');
-                        section.classList.remove('z-2');
-                        switch (section.id) {
-                            case 'left':
-                                section.style.transform = 'translateX(-100vw)';
-                                break;
-                            case 'right':
-                                section.style.transform = 'translateX(100vw)';
-                                break;
-                            case 'top':
-                                section.style.transform = 'translateY(-100vh)';
-                                break;
-                            case 'bottom':
-                                section.style.transform = 'translateY(100vh)';
-                                break;
-                        }
-                    }
-                });
-                currentSection = sectionId;
-                updateButtons();
-            }
-
-            buttons.left.addEventListener('click', () => {
-                if (currentSection === 'main') {
-                    navigateToSection('left');
-                } else if (currentSection === 'right') {
-                    navigateToSection('main');
-                }
-            });
-
-            buttons.right.addEventListener('click', () => {
-                if (currentSection === 'main') {
-                    navigateToSection('right');
-                } else if (currentSection === 'left') {
-                    navigateToSection('main');
-                }
-            });
-
-            buttons.top.addEventListener('click', () => {
-                if (currentSection === 'main') {
-                    navigateToSection('top');
-                } else if (currentSection === 'bottom') {
-                    navigateToSection('main');
-                }
-            });
-
-            buttons.bottom.addEventListener('click', () => {
-                if (currentSection === 'main') {
-                    navigateToSection('bottom');
-                } else if (currentSection === 'top') {
-                    navigateToSection('main');
-                }
-            });
-
-            const menuToggle = document.getElementById('menu-toggle');
-            const modalBg = document.getElementById('modal-bg');
-            const closeModal = document.getElementById('close-modal');
-
-            menuToggle.addEventListener('click', () => {
-                modalBg.classList.toggle('hidden');
-            });
-
-            closeModal.addEventListener('click', () => {
-                modalBg.classList.add('hidden');
-            });
-
-            updateButtons();
-        });
-
-
-    </script>
+    <script src="about/about.js"></script>
 </body>
 
 </html>
