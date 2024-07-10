@@ -16,7 +16,6 @@ html {
     overflow: hidden;
 }
 
-
 .section {
     transition: transform 0.5s ease-in-out;
     position: absolute;
@@ -42,7 +41,6 @@ html {
     z-index: 4;
 }
 
-
 .floating-header {
     position: fixed;
     top: 10px;
@@ -60,8 +58,6 @@ html {
     padding: 0 10px;
 }
 
-
-/* Modal styles */
 .modal {
     display: none;
     position: fixed;
@@ -120,8 +116,8 @@ html {
     width: 100%;
     height: 70vh; 
     border: 4px solid #000;
-    
 }
+
 .resume-container object {
     width: 100%;
     height: 100%;

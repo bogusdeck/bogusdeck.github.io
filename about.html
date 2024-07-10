@@ -63,13 +63,78 @@
         <div id="main" class="section flex items-center justify-center bg-gray-200 z-3">
             Main Section
         </div>
-        <div id="left" class="section flex items-center justify-center bg-red-400 transform -translate-x-full z-1">
-            Left Section</div>
-        <div id="right" class="section flex items-center justify-center bg-green-400 transform translate-x-full z-1 p-4">
+
+        <div id="left" class="section flex items-center justify-center bg-red-400 transform -translate-x-full z-1 overflow-y-auto h-full">
+            <div class="flex flex-col lg:flex-row items-start justify-start gap-7 p-4 max-h-screen overflow-y-auto w-full mt-24">
+                <div class="section-content max-w-2xl lg:w-1/2 mx-auto p-3 bg-white rounded-lg shadow-lg">
+                    <h2 class="text-lg lg:text-2xl font-bold mb-4 border-4 border-black text-center">Experience</h2>
+                    <ul class="list-square">
+                        <li>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div class="col-span-2 text-sm lg:text-lg underline font-bold">Callisto Infotech</div>
+                                <div class="col-span-1 italic text-[12px]">Python Intern</div>
+                                <div class="col-span-1 italic text-[12px]">Feb,23 – Apr,23</div>
+                                <div class="col-span-2 border-4 border-black p-6 text-[10px]">
+                                    <ul class="list-disc">
+                                        <li>
+                                            Collaborated on full SDLC, creating API endpoints with Django REST Framework and ensuring security with authentication and authorization.
+                                        </li>
+                                        <li>
+                                            Implemented Django ORM for efficient database operations and designed frontend with Tailwind CSS.
+                                        </li>
+                                        <li>
+                                            Utilized Git for version control, facilitating team collaboration.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+        
+                <div class="section-content max-w-2xl lg:w-1/2 mx-auto p-6 bg-white rounded-lg shadow-lg">
+                    <h2 class="text-lg lg:text-2xl font-bold mb-4 border-4 border-black text-center">Education</h2>
+                    <ul class="list-disc pl-4 space-y-6">
+                        <li>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div class="text-sm lg:text-lg col-span-2 underline">Bachlore Of Technology</div>
+                                <div class="italic col-span-2 text-[12px]">Krishna Engineering College AKTU</div>
+                                <div class="text-[12px]">2020-present</div>
+                                <div class="text-[12px]">CGPA:7.3</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div class="text-sm lg:text-lg col-span-2 underline">XII graduation</div>
+                                <div class="italic col-span-2 text-[12px]">Navyug School Laxmi Bai Nagar CBSE</div>
+                                <div class=" text-[12px]">2019</div>
+                                <div class="text-[12px]">CGPA:8.7</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div class="text-sm lg:text-lg col-span-2 underline">X graduation</div>
+                                <div class="italic col-span-2 text-[12px]">Navyug School Laxmi Bai Nagar CBSE</div>
+                                <div class=" text-[12px]">2017</div>
+                                <div class=" text-[12px]">CGPA:10</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+
+        <div id="right"
+            class="section flex items-center justify-center bg-green-400 transform translate-x-full z-1 p-4">
             <div class="flex flex-col md:flex-row items-center justify-center h-full mt-10 md:gap-2">
                 <div class="resume-container p-4 h-[70vh] md:h-[80vh] w-[45vh] md:w-full lg:w-[100vh]">
                     <object data="about/Tanish vashisth IT.pdf" type="application/pdf" width="100%" height="100%">
-                        <p>It appears you don't have a PDF plugin for this browser. You can <a href="about/Tanish vashisth IT.pdf">click here to download the PDF file.</a></p>
+                        <p>It appears you don't have a PDF plugin for this browser. You can <a
+                                href="about/Tanish vashisth IT.pdf">click here to download the PDF file.</a></p>
                     </object>
                 </div>
                 <div class="flex flex-col items-center justify-center w-full gap-0 md:gap-4">
@@ -84,7 +149,7 @@
                         <a href="#">NO</a>
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
 
 
@@ -112,7 +177,7 @@
         <button id="navigate-right"
             class="navigate-button absolute top-1/2 right-0 transform -translate-y-1/2 p-2 bg-black bg-opacity-50 text-white z-4">Right</button>
         <button id="navigate-top"
-            class="navigate-button absolute top-20 left-1/2 transform -translate-x-1/2 p-2 bg-black bg-opacity-50 text-white z-4">Top</button>
+            class="navigate-button absolute top-14 left-1/2 transform -translate-x-1/2 p-2 bg-black bg-opacity-50 text-white z-4">Top</button>
         <button id="navigate-bottom"
             class="navigate-button absolute bottom-0 left-1/2 transform -translate-x-1/2 p-2 bg-black bg-opacity-50 text-white z-4">Artwork</button>
     </main>
