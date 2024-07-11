@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let moveInterval;
     let wordIndex = 0;
     const words1 = ['python', 'html', 'css', 'js', 'sql', 'mongoDB', 'Lua'];
-    const words2 = ['react', 'node', 'express', 'typescript', 'graphql'];
+    const words2 = ['React', 'Node', 'Flask', 'Django', 'Scikit', 'pandas', 'matplotlib'];
     const defaultBirdImage = 'skills.nes/flyduck.gif'; // Default bird image
     const shotBirdImage = 'skills.nes/shotduck.png'; // Image when the bird is shot
     const deadBirdImage = 'skills.nes/deadduck.gif'; // Image when the bird is falling
@@ -34,38 +34,38 @@ document.addEventListener('DOMContentLoaded', () => {
     function startBirdMovement() {
         // Play the sound effect
         flySound.play();
-        
+
         // Get the dimensions of the game container and the bird
         const gameContainerRect = gameContainer.getBoundingClientRect();
         const birdRect = bird.getBoundingClientRect();
-        
+
         // Calculate the maximum position for the bird to spawn inside the container
         const maxX = gameContainerRect.width - birdRect.width;
         const maxY = gameContainerRect.height / 2;
-        
+
         // Set the initial position of the bird to the left side of the container
         const birdX = 0;
         const birdY = Math.random() * maxY;
-        
+
         // Set the initial position of the bird
         bird.style.left = `${birdX}px`;
         bird.style.top = `${birdY}px`;
-        
+
         // Make the bird visible
         bird.classList.remove('hidden');
-        
+
         // Move the bird within the container
         moveInterval = setInterval(() => {
             // Move the bird to the right
             const currentX = parseFloat(bird.style.left) || 0;
             bird.style.left = `${currentX + 5}px`;
-            
-           
+
+
             if (parseFloat(bird.style.left) > maxX) {
                 bird.style.left = `-${birdRect.width}px`;
                 bird.style.top = `${Math.random() * maxY}px`;
             }
-        }, 50); 
+        }, 50);
     }
 
     function resetBird() {
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Clear existing word boxes
         wordBox.innerHTML = '';
         wordBox2.innerHTML = '';
-        
+
         // Display all words from both arrays
         words1.forEach(word => {
             const wordBoxElement = document.createElement('div');
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             wordBoxElement.textContent = word;
             wordBox.appendChild(wordBoxElement);
         });
-        
+
         words2.forEach(word => {
             const wordBoxElement = document.createElement('div');
             wordBoxElement.classList.add('word-container', 'bulbula', 'medium', 'word');

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,32 +38,34 @@
                 <a class="nav-item" href="contact.html">Contact</a>
             </div>
         </div>
-    
+
         <!-- Hamburger menu for modal toggle -->
         <div class="grid grid-cols-2 w-full md:hidden">
-          <a href="/index.html" class="flex items-center justify-start col-span-1">
-            <img src="indexass/logo.png" alt="logo" class="h-12">
-        </a> 
-          <button id="menu-toggle" class="col-span-1 flex items-center justify-end">
-            <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-            </svg>
-          </button>
+            <a href="/index.html" class="flex items-center justify-start col-span-1">
+                <img src="indexass/logo.png" alt="logo" class="h-12">
+            </a>
+            <button id="menu-toggle" class="col-span-1 flex items-center justify-end">
+                <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
         </div>
     </header>
     <div id="modal-bg" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
         <div id="mobile-menu-modal" class="bg-white nes-container with-title is-centered">
             <a href="/about.html" class="block px-4 py-2 text-black hover:underline hover:tracking-widest">About</a>
-            <a href="/project.html" class="block px-4 py-2 text-black hover:underline hover:tracking-widest">Projects</a>
+            <a href="/project.html"
+                class="block px-4 py-2 text-black hover:underline hover:tracking-widest">Projects</a>
             <button id="close-modal" class="mt-4 bulbula  px-4 py-2 text-white bg-red-500 shadow">Close</button>
         </div>
     </div>
-    
-    
+
     <div class="w-full flex flex-col items-center justify-center min-h-screen">
-        <div class="container"> 
-            <div class="bogusimage h-4/12 w-10/12 md:w-8/12 lg:w-5/12" id="image"></div>
-            <div class="w-full flex flex-col md:flex-row items-center justify-evenly text-white">
+        <div class="container">
+            <div class="bogusimage h-4/12 w-10/12 md:w-8/12 lg:w-5/12 top-20" id="image"></div>
+            <div class="w-full flex flex-col md:flex-row items-center justify-evenly text-white mt-0 text-[12px] md:text-[14px] lg:mt-14 lg:text-[18px] gap-3">
                 <div class="text-center">
                     <p>Projects Completed</p>
                     <p>24</p>
@@ -77,13 +80,82 @@
                 </div>
             </div>
         </div>
-    </div>   
+    </div>
+
+    <div class="flex flex-col items-center justify-center min-h-screen ">
+        <div class="hidden md:flex items-center justify-center w-1/2 h-11/12 md:w-3/4 lg:h-full mt-14 lg:mt-5 ">
+            <div class="bg-white bg-opacity-50 w-11/12 p-3 rounded-[14px]">
+                <div class="message flex items-center justify-start ">
+                    <img src="indexass/pixelboyhead.png" class="h-16 w-16 lg:h-20 lg:w-20 ml-3 mt-2"></img>
+                    <div class="bubble w-fit left shadow h-[30px] lg:h-[50px] text-[14px] lg:text-[20px] ">Hello
+                    </div>
+                </div>
+                <div class="message flex items-center justify-end">
+                    <div class="bubble w-fit right shadow h-[30px] lg:h-[50px] text-[14px] lg:text-[20px]">Who are
+                        you?</div>
+                    <img src="indexass/boyheadright.png" class="h-16 w-16 lg:h-20 lg:w-20 mr-3 mt-2"></img>
+                </div>
+                <div class="message flex items-center justify-start">
+                    <img src="indexass/pixelboyhead.png" class="h-16 w-16 lg:h-20 lg:w-20 ml-3 mt-2"></img>
+                    <div class="bubble w-fit left shadow h-[30px] lg:h-[50px] text-[14px] lg:text-[20px]">I am
+                        Tanish</div>
+                </div>
+                <div class="message flex items-center justify-start">
+                    <img src="indexass/pixelboyhead.png" class="h-16 w-16 lg:h-20 lg:w-20 ml-3 mt-2"></img>
+                    <p class="bubble w-fit left shadow h-[30px] lg:h-[50px] text-[14px] lg:text-[20px]">I am
+                        <span class="typewriter nocaret"></span>
+                    </p>
+                </div>
+                <div class="message flex items-center justify-end">
+                    <div class="bubble right shadow w-fit h-[30px] lg:h-[50px] text-[14px] lg:text-[20px]">Wow thats
+                        great</div>
+                    <img src="indexass/boyheadright.png" class="h-16 w-16 lg:h-20 lg:w-20 mr-3 mt-2"></img>
+                </div>
+                <div class="message flex items-center justify-start">
+                    <img src="indexass/pixelboyhead.png" class="h-16 w-16 lg:h-20 lg:w-20 ml-3 mt-2"></img>
+                    <a href="#" class="bubble w-fit left shadow  h-[30px] lg:h-[50px] text-[14px] lg:text-[20px]">hire
+                        me
+                        !</a>
+                </div>
+            </div>
+        </div>
+        <div class="bg-gray-900 bg-opacity-50 py-3 w-full flex flex-col md:hidden">
+            <div class="message flex items-center justify-start">
+                <img src="indexass/pixelboyhead.png" class="h-14 w-14 ml-3"></img>
+                <div class="bubble w-fit left shadow h-[30px] text-[10px]">Hello</div>
+            </div>
+            <div class="message flex items-center justify-end">
+                <div class="bubble w-fit right shadow  h-[30px] text-[10px]">Who are you?</div>
+                <img src="indexass/boyheadright.png" class="h-14 w-14 mr-3"></img>
+            </div>
+            <div class="message flex items-center justify-start">
+                <img src="indexass/pixelboyhead.png" class="h-14 w-14 ml-3"></img>
+                <div class="bubble w-fit left shadow  h-[30px] text-[10px]">I am Tanish</div>
+            </div>
+            <div class="message flex items-center justify-start">
+                <img src="indexass/pixelboyhead.png" class="h-14 w-14 ml-3"></img>
+                <p class="bubble w-fit left shadow  h-[30px] text-[10px]">I am
+                    <span class="typewriter nocaret"></span>
+                </p>
+            </div>
+            <div class="message flex items-center justify-end">
+                <div class="bubble w-fit right shadow  h-[30px] text-[10px]">Wow thats great</div>
+                <img src="indexass/boyheadright.png" class="h-14 w-14 mr-3"></img>
+            </div>
+            <div class="message flex items-center justify-start">
+                <img src="indexass/pixelboyhead.png" class="h-14 w-14 ml-3"></img>
+                <a href="#" class="bubble w-fit left shadow  h-[30px] text-[10px]">hire me !</a>
+            </div>
+        </div>
+    </div>
 
     <div class="flex flex-col md:flex-row min-h-screen">
-        <div class="flex-1 flex items-center justify-center md:min-h-screen  border-b-4 md:border-r-4 border-white ">
+        <div class="flex-1 flex items-center justify-center md:min-h-screen   ">
             <div class="border-4 border-white w-11/12 h-9/12 m-5 md:my-10 bg-[#5f5fec] text-white">
-                <p class="title bg-black p-1 headingfont text-white text-[9px] md:text-[16px] lg:text-[23px] border-b-4 border-white">About me!</p>
-                <p class="text-[9px] md:text-[14px] lg:text-[18px] text-start p-1 my-5">
+                <p
+                    class="bg-black p-1 text-white text-[9px] md:text-[16px] lg:text-[23px] border-b-4 border-white">
+                    About me!</p>
+                <p class="text-[9px] md:text-[14px] lg:text-[18px] text-start p-1 my-5 headingfont">
                     Hello! I'm Tanish Vashisth, a passionate developer who finds joy in
                     both crafting code
                     and creating art. With a strong foundation in languages like C++, Python, and JavaScript, I
@@ -98,9 +170,9 @@
                 </p>
             </div>
         </div>
-        
-        <div class="flex-1 flex flex-col items-center justify-center border-b-4 border-white">
-            <div class="border-r-4 border-l-4 border-t-4 border-white w-11/12 h-2/12">
+
+        <div class="flex-1 flex flex-col items-center justify-center ">
+            <div class="border-r-4 border-l-4 border-t-4 border-white w-11/12 h-2/12 bg-black">
                 <div class="flex">
                     <div class="flex items-center justify-start mt-[4px] ml-1 gap-1">
                         <div class="rounded-full bg-red-600 w-4 h-4"></div>
@@ -108,28 +180,32 @@
                         <div class="rounded-full bg-green-600 w-4 h-4"></div>
                     </div>
                     <div class="flex items-center justify-center w-full">
-                        <div class="mt-[6px] text-center text-[14px] headingfont text-white">
+                        <div class="mt-[6px] text-center text-[14px]  text-white">
                             /home/mypc
                         </div>
                     </div>
                 </div>
             </div>
             <div id="terminal"
-                class="p-3 bg-[#282828] border-4 border-white text-[#33FF33] w-11/12 h-[200px] md:h-[300px] text-left text-[10px] md:text-[14px]">
+                class="p-3 bg-[#282828] border-4 border-white text-[#33FF33] w-11/12 h-[200px] md:h-[300px] text-left text-[10px] md:text-[14px] headingfont">
             </div>
             <!-- <audio id="typing-sound" src="typing-sound.mp3" preload="auto"></audio> -->
         </div>
     </div>
-    
-    
+
+
 
     <div class="flex flex-col items-center justify-center min-h-screen" id="skills section">
         <div class="grid grid-cols-1 md:grid-cols-4  mt-4">
 
             <div class="col-span-1 order-2 md:order-1 mx-2 my-2 md:my-0">
                 <div class="flex flex-col w-full h-full border-4 border-white">
-                    <div class="text-center headingfont text-[12px] md:text-[16px] mb-2 py-1 border-b-4 border-white w-full text-white bg-black">Programming Languages</div>
-                    <div class="word-box flex flex-row md:flex-col flex-wrap gap-4 justify-start md:justify-center md:items-center text-[9px] md:text-[14px] mt-2 ml-4"></div>
+                    <div
+                        class="text-center headingfont text-[12px] md:text-[16px] mb-2 py-1 border-b-4 border-white w-full text-white bg-black">
+                        Programming Languages</div>
+                    <div
+                        class="word-box flex flex-row md:flex-col flex-wrap gap-4 justify-start md:justify-center md:items-center text-[9px] md:text-[14px] mt-2 ml-4">
+                    </div>
                 </div>
             </div>
 
@@ -143,25 +219,34 @@
                 </div>
                 <div class="w-full max-w-screen-lg mx-auto relative border-4 border-white flex flex-col md:flex-row">
                     <div class="game-container relative w-full" style="background-color: #63adff;">
-                        <img src="skills.nes/duckhuntbg.png" class="duckhunt-bg h-full w-full object-cover" alt="Duck Hunt">
-                        <img src="skills.nes/centerimage.gif" class="gameend-bg hidden h-full w-full object-cover" alt="Game End">
-                        <img src="skills.nes/flyduck.gif" class="bird hidden absolute w-12 h-12 md:w-20 md:h-20 nes-pointer" alt="Bird">
-                        <button id="start-button" class="bulbula medium buton headingfont nes-pointer">Start Game</button>
-                        <button id="skip-button" class="bulbula  buton headingfont skip-button nes-pointer">Skip Game</button>
+                        <img src="skills.nes/duckhuntbg.png" class="duckhunt-bg h-full w-full object-cover"
+                            alt="Duck Hunt">
+                        <img src="skills.nes/centerimage.gif" class="gameend-bg hidden h-full w-full object-cover"
+                            alt="Game End">
+                        <img src="skills.nes/flyduck.gif"
+                            class="bird hidden absolute w-12 h-12 md:w-20 md:h-20 nes-pointer" alt="Bird">
+                        <button id="start-button" class="bulbula medium buton headingfont nes-pointer">Start
+                            Game</button>
+                        <button id="skip-button" class="bulbula  buton headingfont skip-button nes-pointer">Skip
+                            Game</button>
                     </div>
                 </div>
             </div>
 
             <div class="col-span-1 order-3 md:order-3 mx-2 my-2 md:my-0">
                 <div class="flex flex-col w-full h-full border-4 border-white">
-                    <div class="text-center headingfont text-[12px] md:text-[16px] mb-2 border-b-4 border-white w-full bg-black text-white py-1">Frameworks</div>
-                    <div class="word-box-2 flex flex-row md:flex-col flex-wrap gap-4 justify-start md:justify-center md:items-center text-[9px] md:text-[14px] mt-2 ml-4"></div>
+                    <div
+                        class="text-center headingfont text-[12px] md:text-[16px] mb-2 border-b-4 border-white w-full bg-black text-white py-1">
+                        Frameworks</div>
+                    <div
+                        class="word-box-2 flex flex-row md:flex-col flex-wrap gap-4 justify-start md:justify-center md:items-center text-[9px] md:text-[14px] mt-2 ml-4">
+                    </div>
                 </div>
             </div>
 
         </div>
-   
-        
+
+
         <audio id="loop-sound" src="skills.nes/Intro.mp3" loop></audio>
         <audio id="duckinit-sound" src="skills.nes/duckinit.mp3" loop></audio>
         <audio id="game-end-sound" src="skills.nes/gameend.mp3"></audio>
@@ -171,8 +256,8 @@
         <audio id="fall-sound" src="skills.nes/duckFalling.mp3"></audio>
         <script src="skills.nes/hehe.js" defer></script>
     </div>
-    
-    
+
+
     <footer class="flex items-center justify-center bg-gray-900 py-4 w-full mt-10">
         <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] mr-2">Copyright © 2024 --</p>
         <a href="mailto:tanishvashisth@"
@@ -186,4 +271,3 @@
 </body>
 
 </html>
-
