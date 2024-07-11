@@ -1,11 +1,28 @@
 @font-face {
     font-family: 'Joystick';
-    src: url('fonts/joystix_monospace.otf') format('opentype');
+    src: url('../fonts/joystix_monospace.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Gumball';
+    src: url('../fonts/title.TTF') format('truetype');
+}
+@font-face {
+    font-family: 'Fipps';
+    src: url('../fonts/Fipps.otf') format('opentype');
 }
 
 .headingfont {
     font-family: 'Joystick', monospace;
 }
+
+.title {
+    font-family : 'Gumball', monospace;
+}
+
+.fipps {
+    font-family: 'Fipps', monospace;
+}
+
 
 body,
 html {
