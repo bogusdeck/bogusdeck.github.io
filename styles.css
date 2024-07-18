@@ -30,10 +30,10 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-image: url('bg.png');
+  background-image: url('bg0.png');
   background-size: 100% auto;
   background-position: top left;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-attachment: scroll;
   
 }
