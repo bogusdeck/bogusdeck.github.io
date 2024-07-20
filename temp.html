@@ -26,19 +26,30 @@
             color: #fff;
         }
 
-        /* Apply multiple background images to the background class */
         .background {
-            background-image: url('bg3.png'), url('bg2.png'), url('bg1.png');
-            background-repeat: no-repeat, no-repeat, no-repeat;
-            background-size: 100% auto, 100% auto, 100% auto;
-            background-position: top, top, top center;
-            background-attachment: scroll, scroll, scroll;
-            height: auto;
-            width: auto;
             position: relative;
+        }
+
+        .central-image {
+            display: block;
+            margin: 0 auto;
+            width: 200px; /* Adjust size as needed */
+            height: auto;
+        }
+
+        .astronaut {
+            display: block;
+            margin: 20px auto 0; /* Add some margin on top */
+            width: 15%; /* Adjust size as needed */
+            height: auto;
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
             image-rendering: pixelated;
+        }
+
+        .text {
+            flex: 1;
+            text-align: center;
         }
 
         /* Center the content */
@@ -46,16 +57,25 @@
             text-align: center;
             padding: 50px;
             position: relative;
-            /* Ensure it sits correctly within .background */
         }
     </style>
 </head>
 
 <body>
     <div class="background">
-        <div class="container min-h-screen flex items-center justify-center">
-            <h1>Welcome to My Website</h1>
-            <p>This is a simple website with a background image.</p>
+        <div class="container min-h-screen flex flex-col items-center justify-center">
+            <img id="centralImage" src="logo/bgdck.gif" alt="Central Image" class="central-image h-4/12 w-10/12 md:w-8/12 lg:w-5/12">
+            <div class="flex items-center justify-center w-full mt-6 gap-20">
+                <div class="text-center">
+                    <p>Projects Completed</p>
+                    <p>24</p>
+                </div>
+                <img id="astronautImage" src="indexbg/astronaut.png" alt="Astronaut" class="astronaut mx-4">
+                <div class="text-center">
+                    <p>Code Commit</p>
+                    <p>445</p>
+                </div>
+            </div>
         </div>
         <div class="container min-h-screen flex items-center justify-center">
             <h1>Welcome to My Website</h1>
@@ -78,6 +98,16 @@
             <p>This is a simple website with a background image.</p>
         </div>
     </div>
+
+    <script>
+        function updateBackgrounds() {
+            const scrollY = window.scrollY;
+            document.getElementById('centralImage').style.transform = `translateY(${scrollY * 0.5}px)`;
+            document.getElementById('astronautImage').style.transform = `translateY(${scrollY * 0.3}px)`;
+        }
+
+        window.addEventListener('scroll', updateBackgrounds);
+    </script>
 </body>
 
 </html>
