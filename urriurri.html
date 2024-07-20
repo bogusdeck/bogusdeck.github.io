@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Background Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Reset some default styles */
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Apply background image to the body */
+        body {
+            background-image: url('bg0.png');
+            background-repeat: repeat-y repeat-x;
+            background-size: 30% auto;
+            background-position: top center;
+            background-attachment: scroll;
+            color: #fff;
+        }
+
+        /* Apply multiple background images to the background class */
+        .background {
+            background-repeat: no-repeat;
+            height: auto;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+        }
+
+        .background-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #bg1 {
+            background-image: url('bg1.png');
+        }
+
+        #bg2 {
+            background-image: url('bg2.png');
+        }
+
+        #bg3 {
+            background-image: url('bg3.png');
+        }
+
+        /* Center the content */
+        .container {
+            text-align: center;
+            padding: 50px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div id="bg1" class="background-layer"></div>
+        <div id="bg2" class="background-layer"></div>
+        <div id="bg3" class="background-layer"></div>
+
+        <div class="container min-h-screen flex items-center justify-center">
+            <h1>Welcome to My Website</h1>
+            <p>This is a simple website with a background image.</p>
+        </div>
+        <div class="container min-h-screen flex items-center justify-center">
+            <h1>Welcome to My Website</h1>
+            <p>This is a simple website with a background image.</p>
+        </div>
+        <div class="container min-h-screen flex items-center justify-center">
+            <h1>Welcome to My Website</h1>
+            <p>This is a simple website with a background image.</p>
+        </div>
+        <div class="container min-h-screen flex items-center justify-center">
+            <h1>Welcome to My Website</h1>
+            <p>This is a simple website with a background image.</p>
+        </div>
+        <div class="container min-h-screen flex items-center justify-center">
+            <h1>Welcome to My Website</h1>
+            <p>This is a simple website with a background image.</p>
+        </div>
+        <div class="container min-h-screen flex items-center justify-center">
+            <h1>Welcome to My Website</h1>
+            <p>This is a simple website with a background image.</p>
+        </div>
+    </div>
+
+    <script>
+        function updateBackgrounds() {
+            const scrollY = window.scrollY;
+            document.getElementById('bg1').style.transform = `translateY(${scrollY * 0.5}px)`;
+            document.getElementById('bg2').style.transform = `translateY(${scrollY * 0.3}px)`;
+            document.getElementById('bg3').style.transform = `translateY(${scrollY * 0.1}px)`;
+        }
+
+        window.addEventListener('scroll', updateBackgrounds);
+    </script>
+</body>
+
+</html>
