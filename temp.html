@@ -13,7 +13,9 @@
             margin: 0;
             padding: 0;
             height: 100%;
+            width: 100%;
             font-family: Arial, sans-serif;
+            position: relative; /* Ensure body is the reference point for absolute positioning */
         }
 
         /* Apply background image to the body */
@@ -23,11 +25,19 @@
             background-size: 30% auto;
             background-position: top center;
             background-attachment: scroll;
-            color: #fff;
+            color: white;
         }
 
-        .background {
-            position: relative;
+        /* Custom styles for the sections */
+        .section {
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1rem;
+            position: relative; /* Ensure sections don't affect positioning of the images */
+            z-index: 1; /* Keep sections above background images if necessary */
         }
 
         .central-image {
@@ -47,66 +57,78 @@
             image-rendering: pixelated;
         }
 
-        .text {
-            flex: 1;
-            text-align: center;
+        .bottom-right-image {
+            position: absolute; /* Absolute positioning */
+            bottom: 0; /* Bottom of the page */
+            right: 0; /* Right of the page */
+            width: 20%; /* Adjust size as needed */
+            height: auto;
+            margin: 0; /* Ensure no margin is affecting positioning */
         }
 
-        /* Center the content */
-        .container {
-            text-align: center;
-            padding: 50px;
-            position: relative;
+        .left-center-image {
+            position: absolute; /* Absolute positioning */
+            left: 0; /* Left of the page */
+            top: 50%; /* Center vertically */
+            transform: translateY(-50%); /* Center vertically */
+            width: 20%; /* Adjust size as needed */
+            height: auto;
+        }
+
+        .left-image, .right-image {
+            position: absolute;
+            transform: translateY(-50%);
+            width: 15%; /* Adjust size as needed */
+            height: auto;
+            margin: 0; /* Ensure no margin is affecting positioning */
+        }
+
+        .left-image {
+            left: 0;
+            top: 25%;
+        }
+
+        .right-image {
+            right: 0;
+            top: 60%;
+        }
+
+        .img {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
         }
     </style>
 </head>
 
 <body>
-    <div class="background">
-        <div class="container min-h-screen flex flex-col items-center justify-center">
-            <img id="centralImage" src="logo/bgdck.gif" alt="Central Image" class="central-image h-4/12 w-10/12 md:w-8/12 lg:w-5/12">
-            <div class="flex items-center justify-center w-full mt-6 gap-20">
-                <div class="text-center">
-                    <p>Projects Completed</p>
-                    <p>24</p>
-                </div>
-                <img id="astronautImage" src="indexbg/astronaut.png" alt="Astronaut" class="astronaut mx-4">
-                <div class="text-center">
-                    <p>Code Commit</p>
-                    <p>445</p>
-                </div>
+    <div class="section text-white min-h-screen flex flex-col items-center justify-center">
+        <img id="centralImage" src="logo/bgdck.gif" alt="Central Image" class="central-image h-4/12 w-10/12 md:w-8/12 lg:w-5/12">
+        <div class="flex items-center justify-center w-full mt-6 gap-20">
+            <div class="text-center">
+                <p>Projects Completed</p>
+                <p>24</p>
+            </div>
+            <img id="astronautImage" src="indexbg/astronaut.png" alt="Astronaut" class="astronaut mx-4">
+            <div class="text-center">
+                <p>Code Commit</p>
+                <p>445</p>
             </div>
         </div>
-        <div class="container min-h-screen flex items-center justify-center">
-            <h1>Welcome to My Website</h1>
-            <p>This is a simple website with a background image.</p>
-        </div>
-        <div class="container min-h-screen flex items-center justify-center">
-            <h1>Welcome to My Website</h1>
-            <p>This is a simple website with a background image.</p>
-        </div>
-        <div class="container min-h-screen flex items-center justify-center">
-            <h1>Welcome to My Website</h1>
-            <p>This is a simple website with a background image.</p>
-        </div>
-        <div class="container min-h-screen flex items-center justify-center">
-            <h1>Welcome to My Website</h1>
-            <p>This is a simple website with a background image.</p>
-        </div>
-        <div class="container min-h-screen flex items-center justify-center">
-            <h1>Welcome to My Website</h1>
-            <p>This is a simple website with a background image.</p>
-        </div>
+    </div>
+    <div class="section text-white">Section 2
+        <img src="indexbg/smallplanetleft.png" alt="Left Image" class="img left-image">
+        <img src="indexbg/smallplanetright.png" alt="Right Image" class="img right-image">
+    </div>
+    <div class="section text-white">Section 3
+        <img src="indexbg/bigplanetwithsmallplanet.png" alt="Left Center Image" class="left-center-image">
+    </div>
+    <div class="section text-white">Section 4
+        <img src="indexbg/bottomplanet.png" alt="Bottom Right Image" class="bottom-right-image">
     </div>
 
     <script>
-        function updateBackgrounds() {
-            const scrollY = window.scrollY;
-            document.getElementById('centralImage').style.transform = `translateY(${scrollY * 0.5}px)`;
-            document.getElementById('astronautImage').style.transform = `translateY(${scrollY * 0.3}px)`;
-        }
-
-        window.addEventListener('scroll', updateBackgrounds);
+        // Add JavaScript here if needed
     </script>
 </body>
 

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Background Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Reset some default styles */
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Apply background image to the body */
+        body {
+            background-image: url('bg0.png');
+            background-repeat: repeat-y repeat-x;
+            background-size: 30% auto;
+            background-position: top center;
+            background-attachment: scroll;
+            color: white;
+        }
+
+        .background {
+            position: relative;
+        }
+
+        .central-image {
+            display: block;
+            margin: 0 auto;
+            width: 200px;
+            /* Adjust size as needed */
+            height: auto;
+        }
+
+        .astronaut {
+            display: block;
+            margin: 20px auto 0;
+            /* Add some margin on top */
+            width: 15%;
+            /* Adjust size as needed */
+            height: auto;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+        }
+
+        .text {
+            flex: 1;
+            text-align: center;
+        }
+
+        /* Center the content */
+        .container {
+            text-align: center;
+            position: relative;
+            width: 100%;
+        }
+
+        .bottom-right-image {
+            position: absolute;
+            bottom: 0;
+            /* Adjust as needed */
+            right: 0;
+            /* Adjust as needed */
+            width: 20%;
+            /* Adjust size as needed */
+            height: auto;
+            margin: 0;
+            /* Ensure no margin is affecting positioning */
+        }
+
+        .left-center-image {
+            position: absolute;
+            left: 0;
+            /* Adjust as needed */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20%;
+            /* Adjust size as needed */
+            height: auto;
+        }
+
+        .left-image,
+        .right-image {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15%;
+            /* Adjust size as needed */
+            height: auto;
+            margin: 0;
+            /* Ensure no margin is affecting positioning */
+        }
+
+        .left-image {
+            left: 0;
+        }
+
+        .right-image {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div class="container min-h-screen flex flex-col items-center justify-center relative w-full">
+            <img id="centralImage" src="logo/bgdck.gif" alt="Central Image"
+                class="central-image h-4/12 w-10/12 md:w-8/12 lg:w-5/12">
+            <img src="indexbg/smallplanetleft.png" alt="Left Image" class="left-image">
+            <img src="indexbg/smallplanetright.png" alt="Right Image" class="right-image">
+            <div class="flex items-center justify-center w-full mt-6 gap-20">
+                <div class="text-center">
+                    <p>Projects Completed</p>
+                    <p>24</p>
+                </div>
+                <img id="astronautImage" src="indexbg/astronaut.png" alt="Astronaut" class="astronaut mx-4">
+                <div class="text-center">
+                    <p>Code Commit</p>
+                    <p>445</p>
+                </div>
+            </div>
+        </div>
+        <div class="container min-h-screen flex items-center justify-center">
+            <h1>Welcome to My Website</h1>
+            <p>This is a simple website with a background image.</p>
+        </div>
+        <div class="container min-h-screen flex items-center justify-center">
+            <h1>Welcome to My Website</h1>
+            <p>This is a simple website with a background image.</p>
+        </div>
+        <div class="container min-h-screen flex items-center justify-center">
+            <h1>Welcome to My Website</h1>
+            <p>This is a simple website with a background image.</p>
+        </div>
+        <div class="container min-h-screen flex items-center justify-center">
+            <h1>Welcome to My Website</h1>
+            <p>This is a simple website with a background image.</p>
+        </div>
+        <div class="container min-h-screen flex items-center justify-center">
+            <h1>Welcome to My Website</h1>
+            <p>This is a simple website with a background image.</p>
+        </div>
+        <div class="container min-h-screen flex items-center justify-center relative w-full">
+            <h1>Welcome to My Website</h1>
+            <p>This is a simple website with a background image.</p>
+        </div>
+        <img src="indexbg/bottomplanet.png" alt="Bottom Right Image" class="bottom-right-image">
+        <img src="indexbg/bigplanetwithsmallplanet.png" alt="Left Center Image" class="left-center-image">
+    </div>
+
+    <script>
+        function updateBackgrounds() {
+            const scrollY = window.scrollY;
+            document.getElementById('centralImage').style.transform = `translateY(${scrollY * 0.5}px)`;
+            document.getElementById('astronautImage').style.transform = `translateY(${scrollY * 0.3}px)`;
+        }
+
+        window.addEventListener('scroll', updateBackgrounds);
+    </script>
+</body>
+
+</html>
