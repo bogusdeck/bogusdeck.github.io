@@ -40,33 +40,21 @@ html {
 
 .floating-header {
     position: fixed;
-    top: 15px;
-    /* Margin from the top */
+    top: 10px;
     left: 20px;
-    /* Margin from the left */
     right: 20px;
-    /* Margin from the right */
     z-index: 1000;
     background-color: white;
     border: 2px solid #d4d4d4;
-    /* Border around the header */
     border-radius: 8px;
-    /* Rounded corners */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* Shadow for the floating effect */
-    height: 60px;
-    /* Slimmer height */
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* Distribute items at the ends */
-    padding: 0 20px;
-    /* Padding inside the header */
+    padding: 0 10px;
 }
 
-
-
-/* Modal styles */
 .modal {
     display: none;
     position: fixed;

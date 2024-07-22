@@ -36,7 +36,7 @@ html {
 }
 
 body {
-  background-image: url('bg0.png');
+  background-image: url('indexbg/bg0.png');
   background-repeat: repeat;
   background-position: top center;
   background-attachment: scroll;
