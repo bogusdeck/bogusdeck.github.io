@@ -4,12 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOYE MOYE</title>
+    <title>TANV</title>
     <link rel="icon" href="/favicon.ico">
     <!-- minify -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="bubblechat.css">
-    <!-- <link rel="stylesheet" href="hehe.css"> -->
 
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
     <!-- latest -->
@@ -21,6 +20,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+
+    </style>
 </head>
 
 <body>
@@ -62,200 +64,193 @@
         </div>
     </div>
 
-    <div class="w-full flex flex-col items-center justify-center min-h-screen">
-        <div class="container">
-            <div class="bogusimage h-4/12 w-10/12 md:w-8/12 lg:w-5/12 top-20" id="image"></div>
-            <div class="w-full flex flex-col md:flex-row items-center justify-evenly text-white mt-0 text-[12px] md:text-[14px] lg:mt-14 lg:text-[18px] gap-3">
-                <div class="text-center">
-                    <p>Projects Completed</p>
-                    <p>24</p>
-                </div>
-                <div class="text-center">
-                    <p>Code Commit</p>
-                    <p>445</p>
-                </div>
-                <div class="text-center">
-                    <p>Years of Experience</p>
-                    <p>1</p>
-                </div>
+    <div class="section text-white min-h-screen flex flex-col items-center justify-center z-20">
+        <img src="indexbg/blast.png" alt="Top Image" class="img top-image lg:hidden">
+        <div class="img bogusimage h-4/12 w-10/12 md:w-8/12 lg:w-5/12 top-20 z-10" id="image"></div>
+        <div class="flex flex-col sm:flex-row items-center justify-evenly w-full gap-6 my-5 sm:my-8">
+            <div class="order-2 sm:order-1 text-center">
+                <p>Projects<br>Completed</p>
+                <p>24</p>
+            </div>
+            <img id="astronautImage" src="indexbg/astronaut.png" alt="Astronaut"
+                class="img order-1 sm:order-2 astronaut w-3/6 min-[430px]:w-5/12 sm:w-4/12 md:w-3/12 xl:w-2/12 z-50">
+            <div class="order-3 text-center">
+                <p>Code<br>Commit</p>
+                <p>445</p>
             </div>
         </div>
     </div>
 
-    <div class="flex flex-col items-center justify-center min-h-screen ">
-        <div class="hidden md:flex items-center justify-center w-1/2 h-11/12 md:w-3/4 lg:h-full mt-14 lg:mt-5 ">
-            <div class="bg-white bg-opacity-50 w-11/12 p-3 rounded-[14px]">
-                <div class="message flex items-center justify-start ">
-                    <img src="indexass/pixelboyhead.png" class="h-16 w-16 lg:h-20 lg:w-20 ml-3 mt-2"></img>
-                    <div class="bubble w-fit left shadow h-[30px] lg:h-[50px] text-[14px] lg:text-[20px] ">Hello
-                    </div>
+    <div class="section text-white z-10">
+        <img src="indexbg/smallplanetleft.png" alt="Left Image"
+            class="img left-image w-[25%] min-[425px]:w-[20%] md:w-[15%] top-[20%]">
+        <img src="indexbg/smallplanetright.png" alt="Right Image"
+            class="img right-image w-[30%] min-[425px]:w-[20%] md:w-[15%] z-50 top-[90%] ">
+
+        <div
+            class="flex flex-col items-center justify-center min-h-screen w-full md:w-3/4 lg:h-full mt-14 lg:mt-5 z-30">
+            <div class="bg-gray-900 bg-opacity-50 py-3 w-full flex flex-col">
+                <div class="message flex items-center justify-start">
+                    <img src="indexass/pixelboyhead.png"
+                        class="h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 ml-3 mt-2"></img>
+                    <div
+                        class="bubble w-fit left shadow h-[30px]  lg:h-[40px]  text-[10px] md:text-[14px] lg:text-[20px]">
+                        Hello</div>
                 </div>
                 <div class="message flex items-center justify-end">
-                    <div class="bubble w-fit right shadow h-[30px] lg:h-[50px] text-[14px] lg:text-[20px]">Who are
-                        you?</div>
-                    <img src="indexass/boyheadright.png" class="h-16 w-16 lg:h-20 lg:w-20 mr-3 mt-2"></img>
+                    <div
+                        class="bubble w-fit right shadow  h-[30px] lg:h-[40px]  text-[10px] md:text-[14px] lg:text-[20px]">
+                        Who are you?</div>
+                    <img src="indexass/boyheadright.png"
+                        class="h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 mr-3 mt-2 "></img>
                 </div>
                 <div class="message flex items-center justify-start">
-                    <img src="indexass/pixelboyhead.png" class="h-16 w-16 lg:h-20 lg:w-20 ml-3 mt-2"></img>
-                    <div class="bubble w-fit left shadow h-[30px] lg:h-[50px] text-[14px] lg:text-[20px]">I am
-                        Tanish</div>
+                    <img src="indexass/pixelboyhead.png"
+                        class="h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 ml-3 mt-2"></img>
+                    <div
+                        class="bubble w-fit left shadow  h-[30px] lg:h-[40px]  text-[10px] md:text-[14px] lg:text-[20px]">
+                        I am Tanish</div>
                 </div>
                 <div class="message flex items-center justify-start">
-                    <img src="indexass/pixelboyhead.png" class="h-16 w-16 lg:h-20 lg:w-20 ml-3 mt-2"></img>
-                    <p class="bubble w-fit left shadow h-[30px] lg:h-[50px] text-[14px] lg:text-[20px]">I am
+                    <img src="indexass/pixelboyhead.png"
+                        class="h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 ml-3 mt-2"></img>
+                    <p class="bubble w-fit left shadow  h-[40px] lg:h-[40px] text-[10px] md:text-[14px] lg:text-[20px]">
+                        I am
                         <span class="typewriter nocaret"></span>
                     </p>
                 </div>
                 <div class="message flex items-center justify-end">
-                    <div class="bubble right shadow w-fit h-[30px] lg:h-[50px] text-[14px] lg:text-[20px]">Wow thats
-                        great</div>
-                    <img src="indexass/boyheadright.png" class="h-16 w-16 lg:h-20 lg:w-20 mr-3 mt-2"></img>
+                    <div
+                        class="bubble w-fit right shadow  h-[45px] lg:h-[40px] text-[10px] md:text-[14px] lg:text-[20px]">
+                        Wow thats great</div>
+                    <img src="indexass/boyheadright.png"
+                        class="h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 mr-3 mt-2"></img>
                 </div>
                 <div class="message flex items-center justify-start">
-                    <img src="indexass/pixelboyhead.png" class="h-16 w-16 lg:h-20 lg:w-20 ml-3 mt-2"></img>
-                    <a href="#" class="bubble w-fit left shadow  h-[30px] lg:h-[50px] text-[14px] lg:text-[20px]">hire
-                        me
-                        !</a>
+                    <img src="indexass/pixelboyhead.png"
+                        class="h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 ml-3 mt-2"></img>
+                    <a href="#"
+                        class="bubble w-fit left shadow h-[30px] lg:h-[40px] text-[10px] md:text-[14px] lg:text-[20px]">hire
+                        me !</a>
                 </div>
             </div>
         </div>
-        <div class="bg-gray-900 bg-opacity-50 py-3 w-full flex flex-col md:hidden">
-            <div class="message flex items-center justify-start">
-                <img src="indexass/pixelboyhead.png" class="h-14 w-14 ml-3"></img>
-                <div class="bubble w-fit left shadow h-[30px] text-[10px]">Hello</div>
+
+    </div>
+
+    <div class="section text-white">
+        <img src="indexbg/bigplanetwithsmallplanet.png" alt="Left Center Image"
+            class="img left-center-image w-1/2 min-[425px]:w-[30%] md:w-[25%] xl:w-[20%] top-[20%]">
+        <div class="flex flex-col md:flex-row min-h-screen">
+            <div class="flex-1 flex items-center justify-center md:min-h-screen   ">
+                <div class="border-4 border-white w-11/12 h-9/12 m-5 md:my-10 bg-[#5f5fec] text-white">
+                    <p class="bg-black p-1 text-white text-[9px] md:text-[16px] lg:text-[23px] border-b-4 border-white">
+                        About me!</p>
+                    <p class="text-[9px] md:text-[14px] lg:text-[18px] text-start p-1 my-5 headingfont">
+                        Hello! I'm Tanish Vashisth, a passionate developer who finds joy in
+                        both crafting code
+                        and creating art. With a strong foundation in languages like C++, Python, and JavaScript, I
+                        specialize in
+                        frameworks like Django, Flask, Next.js, React.js, Node.js, and database management with MongoDB
+                        and
+                        SQL. My
+                        projects are driven by a purpose, whether it's building web applications, games using Pygame, or
+                        exploring the
+                        intersection of technology and art. When I'm not coding, you'll find me lost in the melodies of
+                        music, fueling
+                        my creativity for the next project. Let's collaborate and bring ideas to life!
+                    </p>
+                </div>
             </div>
-            <div class="message flex items-center justify-end">
-                <div class="bubble w-fit right shadow  h-[30px] text-[10px]">Who are you?</div>
-                <img src="indexass/boyheadright.png" class="h-14 w-14 mr-3"></img>
-            </div>
-            <div class="message flex items-center justify-start">
-                <img src="indexass/pixelboyhead.png" class="h-14 w-14 ml-3"></img>
-                <div class="bubble w-fit left shadow  h-[30px] text-[10px]">I am Tanish</div>
-            </div>
-            <div class="message flex items-center justify-start">
-                <img src="indexass/pixelboyhead.png" class="h-14 w-14 ml-3"></img>
-                <p class="bubble w-fit left shadow  h-[30px] text-[10px]">I am
-                    <span class="typewriter nocaret"></span>
-                </p>
-            </div>
-            <div class="message flex items-center justify-end">
-                <div class="bubble w-fit right shadow  h-[30px] text-[10px]">Wow thats great</div>
-                <img src="indexass/boyheadright.png" class="h-14 w-14 mr-3"></img>
-            </div>
-            <div class="message flex items-center justify-start">
-                <img src="indexass/pixelboyhead.png" class="h-14 w-14 ml-3"></img>
-                <a href="#" class="bubble w-fit left shadow  h-[30px] text-[10px]">hire me !</a>
+
+            <div class="flex-1 flex flex-col items-center justify-center z-30">
+                <div class="border-r-4 border-l-4 border-t-4 border-white w-11/12 h-2/12 bg-black">
+                    <div class="flex">
+                        <div class="flex items-center justify-start mt-[4px] ml-1 gap-1">
+                            <div class="rounded-full bg-red-600 w-4 h-4"></div>
+                            <div class="rounded-full bg-yellow-400 w-4 h-4"></div>
+                            <div class="rounded-full bg-green-600 w-4 h-4"></div>
+                        </div>
+                        <div class="flex items-center justify-center w-full">
+                            <div class="mt-[6px] text-center text-[14px]  text-white">
+                                /home/mypc
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="terminal"
+                    class="p-3 bg-[#282828] border-4 border-white text-[#33FF33] w-11/12 h-[200px] md:h-[300px] text-left text-[10px] md:text-[14px] headingfont">
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="flex flex-col md:flex-row min-h-screen">
-        <div class="flex-1 flex items-center justify-center md:min-h-screen   ">
-            <div class="border-4 border-white w-11/12 h-9/12 m-5 md:my-10 bg-[#5f5fec] text-white">
-                <p
-                    class="bg-black p-1 text-white text-[9px] md:text-[16px] lg:text-[23px] border-b-4 border-white">
-                    About me!</p>
-                <p class="text-[9px] md:text-[14px] lg:text-[18px] text-start p-1 my-5 headingfont">
-                    Hello! I'm Tanish Vashisth, a passionate developer who finds joy in
-                    both crafting code
-                    and creating art. With a strong foundation in languages like C++, Python, and JavaScript, I
-                    specialize in
-                    frameworks like Django, Flask, Next.js, React.js, Node.js, and database management with MongoDB and
-                    SQL. My
-                    projects are driven by a purpose, whether it's building web applications, games using Pygame, or
-                    exploring the
-                    intersection of technology and art. When I'm not coding, you'll find me lost in the melodies of
-                    music, fueling
-                    my creativity for the next project. Let's collaborate and bring ideas to life!
-                </p>
-            </div>
-        </div>
+    <div class="section text-white">
+        <div class="flex flex-col items-center justify-center min-h-screen" id="skills section">
+            <div class="grid grid-cols-1 md:grid-cols-4  mt-4">
 
-        <div class="flex-1 flex flex-col items-center justify-center ">
-            <div class="border-r-4 border-l-4 border-t-4 border-white w-11/12 h-2/12 bg-black">
-                <div class="flex">
-                    <div class="flex items-center justify-start mt-[4px] ml-1 gap-1">
-                        <div class="rounded-full bg-red-600 w-4 h-4"></div>
-                        <div class="rounded-full bg-yellow-400 w-4 h-4"></div>
-                        <div class="rounded-full bg-green-600 w-4 h-4"></div>
+                <div class="col-span-1 order-2 md:order-1 mx-2 my-2 md:my-0">
+                    <div class="flex flex-col w-full h-full border-4 border-white">
+                        <div
+                            class="text-center headingfont text-[12px] md:text-[16px] mb-2 py-1 border-b-4 border-white w-full text-white bg-black">
+                            Programming Languages</div>
+                        <div
+                            class="word-box flex flex-row md:flex-col flex-wrap gap-4 justify-start md:justify-center md:items-center text-[9px] md:text-[14px] mt-2 ml-4">
+                        </div>
                     </div>
-                    <div class="flex items-center justify-center w-full">
-                        <div class="mt-[6px] text-center text-[14px]  text-white">
-                            /home/mypc
+                </div>
+
+                <div class="col-span-1 md:col-span-2 order-1 md:order-2">
+                    <div class="border-t-4 border-l-4 border-r-4 border-white w-full max-w-screen-lg mx-auto">
+                        <div class="flex items-center justify-center w-full h-full bg-black">
+                            <div class="text-center headingfont text-xl text-white">
+                                SKILLS.NES
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="w-full max-w-screen-lg mx-auto relative border-4 border-white flex flex-col md:flex-row">
+                        <div class="game-container relative w-full" style="background-color: #63adff;">
+                            <img src="skills.nes/duckhuntbg.png" class="duckhunt-bg h-full w-full object-cover"
+                                alt="Duck Hunt">
+                            <img src="skills.nes/centerimage.gif" class="gameend-bg hidden h-full w-full object-cover"
+                                alt="Game End">
+                            <img src="skills.nes/flyduck.gif"
+                                class="bird hidden absolute w-12 h-12 md:w-20 md:h-20 nes-pointer" alt="Bird">
+                            <button id="start-button" class="bulbula medium buton headingfont nes-pointer">Start
+                                Game</button>
+                            <button id="skip-button" class="bulbula  buton headingfont skip-button nes-pointer">Skip
+                                Game</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-span-1 order-3 md:order-3 mx-2 my-2 md:my-0">
+                    <div class="flex flex-col w-full h-full border-4 border-white">
+                        <div
+                            class="text-center headingfont text-[12px] md:text-[16px] mb-2 border-b-4 border-white w-full bg-black text-white py-1">
+                            Frameworks</div>
+                        <div
+                            class="word-box-2 flex flex-row md:flex-col flex-wrap gap-4 justify-start md:justify-center md:items-center text-[9px] md:text-[14px] mt-2 ml-4">
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="terminal"
-                class="p-3 bg-[#282828] border-4 border-white text-[#33FF33] w-11/12 h-[200px] md:h-[300px] text-left text-[10px] md:text-[14px] headingfont">
-            </div>
-            <!-- <audio id="typing-sound" src="typing-sound.mp3" preload="auto"></audio> -->
+
+
+            <audio id="loop-sound" src="skills.nes/Intro.mp3" loop></audio>
+            <audio id="duckinit-sound" src="skills.nes/duckinit.mp3" loop></audio>
+            <audio id="game-end-sound" src="skills.nes/gameend.mp3"></audio>
+            <audio id="click-sound" src="skills.nes/shot.mp3"></audio>
+            <audio id="fly-sound" src="skills.nes/wingFlap20sec.mp3" loop></audio>
+            <audio id="shot-sound" src="skills.nes/shot.mp3"></audio>
+            <audio id="fall-sound" src="skills.nes/duckFalling.mp3"></audio>
+            <script src="skills.nes/hehe.js" defer></script>
         </div>
+        <img src="indexbg/bigbottomrightcropped.png" alt="Bottom Right Image"
+            class="img bottom-right-image w-[60%] min-[425px]:w-[30%] md:w-[40%] lg:w-[25%] xl:w-[20%] top-[20%] min-[375px]:top-[10%] md:top-[-10%] min-[800px]:w-[30%]">
     </div>
-
-
-
-    <div class="flex flex-col items-center justify-center min-h-screen" id="skills section">
-        <div class="grid grid-cols-1 md:grid-cols-4  mt-4">
-
-            <div class="col-span-1 order-2 md:order-1 mx-2 my-2 md:my-0">
-                <div class="flex flex-col w-full h-full border-4 border-white">
-                    <div
-                        class="text-center headingfont text-[12px] md:text-[16px] mb-2 py-1 border-b-4 border-white w-full text-white bg-black">
-                        Programming Languages</div>
-                    <div
-                        class="word-box flex flex-row md:flex-col flex-wrap gap-4 justify-start md:justify-center md:items-center text-[9px] md:text-[14px] mt-2 ml-4">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-span-1 md:col-span-2 order-1 md:order-2">
-                <div class="border-t-4 border-l-4 border-r-4 border-white w-full max-w-screen-lg mx-auto">
-                    <div class="flex items-center justify-center w-full h-full">
-                        <div class="text-center headingfont text-xl text-white">
-                            SKILLS.NES
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full max-w-screen-lg mx-auto relative border-4 border-white flex flex-col md:flex-row">
-                    <div class="game-container relative w-full" style="background-color: #63adff;">
-                        <img src="skills.nes/duckhuntbg.png" class="duckhunt-bg h-full w-full object-cover"
-                            alt="Duck Hunt">
-                        <img src="skills.nes/centerimage.gif" class="gameend-bg hidden h-full w-full object-cover"
-                            alt="Game End">
-                        <img src="skills.nes/flyduck.gif"
-                            class="bird hidden absolute w-12 h-12 md:w-20 md:h-20 nes-pointer" alt="Bird">
-                        <button id="start-button" class="bulbula medium buton headingfont nes-pointer">Start
-                            Game</button>
-                        <button id="skip-button" class="bulbula  buton headingfont skip-button nes-pointer">Skip
-                            Game</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-span-1 order-3 md:order-3 mx-2 my-2 md:my-0">
-                <div class="flex flex-col w-full h-full border-4 border-white">
-                    <div
-                        class="text-center headingfont text-[12px] md:text-[16px] mb-2 border-b-4 border-white w-full bg-black text-white py-1">
-                        Frameworks</div>
-                    <div
-                        class="word-box-2 flex flex-row md:flex-col flex-wrap gap-4 justify-start md:justify-center md:items-center text-[9px] md:text-[14px] mt-2 ml-4">
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-
-        <audio id="loop-sound" src="skills.nes/Intro.mp3" loop></audio>
-        <audio id="duckinit-sound" src="skills.nes/duckinit.mp3" loop></audio>
-        <audio id="game-end-sound" src="skills.nes/gameend.mp3"></audio>
-        <audio id="click-sound" src="skills.nes/shot.mp3"></audio>
-        <audio id="fly-sound" src="skills.nes/wingFlap20sec.mp3" loop></audio>
-        <audio id="shot-sound" src="skills.nes/shot.mp3"></audio>
-        <audio id="fall-sound" src="skills.nes/duckFalling.mp3"></audio>
-        <script src="skills.nes/hehe.js" defer></script>
-    </div>
+    <div class="section text-white"> </div>
 
 
     <footer class="flex items-center justify-center bg-gray-900 py-4 w-full mt-10">
@@ -266,7 +261,6 @@
     <button id="scrollToTop" type="button" class="nes-btn is-error">
         ↑
     </button>
-    <script src="hehe.js"></script>
     <script src="script.js"></script>
 </body>
 

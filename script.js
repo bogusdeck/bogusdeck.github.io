@@ -1,3 +1,4 @@
+// Scroll Event Listener
 window.addEventListener("scroll", function () {
   var nav = document.querySelector("nav");
   var logoText = document.querySelector(".logo-text");
@@ -21,6 +22,7 @@ document.getElementById("scrollToTop").addEventListener("click", function () {
   });
 });
 
+// Typewriter Effect
 const lines = [
   "bash-3.2$ who am i",
   "Tanish Vashisth",
@@ -33,7 +35,6 @@ const lines = [
 const terminal = document.getElementById("terminal");
 const typingSound = document.getElementById("typing-sound");
 let currentIndex = 0;
-let lineIndex = 0;
 let charIndex = 0;
 
 const typeWriter = () => {
@@ -41,11 +42,10 @@ const typeWriter = () => {
     setTimeout(() => {
       currentIndex = 0;
       terminal.innerHTML = "";
-      // typingSound.pause();
-      // typingSound.currentTime = 0;
-      setTimeout(typeWriter, 0); // Start typing immediately after clearing
-    }, 5000); // 5-second delay before clearing the terminal
-    return; // Exit the function to prevent further execution until the timeout completes
+     
+      setTimeout(typeWriter, 0); 
+    }, 5000); 
+    return; 
   }
 
   const line = lines[currentIndex];
@@ -53,14 +53,13 @@ const typeWriter = () => {
   if (charIndex < line.length) {
     terminal.innerHTML += line.charAt(charIndex);
     charIndex++;
-    // typingSound.play(); // Play typing sound
   } else {
     terminal.innerHTML += "<br>";
     currentIndex++;
     charIndex = 0;
   }
 
-  setTimeout(typeWriter, 75); // Adjust the timeout value for typing speed
+  setTimeout(typeWriter, 75); 
 };
 
 const observer = new IntersectionObserver((entries, observer) => {
@@ -75,26 +74,28 @@ const observer = new IntersectionObserver((entries, observer) => {
 
 observer.observe(terminal);
 
+// Modal Functionality
 document.addEventListener('DOMContentLoaded', () => {
   const menuToggle = document.getElementById('menu-toggle');
   const modalBg = document.getElementById('modal-bg');
   const closeModal = document.getElementById('close-modal');
 
   menuToggle.addEventListener('click', () => {
-      modalBg.classList.remove('hidden');
+    modalBg.classList.remove('hidden');
   });
 
   closeModal.addEventListener('click', () => {
-      modalBg.classList.add('hidden');
+    modalBg.classList.add('hidden');
   });
 
   modalBg.addEventListener('click', (e) => {
-      if (e.target === modalBg) {
-          modalBg.classList.add('hidden');
-      }
+    if (e.target === modalBg) {
+      modalBg.classList.add('hidden');
+    }
   });
 });
 
+// Mouse Move Effect
 (function () {
   "use strict";
 
@@ -112,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function tilt(x, y) {
-    let force = 10; // Reduced the movement by lowering the force value
+    let force = 20; 
     let rx = y * force;
     let ry = -x * force;
 
@@ -121,3 +122,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   bindMouse();
 })();
+
+// Parallax Effect
+function updateBackgrounds() {
+  const scrollY = window.scrollY;
+  // document.getElementById('image').style.transform = `translateY(${scrollY * 0.5}px)`;
+  document.getElementById('astronautImage').style.transform = `translateY(${scrollY * 0.6}px)`;
+  document.querySelector('.left-image').style.transform = `translateY(${scrollY * 0.3}px)`;
+  document.querySelector('.right-image').style.transform = `translateY(${scrollY * 0.4}px)`;
+  document.querySelector('.left-center-image').style.transform = `translateY(${scrollY * 0.3}px)`;
+  document.querySelector('.bottom-right-image').style.transform = `translateY(${scrollY * 0.3}px)`;
+}
+
+window.addEventListener('scroll', updateBackgrounds);

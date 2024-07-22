@@ -2,10 +2,12 @@
   font-family: 'Joystick';
   src: url('../fonts/joystix_monospace.otf') format('opentype');
 }
+
 @font-face {
   font-family: 'Gumball';
   src: url('../fonts/title.TTF') format('truetype');
 }
+
 @font-face {
   font-family: 'Fipps';
   src: url('../fonts/Fipps.otf') format('opentype');
@@ -16,7 +18,7 @@
 }
 
 .title {
-  font-family : 'Gumball', monospace;
+  font-family: 'Gumball', monospace;
 }
 
 .fipps {
@@ -24,20 +26,108 @@
 }
 
 
-
 body,
 html {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  background-image: url('bg0.png');
-  background-size: 100% auto;
-  background-position: top left;
-  background-repeat: repeat;
-  background-attachment: scroll;
-  
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
 
+body {
+  background-image: url('bg0.png');
+  background-repeat: repeat;
+  background-position: top center;
+  background-attachment: scroll;
+  color: white;
+}
+
+body {
+  background-size: 30% auto;
+}
+
+@media (max-width: 992px) {
+  body {
+    background-size: 40% auto;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background-size: 50% auto;
+  }
+}
+
+.section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.astronaut {
+  display: block;
+  width: 100%;
+  height: auto;
+  z-index: 10;
+}
+
+.bottom-right-image {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: auto;
+  margin: 0;
+}
+
+.left-center-image {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20%;
+  height: auto;
+}
+
+.left-image,
+.right-image {
+  position: absolute;
+  transform: translateY(-50%);
+  width: 15%;
+  height: auto;
+  margin: 0;
+}
+
+.left-image {
+  left: 0;
+  top: 25%;
+}
+
+.right-image {
+  right: 0;
+  top: 60%;
+}
+
+.top-image {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width:100%;
+  height: auto;
+  z-index: 0;
+}
+
+.img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
 
 .floating-header {
   position: fixed;
@@ -56,12 +146,10 @@ html {
   padding: 0 10px;
 }
 
-
 .nav-item {
   margin: 0 10px;
 }
 
-/* Modal styles */
 .modal {
   display: none;
   position: fixed;
@@ -84,7 +172,6 @@ html {
   overflow-y: auto;
 }
 
-/* Scroll to top button */
 #scrollToTop {
   position: fixed;
   bottom: -50px;
@@ -107,7 +194,6 @@ html {
   z-index: 1000;
 }
 
-/* Define slide-in animation */
 @keyframes slide-in-left {
   from {
     transform: translateX(-100%);
@@ -132,7 +218,6 @@ html {
   }
 }
 
-/* Apply animation to each message section */
 .animate-slide-left {
   animation: slide-in-left 0.5s ease forwards;
   opacity: 0;
@@ -144,7 +229,6 @@ html {
 }
 
 
-/* Typewriter effect 1 */
 @keyframes typing {
 
   0.0000%,
@@ -435,7 +519,6 @@ html {
   left: 80%;
   transform: translate(-50%, -50%);
   z-index: 4;
-  /* padding: 5px 5px; */
   font-size: 8px;
 }
 
@@ -514,7 +597,6 @@ html {
   width: 100%;
   height: 100%;
   perspective: 800px;
-
 }
 
 .bogusimage {
