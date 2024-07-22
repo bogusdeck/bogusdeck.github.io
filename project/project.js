@@ -29,14 +29,14 @@ const sectionWrapper = document.getElementById("sectionWrapper");
         isMuted = false;
         muteButton.classList.remove("muted");
         muteButton.classList.add("unmuted");
-        backgroundSound.volume = 1; // Set volume to 0.5 when unmuted
+        backgroundSound.volume = 1;
         sectionAppearSound.volume = 1;
         characterDisappearSound.volume = 1;
       } else {
         isMuted = true;
         muteButton.classList.remove("unmuted");
         muteButton.classList.add("muted");
-        backgroundSound.volume = 0; // Mute background sound
+        backgroundSound.volume = 0;
         sectionAppearSound.volume = 0;
         characterDisappearSound.volume = 0;
       }

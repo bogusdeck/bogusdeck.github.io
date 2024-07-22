@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,7 @@
     <style>
         body {
             margin: 0;
-            overflow: hidden; /* Hide vertical scrollbars */
+            overflow: hidden;
             white-space: nowrap;
             background: url('level.png') repeat-x;
             background-size: cover;
@@ -20,8 +21,8 @@
             height: 100vh;
             display: inline-block;
             vertical-align: top;
-            text-align: center; /* Center text horizontally */
-            position: relative; /* Add position relative for correct background positioning */
+            text-align: center;
+            position: relative;
         }
 
         #mario {
@@ -30,18 +31,18 @@
             height: 100px;
             position: fixed;
             bottom: 12%;
-            left: 50%; /* Center Mario horizontally */
+            left: 50%;
             transform: translateX(-50%);
-            transition: right 0.5s ease, bottom 0.5s ease, background-image 0.5s ease; /* Smooth transition for left position, bottom position, and background image */
+            transition: right 0.5s ease, bottom 0.5s ease, background-image 0.5s ease;
         }
 
         #mario .mario-head {
-            position: relative; /* Make the head relative for child positioning */
+            position: relative;
         }
 
         #scroll-position {
             position: absolute;
-            top: -30px; /* Adjust based on Mario's dimensions */
+            top: -30px;
             left: 50%;
             transform: translateX(-50%);
             background-color: rgba(0, 0, 0, 0.5);
@@ -52,6 +53,7 @@
         }
     </style>
 </head>
+
 <body data-scroll-container>
     <div id="section1" class="section">
         <h1 class="text-4xl pt-40">Title</h1>
@@ -71,10 +73,10 @@
     <div id="section6" class="section">
         <h2 class="text-3xl pt-40">Subtitle 5</h2>
     </div>
-     <div id="section7" class="section">
+    <div id="section7" class="section">
         <h2 class="text-3xl pt-40">Subtitle 6</h2>
     </div>
-     <div id="section8" class="section">
+    <div id="section8" class="section">
         <h2 class="text-3xl pt-40">Subtitle 7</h2>
     </div>
     <div id="mario">
@@ -86,120 +88,94 @@
         const scroll = new LocomotiveScroll({
             el: document.querySelector('[data-scroll-container]'),
             smooth: true,
-            smoothMobile: false, // Disable smooth scrolling on mobile if desired
-            direction: 'horizontal', // Set scrolling direction to horizontal
-            reloadOnContextChange: true, // Reload scroll on context change (e.g., resize)
-        });
+            smoothMobile: false,
+            direction: 'horizontal',
+            reloadOnContextChange: true,
+        })
 
-        let isScrolling = false; // Flag to track scrolling state
-        let scrollTimeout; // Timeout for scroll end detection
+        let isScrolling = false;
+        let scrollTimeout;
 
-        // Define jump points, drop points, and obstacle points
         // const jumpPoints = [960, 1490, 1920, 3216, 4128, 6720, 8304]; // Points where Mario should jump
         // const dropPoints = [1100, 1700, 2700, 3800, 5200, 7000, 8200]; // Points where Mario should drop after jumping
         // const obstaclePoints = [1700, 2700, 3800, 5200, 7000]; // Points where obstacles require Mario to jump
 
         scroll.on('scroll', (instance) => {
-            const scrollX = instance.scroll.x; // Get horizontal scroll position
-
-            // Update Mario's position to keep him centered
+            const scrollX = instance.scroll.x; 
             const mario = document.getElementById('mario');
-            mario.style.left = `${500 + scrollX}px`; // Center Mario and adjust with scroll
+            mario.style.left = `${500 + scrollX}px`;
 
-            // Update scroll position indicator
             // const scrollPositionIndicator = document.getElementById('scroll-position');
             // scrollPositionIndicator.textContent = `Scroll Position: ${Math.round(scrollX)}px`;
 
-            // // Check if Mario should jump at current scroll position
             // if (jumpPoints.includes(Math.round(scrollX))) {
-            //     jumpMario(mario); // Trigger jump animation
+            //     jumpMario(mario); 
             // }
 
-            // // Check if Mario should drop at current scroll position
             // if (dropPoints.includes(Math.round(scrollX))) {
-            //     dropMario(mario); // Trigger drop animation
+            //     dropMario(mario); 
             // }
 
-            // Show mariorunning.gif while scrolling
             if (!isScrolling) {
                 mario.style.backgroundImage = 'url("mariorunning.gif")';
-                isScrolling = true; // Set scrolling flag
+                isScrolling = true;
             }
 
-            // Move background with sections
             document.body.style.backgroundPosition = `-${scrollX}px bottom`;
 
-            // Clear previous scroll timeout and set a new one
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(() => {
-                isScrolling = false; // Reset scrolling flag after scroll stops
-                mario.style.backgroundImage = 'url("mario.png")'; // Show mario.png when not scrolling
-            }, 150); // Adjust timeout duration as needed
+                isScrolling = false; 
+                mario.style.backgroundImage = 'url("mario.png")'; 
+            }, 150); 
         });
 
-        // Reset Mario to mario.png when scrolling stops
         scroll.on('scrollStop', () => {
             const mario = document.getElementById('mario');
-            mario.style.backgroundImage = 'url("mario.png")'; // Show mario.png when not scrolling
+            mario.style.backgroundImage = 'url("mario.png")'; 
         });
 
-        // // Function to animate Mario jumping
         // function jumpMario(mario) {
-        //     const initialBottom = parseFloat(getComputedStyle(mario).bottom); // Initial bottom position of Mario
-        //     const jumpHeight = 200; // Height of the jump (adjust as needed)
-        //     const jumpSpeed = 0.5; // Speed of the jump (adjust as needed)
+        //     const initialBottom = parseFloat(getComputedStyle(mario).bottom);
+        //     const jumpHeight = 200; 
+        //     const jumpSpeed = 0.5; 
 
-        //     let verticalPosition = initialBottom; // Starting position of Mario's jump
-
-        //     // Function to perform the jump animation
+        //     let verticalPosition = initialBottom; 
         //     function animateJump() {
-        //         verticalPosition += jumpSpeed; // Increment vertical position for the next frame
-
-        //         // Update Mario's position
+        //         verticalPosition += jumpSpeed; 
         //         mario.style.bottom = `${verticalPosition}px`;
-        //         mario.style.backgroundImage = 'url("mariojump.png")'; // Show jump image
+        //         mario.style.backgroundImage = 'url("mariojump.png")'; 
 
-        //         // Check if Mario has reached the peak of the jump
         //         if (verticalPosition >= initialBottom + jumpHeight) {
-        //             // If reached, reset to running animation
         //             mario.style.backgroundImage = 'url("mariorunning.gif")';
         //             return;
         //         }
 
-        //         // Continue the animation in the next frame
         //         requestAnimationFrame(animateJump);
         //     }
 
-        //     // Start the jump animation
         //     animateJump();
         // }
 
-        // // Function to animate Mario dropping
         // function dropMario(mario) {
-        //     const initialBottom = parseFloat(getComputedStyle(mario).bottom); // Initial bottom position of Mario
-        //     const dropSpeed = 0.5; // Speed of the drop (adjust as needed)
+        //     const initialBottom = parseFloat(getComputedStyle(mario).bottom);
+        //     const dropSpeed = 0.5; 
+        //     let verticalPosition = initialBottom; 
 
-        //     let verticalPosition = initialBottom; // Starting position of Mario's drop
-
-        //     // Function to perform the drop animation
         //     function animateDrop() {
-        //         verticalPosition -= dropSpeed; // Decrement vertical position for the next frame
-
-        //         // Update Mario's position
+        //         verticalPosition -= dropSpeed; 
         //         mario.style.bottom = `${verticalPosition}px`;
 
-        //         // Continue the animation until Mario reaches the ground level
         //         if (verticalPosition <= initialBottom) {
         //             return;
         //         }
 
-        //         // Continue the animation in the next frame
         //         requestAnimationFrame(animateDrop);
         //     }
 
-        //     // Start the drop animation
         //     animateDrop();
         // }
     </script>
 </body>
+
 </html>

@@ -184,7 +184,6 @@ img {
 
 .content {
     z-index: 1;
-    /* Ensures text appears above corners */
 }
 
 .corner {
@@ -215,7 +214,6 @@ img {
     right: 10px;
 }
 
-/* Media Queries for Responsiveness */
 @media (max-width: 600px) {
     .box {
         font-size: 25px;

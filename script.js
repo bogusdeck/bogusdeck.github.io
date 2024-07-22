@@ -67,7 +67,6 @@ const observer = new IntersectionObserver((entries, observer) => {
     if (entry.isIntersecting) {
       typeWriter();
       observer.unobserve(entry.target);
-      // typingSound.play();
     }
   });
 });

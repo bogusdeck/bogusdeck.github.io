@@ -150,7 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
         modalBg.classList.add('hidden');
     });
 
-    // Load artwork images with pagination
     const artworkContainer = document.querySelector('.artwork-container');
     const artworkFolder = 'artwork/';
     const totalImages = 87;
