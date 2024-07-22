@@ -17,34 +17,45 @@
 </head>
 
 <body class="flex flex-col min-h-screen overflow-hidden">
-    <header class="floating-header">
-        <div class="hidden md:flex items-center justify-start md:justify-between w-full">
-            <div class="flex items-center space-x-4">
-                <a class="nav-item" href="work.html">Blog</a>
-                <a class="nav-item" href="project.html">Projects</a>
+    <header class="w-full">
+        <nav class="navbar">
+            <div class="hidden md:flex items-center justify-between w-full">
+                <div class="flex items-center space-x-4">
+                    <a class="nav-item" href="blog.html">Blog</a>
+                    <a class="nav-item" href="project.html">Projects</a>
+                </div>
+                <a href="/index.html" class="flex items-center justify-center">
+                    <img src="indexbg/logo.png" alt="logo" class="h-10 img">
+                </a>
+                <div class="flex items-center space-x-4">
+                    <a class="nav-item" href="about.html">About</a>
+                    <a class="nav-item" href="contact.html">Contact</a>
+                </div>
             </div>
-            <a href="/index.html" class="flex items-center justify-center">
-                <img src="indexbg/logo.png" alt="logo" class="h-12">
-            </a>
-            <div class="flex items-center space-x-4">
-                <a class="nav-item" href="about.html">About</a>
-                <a class="nav-item" href="contact.html">Contact</a>
+            <!-- Hamburger menu -->
+            <div class="md:hidden flex items-center justify-between w-full">
+                <a href="/index.html" class="flex items-center justify-start">
+                    <img src="indexbg/logo.png" alt="logo" class="h-10 img">
+                </a>
+                <button id="menu-toggle" class="flex items-center justify-end">
+                    <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7">
+                        </path>
+                    </svg>
+                </button>
             </div>
-        </div>
-    
-        <!-- Hamburger menu for modal toggle -->
-        <div class="grid grid-cols-2 w-full md:hidden">
-          <a href="/index.html" class="flex items-center justify-start col-span-1">
-            <img src="indexbg/logo.png" alt="logo" class="h-12">
-        </a> 
-          <button id="menu-toggle" class="col-span-1 flex items-center justify-end">
-            <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-            </svg>
-          </button>
-        </div>
+            <div id="mobile-menu" class="hidden absolute top-0 right-0 bg-black w-full mt-14 z-50">
+                <a class="block py-2 px-4 text-white" href="index.html">Home</a>
+                <a class="block py-2 px-4 text-white" href="blog.html">Blog</a>
+                <a class="block py-2 px-4 text-white" href="project.html">Projects</a>
+                <a class="block py-2 px-4 text-white" href="about.html">About</a>
+                <a class="block py-2 px-4 text-white" href="contact.html">Contact</a>
+            </div>
+        </nav>
     </header>
-    
+
 
     <div class="scroll-container" id="scrollContainer">
         <div class="section-wrapper" id="sectionWrapper">
@@ -161,8 +172,9 @@
                         </div>
                         <div class="order-1 flex justify-center items-center">
                             <div class="box h-[70px] md:h-[90px] lg:h-[150px] w-fit md:w-2/3 mb-4 lg:mb-0">
-                                <div class="content fonty text-[25px] lg:text-[40px] tracking-wider px-10 lg:px-5 mt-2 text-center">
-                                    Task Reward System 
+                                <div
+                                    class="content fonty text-[25px] lg:text-[40px] tracking-wider px-10 lg:px-5 mt-2 text-center">
+                                    Task Reward System
                                 </div>
                                 <div class="corner top-left"></div>
                                 <div class="corner top-right"></div>
@@ -196,7 +208,8 @@
                         </div>
                         <div class="order-1 flex justify-center items-center">
                             <div class="box h-[70px] md:h-[90px] lg:h-[150px] w-fit md:w-2/3 mb-4 lg:mb-0">
-                                <div class="content fonty text-[25px] lg:text-[40px] tracking-wider px-10 lg:px-6 mt-2 text-center">
+                                <div
+                                    class="content fonty text-[25px] lg:text-[40px] tracking-wider px-10 lg:px-6 mt-2 text-center">
                                     Discord Welcome Bot
                                 </div>
                                 <div class="corner top-left"></div>
@@ -231,7 +244,8 @@
                         </div>
                         <div class="order-1 flex justify-center items-center">
                             <div class="box h-[70px] md:h-[90px] lg:h-[150px] w-fit md:w-2/3 mb-4 lg:mb-0">
-                                <div class="content fonty text-[25px] lg:text-[40px] tracking-wider px-10 lg:px-5 mt-2 text-center">
+                                <div
+                                    class="content fonty text-[25px] lg:text-[40px] tracking-wider px-10 lg:px-5 mt-2 text-center">
                                     Flask Ecom website
                                 </div>
                                 <div class="corner top-left"></div>
@@ -268,7 +282,8 @@
                         </div>
                         <div class="order-1 flex justify-center items-center">
                             <div class="box h-[70px] md:h-[120px] lg:h-[150px] w-fit md:w-2/3 mb-4 lg:mb-0">
-                                <div class="content fonty text-[25px] lg:text-[32px] tracking-wider px-10 lg:px-5 mt-2 text-center">
+                                <div
+                                    class="content fonty text-[25px] lg:text-[32px] tracking-wider px-10 lg:px-5 mt-2 text-center">
                                     Review Authenticity checker
                                 </div>
                                 <div class="corner top-left"></div>
@@ -297,21 +312,23 @@
     <audio id="sectionAppearSound" src="project/sounds/smb_coin.wav" preload="auto"></audio>
     <audio id="characterDisappearSound" src="project/sounds/smb_stage_clear.wav" preload="auto"></audio>
 
-    
+
     <div id="modal-bg" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
         <div id="mobile-menu-modal" class="bg-white nes-container with-title is-centered">
+            <a href="/index.html" class="block px-4 py-2 text-black hover:underline hover:tracking-widest">Home</a>
             <a href="/about.html" class="block px-4 py-2 text-black hover:underline hover:tracking-widest">About</a>
-            <a href="/index.html"
-                class="block px-4 py-2 text-black hover:underline hover:tracking-widest">Home</a>
-            <button id="close-modal" class="mt-4 bulbula px-4 py-2 text-white bg-red-500 shadow">Close</button>
+            <a href="/blog.html" class="block px-4 py-2 text-black hover:underline hover:tracking-widest">Blog</a>
+            <a href="/contact.html" class="block px-4 py-2 text-black hover:underline hover:tracking-widest">Contact</a>
+            <a href="/project.html" class="block w-full mt-4 bulbula px-4 py-2 text-white bg-red-500 shadow">Close</a>
         </div>
     </div>
 
     <footer class="z-50 w-full flex items-start justify-start md:items-center md:justify-center absolute bottom-0 ">
         <div class=" bg-gray-900 bg-opacity-50 w-fit ">
-            <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[14px] mr-2">Copyright © 2024 --<a href="mailto:tanishvashisth@"
-                class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[14px] underline">tanishvashisth</a></p>
-            
+            <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[14px] mr-2">Copyright © 2024 --<a
+                    href="mailto:tanishvashisth@"
+                    class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[14px] underline">tanishvashisth</a>
+            </p>
         </div>
     </footer>
 

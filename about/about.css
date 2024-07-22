@@ -34,6 +34,61 @@ html {
     height: 100%;
     overflow: hidden;
 }
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.navbar {
+    box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
+    background-color: white;
+    color: black;
+    top: 15px;
+    left: 20px;
+    right: 20px;
+    position: fixed;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    padding: 0 10px;
+}
+
+.nav-item {
+    margin: 0 10px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+.block {
+    display: block;
+}
 
 .section {
     transition: transform 0.5s ease-in-out;
@@ -64,44 +119,7 @@ html {
     margin: 0 10px;
 }
 
-.floating-header {
-    position: fixed;
-    top: 10px;
-    left: 20px;
-    right: 20px;
-    z-index: 1000;
-    background-color: white;
-    border: 2px solid #d4d4d4;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 10px;
-}
 
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 100;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    max-width: 90%;
-    max-height: 90%;
-    overflow-y: auto;
-}
 
 #modal-bg {
     z-index: 1000;
@@ -158,4 +176,10 @@ html {
 
 .nes-btn:hover {
     background-color: #0D47A1;
+}
+
+.img{
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
 }

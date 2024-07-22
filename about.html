@@ -19,35 +19,45 @@
 </head>
 
 <body>
-    <header class="floating-header">
-        <div class="hidden md:flex items-center justify-start md:justify-between w-full">
-            <div class="flex items-center space-x-4">
-                <a class="nav-item" href="blog.html">Blog</a>
-                <a class="nav-item" href="project.html">Projects</a>
+    <header class="w-full">
+        <nav class="bulbula navbar">
+            <div class="hidden md:flex items-center justify-between w-full">
+                <div class="flex items-center space-x-4">
+                    <a class="nav-item" href="blog.html">Blog</a>
+                    <a class="nav-item" href="project.html">Projects</a>
+                </div>
+                <a href="/index.html" class="flex items-center justify-center">
+                    <img src="indexbg/logo.png" alt="logo" class="h-10 img">
+                </a>
+                <div class="flex items-center space-x-4">
+                    <a class="nav-item" href="about.html">About</a>
+                    <a class="nav-item" href="contact.html">Contact</a>
+                </div>
             </div>
-            <a href="/index.html" class="flex items-center justify-center">
-                <img src="indexbg/logo.png" alt="logo" class="h-12">
-            </a>
-            <div class="flex items-center space-x-4">
-                <a class="nav-item" href="about.html">About</a>
-                <a class="nav-item" href="contact.html">Contact</a>
+            <!-- Hamburger menu -->
+            <div class="md:hidden flex items-center justify-between w-full">
+                <a href="/index.html" class="flex items-center justify-start">
+                    <img src="indexbg/logo.png" alt="logo" class="h-10 img">
+                </a>
+                <button id="menu-toggle" class="flex items-center justify-end">
+                    <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7">
+                        </path>
+                    </svg>
+                </button>
             </div>
-        </div>
-
-        <!-- Hamburger menu -->
-        <div class="grid grid-cols-2 w-full md:hidden">
-            <a href="/index.html" class="flex items-center justify-start col-span-1">
-                <img src="indexbg/logo.png" alt="logo" class="h-12">
-            </a>
-            <button id="menu-toggle" class="col-span-1 flex items-center justify-end">
-                <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
-                    </path>
-                </svg>
-            </button>
-        </div>
+            <div id="mobile-menu" class="hidden absolute top-0 right-0 bg-black w-full mt-14 z-50">
+                <a class="block py-2 px-4 text-white" href="index.html">Home</a>
+                <a class="block py-2 px-4 text-white" href="blog.html">Blog</a>
+                <a class="block py-2 px-4 text-white" href="project.html">Projects</a>
+                <a class="block py-2 px-4 text-white" href="about.html">About</a>
+                <a class="block py-2 px-4 text-white" href="contact.html">Contact</a>
+            </div>
+        </nav>
     </header>
+
 
 
     <div id="modal-bg" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
@@ -64,7 +74,7 @@
             <img src="about/chickcomputer.gif" alt="chickwithcomputer">
         </div>
 
-        <div id="left" class="section flex items-center justify-center transform -translate-x-full z-1 overflow-y-auto h-full bg-cover bg-bottom" style="background-image: url('about/tumblr_mhb6zjbkhR1qh8rq6o1_500.gif');">
+        <div id="left" class="section flex items-center justify-center transform -translate-x-full z-1 overflow-y-auto h-full bg-cover bg-bottom img" style="background-image: url('about/tumblr_mhb6zjbkhR1qh8rq6o1_500.gif');">
             <div class="flex flex-col lg:flex-row items-start justify-start gap-4 p-4 max-h-screen overflow-y-auto w-full mt-28">
                 <div class="section-content max-w-2xl w-full mx-auto p-3 bg-white rounded-lg shadow-lg bg-opacity-70 h-full">
                     <h2 class="text-lg lg:text-4xl tracking-widest mb-4 text-center title">Experience</h2>
@@ -202,7 +212,7 @@
         <button id="navigate-right"
             class="navigate-button absolute top-1/2 right-0 transform -translate-y-1/2 p-2 bg-black bg-opacity-50 text-white z-4">Right</button>
         <button id="navigate-top"
-            class="navigate-button absolute top-14 left-1/2 transform -translate-x-1/2 p-2 bg-black bg-opacity-50 text-white z-4">Top</button>
+            class="navigate-button absolute top-12 left-1/2 transform -translate-x-1/2 p-2 bg-black bg-opacity-50 text-white z-4">Top</button>
         <button id="navigate-bottom"
             class="navigate-button absolute bottom-0 left-1/2 transform -translate-x-1/2 p-2 bg-black bg-opacity-50 text-white z-4">Artwork</button>
     </main>

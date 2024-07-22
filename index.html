@@ -19,42 +19,44 @@
 </head>
 
 <body>
-    <header class="floating-header">
-        <div class="hidden md:flex items-center justify-start md:justify-between w-full">
-            <div class="flex items-center space-x-4">
-                <a class="nav-item" href="work.html">Blog</a>
-                <a class="nav-item" href="project.html">Projects</a>
+    <header class="w-full">
+        <nav class="navbar">
+            <div class="hidden md:flex items-center justify-between w-full">
+                <div class="flex items-center space-x-4">
+                    <a class="nav-item" href="blog.html">Blog</a>
+                    <a class="nav-item" href="project.html">Projects</a>
+                </div>
+                <a href="/index.html" class="flex items-center justify-center">
+                    <img src="indexbg/logo.png" alt="logo" class="h-10 img">
+                </a>
+                <div class="flex items-center space-x-4">
+                    <a class="nav-item" href="about.html">About</a>
+                    <a class="nav-item" href="contact.html">Contact</a>
+                </div>
             </div>
-            <a href="/index.html" class="flex items-center justify-center">
-                <img src="indexbg/logo.png" alt="logo" class="h-12">
-            </a>
-            <div class="flex items-center space-x-4">
-                <a class="nav-item" href="about.html">About</a>
-                <a class="nav-item" href="contact.html">Contact</a>
+            <!-- Hamburger menu -->
+            <div class="md:hidden flex items-center justify-between w-full">
+                <a href="/index.html" class="flex items-center justify-start">
+                    <img src="indexbg/logo.png" alt="logo" class="h-10 img">
+                </a>
+                <button id="menu-toggle" class="flex items-center justify-end">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7">
+                        </path>
+                    </svg>
+                </button>
             </div>
-        </div>
-        <!-- Hamburger menu -->
-        <div class="grid grid-cols-2 w-full md:hidden">
-            <a href="/index.html" class="flex items-center justify-start col-span-1">
-                <img src="indexbg/logo.png" alt="logo" class="h-12">
-            </a>
-            <button id="menu-toggle" class="col-span-1 flex items-center justify-end">
-                <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
-                    </path>
-                </svg>
-            </button>
-        </div>
+            <div id="mobile-menu" class="hidden absolute top-0 right-0 bg-black w-full mt-14 z-50">
+                <a class="block py-2 px-4 text-white" href="index.html">Home</a>
+                <a class="block py-2 px-4 text-white" href="blog.html">Blog</a>
+                <a class="block py-2 px-4 text-white" href="project.html">Projects</a>
+                <a class="block py-2 px-4 text-white" href="about.html">About</a>
+                <a class="block py-2 px-4 text-white" href="contact.html">Contact</a>
+            </div>
+        </nav>
     </header>
-    <div id="modal-bg" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-        <div id="mobile-menu-modal" class="bg-white nes-container with-title is-centered">
-            <a href="/about.html" class="block px-4 py-2 text-black hover:underline hover:tracking-widest">About</a>
-            <a href="/project.html"
-                class="block px-4 py-2 text-black hover:underline hover:tracking-widest">Projects</a>
-            <button id="close-modal" class="mt-4 bulbula  px-4 py-2 text-white bg-red-500 shadow">Close</button>
-        </div>
-    </div>
 
     <div class="section text-white min-h-screen flex flex-col items-center justify-center z-20">
         <img src="indexbg/blast.png" alt="Top Image" class="img top-image lg:hidden">
@@ -211,7 +213,7 @@
                                 class="bird hidden absolute w-12 h-12 md:w-20 md:h-20 nes-pointer" alt="Bird">
                             <button id="start-button" class="bulbula medium buton headingfont nes-pointer">Start
                                 Game</button>
-                            <button id="skip-button" class="bulbula  buton headingfont skip-button nes-pointer">Skip
+                            <button id="skip-button" class="bulbula buton headingfont skip-button nes-pointer">Skip
                                 Game</button>
                         </div>
                     </div>

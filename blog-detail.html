@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Me!</title>
+    <title>Blog Detail</title>
     <link rel="icon" href="/favicon.ico">
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -30,6 +30,12 @@
             box-sizing: border-box;
         }
 
+        .img {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+        }
+
         .navbar {
             box-shadow: 0 -4px #000, 0 -8px #fff, 4px 0 #000, 4px -4px #fff, 8px 0 #fff, 0 4px #000, 0 8px #fff, -4px 0 #000, -4px 4px #fff, -8px 0 #fff, -4px -4px #fff, 4px 4px #fff;
             background-color: black;
@@ -46,11 +52,6 @@
             padding: 0 10px;
         }
 
-        .boxxy{
-            box-shadow: 0 -4px #000, 0 -8px #fff, 4px 0 #000, 4px -4px #fff, 8px 0 #fff, 0 4px #000, 0 8px #fff, -4px 0 #000, -4px 4px #fff, -8px 0 #fff, -4px -4px #fff, 4px 4px #fff;
-            background-color: black;
-            color: white;
-        }
         .nav-item {
             margin: 0 10px;
         }
@@ -77,26 +78,24 @@
             overflow-y: auto;
         }
 
-        .hidden {
-            display: none;
-        }
-
-        .block {
-            display: block;
+        .boxxy {
+            box-shadow: 0 -4px #000, 0 -8px #fff, 4px 0 #000, 4px -4px #fff, 8px 0 #fff, 0 4px #000, 0 8px #fff, -4px 0 #000, -4px 4px #fff, -8px 0 #fff, -4px -4px #fff, 4px 4px #fff;
+            background-color: black;
+            color: white;
         }
     </style>
 </head>
 
 <body>
     <header class="w-full">
-        <nav class="bulbula navbar">
+        <nav class="navbar">
             <div class="hidden md:flex items-center justify-between w-full">
                 <div class="flex items-center space-x-4">
                     <a class="nav-item" href="blog.html">Blog</a>
                     <a class="nav-item" href="project.html">Projects</a>
                 </div>
                 <a href="/index.html" class="flex items-center justify-center">
-                    <img src="indexbg/logo.png" alt="logo" class="h-10">
+                    <img src="indexbg/logo.png" alt="logo" class="h-10 img">
                 </a>
                 <div class="flex items-center space-x-4">
                     <a class="nav-item" href="about.html">About</a>
@@ -106,7 +105,7 @@
             <!-- Hamburger menu -->
             <div class="md:hidden flex items-center justify-between w-full">
                 <a href="/index.html" class="flex items-center justify-start">
-                    <img src="indexbg/logo.png" alt="logo" class="h-10">
+                    <img src="indexbg/logo.png" alt="logo" class="h-10 img">
                 </a>
                 <button id="menu-toggle" class="flex items-center justify-end">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -126,61 +125,35 @@
         </nav>
     </header>
 
-    <main class="flex flex-col items-center justify-center min-h-screen py-6 ">
-        <form id="contact-form" class="bg-black p-6 rounded-lg shadow-lg w-full max-w-lg">
-            <h2 class="text-2xl font-bold mb-6 text-center mt-12">Contact Me</h2>
-            <div class="mb-4">
-                <label for="name" class="block text-white">Name</label>
-                <input type="text" id="name" name="name" class="boxxy w-full px-3 py-2 mt-2 text-black"
-                    required>
-            </div>
-            <div class="mb-4">
-                <label for="email" class="block text-white">Email</label>
-                <input type="email" id="email" name="email" class="boxxy w-full px-3 py-2 mt-2 text-black"
-                    required>
-            </div>
-            <div class="mb-4">
-                <label for="subject" class="block text-white">Subject</label>
-                <input type="text" id="subject" name="subject"
-                    class="boxxy w-full px-3 py-2 mt-2 text-black" required>
-            </div>
-            <div class="mb-4">
-                <label for="message" class="block text-white">Message</label>
-                <textarea id="message" name="message" class="boxxy w-full px-3 py-2 mt-2 text-black"
-                    rows="5" required></textarea>
-            </div>
-            <button type="submit"
-                class="boxxy w-full px-3 py-2 mt-2 text-white hover:text-black hover:bg-gray-200">Send</button>
-        </form>
-    </main>
+    <main class="py-6 mt-14 w-full px-4 sm:px-16 space-y-8" id="blog-detail-container"></main>
 
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-        (function () {
-            emailjs.init('MAUBFHodMOevpbI-P'); 
-        })();
+        const blogDetailContainer = document.getElementById('blog-detail-container');
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
 
-        document.getElementById('menu-toggle').addEventListener('click', function () {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
+        function fetchPostDetail(id) {
+            fetch(`https://dev.to/api/articles/${id}`)
+                .then(response => response.json())
+                .then(post => {
+                    blogDetailContainer.innerHTML = `
+                        <div class="boxxy p-4 mx-4">
+                            <h1 class="text-2xl font-bold">${post.title}</h1>
+                            <p class="text-gray-400 mt-2 text-sm"><small>Posted on ${new Date(post.published_at).toDateString()}</small></p>
+                            <div class="mt-4">
+                                ${post.body_html}
+                            </div>
+                        </div>
+                    `;
+                })
+                .catch(error => console.error('Error fetching blog post detail:', error));
+        }
 
-        document.getElementById('contact-form').addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            const serviceID = 'service_uh2awsk';
-            const templateID = 'template_5o5412n';
-
-            emailjs.sendForm(serviceID, templateID, this)
-                .then(() => {
-                    alert('Your message has been sent successfully!');
-                    document.getElementById('contact-form').reset();
-                }, (error) => {
-                    alert('Failed to send your message. Please try again.');
-                    console.error('Error:', error);
-                });
-        });
-        
+        if (postId) {
+            fetchPostDetail(postId);
+        } else {
+            blogDetailContainer.innerHTML = '<p class="text-center">Post not found.</p>';
+        }
     </script>
 </body>
 

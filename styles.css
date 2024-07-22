@@ -25,6 +25,11 @@
   font-family: 'Fipps', monospace;
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 
 body,
 html {
@@ -129,22 +134,26 @@ body {
   image-rendering: pixelated;
 }
 
-.floating-header {
-  position: fixed;
-  top: 10px;
+.navbar {
+  box-shadow: 0 -4px #000, 0 -8px #fff, 4px 0 #000, 4px -4px #fff, 8px 0 #fff, 0 4px #000, 0 8px #fff, -4px 0 #000, -4px 4px #fff, -8px 0 #fff, -4px -4px #fff, 4px 4px #fff;
+  background-color: black;
+  color: white;
+  top: 15px;
   left: 20px;
   right: 20px;
-  z-index: 1000;
-  background-color: white;
-  border: 2px solid #d4d4d4;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  height: 50px;
+  position: fixed;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 1000;
   padding: 0 10px;
 }
+
+.nav-item {
+  margin: 0 10px;
+}
+
 
 .nav-item {
   margin: 0 10px;
@@ -171,6 +180,7 @@ body {
   max-height: 90%;
   overflow-y: auto;
 }
+
 
 #scrollToTop {
   position: fixed;
@@ -449,6 +459,9 @@ body {
   display: none;
 }
 
+.block {
+  display: block;
+}
 .bird {
   transition: transform 0.1s ease-in-out;
 }

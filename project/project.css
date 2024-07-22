@@ -38,21 +38,30 @@ html {
 }
 
 
-.floating-header {
-    position: fixed;
-    top: 10px;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.navbar {
+    box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
+    background-color: white;
+    color: black;
+    top: 15px;
     left: 20px;
     right: 20px;
-    z-index: 1000;
-    background-color: white;
-    border: 2px solid #d4d4d4;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    height: 50px;
+    position: fixed;
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 1000;
     padding: 0 10px;
+}
+
+.nav-item {
+    margin: 0 10px;
 }
 
 .modal {
@@ -75,6 +84,14 @@ html {
     max-width: 90%;
     max-height: 90%;
     overflow-y: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+.block {
+    display: block;
 }
 
 .scroll-container {
@@ -316,32 +333,32 @@ img {
     box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
     box-sizing: border-box;
     width: fit-content;
-  }
-  
-  .bulbula.shadow {
-      box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000, 4px 12px rgba(0, 0, 0, 0.1), 12px 12px rgba(0, 0, 0, 0.1), 8px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .bulbula.animation {
+}
+
+.bulbula.shadow {
+    box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000, 4px 12px rgba(0, 0, 0, 0.1), 12px 12px rgba(0, 0, 0, 0.1), 8px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bulbula.animation {
     animation: slide-in 1s ease-in-out;
-  }
-  
-  .bulbula.buton {
+}
+
+.bulbula.buton {
     width: fit-content;
-  }
-  
-  .bulbula.medium {
+}
+
+.bulbula.medium {
     width: fit-content;
     padding: 2px;
-  }
-  
-  .bulbula.word {
+}
+
+.bulbula.word {
     margin-right: 20px;
     margin-bottom: 10px;
     width: fit-content;
-  }
+}
 
-  .mute-button {
+.mute-button {
     position: fixed;
     bottom: 10px;
     right: 10px;
@@ -350,12 +367,12 @@ img {
     height: 40px;
     background-size: contain;
     background-repeat: no-repeat;
-  }
+}
 
-  .mute-button.unmuted {
+.mute-button.unmuted {
     background-image: url('qblock.gif');
-  }
+}
 
-  .mute-button.muted {
+.mute-button.muted {
     background-image: url('Starman.gif');
-  }
+}
