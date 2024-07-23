@@ -10,6 +10,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        @font-face {
+            font-family: 'Joystick';
+            src: url('../fonts/joystix_monospace.otf') format('opentype');
+        }
+
+        .headingfont {
+            font-family: 'Joystick', monospace;
+        }
+
+        @font-face {
+            font-family: 'Proggy';
+            src: url('../fonts/ProggyMonoRegular.ttf') format('truetype');
+        }
+
+        .codefont {
+            font-family: 'Proggy', monospace;
+        }
+
+        @font-face {
+            font-family: 'Rainy';
+            src: url('../fonts/dogicapixel.ttf') format('truetype');
+        }
+
+        .textfont {
+            font-family: 'Rainy', monospace;
+        }
+
         body {
             background-color: black;
             background-repeat: repeat;
@@ -83,6 +110,74 @@
             background-color: black;
             color: white;
         }
+
+        .blog-content p {
+            margin-bottom: 1rem;
+        }
+
+        .blog-content ul,
+        .blog-content ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-content ul li,
+        .blog-content ol li {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-content h1 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-content h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-content h4 {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-content h5 {
+            font-size: 0.7rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-content h6 {
+            font-size: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-content code {
+            font-family: 'Proggy', monospace;
+            background-color: #333;
+            color: #f8f8f2;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+
+        .blog-content pre {
+            font-family: 'Proggy', monospace;
+            background-color: #2e2e2e;
+            color: #f8f8f2;
+            padding: 1em;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+
+        .blog-content pre code {
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
     </style>
 </head>
 
@@ -95,7 +190,7 @@
                     <a class="nav-item" href="project.html">Projects</a>
                 </div>
                 <a href="/index.html" class="flex items-center justify-center">
-                    <img src="indexbg/logo.png" alt="logo" class="h-10 img">
+                    <img src="indexbg/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <div class="flex items-center space-x-4">
                     <a class="nav-item" href="about.html">About</a>
@@ -105,7 +200,7 @@
             <!-- Hamburger menu -->
             <div class="md:hidden flex items-center justify-between w-full">
                 <a href="/index.html" class="flex items-center justify-start">
-                    <img src="indexbg/logo.png" alt="logo" class="h-10 img">
+                    <img src="indexbg/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <button id="menu-toggle" class="flex items-center justify-end">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -138,15 +233,60 @@
                 .then(post => {
                     blogDetailContainer.innerHTML = `
                         <div class="boxxy p-4 mx-4">
-                            <h1 class="text-2xl font-bold">${post.title}</h1>
-                            <p class="text-gray-400 mt-2 text-sm"><small>Posted on ${new Date(post.published_at).toDateString()}</small></p>
-                            <div class="mt-4">
+                            <img src="${post.cover_image}" alt="Banner Image" class="img w-8/12 h-auto mb-4 mx-auto block">
+                            <h1 class="text-lg md:text-xl lg:text-2xl font-bold text-center">${post.title}</h1>
+                            <p class="text-gray-400 mt-2 text-sm text-center"><small>Posted on ${new Date(post.published_at).toDateString()}</small></p>
+                            <div class="blog-content mt-4 textfont text-[12px]">
                                 ${post.body_html}
                             </div>
                         </div>
                     `;
+                    addResponsiveClasses();
+                    addResponsiveCodeClasses();
                 })
                 .catch(error => console.error('Error fetching blog post detail:', error));
+        }
+        function addResponsiveCodeClasses() {
+            const blogContent = document.querySelector('.blog-content');
+            const codes = blogContent.querySelectorAll('code');
+            const pres = blogContent.querySelectorAll('pre');
+
+            codes.forEach(code => {
+                code.classList.add('text-[16px]', 'md:text-[20px]', 'lg:text-[25px]', 'codefont');
+            });
+
+            pres.forEach(pre => {
+                pre.classList.add('text-[16px]', 'md:text-[20px]', 'lg:text-[25px]', 'codefont');
+            });
+        }
+
+
+        function addResponsiveClasses() {
+            const blogContent = document.querySelector('.blog-content');
+            const headings = blogContent.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+            headings.forEach(heading => {
+                switch (heading.tagName.toLowerCase()) {
+                    case 'h1':
+                        heading.classList.add('text-lg', 'md:text-xl', 'lg:text-2xl', 'headingfont');
+                        break;
+                    case 'h2':
+                        heading.classList.add('text-lg', 'md:text-xl', 'lg:text-2xl', 'headingfont');
+                        break;
+                    case 'h3':
+                        heading.classList.add('text-md', 'md:text-lg', 'lg:text-xl', 'headingfont');
+                        break;
+                    case 'h4':
+                        heading.classList.add('text-sm', 'md:text-md', 'lg:text-lg', 'headingfont');
+                        break;
+                    case 'h5':
+                        heading.classList.add('text-xs', 'md:text-sm', 'lg:text-md', 'headingfont');
+                        break;
+                    case 'h6':
+                        heading.classList.add('text-xs', 'md:text-xs', 'lg:text-sm', 'headingfont');
+                        break;
+                }
+            });
         }
 
         if (postId) {
@@ -154,6 +294,11 @@
         } else {
             blogDetailContainer.innerHTML = '<p class="text-center">Post not found.</p>';
         }
+
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
     </script>
 </body>
 

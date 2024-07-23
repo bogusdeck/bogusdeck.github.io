@@ -11,23 +11,26 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            background-color: black;
-            background-repeat: repeat;
-            background-position: top center;
-            background-attachment: scroll;
-            background-size: 30% auto;
+            background-image: url('PacMan.gif');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
             color: white;
             margin: 0;
             padding: 0;
             height: 100%;
             width: 100%;
             position: relative;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+            overflow:hidden;
         }
 
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
+        .img {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
         }
 
         .navbar {
@@ -46,11 +49,12 @@
             padding: 0 10px;
         }
 
-        .boxxy{
-            box-shadow: 0 -4px #000, 0 -8px #fff, 4px 0 #000, 4px -4px #fff, 8px 0 #fff, 0 4px #000, 0 8px #fff, -4px 0 #000, -4px 4px #fff, -8px 0 #fff, -4px -4px #fff, 4px 4px #fff;
+        .boxxy {
+            box-shadow: 0 -4px #000, 0 -8px #2121ff, 4px 0 #000, 4px -4px #2121ff, 8px 0 #2121ff, 0 4px #000, 0 8px #2121ff, -4px 0 #000, -4px 4px #2121ff, -8px 0 #2121ff, -4px -4px #2121ff, 4px 4px #2121ff;
             background-color: black;
             color: white;
         }
+
         .nav-item {
             margin: 0 10px;
         }
@@ -96,7 +100,7 @@
                     <a class="nav-item" href="project.html">Projects</a>
                 </div>
                 <a href="/index.html" class="flex items-center justify-center">
-                    <img src="indexbg/logo.png" alt="logo" class="h-10">
+                    <img src="indexbg/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <div class="flex items-center space-x-4">
                     <a class="nav-item" href="about.html">About</a>
@@ -106,7 +110,7 @@
             <!-- Hamburger menu -->
             <div class="md:hidden flex items-center justify-between w-full">
                 <a href="/index.html" class="flex items-center justify-start">
-                    <img src="indexbg/logo.png" alt="logo" class="h-10">
+                    <img src="indexbg/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <button id="menu-toggle" class="flex items-center justify-end">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -126,28 +130,25 @@
         </nav>
     </header>
 
-    <main class="flex flex-col items-center justify-center min-h-screen py-6 ">
-        <form id="contact-form" class="bg-black p-6 rounded-lg shadow-lg w-full max-w-lg">
-            <h2 class="text-2xl font-bold mb-6 text-center mt-12">Contact Me</h2>
+    <main class="flex flex-col items-center justify-center min-h-screen mt-3">
+        <form id="contact-form" class="bg-white bg-opacity-50 px-6 py-6 rounded-lg shadow-lg w-11/12 max-w-lg">
+            <h2 class="text-2xl font-bold mb-3 text-center text-black">Contact Me</h2>
             <div class="mb-4">
-                <label for="name" class="block text-white">Name</label>
-                <input type="text" id="name" name="name" class="boxxy w-full px-3 py-2 mt-2 text-black"
-                    required>
+                <label for="name" class="block text-black">Name</label>
+                <input type="text" id="name" name="name" class="boxxy w-full px-3 py-2 mt-2 text-white" required>
             </div>
             <div class="mb-4">
-                <label for="email" class="block text-white">Email</label>
-                <input type="email" id="email" name="email" class="boxxy w-full px-3 py-2 mt-2 text-black"
-                    required>
+                <label for="email" class="block text-black">Email</label>
+                <input type="email" id="email" name="email" class="boxxy w-full px-3 py-2 mt-2 text-white" required>
             </div>
             <div class="mb-4">
-                <label for="subject" class="block text-white">Subject</label>
-                <input type="text" id="subject" name="subject"
-                    class="boxxy w-full px-3 py-2 mt-2 text-black" required>
+                <label for="subject" class="block text-black">Subject</label>
+                <input type="text" id="subject" name="subject" class="boxxy w-full px-3 py-2 mt-2 text-white" required>
             </div>
             <div class="mb-4">
-                <label for="message" class="block text-white">Message</label>
-                <textarea id="message" name="message" class="boxxy w-full px-3 py-2 mt-2 text-black"
-                    rows="5" required></textarea>
+                <label for="message" class="block text-black">Message</label>
+                <textarea id="message" name="message" class="boxxy w-full px-3 py-2 mt-2 text-white" rows="5"
+                    required></textarea>
             </div>
             <button type="submit"
                 class="boxxy w-full px-3 py-2 mt-2 text-white hover:text-black hover:bg-gray-200">Send</button>
@@ -157,7 +158,7 @@
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
         (function () {
-            emailjs.init('MAUBFHodMOevpbI-P'); 
+            emailjs.init('MAUBFHodMOevpbI-P');
         })();
 
         document.getElementById('menu-toggle').addEventListener('click', function () {
@@ -180,7 +181,7 @@
                     console.error('Error:', error);
                 });
         });
-        
+
     </script>
 </body>
 

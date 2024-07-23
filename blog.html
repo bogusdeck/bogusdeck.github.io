@@ -10,6 +10,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        @font-face {
+            font-family: 'Joystick';
+            src: url('../fonts/joystix_monospace.otf') format('opentype');
+        }
+
+        @font-face {
+            font-family: 'Gumball';
+            src: url('../fonts/title.TTF') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Fipps';
+            src: url('../fonts/Fipps.otf') format('opentype');
+        }
+
+        .headingfont {
+            font-family: 'Joystick', monospace;
+        }
+
+        .title {
+            font-family: 'Gumball', monospace;
+        }
+
+        .fipps {
+            font-family: 'Fipps', monospace;
+        }
+
         body {
             background-color: black;
             background-repeat: repeat;
@@ -95,7 +122,7 @@
                     <a class="nav-item" href="project.html">Projects</a>
                 </div>
                 <a href="/index.html" class="flex items-center justify-center">
-                    <img src="indexbg/logo.png" alt="logo" class="h-10 img">
+                    <img src="indexbg/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <div class="flex items-center space-x-4">
                     <a class="nav-item" href="about.html">About</a>
@@ -105,7 +132,7 @@
             <!-- Hamburger menu -->
             <div class="md:hidden flex items-center justify-between w-full">
                 <a href="/index.html" class="flex items-center justify-start">
-                    <img src="indexbg/logo.png" alt="logo" class="h-10 img">
+                    <img src="indexbg/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <button id="menu-toggle" class="flex items-center justify-end">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -131,9 +158,11 @@
 
     <!-- Pagination Controls -->
     <div id="pagination" class="flex items-center justify-evenly md:justify-center my-6">
-        <button id="prev-page" class="px-2 py-1 bg-gray-700 text-white boxxy h-[30px] text-[12px] md:text-[16px]" disabled>Previous</button>
+        <button id="prev-page" class="px-2 py-1 bg-gray-700 text-white boxxy h-[30px] text-[12px] md:text-[16px]"
+            disabled>Previous</button>
         <span id="page-info" class="mx-4 text-white align-center md:mx-10 text-[16px]">1</span>
-        <button id="next-page" class="px-2 py-1 bg-gray-700 text-white boxxy h-[30px] text-[12px] md:text-[16px]">Next</button>
+        <button id="next-page"
+            class="px-2 py-1 bg-gray-700 text-white boxxy h-[30px] text-[12px] md:text-[16px]">Next</button>
     </div>
 
     <script>
@@ -153,8 +182,8 @@
                         const blogPost = document.createElement('div');
                         blogPost.className = 'boxxy mb-6 p-4 mx-4';
                         blogPost.innerHTML = `
-                            <h2 class="text-xl font-semibold"><a href="blog-detail.html?id=${post.id}" class="text-blue-500 hover:underline">${post.title}</a></h2>
-                            <p class="text-white-700 mt-2">${post.description}</p>
+                            <h2 class="text-xl font-semibold title"><a href="blog-detail.html?id=${post.id}" class="text-blue-500 hover:underline">${post.title}</a></h2>
+                            <p class="text-white-700 mt-2 headingfont">${post.description}</p>
                             <p class="text-gray-400 mt-2 text-sm"><small>Posted on ${new Date(post.published_at).toDateString()}</small></p>
                         `;
                         blogContainer.appendChild(blogPost);
