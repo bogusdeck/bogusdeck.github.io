@@ -37,9 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 buttons.right.classList.remove('hidden');
                 buttons.top.classList.remove('hidden');
                 buttons.bottom.classList.remove('hidden');
-                buttons.left.textContent = 'Left';
-                buttons.right.textContent = 'Resume';
-                buttons.top.textContent = 'Top';
+                buttons.left.textContent = 'Notes';
+                buttons.right.textContent = 'CV';
+                buttons.top.textContent = 'Config';
                 buttons.bottom.textContent = 'Artwork';
                 break;
             case 'left':

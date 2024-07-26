@@ -183,3 +183,15 @@ html {
     image-rendering: crisp-edges;
     image-rendering: pixelated;
 }
+
+.boxxy {
+    box-shadow: 0 -4px #000, 0 -8px #fff, 4px 0 #000, 4px -4px #fff, 8px 0 #fff, 0 4px #000, 0 8px #fff, -4px 0 #000, -4px 4px #fff, -8px 0 #fff, -4px -4px #fff, 4px 4px #fff;
+    background-color: black;
+    color: white;
+}
+
+.boxxyw{
+    box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
+    background-color: #fff;
+    color: #000;
+}
