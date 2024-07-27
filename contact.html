@@ -24,7 +24,7 @@
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
             image-rendering: pixelated;
-            overflow:hidden;
+            /* overflow: hidden; */
         }
 
         .img {
@@ -130,8 +130,8 @@
         </nav>
     </header>
 
-    <main class="flex flex-col items-center justify-center min-h-screen mt-3">
-        <form id="contact-form" class="bg-white bg-opacity-50 px-6 py-6 rounded-lg shadow-lg w-11/12 max-w-lg">
+    <div class="flex flex-col items-center justify-center min-h-screen">
+        <form id="contact-form" class="bg-white bg-opacity-50 px-6 pb-5 pt-3 rounded-lg shadow-lg w-11/12 absolute top-[70px] max-w-lg">
             <h2 class="text-2xl font-bold mb-3 text-center text-black">Contact Me</h2>
             <div class="mb-4">
                 <label for="name" class="block text-black">Name</label>
@@ -147,14 +147,18 @@
             </div>
             <div class="mb-4">
                 <label for="message" class="block text-black">Message</label>
-                <textarea id="message" name="message" class="boxxy w-full px-3 py-2 mt-2 text-white" rows="5"
+                <textarea id="message" name="message" class="boxxy w-full px-3 py-2 mt-2 text-white" rows="3"
                     required></textarea>
             </div>
             <button type="submit"
                 class="boxxy w-full px-3 py-2 mt-2 text-white hover:text-black hover:bg-gray-200">Send</button>
         </form>
-    </main>
-
+    </div>
+    <footer class="flex items-center justify-center bg-gray-900 py-4 w-full">
+        <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] mr-2">Copyright © 2024 --</p>
+        <a href="mailto:tanishvashisth@"
+            class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth</a>
+    </footer>
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
         (function () {
