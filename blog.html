@@ -46,9 +46,9 @@
             color: white;
             margin: 0;
             padding: 0;
-            height: 100%;
-            width: 100%;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         *,
@@ -110,6 +110,18 @@
             background-color: black;
             color: white;
         }
+
+        .content {
+            flex: 1;
+            padding-bottom: 60px; /* Space for the footer */
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
     </style>
 </head>
 
@@ -152,7 +164,7 @@
         </nav>
     </header>
 
-    <main class="py-6 mt-14 w-full px-4 sm:px-16 space-y-8" id="blog-container">
+    <main class="content py-6 mt-14 w-full px-4 sm:px-16 space-y-8" id="blog-container">
         <!-- Blog posts will be inserted here -->
     </main>
 
@@ -164,7 +176,7 @@
         <button id="next-page"
             class="px-2 py-1 bg-gray-700 text-white boxxy h-[30px] text-[12px] md:text-[16px]">Next</button>
     </div>
-     <footer class="flex items-center justify-center fixed bottom-0 bg-gray-900 py-4 w-full mt-10">
+    <footer class="mt-10 w-full">
         <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] mr-2">Copyright © 2024 --</p>
         <a href="mailto:tanishvashisth@"
             class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth</a>
@@ -187,41 +199,37 @@
                         const blogPost = document.createElement('div');
                         blogPost.className = 'boxxy mb-6 p-4 mx-4';
                         blogPost.innerHTML = `
-                            <h2 class="text-xl font-semibold title"><a href="blog-detail.html?id=${post.id}" class="text-blue-500 hover:underline">${post.title}</a></h2>
-                            <p class="text-white-700 mt-2 headingfont">${post.description}</p>
-                            <p class="text-gray-400 mt-2 text-sm"><small>Posted on ${new Date(post.published_at).toDateString()}</small></p>
+                            <h2 class="text-xl font-semibold title"><a href="blogpost.html?slug=${post.slug}">${post.title}</a></h2>
+                            <p>${post.description}</p>
+                            <p>Published: ${new Date(post.published_at).toLocaleDateString()}</p>
                         `;
                         blogContainer.appendChild(blogPost);
                     });
-                    pageInfo.textContent = `${currentPage}`;
-                    updatePaginationControls();
-                })
-                .catch(error => console.error('Error fetching blog posts:', error));
+
+                    // Update pagination controls
+                    pageInfo.textContent = `Page ${currentPage}`;
+                    prevPageButton.disabled = currentPage === 1;
+                    nextPageButton.disabled = data.length < postsPerPage;
+                });
         }
 
-        function updatePaginationControls() {
-            prevPageButton.disabled = currentPage <= 1;
-            nextPageButton.disabled = false; // You might want to add logic to determine if there's more data to load
+        function changePage(page) {
+            if (page < 1) return;
+            currentPage = page;
+            fetchPosts(page);
         }
 
-        prevPageButton.addEventListener('click', () => {
-            if (currentPage > 1) {
-                currentPage--;
-                fetchPosts(currentPage);
-            }
-        });
-
-        nextPageButton.addEventListener('click', () => {
-            currentPage++;
-            fetchPosts(currentPage);
-        });
+        prevPageButton.addEventListener('click', () => changePage(currentPage - 1));
+        nextPageButton.addEventListener('click', () => changePage(currentPage + 1));
 
         // Initial fetch
-        fetchPosts();
-        
-        document.getElementById('menu-toggle').addEventListener('click', function () {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+        fetchPosts(currentPage);
+
+        const menuToggle = document.getElementById("menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        menuToggle.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
         });
     </script>
 </body>
