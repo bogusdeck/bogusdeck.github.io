@@ -117,7 +117,6 @@
         }
 
         footer {
-            background-color: #1a1a1a;
             color: white;
             text-align: center;
             padding: 10px;
@@ -168,7 +167,6 @@
         <!-- Blog posts will be inserted here -->
     </main>
 
-    <!-- Pagination Controls -->
     <div id="pagination" class="flex items-center justify-evenly md:justify-center my-6">
         <button id="prev-page" class="px-2 py-1 bg-gray-700 text-white boxxy h-[30px] text-[12px] md:text-[16px]"
             disabled>Previous</button>
@@ -176,7 +174,7 @@
         <button id="next-page"
             class="px-2 py-1 bg-gray-700 text-white boxxy h-[30px] text-[12px] md:text-[16px]">Next</button>
     </div>
-    <footer class="mt-10 w-full">
+    <footer class="mt-10 flex items-center justify-center w-full bg-gray-900">
         <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] mr-2">Copyright © 2024 --</p>
         <a href="mailto:tanishvashisth@"
             class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth</a>
@@ -194,7 +192,7 @@
             fetch(`https://dev.to/api/articles?username=bogusdeck&page=${page}&per_page=${postsPerPage}`)
                 .then(response => response.json())
                 .then(data => {
-                    blogContainer.innerHTML = ''; // Clear current posts
+                    blogContainer.innerHTML = '';
                     data.forEach(post => {
                         const blogPost = document.createElement('div');
                         blogPost.className = 'boxxy mb-6 p-4 mx-4';
@@ -206,7 +204,7 @@
                         blogContainer.appendChild(blogPost);
                     });
 
-                    // Update pagination controls
+
                     pageInfo.textContent = `Page ${currentPage}`;
                     prevPageButton.disabled = currentPage === 1;
                     nextPageButton.disabled = data.length < postsPerPage;
