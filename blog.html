@@ -196,11 +196,11 @@
                     data.forEach(post => {
                         const blogPost = document.createElement('div');
                         blogPost.className = 'boxxy mb-6 p-4 mx-4';
-                        blogPost.innerHTML = 
+                        blogPost.innerHTML = `
                             <h2 class="text-xl font-semibold title"><a href="blog-detail.html?id=${post.id}" class="text-blue-500 hover:underline">${post.title}</a></h2>
                             <p class="text-white-700 mt-2 headingfont">${post.description}</p>
-                            <p class="text-gray-400 mt-2 text-sm"><small>Posted on ${new Date(post.published_at).toDateString()}</small></p>
-                        ;
+                            <p class="text-gray-400 mt-2 text-sm"><small>Posted on ${new Date(post.published_at).toDateString()}</small></p>`
+                       ;
                         blogContainer.appendChild(blogPost);
                     });
                     pageInfo.textContent = ${currentPage};
