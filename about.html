@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="config.js"></script>
 </head>
 
 <body>
@@ -74,72 +75,86 @@
             <img src="about/chickcomputer.gif" alt="chickwithcomputer">
         </div>
 
+
         <div id="left"
             class="section flex items-center justify-center transform -translate-x-full z-1 overflow-y-auto bg-cover bg-bottom img "
             style="background-image: url('about/rf_lg.gif');">
 
-            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 absolute top-[65px]">
-                <a href="https://www.notion.so/boguscode/PYTHON-notes-5c63f427fdb84eba835d7741bb1153a0?pvs=4">
+            <div class="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-4 gap-2 absolute top-[65px] px-4">
+                <a data-notion-note="python">
                     <div
-                        class="boxxy p-2 mx-5 my-4 w-28 h-fit md:w-36 md:h-32 lg:w-44 lg:h-40 flex flex-col justify-center items-center">
-                        <h3 class="text-sm lg:text-[18px] font-semibold">Python Notes</h3>
-                        <p class="hidden md:block mt-2 md:text-[10px] lg:text-[14px] text-start">Refreshing notes of
+                        class="boxxy p-2 mx-2 my-2 w-28 h-fit md:w-36 md:h-32 lg:w-44 lg:h-40 flex flex-col justify-center items-center">
+                        <h3 class="text-sm lg:text-[18px] font-semibold">Python</h3>
+                        <p class="hidden md:block mt-2 md:text-[8px] lg:text-[12px] text-start">Refreshing notes of
                             python with examples</p>
                     </div>
                 </a>
-                <a></a>
-                <a class="md:hidden"></a>
-                <a href="https://boguscode.notion.site/Mongo-DB-ed64218304214ef49cb0f5279c830b76?pvs=4">
+                <a data-notion-note="mongodb">
                     <div
-                        class="boxxy p-2 mx-5 my-4 w-28 h-fit md:w-36 md:h-32 lg:w-44 lg:h-40 flex flex-col justify-center items-center">
-                        <h3 class="text-sm lg:text-[18px] font-semibold">MongoDB Notes</h3>
-                        <p class="hidden md:block mt-2 md:text-[10px] lg:text-[14px] text-start">Guide to use Mongodb in
+                        class="boxxy p-2 mx-2 my-2 w-28 h-fit md:w-36 md:h-32 lg:w-44 lg:h-40 flex flex-col justify-center items-center">
+                        <h3 class="text-sm lg:text-[18px] font-semibold">MongoDB</h3>
+                        <p class="hidden md:block mt-2 md:text-[8px] lg:text-[12px] text-start">Guide to use Mongodb in
                             your code</p>
                     </div>
                 </a>
-                <a href="https://boguscode.notion.site/JavaScript-dbb9d6fe76f944f192ec6c85e7514892?pvs=25">
+                <a data-notion-note="javascript">
                     <div
-                        class="boxxy p-2 mx-5 my-4 w-28 h-fit md:w-36 md:h-32 lg:w-44 lg:h-40 flex flex-col justify-center items-center">
-                        <h3 class="text-sm lg:text-[18px] font-semibold">JS Notes</h3>
-                        <p class="hidden md:block mt-2 md:text-[10px] lg:text-[14px] text-start">JS notes covering all concepts</p>
+                        class="boxxy p-2 mx-2 my-2 w-28 h-fit md:w-36 md:h-32 lg:w-44 lg:h-40 flex flex-col justify-center items-center">
+                        <h3 class="text-sm lg:text-[18px] font-semibold">JS</h3>
+                        <p class="hidden md:block mt-2 md:text-[8px] lg:text-[12px] text-start">JS notes covering all concepts</p>
                     </div>
                 </a>
-                <a></a>
-                <a class="md:hidden"></a>
-                <a href="https://boguscode.notion.site/DSA-road-map-f99ffee5f8bc4b1a87a2f09595f6910e?pvs=4">
+                <a data-notion-note="dsa">
                     <div
-                        class="boxxy p-2 mx-5 my-4 w-28 h-fit md:w-36 md:h-32 lg:w-44 lg:h-40 flex flex-col justify-center items-center">
+                        class="boxxy p-2 mx-2 my-2 w-28 h-fit md:w-36 md:h-32 lg:w-44 lg:h-40 flex flex-col justify-center items-center">
                         <h3 class="text-sm lg:text-[18px] font-semibold">DSA Roadmap</h3>
-                        <p class="hidden md:block mt-2 md:text-[10px] lg:text-[14px] text-start">My personal DSA Roadmap
-                        </p>
+                        <p class="hidden md:block mt-2 md:text-[8px] lg:text-[12px] text-start">My personal DSA Roadmap</p>
+                    </div>
+                </a>
+                <a data-notion-note="sql">
+                    <div
+                        class="boxxy p-2 mx-2 my-2 w-28 h-fit md:w-36 md:h-32 lg:w-44 lg:h-40 flex flex-col justify-center items-center">
+                        <h3 class="text-sm lg:text-[18px] font-semibold">SQL Refresher</h3>
+                        <p class="hidden md:block mt-2 md:text-[8px] lg:text-[12px] text-start">From basic queries to advanced joins and optimization techniques</p>
+                    </div>
+                </a>
+                <a data-notion-note="cpp">
+                    <div
+                        class="boxxy p-2 mx-2 my-2 w-28 h-fit md:w-36 md:h-32 lg:w-44 lg:h-40 flex flex-col justify-center items-center">
+                        <h3 class="text-sm lg:text-[18px] font-semibold">C++</h3>
+                        <p class="hidden md:block mt-2 md:text-[8px] lg:text-[12px] text-start">Quick guide to modern C++ features and best practices</p>
+                    </div>
+                </a>
+                <a data-notion-note="cppStl">
+                    <div
+                        class="boxxy p-2 mx-2 my-2 w-28 h-fit md:w-36 md:h-32 lg:w-44 lg:h-40 flex flex-col justify-center items-center">
+                        <h3 class="text-sm lg:text-[18px] font-semibold">C++ STL</h3>
+                        <p class="hidden md:block mt-2 md:text-[8px] lg:text-[12px] text-start">Essential containers and algorithms for efficient C++ coding</p>
                     </div>
                 </a>
             </div>
         </div>
-
-        </div>
-
 
 
         <div id="right"
             class="section flex items-center justify-end sm:justify-center md:justify-end bg-green-400 transform translate-x-full z-1">
             <div class="flex flex-col md:flex-row items-center justify-center h-full mt-10 md:gap-2">
                 <div class="resume-container p-4 h-[70vh] md:h-[80vh] w-[45vh] md:w-full lg:w-[100vh]">
-                    <object data="about/Tanish vashisth IT.pdf" type="application/pdf" width="100%" height="100%">
+                    <object data="about/CV.pdf" type="application/pdf" width="100%" height="100%">
                         <p>It appears you don't have a PDF plugin for this browser. You can <a
-                                href="about/Tanish vashisth IT.pdf">click here to download the PDF file.</a></p>
+                                href="about/CV.pdf">click here to download the PDF file.</a></p>
                     </object>
                 </div>
                 <div class="flex flex-col items-center justify-center w-full gap-0 md:gap-4">
-                    <a href="about/Tanish_vashisth_resume.pdf" download="Tanish_Vashisth_CV.pdf" class="nes-btn mt-4 ">
+                    <a href="about/CV.pdf" download="Tanish_Vashisth_CV.pdf" class="nes-btn mt-4 ">
                         Download Resume
                     </a>
                     <div class="p-2 flex items-center justify-center gap-4">
-                         <a href="https://github.com/bogusdeck"><img src="/logo/GHub.png" alt="github" class="img w-16 h-auto"></a>
-                        <a href="www.linkedin.com/in/tanishvashisth"><img src="/logo/linkindin.png" alt="linkindin" class="img w-16 h-auto"></a>
-                        <a href="https://replit.com/@tanishvashisth"><img src="/logo/replit.png" alt="replit" class="img w-16 h-auto"></a>
-                        <a href="https://dev.to/prometheus_78"><img src="/logo/dev.png" alt="dev.to" class="img w-16 h-auto"></a>
-                        <a href="https://boguscode.notion.site/Tanish-s-Dashboard-869f654446fe412eaeee863616bec204"><img src="/logo/notion.png" alt="notion" class="img w-16 h-auto"></a>
+                        <a data-social="github"><img src="/logo/GHub.png" alt="github" class="img w-16 h-auto"></a>
+                        <a data-social="linkedin"><img src="/logo/linkindin.png" alt="linkindin" class="img w-16 h-auto"></a>
+                        <a data-social="replit"><img src="/logo/replit.png" alt="replit" class="img w-16 h-auto"></a>
+                        <a data-social="devto"><img src="/logo/dev.png" alt="dev.to" class="img w-16 h-auto"></a>
+                        <a data-social="notion"><img src="/logo/notion.png" alt="notion" class="img w-16 h-auto"></a>
                     </div>
                 </div>
             </div>
@@ -148,29 +163,29 @@
 
         <div id="top"
             class="section flex flex-col items-center justify-center bg-blue-400 transform -translate-y-full z-1">
-            <h2 class="text-[22px] md:text-[27px] text-center font-bold mb-4">My Configurations</h2>
+            <h2 class="text-[22px] md:text-[27px] text-center font-bold mb-4">My Configurations & Tools</h2>
             <div class="flex flex-col md:flex-row items-center justify-evenly gap-8 md: p-4 w-full max-w-4xl mx-auto">
                 <div
-                    class="order-1 md:order-0 flex flex-row md:flex-col items-center space-x-4 md:space-y-8 md:space-x-0 boxxy p-3">
-                    <a href="https://code.visualstudio.com/" target="_blank" class="hover:opacity-75">
+                    class="order-1 flex flex-row md:flex-col items-center space-x-4 md:space-y-8 md:space-x-0 boxxy p-3">
+                    <a data-tool="vscode" target="_blank" class="hover:opacity-75">
                         <img src="/asprites/vscode.png" alt="VSCode" class="img w-32 h-auto">
                     </a>
-                    <a href="https://github.com/bogusdeck/lazynvim-config.git" target="_blank" class="hover:opacity-75">
+                    <a data-tool="neovim" target="_blank" class="hover:opacity-75">
                         <img src="/asprites/nvim.png" alt="Neovim" class="img w-32 h-auto">
                     </a>
-                    <a href="https://github.com/bogusdeck/myConfig" target="_blank" class="hover:opacity-75">
-                        <img src="/asprites/archL.png" alt="Arch linux" class="img w-32 h-auto">
+                    <a data-tool="myConfig" target="_blank" class="hover:opacity-75">
+                        <img src="/asprites/archL.png" alt="Arch Linux" class="img w-32 h-auto">
                     </a>
                 </div>
                 <div
                     class="order-2 flex flex-row md:flex-col items-center space-x-4 md:space-y-8 md:space-x-0 boxxy p-3">
-                    <a href="" target="_blank" class="hover:opacity-75">
+                    <a data-tool="photoshop" target="_blank" class="hover:opacity-75">
                         <img src="/asprites/photoshop.png" alt="photoshop" class="img w-32 h-auto">
                     </a>
-                    <a href="" target="_blank" class="hover:opacity-75">
+                    <a data-tool="aseprite" target="_blank" class="hover:opacity-75">
                         <img src="/asprites/asprite.png" alt="asprite" class="img w-32 h-auto">
                     </a>
-                    <a href="" target="_blank" class="hover:opacity-75">
+                    <a data-tool="discord" target="_blank" class="hover:opacity-75">
                         <img src="/asprites/discord.png" alt="discord" class="img w-32 h-auto">
                     </a>
                 </div>

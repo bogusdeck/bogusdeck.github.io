@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameEndSound = document.getElementById('game-end-sound');
     let moveInterval;
     let wordIndex = 0;
-    const words1 = ['python', 'html', 'css', 'js', 'sql', 'mongoDB', 'Lua'];
-    const words2 = ['React', 'Node', 'Flask', 'Django', 'Scikit', 'pandas', 'matplotlib'];
+    const words1 = ['Python', 'Html/CSS', 'Javascript', 'TypeScript', 'SQL', 'mongoDB', 'Lua', 'C++'];
+    const words2 = ['React.js', 'Node.js', 'Flask', 'Django', 'Scikit', 'Pandas', 'Matplotlib', 'FastAPI', 'Angular', 'Next.js'];
     const defaultBirdImage = 'skills.nes/flyduck.gif';
     const shotBirdImage = 'skills.nes/shotduck.png';
     const deadBirdImage = 'skills.nes/deadduck.gif';
