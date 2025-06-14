@@ -1,0 +1,45 @@
+{
+  "social": {
+    "github": "https://github.com/bogusdeck",
+    "linkedin": "https://www.linkedin.com/in/tanishvashisth",
+    "replit": "https://replit.com/@tanishvashisth",
+    "devto": "https://dev.to/prometheus_78",
+    "notion": "https://boguscode.notion.site/Tanish-s-Dashboard-869f654446fe412eaeee863616bec204"
+  },
+  "projects": {
+    "reviewReward": {
+      "github": "https://github.com/bogusdeck/ReviewReward",
+      "live": "https://reviewreward.vercel.app/"
+    },
+    "tamely": {
+      "github": "https://github.com/bogusdeck/Tamely",
+      "live": "https://tamely.vercel.app/"
+    },
+    "taskTreasury": {
+      "github": "https://github.com/bogusdeck/Task-Reward-System",
+      "live": "https://tasktreasury.vercel.app/"
+    }
+  },
+  "tools": {
+    "vscode": "https://code.visualstudio.com/",
+    "neovim": "https://github.com/bogusdeck/bogusvim",
+    "myConfig": "https://github.com/bogusdeck/myConfig",
+    "photoshop": "https://www.adobe.com/in/products/photoshop.html",
+    "aseprite": "https://www.aseprite.org/",
+    "discord": "https://discord.com/"
+  },
+  "githubStats": {
+    "username": "bogusdeck",
+    "defaultStars": "13",
+    "defaultContributions": "648"
+  },
+  "notionNotes": {
+    "python": "https://www.notion.so/boguscode/PYTHON-notes-5c63f427fdb84eba835d7741bb1153a0?pvs=4",
+    "mongodb": "https://boguscode.notion.site/Mongo-DB-ed64218304214ef49cb0f5279c830b76?pvs=4",
+    "javascript": "https://boguscode.notion.site/JavaScript-dbb9d6fe76f944f192ec6c85e7514892?pvs=25",
+    "dsa": "https://boguscode.notion.site/DSA-road-map-f99ffee5f8bc4b1a87a2f09595f6910e?pvs=4",
+    "sql": "https://boguscode.notion.site/SQL-refresher-fedf439f25294f53b485704b02d1e403?pvs=74",
+    "cpp": "https://boguscode.notion.site/C-b5b0d9ca9ded44468fcd6de9cf2d2fc8?pvs=4",
+    "cppStl": "https://boguscode.notion.site/CPP-STL-10a5d92b48ef80df886af147869f629e?pvs=4"
+  }
+}
