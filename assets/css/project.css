@@ -1,27 +1,10 @@
-@font-face {
-    font-family: "mariofont";
-    src: url("../fonts/Super Plumber Brothers.ttf");
-}
 
-.fonty {
-    font-family: "mariofont";
-}
-
-
-@font-face {
-    font-family: 'Joystick';
-    src: url('../fonts/joystix_monospace.otf') format('opentype');
-}
-
-.desctext {
-    font-family: 'Joystick', monospace;
-}
 
 body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background: url("bg.png") repeat-x;
+    background: url("../images/project/bg.png") repeat-x;
     background-size: auto 100%;
     transition: background-position 0.3s ease-out;
     image-rendering: -webkit-optimize-contrast;
@@ -30,69 +13,6 @@ body {
 }
 
 
-body,
-html {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-.navbar {
-    box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
-    background-color: white;
-    color: black;
-    top: 15px;
-    left: 20px;
-    right: 20px;
-    position: fixed;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1000;
-    padding: 0 10px;
-}
-
-.nav-item {
-    margin: 0 10px;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 100;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    max-width: 90%;
-    max-height: 90%;
-    overflow-y: auto;
-}
-
-.hidden {
-    display: none;
-}
-
-.block {
-    display: block;
-}
 
 .scroll-container {
     width: 100vw;
@@ -123,7 +43,7 @@ html {
     left: 0;
     width: 100%;
     height: 25vh;
-    background: url("bghills.png") repeat-x;
+    background: url("../images/project/bghills.png") repeat-x;
     background-size: auto 100%;
     transition: background-position 0.3s ease-out;
     z-index: 0;
@@ -139,7 +59,7 @@ html {
     left: 0;
     width: 100%;
     height: 10vh;
-    background: url("floor.png") repeat-x;
+    background: url("../images/project/floor.png") repeat-x;
     background-size: auto 100%;
     transition: background-position 0.3s ease-out;
     z-index: 2;
@@ -164,15 +84,10 @@ html {
     z-index: 1;
 }
 
-img {
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-    image-rendering: pixelated;
-}
 
 @media (max-width: 768px) {
     body {
-        background: url("bgsm.png") repeat-x;
+        background: url("../images/project/bgsm.png") repeat-x;
         background-size: auto 100%;
     }
 
@@ -324,40 +239,6 @@ img {
     }
 }
 
-.bulbula {
-    position: relative;
-    text-align: center;
-    /* font-family: 'Press Start 2P', cursive; */
-    background-color: #fff;
-    color: #000;
-    box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
-    box-sizing: border-box;
-    width: fit-content;
-}
-
-.bulbula.shadow {
-    box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000, 4px 12px rgba(0, 0, 0, 0.1), 12px 12px rgba(0, 0, 0, 0.1), 8px 8px rgba(0, 0, 0, 0.1);
-}
-
-.bulbula.animation {
-    animation: slide-in 1s ease-in-out;
-}
-
-.bulbula.buton {
-    width: fit-content;
-}
-
-.bulbula.medium {
-    width: fit-content;
-    padding: 2px;
-}
-
-.bulbula.word {
-    margin-right: 20px;
-    margin-bottom: 10px;
-    width: fit-content;
-}
-
 .mute-button {
     position: fixed;
     bottom: 10px;
@@ -370,9 +251,9 @@ img {
 }
 
 .mute-button.unmuted {
-    background-image: url('qblock.gif');
+    background-image: url('../images/project/qblock.gif');
 }
 
 .mute-button.muted {
-    background-image: url('Starman.gif');
+    background-image: url('../images/project/Starman.gif');
 }

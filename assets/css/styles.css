@@ -1,35 +1,4 @@
-@font-face {
-  font-family: 'Joystick';
-  src: url('../fonts/joystix_monospace.otf') format('opentype');
-}
 
-@font-face {
-  font-family: 'Gumball';
-  src: url('../fonts/title.TTF') format('truetype');
-}
-
-@font-face {
-  font-family: 'Fipps';
-  src: url('../fonts/Fipps.otf') format('opentype');
-}
-
-.headingfont {
-  font-family: 'Joystick', monospace;
-}
-
-.title {
-  font-family: 'Gumball', monospace;
-}
-
-.fipps {
-  font-family: 'Fipps', monospace;
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
 
 body,
 html {
@@ -41,7 +10,7 @@ html {
 }
 
 body {
-  background-image: url('indexbg/bg0.png');
+  background-image: url('../images/indexbg/bg0.png');
   background-repeat: repeat;
   background-position: top center;
   background-attachment: scroll;
@@ -128,58 +97,6 @@ body {
   z-index: 0;
 }
 
-.img {
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  image-rendering: pixelated;
-}
-
-.navbar {
-  box-shadow: 0 -4px #000, 0 -8px #fff, 4px 0 #000, 4px -4px #fff, 8px 0 #fff, 0 4px #000, 0 8px #fff, -4px 0 #000, -4px 4px #fff, -8px 0 #fff, -4px -4px #fff, 4px 4px #fff;
-  background-color: black;
-  color: white;
-  top: 15px;
-  left: 20px;
-  right: 20px;
-  position: fixed;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 1000;
-  padding: 0 10px;
-}
-
-.nav-item {
-  margin: 0 10px;
-}
-
-
-.nav-item {
-  margin: 0 10px;
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 100;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background-color: white;
-  border-radius: 8px;
-  padding: 20px;
-  max-width: 90%;
-  max-height: 90%;
-  overflow-y: auto;
-}
 
 
 #scrollToTop {
@@ -455,91 +372,6 @@ body {
 }
 
 
-.hidden {
-  display: none;
-}
-
-.block {
-  display: block;
-}
-.bird {
-  transition: transform 0.1s ease-in-out;
-}
-
-.fall {
-  transition: transform 1s ease-in;
-}
-
-.bulbula {
-  position: relative;
-  text-align: center;
-  /* font-family: 'Press Start 2P', cursive; */
-  background-color: #fff;
-  color: #000;
-  box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
-  box-sizing: border-box;
-  width: fit-content;
-}
-
-.bulbula.shadow {
-  box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000, 4px 12px rgba(0, 0, 0, 0.1), 12px 12px rgba(0, 0, 0, 0.1), 8px 8px rgba(0, 0, 0, 0.1);
-}
-
-.bulbula.animation {
-  animation: slide-in 1s ease-in-out;
-}
-
-.bulbula.buton {
-  width: fit-content;
-}
-
-.bulbula.medium {
-  width: fit-content;
-  padding: 2px;
-}
-
-.bulbula.word {
-  margin-right: 20px;
-  margin-bottom: 10px;
-  width: fit-content;
-}
-
-@keyframes slide-in {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-#start-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 4;
-  padding: 5px 5px;
-  font-size: 15px;
-}
-
-#skip-button {
-  position: absolute;
-  top: 90%;
-  left: 80%;
-  transform: translate(-50%, -50%);
-  z-index: 4;
-  font-size: 8px;
-}
-
-.word-container {
-  display: inline-block;
-  animation: slide-in 1s ease-in-out;
-}
-
 @media (min-width: 768px) {
   .game-container {
     order: 2;
@@ -616,7 +448,7 @@ body {
   width: 600px;
   height: 500px;
   margin: 0 auto 0 auto;
-  background-image: url("logo/bgdck.gif");
+  background-image: url("../images/logo/bgdck.gif");
   background-size: contain;
   background-size: 100%;
   background-position: 50% 50%;
@@ -624,11 +456,6 @@ body {
   transition: transform 0.1s;
 }
 
-.boxxy {
-  box-shadow: 0 -4px #000, 0 -8px #fff, 4px 0 #000, 4px -4px #fff, 8px 0 #fff, 0 4px #000, 0 8px #fff, -4px 0 #000, -4px 4px #fff, -8px 0 #fff, -4px -4px #fff, 4px 4px #fff;
-  background-color: black;
-  color: white;
-}
 
 /* Glassmorphism container */
 .glassmorphism-container {

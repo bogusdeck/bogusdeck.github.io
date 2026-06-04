@@ -6,17 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Who am I?</title>
     <link rel="icon" href="/favicon.ico">
-    <link rel="stylesheet" href="about/about.css">
-    <link rel="stylesheet" href="bubblechat.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/about.css">
+    <link rel="stylesheet" href="assets/css/bubblechat.css">
+    <meta name="description" content="About Tanish Vashisth — dev notes, CV, pixel artwork, tools and configs.">
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/nes.css/css/nes-core.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <script src="config.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/config.js"></script>
 </head>
 
 <body>
@@ -28,7 +27,7 @@
                     <a class="nav-item" href="project.html">Projects</a>
                 </div>
                 <a href="/index.html" class="flex items-center justify-center">
-                    <img src="indexbg/logo.png" alt="logo" class="h-8 img">
+                    <img src="assets/images/indexbg/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <div class="flex items-center space-x-4">
                     <a class="nav-item" href="about.html">About</a>
@@ -38,7 +37,7 @@
             <!-- Hamburger menu -->
             <div class="md:hidden flex items-center justify-between w-full">
                 <a href="/index.html" class="flex items-center justify-start">
-                    <img src="indexbg/logo.png" alt="logo" class="h-8 img">
+                    <img src="assets/images/indexbg/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <button id="menu-toggle" class="flex items-center justify-end">
                     <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -72,13 +71,13 @@
 
     <main class="relative w-full h-full overflow-hidden">
         <div id="main" class="Headingfont section flex items-center justify-center bg-gray-500 z-3">
-            <img src="about/chickcomputer.gif" alt="chickwithcomputer">
+            <img src="about/images/chickcomputer.gif" alt="chickwithcomputer">
         </div>
 
 
         <div id="left"
             class="section flex items-center justify-center transform -translate-x-full z-1 overflow-y-auto bg-cover bg-bottom img "
-            style="background-image: url('about/rf_lg.gif');">
+            style="background-image: url('about/images/rf_lg.gif');">
 
             <div class="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-4 gap-2 absolute top-[65px] px-4">
                 <a data-notion-note="python">
@@ -140,21 +139,21 @@
             class="section flex items-center justify-end sm:justify-center md:justify-end bg-green-400 transform translate-x-full z-1">
             <div class="flex flex-col md:flex-row items-center justify-center h-full mt-10 md:gap-2">
                 <div class="resume-container p-4 h-[70vh] md:h-[80vh] w-[45vh] md:w-full lg:w-[100vh]">
-                    <object data="about/CV.pdf" type="application/pdf" width="100%" height="100%">
+                    <object data="assets/about/CV.pdf" type="application/pdf" width="100%" height="100%">
                         <p>It appears you don't have a PDF plugin for this browser. You can <a
-                                href="about/CV.pdf">click here to download the PDF file.</a></p>
+                                href="assets/about/CV.pdf">click here to download the PDF file.</a></p>
                     </object>
                 </div>
                 <div class="flex flex-col items-center justify-center w-full gap-0 md:gap-4">
-                    <a href="about/CV.pdf" download="Tanish_Vashisth_CV.pdf" class="nes-btn mt-4 ">
+                    <a href="assets/about/CV.pdf" download="Tanish_Vashisth_CV.pdf" class="nes-btn mt-4 ">
                         Download Resume
                     </a>
                     <div class="p-2 flex items-center justify-center gap-4">
-                        <a data-social="github"><img src="/logo/GHub.png" alt="github" class="img w-16 h-auto"></a>
-                        <a data-social="linkedin"><img src="/logo/linkindin.png" alt="linkindin" class="img w-16 h-auto"></a>
-                        <a data-social="replit"><img src="/logo/replit.png" alt="replit" class="img w-16 h-auto"></a>
-                        <a data-social="devto"><img src="/logo/dev.png" alt="dev.to" class="img w-16 h-auto"></a>
-                        <a data-social="notion"><img src="/logo/notion.png" alt="notion" class="img w-16 h-auto"></a>
+                        <a data-social="github" target="_blank" rel="noopener noreferrer"><img src="assets/images/logo/GHub.png" alt="github" class="img w-16 h-auto"></a>
+                        <a data-social="linkedin" target="_blank" rel="noopener noreferrer"><img src="assets/images/logo/linkindin.png" alt="linkindin" class="img w-16 h-auto"></a>
+                        <a data-social="replit" target="_blank" rel="noopener noreferrer"><img src="assets/images/logo/replit.png" alt="replit" class="img w-16 h-auto"></a>
+                        <a data-social="devto" target="_blank" rel="noopener noreferrer"><img src="assets/images/logo/dev.png" alt="dev.to" class="img w-16 h-auto"></a>
+                        <a data-social="notion" target="_blank" rel="noopener noreferrer"><img src="assets/images/logo/notion.png" alt="notion" class="img w-16 h-auto"></a>
                     </div>
                 </div>
             </div>
@@ -168,25 +167,25 @@
                 <div
                     class="order-1 flex flex-row md:flex-col items-center space-x-4 md:space-y-8 md:space-x-0 boxxy p-3">
                     <a data-tool="vscode" target="_blank" class="hover:opacity-75">
-                        <img src="/asprites/vscode.png" alt="VSCode" class="img w-32 h-auto">
+                        <img src="assets/images/asprites/vscode.png" alt="VSCode" class="img w-32 h-auto">
                     </a>
                     <a data-tool="neovim" target="_blank" class="hover:opacity-75">
-                        <img src="/asprites/nvim.png" alt="Neovim" class="img w-32 h-auto">
+                        <img src="assets/images/asprites/nvim.png" alt="Neovim" class="img w-32 h-auto">
                     </a>
                     <a data-tool="myConfig" target="_blank" class="hover:opacity-75">
-                        <img src="/asprites/archL.png" alt="Arch Linux" class="img w-32 h-auto">
+                        <img src="assets/images/asprites/archL.png" alt="Arch Linux" class="img w-32 h-auto">
                     </a>
                 </div>
                 <div
                     class="order-2 flex flex-row md:flex-col items-center space-x-4 md:space-y-8 md:space-x-0 boxxy p-3">
                     <a data-tool="photoshop" target="_blank" class="hover:opacity-75">
-                        <img src="/asprites/photoshop.png" alt="photoshop" class="img w-32 h-auto">
+                        <img src="assets/images/asprites/photoshop.png" alt="photoshop" class="img w-32 h-auto">
                     </a>
                     <a data-tool="aseprite" target="_blank" class="hover:opacity-75">
-                        <img src="/asprites/asprite.png" alt="asprite" class="img w-32 h-auto">
+                        <img src="assets/images/asprites/asprite.png" alt="asprite" class="img w-32 h-auto">
                     </a>
                     <a data-tool="discord" target="_blank" class="hover:opacity-75">
-                        <img src="/asprites/discord.png" alt="discord" class="img w-32 h-auto">
+                        <img src="assets/images/asprites/discord.png" alt="discord" class="img w-32 h-auto">
                     </a>
                 </div>
             </div>
@@ -218,7 +217,8 @@
             class="navigate-button absolute bottom-0 left-1/2 transform -translate-x-1/2 p-2 bg-black bg-opacity-50 text-white z-4">Artwork</button>
     </main>
 
-    <script src="about/about.js"></script>
+    <script src="assets/js/constants.js"></script>
+    <script src="assets/js/about.js"></script>
 </body>
 
 </html>

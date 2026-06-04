@@ -9,33 +9,8 @@
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/global.css">
     <style>
-        @font-face {
-            font-family: 'Joystick';
-            src: url('../fonts/joystix_monospace.otf') format('opentype');
-        }
-
-        .headingfont {
-            font-family: 'Joystick', monospace;
-        }
-
-        @font-face {
-            font-family: 'Proggy';
-            src: url('../fonts/ProggyMonoRegular.ttf') format('truetype');
-        }
-
-        .codefont {
-            font-family: 'Proggy', monospace;
-        }
-
-        @font-face {
-            font-family: 'Rainy';
-            src: url('../fonts/dogicapixel.ttf') format('truetype');
-        }
-
-        .textfont {
-            font-family: 'Rainy', monospace;
-        }
 
         body {
             background-color: black;
@@ -46,9 +21,11 @@
             color: white;
             margin: 0;
             padding: 0;
-            height: 100%;
+            min-height: 100vh;
             width: 100%;
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
         *,
@@ -190,7 +167,7 @@
                     <a class="nav-item" href="project.html">Projects</a>
                 </div>
                 <a href="/index.html" class="flex items-center justify-center">
-                    <img src="indexbg/logo.png" alt="logo" class="h-8 img">
+                    <img src="assets/images/indexbg/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <div class="flex items-center space-x-4">
                     <a class="nav-item" href="about.html">About</a>
@@ -200,7 +177,7 @@
             <!-- Hamburger menu -->
             <div class="md:hidden flex items-center justify-between w-full">
                 <a href="/index.html" class="flex items-center justify-start">
-                    <img src="indexbg/logo.png" alt="logo" class="h-8 img">
+                    <img src="assets/images/indexbg/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <button id="menu-toggle" class="flex items-center justify-end">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -220,7 +197,7 @@
         </nav>
     </header>
 
-    <main class="py-6 mt-14 w-full px-4 sm:px-16 space-y-8" id="blog-detail-container"></main>
+    <main class="py-6 mt-14 w-full px-4 sm:px-16 space-y-8 flex-grow" id="blog-detail-container"></main>
     <footer class="flex items-center justify-center bg-gray-900 py-4 w-full mt-10">
         <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] mr-2">Copyright © 2024 --</p>
         <a href="mailto:tanishvashisth@"

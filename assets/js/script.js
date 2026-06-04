@@ -23,14 +23,7 @@ document.getElementById("scrollToTop").addEventListener("click", function () {
 });
 
 // Typewriter Effect
-const lines = [
-  "bash-3.2$ who am i",
-  "Tanish Vashisth",
-  "bash-3.2$ ls",
-  "Artwork Desktop Downloads Music Documents Homework",
-  "bash-3.2$ uname -a",
-  "Linux archlinux 6.5.8-arch1-1 #1 SMP PREEMPT_DYNAMIC Thu, 19 Oct 2022 22:52:14 +0000 x86_64 GNU/Linux",
-];
+const lines = TERMINAL_LINES;
 
 const terminal = document.getElementById("terminal");
 const typingSound = document.getElementById("typing-sound");

@@ -29,9 +29,9 @@ muteButton.addEventListener("click", function () {
     isMuted = false;
     muteButton.classList.remove("muted");
     muteButton.classList.add("unmuted");
-    backgroundSound.volume = 1;
-    sectionAppearSound.volume = 1;
-    characterDisappearSound.volume = 1;
+    backgroundSound.volume = MARIO_VOLUME_LEVEL;
+    sectionAppearSound.volume = MARIO_VOLUME_LEVEL;
+    characterDisappearSound.volume = MARIO_VOLUME_LEVEL;
   } else {
     isMuted = true;
     muteButton.classList.remove("unmuted");
@@ -79,12 +79,12 @@ function handleScroll() {
   }
   if (!isScrolling) {
     isScrolling = true;
-    characterImg.src = "project/mariorunning.gif";
+    characterImg.src = MARIO_RUNNING_GIF;
   }
 
   scrollTimeout = setTimeout(() => {
     isScrolling = false;
-    characterImg.src = "project/mario.png";
+    characterImg.src = MARIO_IDLE_PNG;
   }, 150);
 
   const maxScrollLeft =

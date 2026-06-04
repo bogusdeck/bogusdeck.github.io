@@ -1,0 +1,225 @@
+/* ==========================================================================
+   GLOBAL STYLESHEET (common.css / global.css)
+   Contains all shared fonts, utilities, modals, and navbar configurations.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. FONTS & TYPOGRAPHY
+   -------------------------------------------------------------------------- */
+@font-face {
+    font-family: 'Joystick';
+    src: url('../fonts/joystix_monospace.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Gumball';
+    src: url('../fonts/title.TTF') format('truetype');
+}
+
+@font-face {
+    font-family: 'Fipps';
+    src: url('../fonts/Fipps.otf') format('opentype');
+}
+
+@font-face {
+    font-family: "mariofont";
+    src: url("../fonts/Super Plumber Brothers.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: 'Proggy';
+    src: url('../fonts/ProggyMonoRegular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Rainy';
+    src: url('../fonts/dogicapixel.ttf') format('truetype');
+}
+
+/* Font helpers */
+.headingfont, .desctext {
+    font-family: 'Joystick', monospace;
+}
+
+.title {
+    font-family: 'Gumball', monospace;
+}
+
+.fipps {
+    font-family: 'Fipps', monospace;
+}
+
+.fonty {
+    font-family: "mariofont", monospace;
+}
+
+.codefont {
+    font-family: 'Proggy', monospace;
+}
+
+.textfont {
+    font-family: 'Rainy', monospace;
+}
+
+/* --------------------------------------------------------------------------
+   2. COMMON LAYOUT & HELPER STATES
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.block {
+    display: block !important;
+}
+
+img, .img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+}
+
+/* --------------------------------------------------------------------------
+   3. RETRO BORDERS (BOXXY SYSTEM)
+   -------------------------------------------------------------------------- */
+/* Standard Boxxy (Black Background, White Border Shadow) */
+.boxxy {
+    box-shadow: 0 -4px #000, 0 -8px #fff, 4px 0 #000, 4px -4px #fff, 8px 0 #fff, 0 4px #000, 0 8px #fff, -4px 0 #000, -4px 4px #fff, -8px 0 #fff, -4px -4px #fff, 4px 4px #fff;
+    background-color: black;
+    color: white;
+}
+
+/* White Boxxy (White Background, Black Border Shadow) */
+.boxxyw {
+    box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
+    background-color: #fff;
+    color: #000;
+}
+
+/* Retro Green Boxxy (Duck Hunt style HUD) */
+.boxxy-green {
+    box-shadow: 0 -4px #000, 
+                0 -8px #8cd600, 
+                4px 0 #000, 
+                4px -4px #8cd600, 
+                8px 0 #8cd600, 
+                0 4px #000, 
+                0 8px #8cd600, 
+                -4px 0 #000, 
+                -4px 4px #8cd600, 
+                -8px 0 #8cd600, 
+                -4px -4px #8cd600, 
+                4px 4px #8cd600;
+    background-color: black;
+    color: white;
+}
+
+/* --------------------------------------------------------------------------
+   4. NAVIGATION (NAVBAR & HAMBURGER SYSTEM)
+   -------------------------------------------------------------------------- */
+.navbar {
+    box-shadow: 0 -4px #000, 0 -8px #fff, 4px 0 #000, 4px -4px #fff, 8px 0 #fff, 0 4px #000, 0 8px #fff, -4px 0 #000, -4px 4px #fff, -8px 0 #fff, -4px -4px #fff, 4px 4px #fff;
+    background-color: black;
+    color: white;
+    top: 15px;
+    left: 20px;
+    right: 20px;
+    position: fixed;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    padding: 0 10px;
+}
+
+.nav-item {
+    margin: 0 10px;
+}
+
+/* --------------------------------------------------------------------------
+   5. POPUP MODAL SYSTEM
+   -------------------------------------------------------------------------- */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+}
+
+/* --------------------------------------------------------------------------
+   6. RETRO SPEECH BUBBLES (BULBULA)
+   -------------------------------------------------------------------------- */
+.bulbula {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
+    box-sizing: border-box;
+    width: fit-content;
+    font-family: 'Joystick', monospace;
+    padding: 8px 12px;
+}
+
+.bulbula.shadow {
+    box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000, 4px 12px rgba(0, 0, 0, 0.1), 12px 12px rgba(0, 0, 0, 0.1), 8px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bulbula.animation {
+    animation: slide-in 1s ease-in-out;
+}
+
+.bulbula.buton {
+    width: fit-content;
+}
+
+.bulbula.medium {
+    width: fit-content;
+    padding: 2px;
+}
+
+.bulbula.word {
+    margin-right: 20px;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.word-container {
+    display: inline-block;
+    animation: slide-in 1s ease-in-out;
+}
+
+

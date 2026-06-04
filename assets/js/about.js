@@ -151,9 +151,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const artworkContainer = document.querySelector('.artwork-container');
-    const artworkFolder = 'artwork/';
-    const totalImages = 87;
-    const imagesPerPage = 12;
+    const artworkFolder = ARTWORK_FOLDER;
+    const totalImages = ARTWORK_TOTAL_IMAGES;
+    const imagesPerPage = ARTWORK_IMAGES_PER_PAGE;
     let currentPage = 1;
 
     function loadArtworkPage(page) {
