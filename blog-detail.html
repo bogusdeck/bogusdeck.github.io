@@ -213,9 +213,15 @@
                 .then(response => response.json())
                 .then(post => {
                     blogDetailContainer.innerHTML = `
-                        <div class="boxxy p-4 mx-4">
+                        <div class="boxxy p-4 mx-4 relative">
+                            <!-- Dev.to external link icon -->
+                            <a href="${post.url}" target="_blank" rel="noopener noreferrer" class="absolute top-4 right-4 text-white hover:text-gray-400 transition-colors duration-200" title="View original post on Dev.to">
+                                <svg class="w-8 h-8 fill-current" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M120.12 208.29c-3.88-2.9-7.77-4.35-11.65-4.35H91.23v104.47h17.24c3.88 0 7.77-1.45 11.65-4.35 3.88-2.9 5.82-7.25 5.82-13.06v-69.65c-.01-5.8-1.96-10.16-5.82-13.06zm327.88-64.28v224c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64v-224c0-35.3 28.7-64 64-64h320c35.3 0 64 28.7 64 64zm-288 56H91.23c-17.67 0-32 14.33-32 32v80c0 17.67 14.33 32 32 32h48.77c17.67 0 32-14.33 32-32v-80c0-17.67-14.33-32-32-32zm112 0h-56c-17.67 0-32 14.33-32 32v112c0 17.67 14.33 32 32 32h56c17.67 0 32-14.33 32-32v-24c0-17.67-14.33-32-32-32h-24v-16h24c17.67 0 32-14.33 32-32v-80c0-17.67-14.33-32-32-32zm144 0h-40c-17.67 0-32 14.33-32 32v112c0 17.67 14.33 32 32 32h40c17.67 0 32-14.33 32-32v-112c0-17.67-14.33-32-32-32zm-128 32v16h24v24h-24v16h32v-56zm128 0h-32v80h32v-80z"/>
+                                </svg>
+                            </a>
                             <img src="${post.cover_image}" alt="Banner Image" class="img w-8/12 h-auto mb-4 mx-auto block">
-                            <h1 class="text-lg md:text-xl lg:text-2xl font-bold text-center">${post.title}</h1>
+                            <h1 class="text-lg md:text-xl lg:text-2xl font-bold text-center pr-12">${post.title}</h1>
                             <p class="text-gray-400 mt-2 text-sm text-center"><small>Posted on ${new Date(post.published_at).toDateString()}</small></p>
                             <div class="blog-content mt-4 textfont text-[12px]">
                                 ${post.body_html}

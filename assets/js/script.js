@@ -4,23 +4,26 @@ window.addEventListener("scroll", function () {
   var logoText = document.querySelector(".logo-text");
   var scrollToTopBtn = document.getElementById("scrollToTop");
   if (window.scrollY > 0) {
-    nav.classList.add("shrink");
-    logoText.classList.add("hidden");
-    scrollToTopBtn.classList.add("visible");
+    if (nav) nav.classList.add("shrink");
+    if (logoText) logoText.classList.add("hidden");
+    if (scrollToTopBtn) scrollToTopBtn.classList.add("visible");
   } else {
-    nav.classList.remove("shrink");
-    logoText.classList.remove("hidden");
-    scrollToTopBtn.classList.remove("visible");
+    if (nav) nav.classList.remove("shrink");
+    if (logoText) logoText.classList.remove("hidden");
+    if (scrollToTopBtn) scrollToTopBtn.classList.remove("visible");
   }
 });
 
 // Scroll to top function
-document.getElementById("scrollToTop").addEventListener("click", function () {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
+var scrollToTopBtn = document.getElementById("scrollToTop");
+if (scrollToTopBtn) {
+  scrollToTopBtn.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   });
-});
+}
 
 // Typewriter Effect
 const lines = TERMINAL_LINES;
@@ -55,16 +58,17 @@ const typeWriter = () => {
   setTimeout(typeWriter, 75); 
 };
 
-const observer = new IntersectionObserver((entries, observer) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      typeWriter();
-      observer.unobserve(entry.target);
-    }
+if (terminal) {
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        typeWriter();
+        observer.unobserve(entry.target);
+      }
+    });
   });
-});
-
-observer.observe(terminal);
+  observer.observe(terminal);
+}
 
 // Modal Functionality
 document.addEventListener('DOMContentLoaded', () => {
@@ -72,19 +76,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalBg = document.getElementById('modal-bg');
   const closeModal = document.getElementById('close-modal');
 
-  menuToggle.addEventListener('click', () => {
-    modalBg.classList.remove('hidden');
-  });
+  if (menuToggle && modalBg) {
+    menuToggle.addEventListener('click', () => {
+      modalBg.classList.remove('hidden');
+    });
+  }
 
-  closeModal.addEventListener('click', () => {
-    modalBg.classList.add('hidden');
-  });
-
-  modalBg.addEventListener('click', (e) => {
-    if (e.target === modalBg) {
+  if (closeModal && modalBg) {
+    closeModal.addEventListener('click', () => {
       modalBg.classList.add('hidden');
-    }
-  });
+    });
+  }
+
+  if (modalBg) {
+    modalBg.addEventListener('click', (e) => {
+      if (e.target === modalBg) {
+        modalBg.classList.add('hidden');
+      }
+    });
+  }
 });
 
 // Mouse Move Effect
@@ -96,12 +106,14 @@ document.addEventListener('DOMContentLoaded', () => {
     height = window.innerHeight;
 
   function bindMouse() {
-    document.addEventListener('mousemove', (event) => {
-      let x = (event.clientX / width - 0.5) * 2;
-      let y = (event.clientY / height - 0.5) * 2;
+    if (image) {
+      document.addEventListener('mousemove', (event) => {
+        let x = (event.clientX / width - 0.5) * 2;
+        let y = (event.clientY / height - 0.5) * 2;
 
-      tilt(x, y);
-    });
+        tilt(x, y);
+      });
+    }
   }
 
   function tilt(x, y) {
@@ -109,7 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let rx = y * force;
     let ry = -x * force;
 
-    image.style.transform = 'rotateY(' + ry + 'deg) rotateX(' + rx + 'deg)';
+    if (image) {
+      image.style.transform = 'rotateY(' + ry + 'deg) rotateX(' + rx + 'deg)';
+    }
   }
 
   bindMouse();
@@ -118,45 +132,46 @@ document.addEventListener('DOMContentLoaded', () => {
 // Parallax Effect
 function updateBackgrounds() {
   const scrollY = window.scrollY;
-  // document.getElementById('image').style.transform = `translateY(${scrollY * 0.5}px)`;
-  document.getElementById('astronautImage').style.transform = `translateY(${scrollY * 0.6}px)`;
-  document.querySelector('.left-image').style.transform = `translateY(${scrollY * 0.3}px)`;
-  document.querySelector('.right-image').style.transform = `translateY(${scrollY * 0.4}px)`;
-  document.querySelector('.left-center-image').style.transform = `translateY(${scrollY * 0.3}px)`;
-  document.querySelector('.bottom-right-image').style.transform = `translateY(${scrollY * 0.3}px)`;
+  
+  const astronautImage = document.getElementById('astronautImage');
+  if (astronautImage) {
+    astronautImage.style.transform = `translateY(${scrollY * 0.6}px)`;
+  }
+  
+  const leftImage = document.querySelector('.left-image');
+  if (leftImage) {
+    leftImage.style.transform = `translateY(${scrollY * 0.3}px)`;
+  }
+  
+  const rightImage = document.querySelector('.right-image');
+  if (rightImage) {
+    rightImage.style.transform = `translateY(${scrollY * 0.4}px)`;
+  }
+  
+  const leftCenterImage = document.querySelector('.left-center-image');
+  if (leftCenterImage) {
+    leftCenterImage.style.transform = `translateY(${scrollY * 0.3}px)`;
+  }
+  
+  const bottomRightImage = document.querySelector('.bottom-right-image');
+  if (bottomRightImage) {
+    bottomRightImage.style.transform = `translateY(${scrollY * 0.3}px)`;
+  }
 }
 
 window.addEventListener('scroll', updateBackgrounds);
 
 // GitHub Stats
 (function () {
-  // Wait for config to be loaded
-  document.addEventListener('configLoaded', function(event) {
-    const config = event.detail;
-    initGitHubStats(config.githubStats);
-  });
-  
-  // Initialize with default values until config is loaded
-  const username = window.githubUsername || 'bogusdeck';
   const starsCountElement = document.getElementById('stars-count');
   const totalContributionsElement = document.getElementById('total-contributions');
 
-  // Set default values immediately to ensure something is displayed
-  if (starsCountElement) starsCountElement.textContent = window.defaultStars || '13';
-  if (totalContributionsElement) totalContributionsElement.textContent = window.defaultContributions || '648';
-  
-  function initGitHubStats(statsConfig) {
-    if (!statsConfig) return;
-    
-    // Update username and default values from config
-    const username = statsConfig.username;
-    if (starsCountElement && !starsCountElement.textContent.match(/^\d+$/)) {
-      starsCountElement.textContent = statsConfig.defaultStars;
-    }
-    if (totalContributionsElement && !totalContributionsElement.textContent.match(/^\d+$/)) {
-      totalContributionsElement.textContent = statsConfig.defaultContributions;
-    }
-  }
+  // Immediately display cached values from localStorage if they exist, otherwise use config defaults
+  const defaultStars = localStorage.getItem('github_stars') || window.defaultStars || '16';
+  const defaultContributions = localStorage.getItem('github_commits') || window.defaultContributions || '690';
+
+  if (starsCountElement) starsCountElement.textContent = defaultStars;
+  if (totalContributionsElement) totalContributionsElement.textContent = defaultContributions;
 
   // Helper function to handle API rate limits and errors
   function fetchWithRetry(url, retries = 3, delay = 1000) {
@@ -165,7 +180,6 @@ window.addEventListener('scroll', updateBackgrounds);
         fetch(url)
           .then(response => {
             if (response.status === 403 && response.headers.get('X-RateLimit-Remaining') === '0') {
-              console.warn('GitHub API rate limit exceeded, using fallback values');
               throw new Error('Rate limit exceeded');
             }
             if (response.status === 202) {
@@ -173,7 +187,7 @@ window.addEventListener('scroll', updateBackgrounds);
               if (attemptsLeft > 0) {
                 setTimeout(() => attempt(attemptsLeft - 1), delay);
               } else {
-                throw new Error('GitHub still computing stats after retries');
+                throw new Error('GitHub still computing stats');
               }
             } else if (!response.ok) {
               throw new Error(`GitHub API error: ${response.status}`);
@@ -194,41 +208,72 @@ window.addEventListener('scroll', updateBackgrounds);
     });
   }
 
-  // Fetch repository count
-  fetchWithRetry(`https://api.github.com/users/${username}`)
-    .then(data => {
-      if (projectCountElement && data.public_repos !== undefined) {
-        projectCountElement.textContent = data.public_repos;
-      }
-    })
-    .catch(error => {
-      console.error('Error fetching GitHub repos:', error);
-      // Fallback value already set
-    });
+  function fetchLiveGitHubStats(username) {
+    if (!username) return;
 
-  // Fetch total contributions
-  function fetchTotalContributions() {
-    // Since we know the exact contribution count is 648, we'll use that directly
-    // while simulating a fetch operation to make it appear dynamic
+    // Fetch Stars Count by summation across public repos
+    fetchWithRetry(`https://api.github.com/users/${username}/repos?per_page=100`)
+      .then(repos => {
+        if (Array.isArray(repos)) {
+          const totalStars = repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
+          if (starsCountElement) {
+            starsCountElement.textContent = totalStars;
+          }
+          // Save to local storage for subsequent offline/rate-limit use
+          localStorage.setItem('github_stars', totalStars.toString());
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching live GitHub stars:', error);
+        // Fallback value is already displayed, no action needed
+      });
 
-    // First show loading state (optional)
+    // Fetch Total Commits Count using GitHub search API
     if (totalContributionsElement) {
       totalContributionsElement.textContent = 'Loading...';
     }
 
-    // Simulate API fetch delay
-    setTimeout(function () {
-      if (totalContributionsElement) {
-        totalContributionsElement.textContent = '648';
-      }
-    }, 800); // Short delay to simulate loading
+    fetchWithRetry(`https://api.github.com/search/commits?q=author:${username}`)
+      .then(data => {
+        if (data && data.total_count !== undefined && totalContributionsElement) {
+          totalContributionsElement.textContent = data.total_count;
+          // Save to local storage for subsequent offline/rate-limit use
+          localStorage.setItem('github_commits', data.total_count.toString());
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching live GitHub commits:', error);
+        // Fallback to cached/default contributions if API fails or is rate-limited
+        if (totalContributionsElement) {
+          totalContributionsElement.textContent = defaultContributions;
+        }
+      });
   }
 
-  // Call the function to fetch total contributions
-  fetchTotalContributions();
+  // Handle initialization
+  function init() {
+    const username = window.githubUsername || 'bogusdeck';
+    fetchLiveGitHubStats(username);
+  }
+
+  // Wait for config to load or run immediately if already loaded
+  if (window.githubUsername) {
+    init();
+  } else {
+    document.addEventListener('configLoaded', function (event) {
+      const config = event.detail;
+      const username = config.githubStats ? config.githubStats.username : 'bogusdeck';
+      fetchLiveGitHubStats(username);
+    });
+  }
 })();
 
-document.getElementById('menu-toggle').addEventListener('click', function () {
-  const menu = document.getElementById('mobile-menu');
-  menu.classList.toggle('hidden');
-});
+var menuToggleBtn = document.getElementById('menu-toggle');
+if (menuToggleBtn) {
+  menuToggleBtn.addEventListener('click', function () {
+    const menu = document.getElementById('mobile-menu');
+    if (menu) {
+      menu.classList.toggle('hidden');
+    }
+  });
+}
