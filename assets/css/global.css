@@ -142,6 +142,17 @@ img, .img {
     margin: 0 10px;
 }
 
+.navbar-desktop {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .navbar-desktop {
+        display: flex !important;
+    }
+}
+
+
 /* --------------------------------------------------------------------------
    5. POPUP MODAL SYSTEM
    -------------------------------------------------------------------------- */
