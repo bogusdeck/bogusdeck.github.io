@@ -70,14 +70,6 @@
     box-sizing: border-box;
 }
 
-.hidden {
-    display: none !important;
-}
-
-.block {
-    display: block !important;
-}
-
 img, .img {
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
