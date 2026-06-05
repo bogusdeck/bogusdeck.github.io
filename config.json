@@ -18,6 +18,14 @@
     "taskTreasury": {
       "github": "https://github.com/bogusdeck/Task-Reward-System",
       "live": "https://tasktreasury.vercel.app/"
+    },
+    "rune": {
+      "github": "https://github.com/bogusdeck/Rune",
+      "live": "https://rune-landing-self.vercel.app"
+    },
+    "mcpPhabricator": {
+      "github": "https://github.com/bogusdeck/mcp-phabricator",
+      "live": "https://github.com/bogusdeck/mcp-phabricator"
     }
   },
   "tools": {
