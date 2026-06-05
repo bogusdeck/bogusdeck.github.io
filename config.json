@@ -26,6 +26,18 @@
     "mcpPhabricator": {
       "github": "https://github.com/bogusdeck/mcp-phabricator",
       "live": "https://github.com/bogusdeck/mcp-phabricator"
+    },
+    "rashtriyaTv": {
+      "github": "https://github.com/bogusdeck/rashtriyatv-news",
+      "live": "https://www.rashtriyatv.com/"
+    },
+    "reviewAuthenticityChecker": {
+      "github": "https://github.com/bogusdeck/Text-Review-authenticity-checker",
+      "live": "https://reviewreward-production.up.railway.app/"
+    },
+    "discordWelcomeBot": {
+      "github": "https://github.com/bogusdeck/Discord-welcome-bot",
+      "live": "https://discord.gg/7GBTuQmXAX"
     }
   },
   "tools": {
