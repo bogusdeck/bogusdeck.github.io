@@ -304,12 +304,14 @@
             const curH = gameContainer.offsetHeight;
             const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
             const dogHeight = (isPerfect ? 14 : 11) * rootFontSize;
+            const grassLineY = curH * 0.69;
+            const visibleBodyRatio = isPerfect ? 0.82 : 0.92;
 
             // Start position (hidden under the grass/dirt)
-            let dogY = curH * 0.90;
-            
-            // Peak position (feet slightly below the grass line at 57.14%)
-            const targetY = (curH * 0.59) - dogHeight;
+            let dogY = curH * 0.88;
+
+            // Peak position keeps the dog's lower body inside the grass strip.
+            const targetY = grassLineY - (dogHeight * visibleBodyRatio);
 
             dog.style.top = `${dogY}px`;
             dog.classList.remove('hidden');
@@ -324,7 +326,7 @@
                         const slideDown = setInterval(() => {
                             dogY += 4;
                             dog.style.top = `${dogY}px`;
-                            if (dogY >= curH * 0.90) {
+                            if (dogY >= curH * 0.88) {
                                 clearInterval(slideDown);
                                 dog.classList.add('hidden');
                                 dog.style.width = '';
