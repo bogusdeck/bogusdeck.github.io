@@ -6,29 +6,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TANV</title>
     <link rel="icon" href="/favicon.ico">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="bubblechat.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/bubblechat.css">
+    <meta name="description" content="Tanish Vashisth — software engineer, pixel artist, and developer. Portfolio featuring projects, skills, and dev notes.">
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/nes.css/css/nes-core.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <script src="config.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/config.js"></script>
+    <style>
+        /* Highlighted yellow CTA chat bubble */
+        .bubble.bubble-hire {
+            background-color: #ffcc00 !important; /* Retro gold yellow */
+            color: #000000 !important;
+            box-shadow: 0 -4px #ffcc00, 0 -8px #000, 4px 0 #ffcc00, 4px -4px #000, 8px 0 #000, 0 4px #ffcc00, 0 8px #000, -4px 0 #ffcc00, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000, 4px 12px rgba(0, 0, 0, 0.2), 12px 12px rgba(0, 0, 0, 0.2), 8px 8px rgba(0, 0, 0, 0.2) !important;
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+            text-decoration: none;
+        }
+
+        .bubble.bubble-hire:hover {
+            background-color: #ffe066 !important; /* Lighter yellow hover */
+            transform: scale(1.05);
+            box-shadow: 0 -4px #ffe066, 0 -8px #000, 4px 0 #ffe066, 4px -4px #000, 8px 0 #000, 0 4px #ffe066, 0 8px #000, -4px 0 #ffe066, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000, 4px 16px rgba(0, 0, 0, 0.3), 16px 16px rgba(0, 0, 0, 0.3), 10px 10px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .bubble.bubble-hire.left::after {
+            background: #ffcc00 !important;
+            box-shadow: -4px -4px #ffcc00, -4px 0 #ffcc00, -8px 0 #ffcc00, 0 -8px #ffcc00, -4px 4px #000, -8px 4px #000, -12px 4px #000, -16px 4px #000, -12px 0 #000, -8px -4px #000, -4px -8px #000, 0 -4px #ffcc00 !important;
+        }
+
+        .bubble.bubble-hire:hover.left::after {
+            background: #ffe066 !important;
+            box-shadow: -4px -4px #ffe066, -4px 0 #ffe066, -8px 0 #ffe066, 0 -8px #ffe066, -4px 4px #000, -8px 4px #000, -12px 4px #000, -16px 4px #000, -12px 0 #000, -8px -4px #000, -4px -8px #000, 0 -4px #ffe066 !important;
+        }
+
+        /* Testimonial Infinite Scrolling Ticker */
+        .testimonial-outer-box {
+            width: 91.666667% !important;
+            max-width: 850px !important;
+            margin: 0 auto !important;
+        }
+
+        .review-card .flex-grow p {
+            font-size: 10px !important;
+            line-height: 1.4 !important;
+        }
+
+        .testimonial-slider-container {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+            padding: 15px 0;
+            display: flex;
+        }
+
+        .testimonial-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 50s linear infinite;
+        }
+
+        .testimonial-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
 </head>
 
 <body>
     <header class="w-full">
         <nav class="navbar">
-            <div class="hidden md:flex items-center justify-between w-full">
+            <div class="navbar-desktop items-center justify-between w-full">
                 <div class="flex items-center space-x-4">
                     <a class="nav-item" href="blog.html">Blog</a>
                     <a class="nav-item" href="project.html">Projects</a>
                 </div>
                 <a href="/index.html" class="flex items-center justify-center">
-                    <img src="indexbg/logo.png" alt="logo" class="h-8 img">
+                    <img src="assets/images/indexbg/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <div class="flex items-center space-x-4">
                     <a class="nav-item" href="about.html">About</a>
@@ -38,7 +103,7 @@
             <!-- Hamburger menu -->
             <div class="md:hidden flex items-center justify-between w-full">
                 <a href="/index.html" class="flex items-center justify-start">
-                    <img src="indexbg/logo.png" alt="logo" class="h-8 img">
+                    <img src="assets/images/indexbg/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <button id="menu-toggle" class="flex items-center justify-end">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -60,36 +125,36 @@
     </header>
 
     <div class="section text-white min-h-screen flex flex-col items-center justify-center z-20">
-        <img src="indexbg/blast.png" alt="Top Image" class="img top-image lg:hidden">
+        <img src="assets/images/indexbg/blast.png" alt="Top Image" class="img top-image lg:hidden">
         <div class="img bogusimage h-4/12 w-10/12 md:w-8/12 lg:w-5/12 top-20 z-10" id="image"></div>
         <div class="flex flex-col sm:flex-row items-center justify-evenly w-full gap-6 my-5 sm:my-8">
             <div class="order-2 sm:order-1 text-center">
                 <p>Stars<br>Earned</p>
-                <p id="stars-count">13</p>
+                <p id="stars-count">16</p>
             </div>
-            <img id="astronautImage" src="indexbg/astronaut.png" alt="Astronaut"
+            <img id="astronautImage" src="assets/images/indexbg/astronaut.png" alt="Astronaut"
                 class="img order-1 sm:order-2 astronaut w-3/6 min-[430px]:w-5/12 sm:w-4/12 md:w-3/12 xl:w-2/12 z-50">
             <div class="order-3 text-center">
                 <p>Total<br>Commits</p>
                 <div class="text-center">
-                    <p id="total-contributions">648</p>
+                    <p id="total-contributions">690</p>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="section text-white z-10">
-        <img src="indexbg/smallplanetleft.png" alt="Left Image"
+        <img src="assets/images/indexbg/smallplanetleft.png" alt="Left Image"
             class="img left-image w-[25%] min-[425px]:w-[20%] md:w-[15%] top-[20%]">
-        <img src="indexbg/smallplanetright.png" alt="Right Image"
+        <img src="assets/images/indexbg/smallplanetright.png" alt="Right Image"
             class="img right-image w-[30%] min-[425px]:w-[20%] md:w-[15%] z-50 top-[90%] ">
 
         <div
             class="flex flex-col items-center justify-center min-h-screen w-full md:w-3/4 lg:h-full mt-14 lg:mt-5 z-30">
             <div class="bg-gray-900 bg-opacity-50 py-3 w-full flex flex-col">
                 <div class="message flex items-center justify-start">
-                    <img src="indexbg/pixelboyhead.png"
-                        class="h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 ml-3 mt-2"></img>
+                    <img src="assets/images/indexbg/pixelboyhead.png"
+                        class="h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 ml-3 mt-2">
                     <div
                         class="bubble w-fit left shadow h-[30px]  lg:h-[40px]  text-[10px] md:text-[14px] lg:text-[20px]">
                         Hello</div>
@@ -98,19 +163,19 @@
                     <div
                         class="bubble w-fit right shadow  h-[30px] lg:h-[40px]  text-[10px] md:text-[14px] lg:text-[20px]">
                         Who are you?</div>
-                    <img src="indexbg/boyheadright.png"
-                        class="h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 mr-3 mt-2 "></img>
+                    <img src="assets/images/indexbg/boyheadright.png"
+                        class="h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 mr-3 mt-2 ">
                 </div>
                 <div class="message flex items-center justify-start">
-                    <img src="indexbg/pixelboyhead.png"
-                        class="h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 ml-3 mt-2"></img>
+                    <img src="assets/images/indexbg/pixelboyhead.png"
+                        class="h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 ml-3 mt-2">
                     <div
                         class="bubble w-fit left shadow  h-[30px] lg:h-[40px]  text-[10px] md:text-[14px] lg:text-[20px]">
                         I am Tanish</div>
                 </div>
                 <div class="message flex items-center justify-start">
-                    <img src="indexbg/pixelboyhead.png"
-                        class="h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 ml-3 mt-2"></img>
+                    <img src="assets/images/indexbg/pixelboyhead.png"
+                        class="h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 ml-3 mt-2">
                     <p class="bubble w-fit left shadow  h-[40px] lg:h-[40px] text-[10px] md:text-[14px] lg:text-[20px]">
                         I am
                         <span class="typewriter nocaret"></span>
@@ -120,15 +185,14 @@
                     <div
                         class="bubble w-fit right shadow  h-[45px] lg:h-[40px] text-[10px] md:text-[14px] lg:text-[20px]">
                         Wow thats great</div>
-                    <img src="indexbg/boyheadright.png"
+                    <img src="assets/images/indexbg/boyheadright.png"
                         class="h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 mr-3 mt-2"></img>
                 </div>
                 <div class="message flex items-center justify-start">
-                    <img src="indexbg/pixelboyhead.png"
-                        class="h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 ml-3 mt-2"></img>
-                    <a href="#"
-                        class="bubble w-fit left shadow h-[30px] lg:h-[40px] text-[10px] md:text-[14px] lg:text-[20px]">hire
-                        me !</a>
+                    <img src="assets/images/indexbg/pixelboyhead.png"
+                        class="h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 ml-3 mt-2">
+                    <a href="contact.html"
+                        class="bubble bubble-hire w-fit left shadow h-[30px] lg:h-[40px] text-[10px] md:text-[14px] lg:text-[20px] font-bold flex items-center justify-center">Hire Me!</a>
                 </div>
             </div>
         </div>
@@ -136,7 +200,7 @@
     </div>
 
     <div class="section text-white">
-        <img src="indexbg/bigplanetwithsmallplanet.png" alt="Left Center Image"
+        <img src="assets/images/indexbg/bigplanetwithsmallplanet.png" alt="Left Center Image"
             class="img left-center-image w-1/2 min-[425px]:w-[30%] md:w-[25%] xl:w-[20%] top-[20%]">
         <div class="flex flex-col md:flex-row min-h-screen">
             <div class="flex-1 flex items-center justify-center md:min-h-screen   ">
@@ -144,18 +208,7 @@
                     <p class="bg-black p-1 text-white text-[9px] md:text-[16px] lg:text-[23px] border-b-4 border-white">
                         About me!</p>
                     <p class="text-[9px] md:text-[14px] lg:text-[18px] text-start p-1 my-5 headingfont">
-                        Hello! I'm Tanish Vashisth, a passionate developer who finds joy in
-                        both crafting code
-                        and creating art. With a strong foundation in languages like C++, Python, and JavaScript, I
-                        specialize in
-                        frameworks like Django, Flask, Next.js, React.js, Node.js, and database management with MongoDB
-                        and
-                        SQL. My
-                        projects are driven by a purpose, whether it's building web applications, games using Pygame, or
-                        exploring the
-                        intersection of technology and art. When I'm not coding, you'll find me lost in the melodies of
-                        music, fueling
-                        my creativity for the next project. Let's collaborate and bring ideas to life!
+                        Hello! I'm Tanish Vashisth, a backend-focused SDE who loves building robust production systems and exploring creative tech. With 1.5+ years of experience across Django, FastAPI, Elasticsearch, Celery, and SQL, I specialize in architecting scalable backends, shipping LLM-driven features, and optimizing API performance (reducing latencies by up to 84%). I also have full-stack exposure with React and AngularJS. When I'm not coding, I design pixel artwork, customize system configs, and get lost in music. Let's collaborate!
                     </p>
                 </div>
             </div>
@@ -183,140 +236,489 @@
     </div>
 
     <div class="section text-white">
-        <div class="flex flex-col items-center justify-center min-h-screen" id="skills section">
-            <div class="grid grid-cols-1 md:grid-cols-4  mt-4">
-
-                <div class="col-span-1 order-2 md:order-1 mx-2 my-2 md:my-0">
-                    <div class="flex flex-col w-full h-full border-4 border-white bg-gray-950 bg-opacity-50">
-                        <div
-                            class="text-center headingfont text-[12px] md:text-[16px] mb-2 py-1 border-b-4 border-white w-full text-white bg-black">
-                            Programming Languages</div>
-                        <div
-                            class="word-box flex flex-row md:flex-col flex-wrap gap-4 justify-start md:justify-center md:items-center text-[9px] md:text-[14px] mt-2 ml-4">
+        <div class="relative min-h-screen flex flex-col items-center justify-center py-10">
+            <div class="bg-gray-950 bg-opacity-70 relative w-[95%] md:w-11/12 lg:w-10/12 xl:w-9/12 p-6 md:p-10 lg:p-12 z-10 border-4 border-white text-left">
+                <h2 class="text-center text-xl md:text-3xl lg:text-4xl mb-12 headingfont text-[#ffcc00]">Work Experience</h2>
+                <div class="flex flex-col gap-10">
+                    <div class="border-l-4 border-white pl-4 md:pl-6">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-1">
+                            <h3 class="headingfont text-[11px] sm:text-[13px] md:text-[16px] lg:text-[18px] text-white">Software Development Engineer 1 (SDE-1)</h3>
+                            <span class="headingfont text-[9px] sm:text-[10px] md:text-[12px] lg:text-[13px] text-gray-400">Dec 2024 – May 2025</span>
                         </div>
+                        <p class="headingfont text-[10px] sm:text-[12px] md:text-[14px] lg:text-[15px] text-blue-400 mb-3">Instahyre</p>
+                        <ul class="list-disc list-inside text-[9px] sm:text-[11px] md:text-[13px] lg:text-[14px] text-gray-300 space-y-2 headingfont leading-relaxed">
+                            <li>Owned Jobs module; built recommendation engine & LLM features (Magic Boost & Market Signal)</li>
+                            <li>Scaled critical APIs from 750ms to 120ms (84% latency reduction) with optimized raw SQL</li>
+                            <li>Improved core matching logic for skills and boolean search, boosting suggestion relevance</li>
+                        </ul>
                     </div>
-                </div>
-
-                <div class="col-span-1 md:col-span-2 order-1 md:order-2">
-                    <div class="border-t-4 border-l-4 border-r-4 border-white w-full max-w-screen-lg mx-auto">
-                        <div class="flex items-center justify-center w-full h-full bg-black">
-                            <div class="text-center headingfont text-xl text-white">
-                                SKILLS.NES
-                            </div>
+                    <div class="border-l-4 border-white pl-4 md:pl-6">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-1">
+                            <h3 class="headingfont text-[11px] sm:text-[13px] md:text-[16px] lg:text-[18px] text-white">Back-End Intern</h3>
+                            <span class="headingfont text-[9px] sm:text-[10px] md:text-[12px] lg:text-[13px] text-gray-400">Aug 2024 – Nov 2024</span>
                         </div>
+                        <p class="headingfont text-[10px] sm:text-[12px] md:text-[14px] lg:text-[15px] text-blue-400 mb-3">Xtage</p>
+                        <ul class="list-disc list-inside text-[9px] sm:text-[11px] md:text-[13px] lg:text-[14px] text-gray-300 space-y-2 headingfont leading-relaxed">
+                            <li>Built collection-sorting Shopify plugin backend (Pearch, 13k+ installs) with Celery queues</li>
+                            <li>Optimized APIs for 200-300 visits/hour; integrated Shopify subscription billing API</li>
+                            <li>Deployed infrastructure on AWS and DigitalOcean via Docker and Nginx</li>
+                        </ul>
                     </div>
-                    <div
-                        class="w-full max-w-screen-lg mx-auto relative border-4 border-white flex flex-col md:flex-row">
-                        <div class="game-container relative w-full" style="background-color: #63adff;">
-                            <img src="skills.nes/duckhuntbg.png" class="duckhunt-bg h-full w-full object-cover"
-                                alt="Duck Hunt">
-                            <img src="skills.nes/centerimage.gif" class="gameend-bg hidden h-full w-full object-cover"
-                                alt="Game End">
-                            <img src="skills.nes/flyduck.gif"
-                                class="bird hidden absolute w-12 h-12 md:w-20 md:h-20 nes-pointer" alt="Bird">
-                            <button id="start-button" class="bulbula medium buton headingfont nes-pointer">Start
-                                Game</button>
-                            <button id="skip-button" class="bulbula buton headingfont skip-button nes-pointer">Skip
-                                Game</button>
+                    <div class="border-l-4 border-white pl-4 md:pl-6">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-1">
+                            <h3 class="headingfont text-[11px] sm:text-[13px] md:text-[16px] lg:text-[18px] text-white">Python Intern</h3>
+                            <span class="headingfont text-[9px] sm:text-[10px] md:text-[12px] lg:text-[13px] text-gray-400">Feb 2023 – Apr 2023</span>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-span-1 order-3 md:order-3 mx-2 my-2 md:my-0">
-                    <div class="flex flex-col w-full h-full border-4 border-white bg-gray-950 bg-opacity-50">
-                        <div
-                            class="text-center headingfont text-[12px] md:text-[16px] mb-2 border-b-4 border-white w-full bg-black text-white py-1">
-                            Frameworks</div>
-                        <div
-                            class="word-box-2 flex flex-row md:flex-col flex-wrap gap-4 justify-start md:justify-center md:items-center text-[9px] md:text-[14px] mt-2 ml-4">
-                        </div>
+                        <p class="headingfont text-[10px] sm:text-[12px] md:text-[14px] lg:text-[15px] text-blue-400 mb-3">Callisto Infotech</p>
+                        <ul class="list-disc list-inside text-[9px] sm:text-[11px] md:text-[13px] lg:text-[14px] text-gray-300 space-y-2 headingfont leading-relaxed">
+                            <li>Built news platform rashtriyatv.com using MERN stack with custom admin editor</li>
+                            <li>Developed REST API endpoints with Django REST Framework including JWT authentication</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-
-
-            <audio id="loop-sound" src="skills.nes/Intro.mp3" loop></audio>
-            <audio id="duckinit-sound" src="skills.nes/duckinit.mp3" loop></audio>
-            <audio id="game-end-sound" src="skills.nes/gameend.mp3"></audio>
-            <audio id="click-sound" src="skills.nes/shot.mp3"></audio>
-            <audio id="fly-sound" src="skills.nes/wingFlap20sec.mp3" loop></audio>
-            <audio id="shot-sound" src="skills.nes/shot.mp3"></audio>
-            <audio id="fall-sound" src="skills.nes/duckFalling.mp3"></audio>
-            <script src="skills.nes/hehe.js" defer></script>
         </div>
-        <img src="indexbg/bigbottomrightcropped.png" alt="Bottom Right Image"
-            class="img bottom-right-image w-[60%] min-[425px]:w-[30%] md:w-[40%] lg:w-[25%] xl:w-[20%] top-[20%] min-[375px]:top-[10%] md:top-[-10%] min-[800px]:w-[30%]">
     </div>
 
     <div class="section text-white">
         <div class="relative min-h-screen flex flex-col items-center justify-center py-10">
-            <div class="bg-gray-950 bg-opacity-70 relative w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12 p-4 md:p-8 z-10 border-4 border-white">
+            <div class="bg-gray-950 bg-opacity-70 relative testimonial-outer-box py-4 md:py-8 px-0 z-10 border-4 border-white">
                 <h2 class="text-center text-2xl md:text-3xl lg:text-4xl mb-8 md:mb-12 headingfont">What People Say</h2>
 
-                <div class="flex flex-col md:flex-row gap-5 md:gap-6 justify-center items-center">
-                    <div class="review-card boxxy w-full md:w-1/3 p-4">
-                        <div class="flex flex-col items-center mb-4">
-                            <div class="w-16 h-16 rounded-full bg-blue-500 mb-2 overflow-hidden">
-                                <img src="indexbg/google.png" alt="Reviewer 1" class="w-full h-full object-cover">
+                <div class="testimonial-slider-container">
+                    <div class="testimonial-track">
+                        <!-- SET 1 -->
+                        <!-- Card 1: Google -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-blue-500 mb-2 overflow-hidden">
+                                    <img src="assets/images/indexbg/google.png" alt="Google" class="w-full h-full object-cover">
+                                </div>
+                                <h3 class="text-lg font-bold">Google</h3>
                             </div>
-                            <h3 class="text-lg font-bold">Google</h3>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★★★★★</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "We were impressed by your portfolio, but unfortunately, we've decided to move forward with someone else."</p>
+                            </div>
                         </div>
-                        <div class="flex justify-center mb-2">
-                            <span class="text-yellow-400">★★★★★</span>
-                        </div>
-                        <div class="flex-grow flex items-center justify-center">
-                            <p class="text-center text-xs">
-                                "We were impressed by your portfolio, but unfortunately, we've decided to move forward with someone else."</p>
-                        </div>
-                    </div>
 
-                    <div class="review-card boxxy w-full md:w-1/3 p-4">
-                        <div class="flex flex-col items-center mb-4">
-                            <div class="w-16 h-16 rounded-full bg-purple-500 mb-2 overflow-hidden">
-                                <img src="indexbg/roommate.png" alt="Reviewer 2" class="w-full h-full object-cover">
+                        <!-- Card 2: RoomMate -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-purple-500 mb-2 overflow-hidden">
+                                    <img src="assets/images/indexbg/roommate.png" alt="RoomMate" class="w-full h-full object-cover">
+                                </div>
+                                <h3 class="text-lg font-bold">RoomMate</h3>
                             </div>
-                            <h3 class="text-lg font-bold">RoomMate</h3>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★★★★★</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "I can't hear another speech about bad Code practices anymore."</p>
+                            </div>
                         </div>
-                        <div class="flex justify-center mb-2">
-                            <span class="text-yellow-400">★★★★★</span>
-                        </div>
-                        <div class="flex-grow flex items-center justify-center">
-                            <p class="text-center text-xs">
-                                "I can't hear another speech about bad Code practices anymore"</p>
-                        </div>
-                    </div>
 
-                    <!-- Review Card 3 -->
-                    <div class="review-card boxxy w-full md:w-1/3 p-4">
-                        <div class="flex flex-col items-center mb-4">
-                            <div class="w-16 h-16 rounded-full bg-green-500 mb-2 overflow-hidden">
-                                <img src="indexbg/aditya.png" alt="Reviewer 3" class="w-full h-full object-cover">
+
+
+                        <!-- Card 4: The Compiler -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-red-950 flex items-center justify-center mb-2 text-2xl">
+                                    ⚙️
+                                </div>
+                                <h3 class="text-lg font-bold">The Compiler</h3>
+                                <p class="text-[10px] text-gray-400">Syntax Police</p>
                             </div>
-                            <h3 class="text-lg font-bold">Aditya Rajgaria</h3>
-                            <p class="text-sm text-gray-300">Instahyre Ceo</p>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★☆☆☆☆</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "Missing semicolon on line 324. Warning: 457 unused variables. Still, he tells everyone 'it works on my machine'."</p>
+                            </div>
                         </div>
-                        <div class="flex justify-center mb-2">
-                            <span class="text-yellow-400">★★★★★</span>
+
+                        <!-- Card 5: Stack Overflow -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-orange-950 flex items-center justify-center mb-2 text-2xl">
+                                    🥞
+                                </div>
+                                <h3 class="text-lg font-bold">Stack Overflow</h3>
+                                <p class="text-[10px] text-gray-400">Co-Author</p>
+                            </div>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★★★★★</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "He has copied and pasted so many code snippets from us that we should be listed as a co-author on his B.Tech degree."</p>
+                            </div>
                         </div>
-                        <div class="flex-grow flex items-center justify-center">
-                            <p class="text-center text-xs">
-                                "I m asking Why and you are saying 'Yeah'"</p>
+
+                        <!-- Card 6: Local ISP -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-cyan-950 flex items-center justify-center mb-2 text-2xl">
+                                    🌐
+                                </div>
+                                <h3 class="text-lg font-bold">Local ISP</h3>
+                                <p class="text-[10px] text-gray-400">Bandwidth</p>
+                            </div>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★★★★★</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "Extremely high traffic between 2 AM and 5 AM. We thought it was a DDoS attack, but it was just him force-pushing 42 commits."</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 7: Mom -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-pink-950 flex items-center justify-center mb-2 text-2xl">
+                                    ❤️
+                                </div>
+                                <h3 class="text-lg font-bold">Mom</h3>
+                                <p class="text-[10px] text-gray-400">Support Lead</p>
+                            </div>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★★★★★</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "I don't know what a 'Docker container' is, but he spends a lot of time in his room shouting at it. I'm very proud."</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 8: Git -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-amber-950 flex items-center justify-center mb-2 text-2xl">
+                                    🌿
+                                </div>
+                                <h3 class="text-lg font-bold">Git</h3>
+                                <p class="text-[10px] text-gray-400">VCS Officer</p>
+                            </div>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★★☆☆☆</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "He resolved three critical merge conflicts today by just deleting the other developer's code. Highly dangerous."</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 9: Nginx -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-emerald-950 flex items-center justify-center mb-2 text-2xl">
+                                    🟢
+                                </div>
+                                <h3 class="text-lg font-bold">Nginx</h3>
+                                <p class="text-[10px] text-gray-400">Reverse Proxy</p>
+                            </div>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★★★☆☆</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "I threw 502 Bad Gateway errors at him all night, and his only debugging strategy was restarting Docker and praying."</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 10: Semicolon -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-gray-800 flex items-center justify-center mb-2 text-3xl font-extrabold text-white font-mono">
+                                    ;
+                                </div>
+                                <h3 class="text-lg font-bold">Semicolon</h3>
+                                <p class="text-[10px] text-gray-400">The Invisible</p>
+                            </div>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★☆☆☆☆</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "I hid behind a closing parenthesis for 4 hours while he questioned his entire life and career path. 10/10 hiding spot."</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 11: LeetCode -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-yellow-950 flex items-center justify-center mb-2 text-2xl">
+                                    📝
+                                </div>
+                                <h3 class="text-lg font-bold">LeetCode</h3>
+                                <p class="text-[10px] text-gray-400">Interviews</p>
+                            </div>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★★★☆☆</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "Has solved 150 Easy problems, 2 Mediums, and closes the browser tab when he accidentally opens a Hard. Ready for FAANG."</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 12: Coffee Machine -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-amber-900 flex items-center justify-center mb-2 text-2xl">
+                                    ☕
+                                </div>
+                                <h3 class="text-lg font-bold">Coffee Machine</h3>
+                                <p class="text-[10px] text-gray-400">Fuel Maker</p>
+                            </div>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★★★★★</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "I convert roasted beans into code through him. Output efficiency: 15%. Heart rate: 180 BPM."</p>
+                            </div>
+                        </div>
+
+
+                        <!-- SET 2 (Duplicate for Infinite Loop) -->
+                        <!-- Card 1: Google -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-blue-500 mb-2 overflow-hidden">
+                                    <img src="assets/images/indexbg/google.png" alt="Google" class="w-full h-full object-cover">
+                                </div>
+                                <h3 class="text-lg font-bold">Google</h3>
+                            </div>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★★★★★</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "We were impressed by your portfolio, but unfortunately, we've decided to move forward with someone else."</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: RoomMate -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-purple-500 mb-2 overflow-hidden">
+                                    <img src="assets/images/indexbg/roommate.png" alt="RoomMate" class="w-full h-full object-cover">
+                                </div>
+                                <h3 class="text-lg font-bold">RoomMate</h3>
+                            </div>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★★★★★</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "I can't hear another speech about bad Code practices anymore."</p>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Card 4: The Compiler -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-red-950 flex items-center justify-center mb-2 text-2xl">
+                                    ⚙️
+                                </div>
+                                <h3 class="text-lg font-bold">The Compiler</h3>
+                                <p class="text-[10px] text-gray-400">Syntax Police</p>
+                            </div>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★☆☆☆☆</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "Missing semicolon on line 324. Warning: 457 unused variables. Still, he tells everyone 'it works on my machine'."</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 5: Stack Overflow -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-orange-950 flex items-center justify-center mb-2 text-2xl">
+                                    🥞
+                                </div>
+                                <h3 class="text-lg font-bold">Stack Overflow</h3>
+                                <p class="text-[10px] text-gray-400">Co-Author</p>
+                            </div>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★★★★★</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "He has copied and pasted so many code snippets from us that we should be listed as a co-author on his B.Tech degree."</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 6: Local ISP -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-cyan-950 flex items-center justify-center mb-2 text-2xl">
+                                    🌐
+                                </div>
+                                <h3 class="text-lg font-bold">Local ISP</h3>
+                                <p class="text-[10px] text-gray-400">Bandwidth</p>
+                            </div>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★★★★★</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "Extremely high traffic between 2 AM and 5 AM. We thought it was a DDoS attack, but it was just him force-pushing 42 commits."</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 7: Mom -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-pink-950 flex items-center justify-center mb-2 text-2xl">
+                                    ❤️
+                                </div>
+                                <h3 class="text-lg font-bold">Mom</h3>
+                                <p class="text-[10px] text-gray-400">Support Lead</p>
+                            </div>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★★★★★</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "I don't know what a 'Docker container' is, but he spends a lot of time in his room shouting at it. I'm very proud."</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 8: Git -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-amber-950 flex items-center justify-center mb-2 text-2xl">
+                                    🌿
+                                </div>
+                                <h3 class="text-lg font-bold">Git</h3>
+                                <p class="text-[10px] text-gray-400">VCS Officer</p>
+                            </div>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★★☆☆☆</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "He resolved three critical merge conflicts today by just deleting the other developer's code. Highly dangerous."</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 9: Nginx -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-emerald-950 flex items-center justify-center mb-2 text-2xl">
+                                    🟢
+                                </div>
+                                <h3 class="text-lg font-bold">Nginx</h3>
+                                <p class="text-[10px] text-gray-400">Reverse Proxy</p>
+                            </div>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★★★☆☆</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "I threw 502 Bad Gateway errors at him all night, and his only debugging strategy was restarting Docker and praying."</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 10: Semicolon -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-gray-800 flex items-center justify-center mb-2 text-3xl font-extrabold text-white font-mono">
+                                    ;
+                                </div>
+                                <h3 class="text-lg font-bold">Semicolon</h3>
+                                <p class="text-[10px] text-gray-400">The Invisible</p>
+                            </div>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★☆☆☆☆</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "I hid behind a closing parenthesis for 4 hours while he questioned his entire life and career path. 10/10 hiding spot."</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 11: LeetCode -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-yellow-950 flex items-center justify-center mb-2 text-2xl">
+                                    📝
+                                </div>
+                                <h3 class="text-lg font-bold">LeetCode</h3>
+                                <p class="text-[10px] text-gray-400">Interviews</p>
+                            </div>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★★★☆☆</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "Has solved 150 Easy problems, 2 Mediums, and closes the browser tab when he accidentally opens a Hard. Ready for FAANG."</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 12: Coffee Machine -->
+                        <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
+                            <div class="flex flex-col items-center mb-4">
+                                <div class="w-16 h-16 rounded-full bg-amber-900 flex items-center justify-center mb-2 text-2xl">
+                                    ☕
+                                </div>
+                                <h3 class="text-lg font-bold">Coffee Machine</h3>
+                                <p class="text-[10px] text-gray-400">Fuel Maker</p>
+                            </div>
+                            <div class="flex justify-center mb-2">
+                                <span class="text-yellow-400">★★★★★</span>
+                            </div>
+                            <div class="flex-grow flex items-center justify-center">
+                                <p class="text-center text-xs">
+                                    "I convert roasted beans into code through him. Output efficiency: 15%. Heart rate: 180 BPM."</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Commented out Aditya Rajgaria card for now -->
+                <!--
+                <div class="review-card boxxy w-full md:w-1/3 p-4 mt-8 mx-auto">
+                    <div class="flex flex-col items-center mb-4">
+                        <div class="w-16 h-16 rounded-full bg-green-500 mb-2 overflow-hidden">
+                            <img src="assets/images/indexbg/aditya.png" alt="Reviewer 3" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-lg font-bold">Aditya Rajgaria</h3>
+                        <p class="text-sm text-gray-300">Instahyre Ceo</p>
+                    </div>
+                    <div class="flex justify-center mb-2">
+                        <span class="text-yellow-400">★★★★★</span>
+                    </div>
+                    <div class="flex-grow flex items-center justify-center">
+                        <p class="text-center text-xs">
+                            "I m asking Why and you are saying 'Yeah'"</p>
+                    </div>
+                </div>
+                -->
             </div>
         </div>
     </div>
 
     <footer class="flex items-center justify-center bg-gray-900 py-4 w-full mt-10">
         <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] mr-2">Copyright © 2023 --</p>
-        <a href="mailto:tanishvashisth@"
-            class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth</a>
+        <a href="mailto:tanishvashisth@gmail.com"
+            class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth@gmail.com</a>
     </footer>
-    <button id="scrollToTop" type="button" class="nes-btn is-error">
-        ↑
-    </button>
-    <script src="script.js"></script>
+
+    <script src="assets/js/constants.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>

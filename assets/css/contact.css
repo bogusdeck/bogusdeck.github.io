@@ -1,0 +1,227 @@
+
+
+.game-container {
+    cursor: url('../images/contact/crosshair.png') 12 12, crosshair;
+}
+
+.bird {
+    cursor: url('../images/contact/crosshair.png') 12 12, crosshair;
+    transition: transform 0.1s ease-in-out;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    z-index: 10;
+}
+
+.dog {
+    cursor: default;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    left: 40%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    user-select: none;
+    z-index: 10;
+    width: 11rem;
+    height: 11rem;
+}
+
+.fall {
+    transition: transform 2s ease-in;
+}
+
+
+
+/* HUD Container positioning over the game ground */
+.hud-container {
+    position: absolute;
+    bottom: 30px;
+    left: 40px;
+    right: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: 30;
+    pointer-events: none;
+    user-select: none;
+}
+
+.shot-box {
+    transform: scale(1.8);
+    transform-origin: bottom left;
+}
+
+.hit-box {
+    transform: scale(1.8);
+    transform-origin: bottom center;
+}
+
+/* SHOT Label and Bullets */
+.shot-label {
+    color: #63adff;
+    font-size: 11px;
+    font-family: 'Joystick', monospace;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+.bullet-container {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    min-height: 14px;
+    align-items: center;
+}
+
+.bullet {
+    width: 8px;
+    height: 14px;
+    background-image: url('../images/contact/hud_bullet.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    display: inline-block;
+}
+
+.bullet.spent {
+    filter: brightness(0.2); /* Turns the bullet into a dark/empty silhouette */
+}
+
+/* HIT Label and Duck Indicators */
+.hit-label {
+    color: #8cd600;
+    font-size: 11px;
+    font-family: 'Joystick', monospace;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.hit-container {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.hit-icon {
+    width: 16px;
+    height: 14px;
+    background-image: url('../images/contact/hud_duck_white.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    display: inline-block;
+}
+
+.hit-icon.active {
+    background-image: url('../images/contact/hud_duck_red.png');
+}
+
+/* SCORE Box layout (alternating pink/purple blocks on top) */
+.score-box {
+    transform: scale(1.8);
+    transform-origin: bottom right;
+    padding: 4px 8px !important;
+    min-width: 90px;
+}
+
+.score-val {
+    font-size: 14px;
+    font-family: 'Joystick', monospace;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 0px #000;
+    margin-bottom: 2px;
+}
+
+.score-label {
+    color: white;
+    font-size: 10px;
+    font-family: 'Joystick', monospace;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* Responsive HUD for phones/tablets */
+@media (max-width: 768px) {
+    .hud-container {
+        left: 10px;
+        right: 10px;
+        bottom: 20px;
+        gap: 6px;
+    }
+    
+    .shot-box {
+        transform: scale(1.1);
+        transform-origin: bottom left;
+    }
+    
+    .hit-box {
+        transform: scale(1.0);
+        transform-origin: bottom center;
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+        gap: 6px !important;
+    }
+    
+    .hit-container {
+        gap: 2px !important;
+    }
+    
+    .hit-icon {
+        width: 12px;
+        height: 10px;
+    }
+    
+    .score-box {
+        transform: scale(1.1);
+        transform-origin: bottom right;
+        min-width: 75px;
+        padding: 2px 6px !important;
+    }
+    
+    .score-val {
+        font-size: 11px;
+    }
+    
+    .score-label {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hud-container {
+        left: 5px;
+        right: 5px;
+        bottom: 15px;
+        gap: 4px;
+    }
+    
+    .shot-box {
+        transform: scale(0.9);
+    }
+    
+    .hit-box {
+        transform: scale(0.8);
+        padding-left: 4px !important;
+        padding-right: 4px !important;
+        gap: 4px !important;
+    }
+    
+    .hit-container {
+        gap: 1px !important;
+    }
+    
+    .hit-icon {
+        width: 10px;
+        height: 9px;
+    }
+    
+    .score-box {
+        transform: scale(0.9);
+        min-width: 60px;
+        padding: 1px 4px !important;
+    }
+}
+
+

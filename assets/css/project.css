@@ -1,0 +1,259 @@
+
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: url("../images/project/bg.png") repeat-x;
+    background-size: auto 100%;
+    transition: background-position 0.3s ease-out;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+}
+
+
+
+.scroll-container {
+    width: 100vw;
+    height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* white-space: nowrap; */
+    position: relative;
+}
+
+.section-wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+.section {
+    flex: 0 0 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+.hills {
+    position: absolute;
+    bottom: 10vh;
+    left: 0;
+    width: 100%;
+    height: 25vh;
+    background: url("../images/project/bghills.png") repeat-x;
+    background-size: auto 100%;
+    transition: background-position 0.3s ease-out;
+    z-index: 0;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    pointer-events: none;
+}
+
+.floor {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10vh;
+    background: url("../images/project/floor.png") repeat-x;
+    background-size: auto 100%;
+    transition: background-position 0.3s ease-out;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.character {
+    position: absolute;
+    bottom: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    transition: transform 0.3s ease-out;
+    pointer-events: none;
+}
+
+.castle {
+    position: absolute;
+    bottom: -11vh;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+
+@media (max-width: 768px) {
+    body {
+        background: url("../images/project/bgsm.png") repeat-x;
+        background-size: auto 100%;
+    }
+
+    .hills {
+        height: 20vh;
+    }
+}
+
+.box {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-color: #c94d0c;
+    border: none;
+    box-shadow:
+        5px 0 0 0 #010001,
+        0 5px 0 0 #010001,
+        -5px 0 0 0 #FCBCB0,
+        0 -5px 0 0 #FCBCB0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fcbcb0;
+    font-size: 16px;
+}
+
+.content {
+    z-index: 1;
+}
+
+.corner {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #FCBCB0;
+    box-shadow: 4px 4px 0px 0px #010001;
+}
+
+.top-left {
+    top: 10px;
+    left: 10px;
+}
+
+.top-right {
+    top: 10px;
+    right: 10px;
+}
+
+.bottom-left {
+    bottom: 10px;
+    left: 10px;
+}
+
+.bottom-right {
+    bottom: 10px;
+    right: 10px;
+}
+
+@media (max-width: 600px) {
+    .box {
+        font-size: 25px;
+    }
+
+    .corner {
+        width: 12px;
+        height: 12px;
+    }
+
+    .top-left {
+        top: 8px;
+        left: 8px;
+    }
+
+    .top-right {
+        top: 8px;
+        right: 8px;
+    }
+
+    .bottom-left {
+        bottom: 8px;
+        left: 8px;
+    }
+
+    .bottom-right {
+        bottom: 8px;
+        right: 8px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1200px) {
+    .box {
+        font-size: 30px;
+    }
+
+    .corner {
+        width: 12px;
+        height: 12px;
+    }
+
+    .top-left {
+        top: 12px;
+        left: 12px;
+    }
+
+    .top-right {
+        top: 12px;
+        right: 12px;
+    }
+
+    .bottom-left {
+        bottom: 12px;
+        left: 12px;
+    }
+
+    .bottom-right {
+        bottom: 12px;
+        right: 12px;
+    }
+}
+
+@media (min-width: 1201px) {
+    .box {
+        font-size: 50px;
+    }
+
+    .corner {
+        width: 12px;
+        height: 12px;
+    }
+
+    .top-left {
+        top: 14px;
+        left: 14px;
+    }
+
+    .top-right {
+        top: 14px;
+        right: 14px;
+    }
+
+    .bottom-left {
+        bottom: 14px;
+        left: 14px;
+    }
+
+    .bottom-right {
+        bottom: 14px;
+        right: 14px;
+    }
+}
+
+.mute-button {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 50;
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.mute-button.unmuted {
+    background-image: url('../images/project/qblock.gif');
+}
+
+.mute-button.muted {
+    background-image: url('../images/project/Starman.gif');
+}

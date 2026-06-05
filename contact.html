@@ -6,101 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Me!</title>
     <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="Get in touch with Tanish Vashisth — open to work, collaborations, and conversations.">
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/contact.css">
     <style>
         body {
-            background-image: url('PacMan.gif');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center center;
+            background-color: #63adff;
             color: white;
             margin: 0;
             padding: 0;
             height: 100%;
             width: 100%;
             position: relative;
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
+        }
+
+        #contact-bird {
+            position: absolute;
+            transition: none;
             image-rendering: pixelated;
-            /* overflow: hidden; */
-        }
-
-        .img {
-            image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
+            z-index: 10;
+        }
+
+        #contact-bird.fall {
+            transition: transform 1.2s ease-in;
+        }
+
+        #contact-dog {
             image-rendering: pixelated;
-        }
-
-        .navbar {
-            box-shadow: 0 -4px #000, 0 -8px #fff, 4px 0 #000, 4px -4px #fff, 8px 0 #fff, 0 4px #000, 0 8px #fff, -4px 0 #000, -4px 4px #fff, -8px 0 #fff, -4px -4px #fff, 4px 4px #fff;
-            background-color: black;
-            color: white;
-            top: 15px;
-            left: 20px;
-            right: 20px;
-            position: fixed;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            z-index: 1000;
-            padding: 0 10px;
-        }
-
-        .boxxy {
-            box-shadow: 0 -4px #000, 0 -8px #2121ff, 4px 0 #000, 4px -4px #2121ff, 8px 0 #2121ff, 0 4px #000, 0 8px #2121ff, -4px 0 #000, -4px 4px #2121ff, -8px 0 #2121ff, -4px -4px #2121ff, 4px 4px #2121ff;
-            background-color: black;
-            color: white;
-        }
-
-        .nav-item {
-            margin: 0 10px;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 100;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            max-width: 90%;
-            max-height: 90%;
-            overflow-y: auto;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .block {
-            display: block;
+            image-rendering: crisp-edges;
+            width: 11rem;
+            height: 11rem;
+            left: 40%;
+            transform: translateX(-50%);
+            pointer-events: none;
+            user-select: none;
+            z-index: 19;
         }
     </style>
 </head>
 
 <body>
     <header class="w-full">
-        <nav class="bulbula navbar">
-            <div class="hidden md:flex items-center justify-between w-full">
+        <nav class="navbar">
+            <div class="navbar-desktop items-center justify-between w-full">
                 <div class="flex items-center space-x-4">
                     <a class="nav-item" href="blog.html">Blog</a>
                     <a class="nav-item" href="project.html">Projects</a>
                 </div>
                 <a href="/index.html" class="flex items-center justify-center">
-                    <img src="indexbg/logo.png" alt="logo" class="h-8 img">
+                    <img src="assets/images/indexbg/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <div class="flex items-center space-x-4">
                     <a class="nav-item" href="about.html">About</a>
@@ -110,7 +68,7 @@
             <!-- Hamburger menu -->
             <div class="md:hidden flex items-center justify-between w-full">
                 <a href="/index.html" class="flex items-center justify-start">
-                    <img src="indexbg/logo.png" alt="logo" class="h-8 img">
+                    <img src="assets/images/indexbg/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <button id="menu-toggle" class="flex items-center justify-end">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -120,7 +78,7 @@
                     </svg>
                 </button>
             </div>
-            <div id="mobile-menu" class="hidden absolute top-0 right-0 bg-black w-full mt-14 z-50">
+            <div id="mobile-menu" class="hidden absolute top-0 right-0 w-full mt-14 z-50" style="background-color: #63adff;">
                 <a class="block py-2 px-4 text-white" href="index.html">Home</a>
                 <a class="block py-2 px-4 text-white" href="blog.html">Blog</a>
                 <a class="block py-2 px-4 text-white" href="project.html">Projects</a>
@@ -130,63 +88,580 @@
         </nav>
     </header>
 
-    <div class="flex flex-col items-center justify-center min-h-screen">
-        <form id="contact-form" class="bg-white bg-opacity-50 px-6 pb-5 pt-3 rounded-lg shadow-lg w-11/12 absolute top-[70px] max-w-lg">
-            <h2 class="text-2xl font-bold mb-3 text-center text-black">Contact Me</h2>
-            <div class="mb-4">
-                <label for="name" class="block text-black">Name</label>
-                <input type="text" id="name" name="name" class="boxxy w-full px-3 py-2 mt-2 text-white" required>
+    <!-- Duck Hunt Game Gate -->
+    <div id="game-section" class="w-full">
+        <div id="game-container" class="relative w-full overflow-hidden" style="height: 100vh; background-color: #63adff; cursor: url('assets/images/contact/crosshair.png') 12 12, crosshair;">
+            <div id="duckhunt-bg" class="absolute inset-0 z-0" style="background-image: url('assets/images/contact/duckhuntbg.png'); background-repeat: repeat-x; background-size: auto 100%; image-rendering: pixelated; image-rendering: -moz-crisp-edges; image-rendering: crisp-edges;"></div>
+            <div class="game-foreground absolute inset-0 pointer-events-none z-20" style="background-image: url('assets/images/contact/removebg.png'); background-repeat: repeat-x; background-size: auto 100%; image-rendering: pixelated; image-rendering: -moz-crisp-edges; image-rendering: crisp-edges;"></div>
+            <img src="assets/images/contact/flyduck.gif" id="contact-bird" class="img hidden absolute w-24 h-24 md:w-32 md:h-32 z-10" style="cursor: url('assets/images/contact/crosshair.png') 12 12, crosshair;" alt="Bird">
+            <img src="assets/images/contact/laughingdog.gif" id="contact-dog" class="hidden absolute z-10" alt="Dog">
+            <!-- Duck Hunt HUD -->
+            <div class="hud-container">
+                <!-- SHOT Box -->
+                <div class="boxxy-green shot-box">
+                    <div class="bullet-container" id="bullet-container">
+                        <div class="bullet"></div>
+                        <div class="bullet"></div>
+                        <div class="bullet"></div>
+                    </div>
+                    <div class="shot-label">SHOT</div>
+                </div>
+
+                <!-- HIT Box -->
+                <div class="boxxy-green hit-box flex-row px-4 gap-3" style="flex-direction: row; align-items: center; gap: 12px;">
+                    <div class="hit-label">HIT</div>
+                    <div class="hit-container" id="hit-container">
+                        <!-- 10 NES duck hit markers -->
+                        <div class="hit-icon"></div>
+                        <div class="hit-icon"></div>
+                        <div class="hit-icon"></div>
+                        <div class="hit-icon"></div>
+                        <div class="hit-icon"></div>
+                        <div class="hit-icon"></div>
+                        <div class="hit-icon"></div>
+                        <div class="hit-icon"></div>
+                        <div class="hit-icon"></div>
+                        <div class="hit-icon"></div>
+                    </div>
+                </div>
+
+                <!-- SCORE Box -->
+                <div class="boxxy-green score-box">
+                    <div class="score-val" id="score-display">000000</div>
+                    <div class="score-label">SCORE</div>
+                </div>
             </div>
-            <div class="mb-4">
-                <label for="email" class="block text-black">Email</label>
-                <input type="email" id="email" name="email" class="boxxy w-full px-3 py-2 mt-2 text-white" required>
+            <div id="game-start-overlay" class="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-60 gap-4 z-30">
+                <p class="headingfont text-white text-center text-[10px] md:text-[14px] px-4">Shoot 3 birds to unlock<br>the contact form</p>
+                <div class="flex flex-col md:flex-row items-center gap-3">
+                    <button id="contact-start-btn" class="boxxy headingfont text-white px-6 py-2 mr-4 text-[10px] md:text-[12px]">START</button>
+                    <button id="contact-message-btn" class="boxxy headingfont text-white px-6 py-2 text-[10px] md:text-[12px] hidden">SEND MESSAGE</button>
+                </div>
             </div>
-            <div class="mb-4">
-                <label for="subject" class="block text-black">Subject</label>
-                <input type="text" id="subject" name="subject" class="boxxy w-full px-3 py-2 mt-2 text-white" required>
+            <div id="shot-flash" class="hidden absolute inset-0 bg-white opacity-30 pointer-events-none z-40"></div>
+
+            <!-- Contact Form (hidden until 3 birds shot) -->
+            <div id="form-section" class="hidden absolute inset-0 flex flex-col items-center justify-start md:justify-center overflow-y-auto bg-black bg-opacity-40 z-50 pt-14 pb-10">
+                <div class="headingfont text-green-400 text-center text-[10px] md:text-[13px] mb-4 px-4" style="text-shadow: 2px 2px 0px #000;">✓ 3 birds down. Form unlocked.</div>
+                <form id="contact-form" class="boxxy px-4 md:px-8 pb-6 pt-4 w-11/12 max-w-2xl my-auto md:my-0">
+                    <h2 class="headingfont text-[16px] md:text-[20px] font-bold mb-6 text-center text-white">Contact Me</h2>
+                    
+                    <!-- Grid for Name and Email -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 mb-4">
+                        <div>
+                            <label for="name" class="block text-white headingfont text-[9px] mb-1">Name</label>
+                            <input type="text" id="name" name="name" class="boxxy w-full px-3 py-2 mt-1 text-white headingfont text-[10px]" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-white headingfont text-[9px] mb-1">Email</label>
+                            <input type="email" id="email" name="email" class="boxxy w-full px-3 py-2 mt-1 text-white headingfont text-[10px]" required>
+                        </div>
+                    </div>
+
+                    <!-- Subject -->
+                    <div class="mb-4">
+                        <label for="subject" class="block text-white headingfont text-[9px] mb-1">Subject</label>
+                        <input type="text" id="subject" name="subject" class="boxxy w-full px-3 py-2 mt-1 text-white headingfont text-[10px]" required>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="mb-6">
+                        <label for="message" class="block text-white headingfont text-[9px] mb-1">Message</label>
+                        <textarea id="message" name="message" class="boxxy w-full px-3 py-2 mt-1 text-white headingfont text-[10px]" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="boxxy-green w-full px-3 py-2 text-white headingfont text-[10px] hover:bg-gray-800" style="display: block; width: 100%; text-align: center;">Send</button>
+                    <p class="headingfont text-[8px] text-gray-400 text-center mt-4">INSERT MESSAGE TO CONTINUE (THE DOG IS WATCHING...)</p>
+                </form>
             </div>
-            <div class="mb-4">
-                <label for="message" class="block text-black">Message</label>
-                <textarea id="message" name="message" class="boxxy w-full px-3 py-2 mt-2 text-white" rows="3"
-                    required></textarea>
-            </div>
-            <button type="submit"
-                class="boxxy w-full px-3 py-2 mt-2 text-white hover:text-black hover:bg-gray-200">Send</button>
-        </form>
+        </div>
     </div>
     <footer class="flex items-center justify-center bg-gray-900 py-4 w-full">
         <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] mr-2">Copyright © 2024 --</p>
-        <a href="mailto:tanishvashisth@"
-            class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth</a>
+        <a href="mailto:tanishvashisth@gmail.com"
+            class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth@gmail.com</a>
     </footer>
+    <script src="assets/js/constants.js"></script>
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-        (function () {
-            emailjs.init('MAUBFHodMOevpbI-P');
-        })();
+        (function () { emailjs.init('MAUBFHodMOevpbI-P'); })();
 
         document.getElementById('menu-toggle').addEventListener('click', function () {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         });
 
+        // --- Duck Hunt Gate ---
+        const BIRDS_NEEDED = DUCKHUNT_BIRDS_NEEDED;
+        const CONTACT_FORM_UNLOCKED_KEY = 'contactFormUnlocked';
+        let birdsShot = 0;
+        let moveInterval = null;
+        let gameActive = false;
+        let bullets = 3;
+
+        const bird = document.getElementById('contact-bird');
+        const dog = document.getElementById('contact-dog');
+        const gameContainer = document.getElementById('game-container');
+        const startOverlay = document.getElementById('game-start-overlay');
+        const startOverlayMessage = startOverlay ? startOverlay.querySelector('p') : null;
+        const startButton = document.getElementById('contact-start-btn');
+        const messageButton = document.getElementById('contact-message-btn');
+        const scoreDisplay = document.getElementById('score-display');
+        const shotFlash = document.getElementById('shot-flash');
+
+        const bulletContainer = document.getElementById('bullet-container');
+        const hitContainer = document.getElementById('hit-container');
+
+        const flySound = new Audio(DUCKHUNT_SOUNDS.wingFlap);
+        const shotSound = new Audio(DUCKHUNT_SOUNDS.shot);
+        const fallSound = new Audio(DUCKHUNT_SOUNDS.fall);
+        const missSound = new Audio(DUCKHUNT_SOUNDS.shot);
+        const duckInitSound = new Audio(DUCKHUNT_SOUNDS.duckinit);
+        const dogLaughingSound = new Audio(DUCKHUNT_SOUNDS.dogLaughing);
+        const highScoreSound = new Audio(DUCKHUNT_SOUNDS.highScore);
+        const pauseSound = new Audio(DUCKHUNT_SOUNDS.pause);
+        
+        // Lower volume
+        flySound.volume = DUCKHUNT_VOLUME_LEVEL;
+        shotSound.volume = DUCKHUNT_VOLUME_LEVEL;
+        fallSound.volume = DUCKHUNT_VOLUME_LEVEL;
+        missSound.volume = DUCKHUNT_VOLUME_LEVEL;
+        duckInitSound.volume = DUCKHUNT_VOLUME_LEVEL;
+        dogLaughingSound.volume = DUCKHUNT_VOLUME_LEVEL;
+        highScoreSound.volume = DUCKHUNT_VOLUME_LEVEL;
+        pauseSound.volume = DUCKHUNT_VOLUME_LEVEL;
+
+        flySound.loop = true;
+
+        const defaultBirdSrc = DUCKHUNT_IMAGES.defaultBird;
+        const shotBirdSrc = DUCKHUNT_IMAGES.shotBird;
+        const deadBirdSrc = DUCKHUNT_IMAGES.deadBird;
+
+        function updateHUD() {
+            // Update bullets
+            if (bulletContainer) {
+                bulletContainer.innerHTML = '';
+                for (let i = 0; i < 3; i++) {
+                    const b = document.createElement('div');
+                    b.classList.add('bullet');
+                    if (i >= bullets) b.classList.add('spent');
+                    bulletContainer.appendChild(b);
+                }
+            }
+
+            // Update score (10,000 points per bird shot)
+            if (scoreDisplay) {
+                scoreDisplay.textContent = (birdsShot * 10000).toString().padStart(6, '0');
+            }
+
+            // Update hit indicators (modulo 10 wrap around)
+            if (hitContainer) {
+                const hitIcons = hitContainer.querySelectorAll('.hit-icon');
+                hitIcons.forEach((icon, index) => {
+                    const activeIndex = birdsShot % 10;
+                    if (index < (activeIndex === 0 && birdsShot > 0 ? 10 : activeIndex)) {
+                        icon.classList.add('active');
+                    } else {
+                        icon.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+        let currentBirdColor = 'black';
+        let birdX = 0;
+        let birdY = 0;
+        let vx = 0;
+        let vy = 0;
+        let isShot = false;
+        let isEscaping = false;
+        let difficultyRound = 1;
+        let gameUnlockedPermanently = localStorage.getItem(CONTACT_FORM_UNLOCKED_KEY) === 'true';
+        let misses = 0;
+
+        function showDogAnimation(isPerfect, callback) {
+            if (!dog) {
+                if (callback) callback();
+                return;
+            }
+            dog.src = isPerfect ? DUCKHUNT_IMAGES.perfectDog : DUCKHUNT_IMAGES.laughingDog;
+            if (isPerfect) {
+                dog.style.width = '14rem';
+                dog.style.height = '14rem';
+                dog.style.left = '35%';
+                if (highScoreSound) {
+                    highScoreSound.currentTime = 0;
+                    highScoreSound.play();
+                }
+            } else {
+                dog.style.width = '';
+                dog.style.height = '';
+                dog.style.left = '40%';
+                if (dogLaughingSound) {
+                    dogLaughingSound.currentTime = 0;
+                    dogLaughingSound.play();
+                }
+            }
+            const curH = gameContainer.offsetHeight;
+            let dogY = curH * 0.75;
+            const targetY = isPerfect ? curH * 0.49 : curH * 0.50;
+
+            dog.style.top = `${dogY}px`;
+            dog.classList.remove('hidden');
+
+            const slideUp = setInterval(() => {
+                dogY -= 4;
+                dog.style.top = `${dogY}px`;
+                if (dogY <= targetY) {
+                    clearInterval(slideUp);
+                    const delay = isPerfect ? 2000 : 1300;
+                    setTimeout(() => {
+                        const slideDown = setInterval(() => {
+                            dogY += 4;
+                            dog.style.top = `${dogY}px`;
+                            if (dogY >= curH * 0.75) {
+                                clearInterval(slideDown);
+                                dog.classList.add('hidden');
+                                dog.style.width = '';
+                                dog.style.height = '';
+                                if (callback) callback();
+                            }
+                        }, 15);
+                    }, delay);
+                }
+            }, 15);
+        }
+
+        function persistUnlockState(isUnlocked) {
+            gameUnlockedPermanently = isUnlocked;
+            localStorage.setItem(CONTACT_FORM_UNLOCKED_KEY, isUnlocked ? 'true' : 'false');
+            syncStartOverlay();
+        }
+
+        function openFormOverlay() {
+            gameActive = false;
+            clearInterval(moveInterval);
+            flySound.pause();
+            bird.classList.add('hidden');
+            const hud = document.querySelector('.hud-container');
+            if (hud) hud.classList.add('hidden');
+            const formSection = document.getElementById('form-section');
+            if (formSection) {
+                formSection.classList.remove('hidden');
+                formSection.classList.add('flex');
+            }
+            startOverlay.classList.add('hidden');
+            if (pauseSound) {
+                pauseSound.currentTime = 0;
+                pauseSound.play();
+            }
+        }
+
+        function syncStartOverlay() {
+            if (!startOverlayMessage || !startButton || !messageButton) return;
+
+            if (gameUnlockedPermanently) {
+                startOverlayMessage.innerHTML = 'Contact form already unlocked.<br>Choose what you want to do';
+                startButton.textContent = 'CONTINUE';
+                messageButton.classList.remove('hidden');
+            } else {
+                startOverlayMessage.innerHTML = 'Shoot 3 birds to unlock<br>the contact form';
+                startButton.textContent = 'START';
+                messageButton.classList.add('hidden');
+            }
+        }
+
+        function spawnBird() {
+            if (!gameActive) return;
+            bullets = 3;
+            isShot = false;
+            isEscaping = false;
+            bird.style.pointerEvents = 'auto';
+            updateHUD();
+
+            const containerRect = gameContainer.getBoundingClientRect();
+            const birdW = bird.offsetWidth || 112;
+            const birdH = bird.offsetHeight || 112;
+            const maxX = containerRect.width - birdW;
+
+            // Choose random color
+            const colors = ['black', 'red', 'blue'];
+            currentBirdColor = colors[Math.floor(Math.random() * colors.length)];
+
+            // Start near the grass line at the bottom
+            birdX = Math.random() * maxX;
+            birdY = containerRect.height * 0.65;
+
+            bird.style.left = `${birdX}px`;
+            bird.style.top = `${birdY}px`;
+            bird.style.transform = 'none';
+
+            // Velocities: get progressively faster as difficultyRound and birdsShot increase (5% per duck shot)
+            const totalDucksShot = birdsShot + (difficultyRound - 1) * 3;
+            const speedMultiplier = 1 + (totalDucksShot * 0.05);
+            vx = (Math.random() > 0.5 ? 1 : -1) * (4 + Math.random() * 3) * speedMultiplier;
+            vy = -(3 + Math.random() * 3) * speedMultiplier; // start by flying up diagonally
+
+            bird.src = `assets/images/contact/duck_${currentBirdColor}_fly_diag.gif`;
+            bird.style.transform = vx < 0 ? 'scaleX(-1)' : 'none';
+            bird.classList.remove('hidden', 'fall');
+
+            flySound.currentTime = 0;
+            flySound.play();
+
+            clearInterval(moveInterval);
+            moveInterval = setInterval(() => {
+                birdX += vx;
+                birdY += vy;
+
+                const curW = gameContainer.offsetWidth;
+                const curH = gameContainer.offsetHeight;
+                const bw = bird.offsetWidth || 112;
+                const bh = bird.offsetHeight || 112;
+
+                // Bounce horizontal walls
+                if (birdX <= 0) {
+                    birdX = 0;
+                    vx = -vx;
+                    bird.style.transform = vx < 0 ? 'scaleX(-1)' : 'none';
+                } else if (birdX >= curW - bw) {
+                    birdX = curW - bw;
+                    vx = -vx;
+                    bird.style.transform = vx < 0 ? 'scaleX(-1)' : 'none';
+                }
+
+                // Bounce vertical walls (top limit 100px to clear navbar, bottom limit 0.70 of screen height)
+                const minY = 100;
+                const maxY = curH * 0.70 - bh;
+                if (birdY <= minY) {
+                    birdY = minY;
+                    vy = -vy;
+                } else if (birdY >= maxY) {
+                    birdY = maxY;
+                    vy = -vy;
+                }
+
+                bird.style.left = `${birdX}px`;
+                bird.style.top = `${birdY}px`;
+
+                // Update GIF animation based on vertical velocity
+                if (Math.abs(vy) > 0.5) {
+                    if (!bird.src.includes('diag')) {
+                        bird.src = `assets/images/contact/duck_${currentBirdColor}_fly_diag.gif`;
+                    }
+                } else {
+                    if (!bird.src.includes('horiz')) {
+                        bird.src = `assets/images/contact/duck_${currentBirdColor}_fly_horiz.gif`;
+                    }
+                }
+
+                // 1.5% chance to change direction mid-air
+                if (Math.random() < 0.015) {
+                    vx = (vx > 0 ? 1 : -1) * (4 + Math.random() * 3) * speedMultiplier;
+                    if (Math.random() < 0.3) {
+                        vy = 0;
+                    } else {
+                        vy = (Math.random() > 0.5 ? 1 : -1) * (3 + Math.random() * 3) * speedMultiplier;
+                    }
+                    bird.style.transform = vx < 0 ? 'scaleX(-1)' : 'none';
+                }
+            }, 30);
+        }
+
+        function flashScreen() {
+            if (shotFlash) {
+                shotFlash.classList.remove('hidden');
+                setTimeout(() => shotFlash.classList.add('hidden'), 80);
+            }
+        }
+
+        function onBirdShot() {
+            if (!gameActive || isShot || isEscaping || bullets <= 0) return;
+            isShot = true;
+            clearInterval(moveInterval);
+            flySound.pause();
+            bird.style.pointerEvents = 'none';
+
+            bullets--;
+            updateHUD();
+
+            flashScreen();
+            bird.src = `assets/images/contact/duck_${currentBirdColor}_shot.png`;
+            shotSound.currentTime = 0;
+            shotSound.play();
+
+            setTimeout(() => {
+                bird.src = `assets/images/contact/duck_${currentBirdColor}_dead.gif`;
+                fallSound.currentTime = 0;
+                fallSound.play();
+
+                const curH = gameContainer.offsetHeight;
+                const targetY = curH * 0.75;
+                let fallY = birdY;
+
+                const fallInterval = setInterval(() => {
+                    fallY += 6;
+                    bird.style.top = `${fallY}px`;
+                    if (fallY >= targetY) {
+                        clearInterval(fallInterval);
+                        bird.classList.add('hidden');
+                        birdsShot++;
+                        updateHUD();
+
+                        // Show dog animation when the 10-bird hit meter becomes fully filled
+                        if (birdsShot === 10) {
+                            showDogAnimation(true, () => {
+                                difficultyRound++;
+                                birdsShot = 0;
+                                misses = 0;
+                                updateHUD();
+                                setTimeout(spawnBird, 600);
+                            });
+                        } else if (birdsShot >= BIRDS_NEEDED && !gameUnlockedPermanently) {
+                            gameActive = false;
+                            flySound.pause();
+                            setTimeout(unlockForm, 400);
+                        } else {
+                            setTimeout(spawnBird, 600);
+                        }
+                    }
+                }, 20);
+            }, 800);
+        }
+
+        function unlockForm() {
+            openFormOverlay();
+        }
+
+        // Miss click on background
+        gameContainer.addEventListener('click', (e) => {
+            if (!gameActive || isShot || isEscaping) return;
+            if (e.target === startButton || e.target === messageButton) return;
+
+            if (e.target !== bird) {
+                if (bullets > 0) {
+                    bullets--;
+                    misses++;
+                    updateHUD();
+                    missSound.currentTime = 0;
+                    missSound.play();
+                    flashScreen();
+
+                    if (bullets === 0) {
+                        // Bird flies away!
+                        isEscaping = true;
+                        clearInterval(moveInterval);
+                        flySound.pause();
+                        bird.style.pointerEvents = 'none';
+
+                        let escapeY = birdY;
+                        const flyUpInterval = setInterval(() => {
+                            escapeY -= 8;
+                            bird.style.top = escapeY + 'px';
+                            if (escapeY < -120) {
+                                clearInterval(flyUpInterval);
+                                bird.classList.add('hidden');
+                                showDogAnimation(false, () => {
+                                    spawnBird();
+                                });
+                            }
+                        }, 30);
+                    }
+                }
+            }
+        });
+
+        bird.addEventListener('click', (e) => {
+            e.stopPropagation();
+            onBirdShot();
+        });
+
+        syncStartOverlay();
+
+        startButton.addEventListener('click', () => {
+            startOverlay.classList.add('hidden');
+            const hud = document.querySelector('.hud-container');
+            if (hud) hud.classList.remove('hidden');
+            const formSection = document.getElementById('form-section');
+            if (formSection) formSection.classList.add('hidden');
+            gameActive = true;
+            if (!gameUnlockedPermanently) {
+                birdsShot = 0;
+            }
+            misses = 0;
+            bullets = 3;
+            updateHUD();
+            spawnBird();
+        });
+
+        messageButton.addEventListener('click', () => {
+            openFormOverlay();
+        });
+
+        function showToast(message, isError = false) {
+            const toast = document.createElement('div');
+            toast.className = 'boxxy-green headingfont fixed bottom-6 right-6 px-6 py-3 z-50 text-[12px] opacity-0 transition-opacity duration-300';
+            toast.style.pointerEvents = 'none';
+            toast.style.textShadow = '2px 2px 0px #000';
+            
+            if (isError) {
+                toast.style.boxShadow = '0 -4px #000, 0 -8px #ff2a2a, 4px 0 #000, 4px -4px #ff2a2a, 8px 0 #ff2a2a, 0 4px #000, 0 8px #ff2a2a, -4px 0 #000, -4px 4px #ff2a2a, -8px 0 #ff2a2a, -4px -4px #ff2a2a, 4px 4px #ff2a2a';
+                toast.style.color = '#ff6b6b';
+            } else {
+                toast.style.color = '#8cd600';
+            }
+            
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.remove('opacity-0');
+                toast.classList.add('opacity-100');
+            }, 50);
+            
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 3000);
+        }
+
+        // --- Contact Form ---
         document.getElementById('contact-form').addEventListener('submit', function (event) {
             event.preventDefault();
-
             const serviceID = 'service_uh2awsk';
             const templateID = 'template_5o5412n';
-
             emailjs.sendForm(serviceID, templateID, this)
                 .then(() => {
-                    alert('Your message has been sent successfully!');
-                    document.getElementById('contact-form').reset();
+                    showToast('✓ Message Sent Successfully!');
+                    this.reset();
+                    
+                    // Hide contact form overlay
+                    const formSection = document.getElementById('form-section');
+                    if (formSection) {
+                        formSection.classList.add('hidden');
+                        formSection.classList.remove('flex');
+                    }
+                    
+                    // Show game HUD again
+                    const hud = document.querySelector('.hud-container');
+                    if (hud) hud.classList.remove('hidden');
+                    
+                    // Allow continue playing by resetting the game, unlocking permanently, and advancing the difficulty round
+                    persistUnlockState(true);
+                    difficultyRound++;
+                    birdsShot = 0;
+                    misses = 0;
+                    bullets = 3;
+                    updateHUD();
+                    gameActive = true;
+                    spawnBird();
                 }, (error) => {
-                    alert('Failed to send your message. Please try again.');
+                    showToast('✗ Failed to send message!', true);
                     console.error('Error:', error);
                 });
         });
-
     </script>
 </body>
-
 </html>

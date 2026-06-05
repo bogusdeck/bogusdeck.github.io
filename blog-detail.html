@@ -9,33 +9,8 @@
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/global.css">
     <style>
-        @font-face {
-            font-family: 'Joystick';
-            src: url('../fonts/joystix_monospace.otf') format('opentype');
-        }
-
-        .headingfont {
-            font-family: 'Joystick', monospace;
-        }
-
-        @font-face {
-            font-family: 'Proggy';
-            src: url('../fonts/ProggyMonoRegular.ttf') format('truetype');
-        }
-
-        .codefont {
-            font-family: 'Proggy', monospace;
-        }
-
-        @font-face {
-            font-family: 'Rainy';
-            src: url('../fonts/dogicapixel.ttf') format('truetype');
-        }
-
-        .textfont {
-            font-family: 'Rainy', monospace;
-        }
 
         body {
             background-color: black;
@@ -46,9 +21,11 @@
             color: white;
             margin: 0;
             padding: 0;
-            height: 100%;
+            min-height: 100vh;
             width: 100%;
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
         *,
@@ -184,13 +161,13 @@
 <body>
     <header class="w-full">
         <nav class="navbar">
-            <div class="hidden md:flex items-center justify-between w-full">
+            <div class="navbar-desktop items-center justify-between w-full">
                 <div class="flex items-center space-x-4">
                     <a class="nav-item" href="blog.html">Blog</a>
                     <a class="nav-item" href="project.html">Projects</a>
                 </div>
                 <a href="/index.html" class="flex items-center justify-center">
-                    <img src="indexbg/logo.png" alt="logo" class="h-8 img">
+                    <img src="assets/images/indexbg/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <div class="flex items-center space-x-4">
                     <a class="nav-item" href="about.html">About</a>
@@ -200,7 +177,7 @@
             <!-- Hamburger menu -->
             <div class="md:hidden flex items-center justify-between w-full">
                 <a href="/index.html" class="flex items-center justify-start">
-                    <img src="indexbg/logo.png" alt="logo" class="h-8 img">
+                    <img src="assets/images/indexbg/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <button id="menu-toggle" class="flex items-center justify-end">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -220,7 +197,7 @@
         </nav>
     </header>
 
-    <main class="py-6 mt-14 w-full px-4 sm:px-16 space-y-8" id="blog-detail-container"></main>
+    <main class="py-6 mt-14 w-full px-4 sm:px-16 space-y-8 flex-grow" id="blog-detail-container"></main>
     <footer class="flex items-center justify-center bg-gray-900 py-4 w-full mt-10">
         <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] mr-2">Copyright © 2024 --</p>
         <a href="mailto:tanishvashisth@"
@@ -236,9 +213,15 @@
                 .then(response => response.json())
                 .then(post => {
                     blogDetailContainer.innerHTML = `
-                        <div class="boxxy p-4 mx-4">
+                        <div class="boxxy p-4 mx-4 relative">
+                            <!-- Dev.to external link icon -->
+                            <a href="${post.url}" target="_blank" rel="noopener noreferrer" class="absolute top-4 right-4 text-white hover:text-gray-400 transition-colors duration-200" title="View original post on Dev.to">
+                                <svg class="w-8 h-8 fill-current" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M120.12 208.29c-3.88-2.9-7.77-4.35-11.65-4.35H91.23v104.47h17.24c3.88 0 7.77-1.45 11.65-4.35 3.88-2.9 5.82-7.25 5.82-13.06v-69.65c-.01-5.8-1.96-10.16-5.82-13.06zm327.88-64.28v224c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64v-224c0-35.3 28.7-64 64-64h320c35.3 0 64 28.7 64 64zm-288 56H91.23c-17.67 0-32 14.33-32 32v80c0 17.67 14.33 32 32 32h48.77c17.67 0 32-14.33 32-32v-80c0-17.67-14.33-32-32-32zm112 0h-56c-17.67 0-32 14.33-32 32v112c0 17.67 14.33 32 32 32h56c17.67 0 32-14.33 32-32v-24c0-17.67-14.33-32-32-32h-24v-16h24c17.67 0 32-14.33 32-32v-80c0-17.67-14.33-32-32-32zm144 0h-40c-17.67 0-32 14.33-32 32v112c0 17.67 14.33 32 32 32h40c17.67 0 32-14.33 32-32v-112c0-17.67-14.33-32-32-32zm-128 32v16h24v24h-24v16h32v-56zm128 0h-32v80h32v-80z"/>
+                                </svg>
+                            </a>
                             <img src="${post.cover_image}" alt="Banner Image" class="img w-8/12 h-auto mb-4 mx-auto block">
-                            <h1 class="text-lg md:text-xl lg:text-2xl font-bold text-center">${post.title}</h1>
+                            <h1 class="text-lg md:text-xl lg:text-2xl font-bold text-center pr-12">${post.title}</h1>
                             <p class="text-gray-400 mt-2 text-sm text-center"><small>Posted on ${new Date(post.published_at).toDateString()}</small></p>
                             <div class="blog-content mt-4 textfont text-[12px]">
                                 ${post.body_html}

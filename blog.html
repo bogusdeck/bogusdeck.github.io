@@ -6,36 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BLOGS</title>
     <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="Blog posts by Tanish Vashisth — dev notes, tutorials, and thoughts on software.">
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/global.css">
     <style>
-        @font-face {
-            font-family: 'Joystick';
-            src: url('../fonts/joystix_monospace.otf') format('opentype');
-        }
-
-        @font-face {
-            font-family: 'Gumball';
-            src: url('../fonts/title.TTF') format('truetype');
-        }
-
-        @font-face {
-            font-family: 'Fipps';
-            src: url('../fonts/Fipps.otf') format('opentype');
-        }
-
-        .headingfont {
-            font-family: 'Joystick', monospace;
-        }
-
-        .title {
-            font-family: 'Gumball', monospace;
-        }
-
-        .fipps {
-            font-family: 'Fipps', monospace;
-        }
 
         body {
             background-color: black;
@@ -46,9 +22,11 @@
             color: white;
             margin: 0;
             padding: 0;
-            height: 100%;
+            min-height: 100vh;
             width: 100%;
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
         *,
@@ -116,13 +94,13 @@
 <body>
     <header class="w-full">
         <nav class="navbar">
-            <div class="hidden md:flex items-center justify-between w-full">
+            <div class="navbar-desktop items-center justify-between w-full">
                 <div class="flex items-center space-x-4">
                     <a class="nav-item" href="blog.html">Blog</a>
                     <a class="nav-item" href="project.html">Projects</a>
                 </div>
                 <a href="/index.html" class="flex items-center justify-center">
-                    <img src="indexbg/logo.png" alt="logo" class="h-8 img">
+                    <img src="assets/images/indexbg/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <div class="flex items-center space-x-4">
                     <a class="nav-item" href="about.html">About</a>
@@ -132,7 +110,7 @@
             <!-- Hamburger menu -->
             <div class="md:hidden flex items-center justify-between w-full">
                 <a href="/index.html" class="flex items-center justify-start">
-                    <img src="indexbg/logo.png" alt="logo" class="h-8 img">
+                    <img src="assets/images/indexbg/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <button id="menu-toggle" class="flex items-center justify-end">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -152,7 +130,7 @@
         </nav>
     </header>
 
-    <main class="py-6 mt-14 w-full px-4 sm:px-16 space-y-8" id="blog-container">
+    <main class="py-6 mt-14 w-full px-4 sm:px-16 space-y-8 flex-grow" id="blog-container">
         <!-- Blog posts will be inserted here -->
     </main>
 
@@ -166,8 +144,8 @@
     </div>
      <footer class="mt-10 flex items-center justify-center py-4 w-full bg-gray-900">
         <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] mr-2">Copyright © 2024 --</p>
-        <a href="mailto:tanishvashisth@"
-            class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth</a>
+        <a href="mailto:tanishvashisth@gmail.com"
+            class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth@gmail.com</a>
     </footer>
 
 
@@ -184,6 +162,12 @@
                 .then(response => response.json())
                 .then(data => {
                     blogContainer.innerHTML = ''; // Clear current posts
+                    if (!data || data.length === 0) {
+                        blogContainer.innerHTML = '<div class="boxxy p-8 mx-4 text-center"><p class="headingfont text-gray-400 text-sm">No posts yet. Check back soon!</p></div>';
+                        document.getElementById('pagination').style.display = 'none';
+                        return;
+                    }
+                    document.getElementById('pagination').style.display = '';
                     data.forEach(post => {
                         const blogPost = document.createElement('div');
                         blogPost.className = 'boxxy mb-6 p-4 mx-4';

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duck Hunt Game</title>
+    <!-- Tailwind CSS for base grid utility -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- NES/Retro custom style sheet -->
+    <link href="../css/global.css" rel="stylesheet">
+    <link href="../css/contact.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-900 text-white font-mono">
+
+    <div class="flex flex-col items-center justify-center min-h-screen p-4">
+        <!-- NES Console Header Box -->
+        <div class="border-4 border-black w-full max-w-screen-lg mx-auto bg-black text-center py-2 mb-2">
+            <div class="text-center font-mono text-xl tracking-widest text-white">
+                SKILLS.NES
+            </div>
+        </div>
+
+        <!-- Duck Hunt Game Container -->
+        <div class="w-full max-w-screen-lg mx-auto relative overflow-hidden">
+            <div class="game-container relative" style="background-color: #63adff; aspect-ratio: 16/9;">
+                <div id="shot-flash" class="hidden absolute inset-0 bg-white z-40"></div>
+                <div class="duckhunt-bg absolute inset-0 z-0" style="background-image: url('../images/contact/duckhuntbg.png'); background-repeat: repeat-x; background-size: auto 100%; image-rendering: pixelated; image-rendering: -moz-crisp-edges; image-rendering: crisp-edges;"></div>
+                <div class="game-foreground absolute inset-0 pointer-events-none z-20" style="background-image: url('../images/contact/removebg.png'); background-repeat: repeat-x; background-size: auto 100%; image-rendering: pixelated; image-rendering: -moz-crisp-edges; image-rendering: crisp-edges;"></div>
+                <img src="../images/contact/centerimage.gif" class="gameend-bg hidden h-full w-full object-cover z-30" alt="Game End">
+                <img src="../images/contact/flyduck.gif" class="bird hidden absolute w-28 h-28 z-10" alt="Bird">
+                <img src="../images/contact/laughingdog.gif" class="dog hidden absolute w-36 h-36 z-10" alt="Dog">
+                <button id="start-button" class="bulbula medium w-fit z-30">Start Game</button>
+                
+                <!-- Duck Hunt Style HUD UI -->
+                <div class="hud-container">
+                    <!-- SHOT Box (Bullets) -->
+                    <div class="boxxy-green shot-box">
+                        <div class="bullet-container" id="bullet-container">
+                            <div class="bullet"></div>
+                            <div class="bullet"></div>
+                            <div class="bullet"></div>
+                        </div>
+                        <div class="shot-label">SHOT</div>
+                    </div>
+
+                    <!-- HIT Box (Duck indicators) -->
+                    <div class="boxxy-green hit-box flex-row px-4 gap-3" style="flex-direction: row; align-items: center; gap: 12px;">
+                        <div class="hit-label">HIT</div>
+                        <div class="hit-container" id="hit-container">
+                            <!-- 10 NES duck hit markers -->
+                            <div class="hit-icon"></div>
+                            <div class="hit-icon"></div>
+                            <div class="hit-icon"></div>
+                            <div class="hit-icon"></div>
+                            <div class="hit-icon"></div>
+                            <div class="hit-icon"></div>
+                            <div class="hit-icon"></div>
+                            <div class="hit-icon"></div>
+                            <div class="hit-icon"></div>
+                            <div class="hit-icon"></div>
+                        </div>
+                    </div>
+
+                    <!-- SCORE Box (Alternating blocks + score value) -->
+                    <div class="boxxy-green score-box">
+                        <div class="score-val" id="score-display">000000</div>
+                        <div class="score-label">SCORE</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Words Containers (Speech bubbles spawned here) -->
+        <div class="word-box flex flex-wrap gap-4 justify-start mt-4 w-full max-w-screen-lg mx-auto bg-black border-2 border-gray-700 p-3 min-h-[60px]">
+        </div>
+        <div class="word-box-2 flex flex-wrap gap-4 justify-start mt-2 w-full max-w-screen-lg mx-auto bg-black border-2 border-gray-700 p-3 min-h-[60px]">
+        </div>
+
+        <!-- Audio Elements -->
+        <audio id="loop-sound" src="../audio/contact/Intro.mp3" loop></audio>
+        <audio id="duckinit-sound" src="../audio/contact/duckinit.mp3"></audio>
+        <audio id="game-end-sound" src="../audio/contact/gameend.mp3"></audio>
+        <audio id="click-sound" src="../audio/contact/shot.mp3"></audio>
+        <audio id="fly-sound" src="../audio/contact/wingFlap20sec.mp3" loop></audio>
+        <audio id="shot-sound" src="../audio/contact/shot.mp3"></audio>
+        <audio id="fall-sound" src="../audio/contact/duckFalling.mp3"></audio>
+        <audio id="dog-laughing-sound" src="../audio/contact/dog-laughing.mp3"></audio>
+        <audio id="high-score-sound" src="../audio/contact/high-score.mp3"></audio>
+
+        <!-- Game script -->
+        <script src="../js/constants.js" defer></script>
+        <script src="../js/contact.js" defer></script>
+    </div>
+
+</body>
+
+</html>
