@@ -142,4 +142,86 @@
     letter-spacing: 1px;
 }
 
+/* Responsive HUD for phones/tablets */
+@media (max-width: 768px) {
+    .hud-container {
+        left: 10px;
+        right: 10px;
+        bottom: 20px;
+        gap: 6px;
+    }
+    
+    .shot-box {
+        transform: scale(1.1);
+        transform-origin: bottom left;
+    }
+    
+    .hit-box {
+        transform: scale(1.0);
+        transform-origin: bottom center;
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+        gap: 6px !important;
+    }
+    
+    .hit-container {
+        gap: 2px !important;
+    }
+    
+    .hit-icon {
+        width: 12px;
+        height: 10px;
+    }
+    
+    .score-box {
+        transform: scale(1.1);
+        transform-origin: bottom right;
+        min-width: 75px;
+        padding: 2px 6px !important;
+    }
+    
+    .score-val {
+        font-size: 11px;
+    }
+    
+    .score-label {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hud-container {
+        left: 5px;
+        right: 5px;
+        bottom: 15px;
+        gap: 4px;
+    }
+    
+    .shot-box {
+        transform: scale(0.9);
+    }
+    
+    .hit-box {
+        transform: scale(0.8);
+        padding-left: 4px !important;
+        padding-right: 4px !important;
+        gap: 4px !important;
+    }
+    
+    .hit-container {
+        gap: 1px !important;
+    }
+    
+    .hit-icon {
+        width: 10px;
+        height: 9px;
+    }
+    
+    .score-box {
+        transform: scale(0.9);
+        min-width: 60px;
+        padding: 1px 4px !important;
+    }
+}
+
 
