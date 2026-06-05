@@ -22,6 +22,8 @@ function applySocialLinks(config) {
     const socialType = link.getAttribute('data-social');
     if (config.social[socialType]) {
       link.href = config.social[socialType];
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
     }
   });
 }
@@ -37,6 +39,8 @@ function applyProjectLinks(config) {
     
     if (config.projects[projectName] && config.projects[projectName][linkType]) {
       link.href = config.projects[projectName][linkType];
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
     }
   });
 }
@@ -50,6 +54,8 @@ function applyToolLinks(config) {
     const toolName = link.getAttribute('data-tool');
     if (config.tools[toolName]) {
       link.href = config.tools[toolName];
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
     }
   });
 }
@@ -63,6 +69,8 @@ function applyNotionLinks(config) {
     const noteType = link.getAttribute('data-notion-note');
     if (config.notionNotes[noteType]) {
       link.href = config.notionNotes[noteType];
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
     }
   });
 }
