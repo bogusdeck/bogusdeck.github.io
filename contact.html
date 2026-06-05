@@ -305,11 +305,11 @@
             const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
             const dogHeight = (isPerfect ? 14 : 11) * rootFontSize;
 
-            // Start position (hidden under the grass)
-            let dogY = curH * 0.88;
+            // Start position (hidden under the grass/dirt)
+            let dogY = curH * 0.90;
             
-            // Peak position (feet slightly below the grass line at 85%)
-            const targetY = (curH * 0.86) - dogHeight;
+            // Peak position (feet slightly below the grass line at 57.14%)
+            const targetY = (curH * 0.59) - dogHeight;
 
             dog.style.top = `${dogY}px`;
             dog.classList.remove('hidden');
@@ -324,7 +324,7 @@
                         const slideDown = setInterval(() => {
                             dogY += 4;
                             dog.style.top = `${dogY}px`;
-                            if (dogY >= curH * 0.88) {
+                            if (dogY >= curH * 0.90) {
                                 clearInterval(slideDown);
                                 dog.classList.add('hidden');
                                 dog.style.width = '';
