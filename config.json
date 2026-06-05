@@ -42,12 +42,13 @@
     "defaultContributions": "690"
   },
   "notionNotes": {
-    "python": "https://www.notion.so/boguscode/PYTHON-notes-5c63f427fdb84eba835d7741bb1153a0?pvs=4",
-    "mongodb": "https://boguscode.notion.site/Mongo-DB-ed64218304214ef49cb0f5279c830b76?pvs=4",
-    "javascript": "https://boguscode.notion.site/JavaScript-dbb9d6fe76f944f192ec6c85e7514892?pvs=25",
-    "dsa": "https://boguscode.notion.site/DSA-road-map-f99ffee5f8bc4b1a87a2f09595f6910e?pvs=4",
-    "sql": "https://boguscode.notion.site/SQL-refresher-fedf439f25294f53b485704b02d1e403?pvs=74",
-    "cpp": "https://boguscode.notion.site/C-b5b0d9ca9ded44468fcd6de9cf2d2fc8?pvs=4",
-    "cppStl": "https://boguscode.notion.site/CPP-STL-10a5d92b48ef80df886af147869f629e?pvs=4"
+    "python": "https://www.notion.so/boguscode/PYTHON-notes-3a3fa884aa884530b78a3d1d51c21535?source=copy_link",
+    "mongodb": "https://www.notion.so/boguscode/Mongo-DB-8ed0b87db26c495298f68821349731a7?source=copy_link",
+    "javascript": "https://boguscode.notion.site/JavaScript-d8ef406e04cb49efa778068790dc4421?source=copy_link",
+    "dsa": "https://www.notion.so/boguscode/DSA-road-map-c0ac81643177480886289c0c5cb29454?source=copy_link",
+    "sql": "https://www.notion.so/boguscode/SQL-refresher-fedf439f25294f53b485704b02d1e403?source=copy_link",
+    "cpp": "https://www.notion.so/boguscode/C-b5b0d9ca9ded44468fcd6de9cf2d2fc8?source=copy_link",
+    "cppStl": "https://www.notion.so/boguscode/CPP-STL-10a5d92b48ef80df886af147869f629e?source=copy_link",
+    "flask": "https://www.notion.so/boguscode/Flask-cd75704807874a0692ca3786ec043e38?source=copy_link"
   }
 }
