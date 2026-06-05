@@ -21,7 +21,7 @@
     },
     "rune": {
       "github": "https://github.com/bogusdeck/Rune",
-      "live": "https://rune-landing-self.vercel.app"
+      "live": "https://runecli.vercel.app/"
     },
     "mcpPhabricator": {
       "github": "https://github.com/bogusdeck/mcp-phabricator",
