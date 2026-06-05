@@ -302,8 +302,14 @@
                 }
             }
             const curH = gameContainer.offsetHeight;
-            let dogY = curH * 0.75;
-            const targetY = isPerfect ? curH * 0.49 : curH * 0.50;
+            const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+            const dogHeight = (isPerfect ? 14 : 11) * rootFontSize;
+
+            // Start position (hidden under the grass)
+            let dogY = curH * 0.88;
+            
+            // Peak position (feet slightly below the grass line at 85%)
+            const targetY = (curH * 0.86) - dogHeight;
 
             dog.style.top = `${dogY}px`;
             dog.classList.remove('hidden');
@@ -318,7 +324,7 @@
                         const slideDown = setInterval(() => {
                             dogY += 4;
                             dog.style.top = `${dogY}px`;
-                            if (dogY >= curH * 0.75) {
+                            if (dogY >= curH * 0.88) {
                                 clearInterval(slideDown);
                                 dog.classList.add('hidden');
                                 dog.style.width = '';
