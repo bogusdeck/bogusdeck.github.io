@@ -20,6 +20,208 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('.section');
+    const palette = ['#f8fafc', '#c7d2fe', '#93c5fd', '#a3e635', '#facc15'];
+    const pixelSize = 8;
+    const maxPixels = 140;
+
+    sections.forEach((section) => {
+        const canvas = document.createElement('canvas');
+        canvas.className = 'pixel-trail-canvas';
+        canvas.setAttribute('aria-hidden', 'true');
+        section.prepend(canvas);
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        const pixels = [];
+        let animationFrame = null;
+        let dpr = Math.min(window.devicePixelRatio || 1, 2);
+        let lastSpawnAt = 0;
+
+        function resizeCanvas() {
+            const bounds = section.getBoundingClientRect();
+            dpr = Math.min(window.devicePixelRatio || 1, 2);
+            canvas.width = Math.floor(bounds.width * dpr);
+            canvas.height = Math.floor(bounds.height * dpr);
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.scale(dpr, dpr);
+        }
+
+        function spawnPixel(clientX, clientY) {
+            const bounds = section.getBoundingClientRect();
+            const x = clientX - bounds.left;
+            const y = clientY - bounds.top;
+
+            for (let i = 0; i < 3; i++) {
+                pixels.push({
+                    x: x + (Math.random() - 0.5) * 18,
+                    y: y + (Math.random() - 0.5) * 18,
+                    vx: (Math.random() - 0.5) * 1.4,
+                    vy: (Math.random() - 0.5) * 1.4 - 0.3,
+                    life: 1,
+                    fade: 0.018 + Math.random() * 0.02,
+                    size: pixelSize + Math.floor(Math.random() * 2) * 4,
+                    color: palette[Math.floor(Math.random() * palette.length)]
+                });
+            }
+
+            if (pixels.length > maxPixels) {
+                pixels.splice(0, pixels.length - maxPixels);
+            }
+
+            if (!animationFrame) {
+                animationFrame = requestAnimationFrame(renderPixels);
+            }
+        }
+
+        function renderPixels() {
+            const width = canvas.width / dpr;
+            const height = canvas.height / dpr;
+            ctx.clearRect(0, 0, width, height);
+
+            for (let i = pixels.length - 1; i >= 0; i--) {
+                const pixel = pixels[i];
+                pixel.x += pixel.vx;
+                pixel.y += pixel.vy;
+                pixel.vy += 0.01;
+                pixel.life -= pixel.fade;
+
+                if (pixel.life <= 0) {
+                    pixels.splice(i, 1);
+                    continue;
+                }
+
+                ctx.globalAlpha = pixel.life;
+                ctx.fillStyle = pixel.color;
+                ctx.fillRect(
+                    Math.round(pixel.x / pixelSize) * pixelSize,
+                    Math.round(pixel.y / pixelSize) * pixelSize,
+                    pixel.size,
+                    pixel.size
+                );
+            }
+
+            ctx.globalAlpha = 1;
+
+            if (pixels.length > 0) {
+                animationFrame = requestAnimationFrame(renderPixels);
+            } else {
+                animationFrame = null;
+            }
+        }
+
+        function handlePointer(clientX, clientY) {
+            const now = performance.now();
+            if (now - lastSpawnAt < 22) return;
+            lastSpawnAt = now;
+            spawnPixel(clientX, clientY);
+        }
+
+        section.addEventListener('mousemove', (event) => {
+            handlePointer(event.clientX, event.clientY);
+        });
+
+        section.addEventListener('touchmove', (event) => {
+            const touch = event.touches[0];
+            if (!touch) return;
+            handlePointer(touch.clientX, touch.clientY);
+        }, { passive: true });
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const mainSection = document.getElementById('main');
+    if (!mainSection) return;
+
+    const canvas = document.createElement('canvas');
+    canvas.className = 'pixel-rain-canvas';
+    canvas.setAttribute('aria-hidden', 'true');
+    mainSection.prepend(canvas);
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const drops = [];
+    const dropCount = 52;
+    const palette = ['#c7d2fe', '#93c5fd', '#f8fafc', '#a3e635'];
+    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let width = 0;
+    let height = 0;
+
+    function resizeCanvas() {
+        const bounds = mainSection.getBoundingClientRect();
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = bounds.width;
+        height = bounds.height;
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(dpr, dpr);
+    }
+
+    function resetDrop(drop, initial = false) {
+        const startBand = Math.max(width, height) * 0.35;
+        drop.x = initial ? Math.random() * width : (Math.random() * (width + startBand)) - startBand;
+        drop.y = initial ? Math.random() * height : -Math.random() * (height * 0.45 + 80);
+        drop.vx = 0.9 + Math.random() * 1.4;
+        drop.vy = 1.3 + Math.random() * 1.9;
+        drop.length = 10 + Math.floor(Math.random() * 4) * 4;
+        drop.size = 4 + Math.floor(Math.random() * 2) * 4;
+        drop.alpha = 0.15 + Math.random() * 0.22;
+        drop.color = palette[Math.floor(Math.random() * palette.length)];
+    }
+
+    function initDrops() {
+        drops.length = 0;
+        for (let i = 0; i < dropCount; i++) {
+            const drop = {};
+            resetDrop(drop, true);
+            drops.push(drop);
+        }
+    }
+
+    function renderRain() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (const drop of drops) {
+            drop.x += drop.vx;
+            drop.y += drop.vy;
+
+            if (drop.y - drop.length > height || drop.x - drop.length > width) {
+                resetDrop(drop, false);
+            }
+
+            ctx.globalAlpha = drop.alpha;
+            ctx.fillStyle = drop.color;
+
+            for (let segment = 0; segment < 3; segment++) {
+                const segX = Math.round((drop.x - segment * drop.length) / 8) * 8;
+                const segY = Math.round((drop.y - segment * drop.length) / 8) * 8;
+                const segAlpha = drop.alpha * (1 - segment * 0.28);
+                ctx.globalAlpha = segAlpha;
+                ctx.fillRect(segX, segY, drop.size, drop.size);
+            }
+        }
+
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(renderRain);
+    }
+
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+        initDrops();
+    });
+
+    resizeCanvas();
+    initDrops();
+    requestAnimationFrame(renderRain);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.section');
     let currentSection = 'main';
 
     const buttons = {
@@ -196,5 +398,3 @@ document.getElementById('menu-toggle').addEventListener('click', function () {
     const menu = document.getElementById('mobile-menu');
     menu.classList.toggle('hidden');
 });
-
-

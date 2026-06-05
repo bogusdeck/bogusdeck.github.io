@@ -26,6 +26,56 @@ html {
     height: 100%;
 }
 
+.section > :not(.pixel-trail-canvas):not(.pixel-rain-canvas) {
+    position: relative;
+    z-index: 2;
+}
+
+#main {
+    overflow: hidden;
+    background: #777d8c;
+}
+
+#main::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 22px 22px;
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+#main img {
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 18px 0 rgba(62, 82, 109, 0.45));
+}
+
+.pixel-trail-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+.pixel-rain-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
 .z-1 {
     z-index: 1;
 }
