@@ -142,40 +142,42 @@
             <div id="shot-flash" class="hidden absolute inset-0 bg-white opacity-30 pointer-events-none z-40"></div>
 
             <!-- Contact Form (hidden until 3 birds shot) -->
-            <div id="form-section" class="hidden absolute inset-0 flex flex-col items-center justify-start md:justify-center overflow-y-auto bg-black bg-opacity-40 z-50 pt-14 pb-10">
-                <div class="headingfont text-green-400 text-center text-[10px] md:text-[13px] mb-4 px-4" style="text-shadow: 2px 2px 0px #000;">✓ 3 birds down. Form unlocked.</div>
-                <form id="contact-form" class="boxxy px-4 md:px-8 pb-6 pt-4 w-11/12 max-w-2xl my-auto md:my-0">
-                    <h2 class="headingfont text-[16px] md:text-[20px] font-bold mb-6 text-center text-white">Contact Me</h2>
-                    
-                    <!-- Grid for Name and Email -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 mb-4">
-                        <div>
-                            <label for="name" class="block text-white headingfont text-[9px] mb-1">Name</label>
-                            <input type="text" id="name" name="name" class="boxxy w-full px-3 py-2 mt-1 text-white headingfont text-[10px]" required>
+            <div id="form-section" class="hidden absolute inset-0 flex flex-col justify-between overflow-y-auto bg-gray-950 z-50 pt-14">
+                <div class="flex flex-col items-center justify-center flex-grow w-full py-8">
+                    <div class="headingfont text-green-400 text-center text-[10px] md:text-[13px] mb-4 px-4" style="text-shadow: 2px 2px 0px #000;">✓ 3 birds down. Form unlocked.</div>
+                    <form id="contact-form" class="boxxy px-4 md:px-8 pb-6 pt-4 w-11/12 max-w-2xl">
+                        <h2 class="headingfont text-[16px] md:text-[20px] font-bold mb-6 text-center text-white">Contact Me</h2>
+                        
+                        <!-- Grid for Name and Email -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 mb-4">
+                            <div>
+                                <label for="name" class="block text-white headingfont text-[9px] mb-1">Name</label>
+                                <input type="text" id="name" name="name" class="boxxy w-full px-3 py-2 mt-1 text-white headingfont text-[10px]" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-white headingfont text-[9px] mb-1">Email</label>
+                                <input type="email" id="email" name="email" class="boxxy w-full px-3 py-2 mt-1 text-white headingfont text-[10px]" required>
+                            </div>
                         </div>
-                        <div>
-                            <label for="email" class="block text-white headingfont text-[9px] mb-1">Email</label>
-                            <input type="email" id="email" name="email" class="boxxy w-full px-3 py-2 mt-1 text-white headingfont text-[10px]" required>
+
+                        <!-- Subject -->
+                        <div class="mb-4">
+                            <label for="subject" class="block text-white headingfont text-[9px] mb-1">Subject</label>
+                            <input type="text" id="subject" name="subject" class="boxxy w-full px-3 py-2 mt-1 text-white headingfont text-[10px]" required>
                         </div>
-                    </div>
 
-                    <!-- Subject -->
-                    <div class="mb-4">
-                        <label for="subject" class="block text-white headingfont text-[9px] mb-1">Subject</label>
-                        <input type="text" id="subject" name="subject" class="boxxy w-full px-3 py-2 mt-1 text-white headingfont text-[10px]" required>
-                    </div>
+                        <!-- Message -->
+                        <div class="mb-6">
+                            <label for="message" class="block text-white headingfont text-[9px] mb-1">Message</label>
+                            <textarea id="message" name="message" class="boxxy w-full px-3 py-2 mt-1 text-white headingfont text-[10px]" rows="5" required></textarea>
+                        </div>
 
-                    <!-- Message -->
-                    <div class="mb-6">
-                        <label for="message" class="block text-white headingfont text-[9px] mb-1">Message</label>
-                        <textarea id="message" name="message" class="boxxy w-full px-3 py-2 mt-1 text-white headingfont text-[10px]" rows="5" required></textarea>
-                    </div>
+                        <button type="submit" class="boxxy-green w-full px-3 py-2 text-white headingfont text-[10px] hover:bg-gray-800" style="display: block; width: 100%; text-align: center;">Send</button>
+                        <p class="headingfont text-[8px] text-gray-400 text-center mt-4">INSERT MESSAGE TO CONTINUE (THE DOG IS WATCHING...)</p>
+                    </form>
+                </div>
 
-                    <button type="submit" class="boxxy-green w-full px-3 py-2 text-white headingfont text-[10px] hover:bg-gray-800" style="display: block; width: 100%; text-align: center;">Send</button>
-                    <p class="headingfont text-[8px] text-gray-400 text-center mt-4">INSERT MESSAGE TO CONTINUE (THE DOG IS WATCHING...)</p>
-                </form>
-
-                <footer class="flex flex-col md:flex-row items-center justify-center bg-gray-950 bg-opacity-50 py-6 w-full mt-10 gap-2 z-50">
+                <footer class="flex flex-col md:flex-row items-center justify-center bg-gray-950 bg-opacity-50 py-6 w-full gap-2 z-50">
                     <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px]">Copyright © 2024 --</p>
                     <a href="mailto:tanishvashisth@gmail.com"
                         class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth@gmail.com</a>
