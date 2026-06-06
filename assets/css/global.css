@@ -51,6 +51,7 @@
 
 .fonty {
     font-family: "mariofont", monospace;
+    text-shadow: 3px 3px 0px #000;
 }
 
 .codefont {
