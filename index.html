@@ -83,6 +83,33 @@
                 }
             }
         }
+
+        /* 1-bit Testimony Sprite Pfps */
+        .pfp-sprite {
+            width: 64px;
+            height: 64px;
+            background-image: url('assets/images/indexbg/testimony_sprites.jpg');
+            background-size: 256px 256px;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.4);
+            display: inline-block;
+        }
+
+        .pfp-sprite-0 { background-position: 0px 0px; }
+        .pfp-sprite-1 { background-position: -64px 0px; }
+        .pfp-sprite-2 { background-position: -128px 0px; }
+        .pfp-sprite-3 { background-position: -192px 0px; }
+        .pfp-sprite-4 { background-position: 0px -64px; }
+        .pfp-sprite-5 { background-position: -64px -64px; }
+        .pfp-sprite-6 { background-position: -128px -64px; }
+        .pfp-sprite-7 { background-position: -192px -64px; }
+        .pfp-sprite-8 { background-position: 0px -128px; }
+        .pfp-sprite-9 { background-position: -64px -128px; }
+        .pfp-sprite-10 { background-position: -128px -128px; }
     </style>
 </head>
 
@@ -293,9 +320,7 @@
                         <!-- Card 1: Google -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-blue-500 mb-2 overflow-hidden">
-                                    <img src="assets/images/indexbg/google.png" alt="Google" class="w-full h-full object-cover">
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-0 mb-2"></div>
                                 <h3 class="text-lg font-bold">Google</h3>
                             </div>
                             <div class="flex justify-center mb-2">
@@ -310,9 +335,7 @@
                         <!-- Card 2: RoomMate -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-purple-500 mb-2 overflow-hidden">
-                                    <img src="assets/images/indexbg/roommate.png" alt="RoomMate" class="w-full h-full object-cover">
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-1 mb-2"></div>
                                 <h3 class="text-lg font-bold">RoomMate</h3>
                             </div>
                             <div class="flex justify-center mb-2">
@@ -329,9 +352,7 @@
                         <!-- Card 4: The Compiler -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-red-950 flex items-center justify-center mb-2 text-2xl">
-                                    ⚙️
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-2 mb-2"></div>
                                 <h3 class="text-lg font-bold">The Compiler</h3>
                                 <p class="text-[10px] text-gray-400">Syntax Police</p>
                             </div>
@@ -347,9 +368,7 @@
                         <!-- Card 5: Stack Overflow -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-orange-950 flex items-center justify-center mb-2 text-2xl">
-                                    🥞
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-3 mb-2"></div>
                                 <h3 class="text-lg font-bold">Stack Overflow</h3>
                                 <p class="text-[10px] text-gray-400">Co-Author</p>
                             </div>
@@ -365,9 +384,7 @@
                         <!-- Card 6: Local ISP -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-cyan-950 flex items-center justify-center mb-2 text-2xl">
-                                    🌐
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-4 mb-2"></div>
                                 <h3 class="text-lg font-bold">Local ISP</h3>
                                 <p class="text-[10px] text-gray-400">Bandwidth</p>
                             </div>
@@ -383,9 +400,7 @@
                         <!-- Card 7: Mom -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-pink-950 flex items-center justify-center mb-2 text-2xl">
-                                    ❤️
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-5 mb-2"></div>
                                 <h3 class="text-lg font-bold">Mom</h3>
                                 <p class="text-[10px] text-gray-400">Support Lead</p>
                             </div>
@@ -401,9 +416,7 @@
                         <!-- Card 8: Git -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-amber-950 flex items-center justify-center mb-2 text-2xl">
-                                    🌿
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-6 mb-2"></div>
                                 <h3 class="text-lg font-bold">Git</h3>
                                 <p class="text-[10px] text-gray-400">VCS Officer</p>
                             </div>
@@ -419,9 +432,7 @@
                         <!-- Card 9: Nginx -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-emerald-950 flex items-center justify-center mb-2 text-2xl">
-                                    🟢
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-7 mb-2"></div>
                                 <h3 class="text-lg font-bold">Nginx</h3>
                                 <p class="text-[10px] text-gray-400">Reverse Proxy</p>
                             </div>
@@ -437,9 +448,7 @@
                         <!-- Card 10: Semicolon -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-gray-800 flex items-center justify-center mb-2 text-3xl font-extrabold text-white font-mono">
-                                    ;
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-8 mb-2"></div>
                                 <h3 class="text-lg font-bold">Semicolon</h3>
                                 <p class="text-[10px] text-gray-400">The Invisible</p>
                             </div>
@@ -455,9 +464,7 @@
                         <!-- Card 11: LeetCode -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-yellow-950 flex items-center justify-center mb-2 text-2xl">
-                                    📝
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-9 mb-2"></div>
                                 <h3 class="text-lg font-bold">LeetCode</h3>
                                 <p class="text-[10px] text-gray-400">Interviews</p>
                             </div>
@@ -473,9 +480,7 @@
                         <!-- Card 12: Coffee Machine -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-amber-900 flex items-center justify-center mb-2 text-2xl">
-                                    ☕
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-10 mb-2"></div>
                                 <h3 class="text-lg font-bold">Coffee Machine</h3>
                                 <p class="text-[10px] text-gray-400">Fuel Maker</p>
                             </div>
@@ -493,9 +498,7 @@
                         <!-- Card 1: Google -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-blue-500 mb-2 overflow-hidden">
-                                    <img src="assets/images/indexbg/google.png" alt="Google" class="w-full h-full object-cover">
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-0 mb-2"></div>
                                 <h3 class="text-lg font-bold">Google</h3>
                             </div>
                             <div class="flex justify-center mb-2">
@@ -510,9 +513,7 @@
                         <!-- Card 2: RoomMate -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-purple-500 mb-2 overflow-hidden">
-                                    <img src="assets/images/indexbg/roommate.png" alt="RoomMate" class="w-full h-full object-cover">
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-1 mb-2"></div>
                                 <h3 class="text-lg font-bold">RoomMate</h3>
                             </div>
                             <div class="flex justify-center mb-2">
@@ -529,9 +530,7 @@
                         <!-- Card 4: The Compiler -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-red-950 flex items-center justify-center mb-2 text-2xl">
-                                    ⚙️
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-2 mb-2"></div>
                                 <h3 class="text-lg font-bold">The Compiler</h3>
                                 <p class="text-[10px] text-gray-400">Syntax Police</p>
                             </div>
@@ -547,9 +546,7 @@
                         <!-- Card 5: Stack Overflow -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-orange-950 flex items-center justify-center mb-2 text-2xl">
-                                    🥞
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-3 mb-2"></div>
                                 <h3 class="text-lg font-bold">Stack Overflow</h3>
                                 <p class="text-[10px] text-gray-400">Co-Author</p>
                             </div>
@@ -565,9 +562,7 @@
                         <!-- Card 6: Local ISP -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-cyan-950 flex items-center justify-center mb-2 text-2xl">
-                                    🌐
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-4 mb-2"></div>
                                 <h3 class="text-lg font-bold">Local ISP</h3>
                                 <p class="text-[10px] text-gray-400">Bandwidth</p>
                             </div>
@@ -583,9 +578,7 @@
                         <!-- Card 7: Mom -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-pink-950 flex items-center justify-center mb-2 text-2xl">
-                                    ❤️
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-5 mb-2"></div>
                                 <h3 class="text-lg font-bold">Mom</h3>
                                 <p class="text-[10px] text-gray-400">Support Lead</p>
                             </div>
@@ -601,9 +594,7 @@
                         <!-- Card 8: Git -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-amber-950 flex items-center justify-center mb-2 text-2xl">
-                                    🌿
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-6 mb-2"></div>
                                 <h3 class="text-lg font-bold">Git</h3>
                                 <p class="text-[10px] text-gray-400">VCS Officer</p>
                             </div>
@@ -619,9 +610,7 @@
                         <!-- Card 9: Nginx -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-emerald-950 flex items-center justify-center mb-2 text-2xl">
-                                    🟢
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-7 mb-2"></div>
                                 <h3 class="text-lg font-bold">Nginx</h3>
                                 <p class="text-[10px] text-gray-400">Reverse Proxy</p>
                             </div>
@@ -637,9 +626,7 @@
                         <!-- Card 10: Semicolon -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-gray-800 flex items-center justify-center mb-2 text-3xl font-extrabold text-white font-mono">
-                                    ;
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-8 mb-2"></div>
                                 <h3 class="text-lg font-bold">Semicolon</h3>
                                 <p class="text-[10px] text-gray-400">The Invisible</p>
                             </div>
@@ -655,9 +642,7 @@
                         <!-- Card 11: LeetCode -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-yellow-950 flex items-center justify-center mb-2 text-2xl">
-                                    📝
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-9 mb-2"></div>
                                 <h3 class="text-lg font-bold">LeetCode</h3>
                                 <p class="text-[10px] text-gray-400">Interviews</p>
                             </div>
@@ -673,9 +658,7 @@
                         <!-- Card 12: Coffee Machine -->
                         <div class="review-card boxxy w-[280px] md:w-[300px] flex-shrink-0 mr-6 p-4 flex flex-col justify-between">
                             <div class="flex flex-col items-center mb-4">
-                                <div class="w-16 h-16 rounded-full bg-amber-900 flex items-center justify-center mb-2 text-2xl">
-                                    ☕
-                                </div>
+                                <div class="pfp-sprite pfp-sprite-10 mb-2"></div>
                                 <h3 class="text-lg font-bold">Coffee Machine</h3>
                                 <p class="text-[10px] text-gray-400">Fuel Maker</p>
                             </div>
