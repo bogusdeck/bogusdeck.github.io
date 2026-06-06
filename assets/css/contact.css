@@ -329,6 +329,7 @@
     padding: 4px 5px !important;
     pointer-events: none;
     flex-shrink: 0;
+    margin-left: 86px;
 }
 
 .hand-indicator-emoji {
