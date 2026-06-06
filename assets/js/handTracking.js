@@ -503,7 +503,8 @@
             ctx.save();
             ctx.scale(1 / dpr, 1 / dpr);
 
-            const x = clamp(normalizedPoint.x, 0, 1) * width;
+            const previewX = this.options.mirrorX ? (1 - normalizedPoint.x) : normalizedPoint.x;
+            const x = clamp(previewX, 0, 1) * width;
             const y = clamp(normalizedPoint.y, 0, 1) * height;
 
             ctx.beginPath();
