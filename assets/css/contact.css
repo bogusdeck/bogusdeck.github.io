@@ -307,11 +307,11 @@
 
 .hand-tracking-indicator {
     position: absolute;
-    left: 96px;
+    left: 124px;
     bottom: 0;
     width: 42px;
     transform: scale(1.3);
-    transform-origin: bottom center;
+    transform-origin: bottom left;
     min-width: 46px;
     padding: 4px 5px !important;
     pointer-events: none;
@@ -403,7 +403,7 @@
     }
 
     .hand-tracking-indicator {
-        left: 72px;
+        left: 84px;
         width: 36px;
         transform: scale(1.05);
         min-width: 40px;
@@ -421,7 +421,7 @@
     }
 
     .hand-tracking-indicator {
-        left: 58px;
+        left: 62px;
         width: 30px;
         transform: scale(0.92);
         min-width: 34px;
