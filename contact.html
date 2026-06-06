@@ -21,6 +21,7 @@
             height: 100%;
             width: 100%;
             position: relative;
+            overflow: hidden;
         }
 
         #contact-bird {
@@ -78,7 +79,7 @@
                     </svg>
                 </button>
             </div>
-            <div id="mobile-menu" class="hidden absolute top-0 right-0 w-full mt-14 z-50 bg-black">
+            <div id="mobile-menu" class="hidden absolute top-0 right-0 w-full mt-14 z-50 bg-black text-right">
                 <a class="block py-2 px-4 text-white" href="index.html">Home</a>
                 <a class="block py-2 px-4 text-white" href="blog.html">Blog</a>
                 <a class="block py-2 px-4 text-white" href="project.html">Projects</a>
@@ -173,14 +174,15 @@
                     <button type="submit" class="boxxy-green w-full px-3 py-2 text-white headingfont text-[10px] hover:bg-gray-800" style="display: block; width: 100%; text-align: center;">Send</button>
                     <p class="headingfont text-[8px] text-gray-400 text-center mt-4">INSERT MESSAGE TO CONTINUE (THE DOG IS WATCHING...)</p>
                 </form>
+
+                <footer class="flex flex-col md:flex-row items-center justify-center bg-gray-950 bg-opacity-50 py-6 w-full mt-10 gap-2 z-50">
+                    <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px]">Copyright © 2024 --</p>
+                    <a href="mailto:tanishvashisth@gmail.com"
+                        class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth@gmail.com</a>
+                </footer>
             </div>
         </div>
     </div>
-    <footer class="flex flex-col md:flex-row items-center justify-center bg-gray-950 bg-opacity-50 py-6 w-full mt-10 gap-2 z-50">
-        <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px]">Copyright © 2024 --</p>
-        <a href="mailto:tanishvashisth@gmail.com"
-            class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth@gmail.com</a>
-    </footer>
     <script src="assets/js/constants.js"></script>
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
