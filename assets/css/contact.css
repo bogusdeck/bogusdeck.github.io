@@ -290,7 +290,7 @@
 .hand-tracking-controls {
     position: absolute;
     right: 40px;
-    bottom: 126px;
+    bottom: 142px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -299,13 +299,26 @@
 }
 
 
+.hand-tracking-preview-frame {
+    position: relative;
+    padding: 0 !important;
+    background: transparent !important;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 120ms ease;
+}
+
+.hand-tracking-preview-frame.is-live {
+    opacity: 1;
+}
+
 .hand-tracking-preview-wrap {
     position: relative;
     width: 168px;
     height: 126px;
 }
 
-.hand-tracking-toggle {
+.hand-tracking-hud-toggle {
     pointer-events: auto;
     display: flex;
     align-items: center;
@@ -315,19 +328,19 @@
     min-height: 0;
     line-height: 1.2;
     cursor: pointer;
+    border: none;
 }
 
-.hand-tracking-toggle:hover {
-    color: #fff !important;
+.hand-tracking-hud-toggle:hover {
+    filter: brightness(1.08);
 }
 
-.hand-tracking-indicator {
+.hand-tracking-hud-toggle {
     width: 42px;
     transform: scale(1.3);
     transform-origin: bottom left;
     min-width: 46px;
     padding: 4px 5px !important;
-    pointer-events: none;
     flex-shrink: 0;
     margin-left: 86px;
 }
@@ -350,15 +363,27 @@
     margin-top: 2px;
 }
 
+.hand-tracking-hud-toggle.is-active {
+    box-shadow: 0 -4px #000, 0 -8px #ff6b6b, 4px 0 #000, 4px -4px #ff6b6b, 8px 0 #ff6b6b, 0 4px #000, 0 8px #ff6b6b, -4px 0 #000, -4px 4px #ff6b6b, -8px 0 #ff6b6b, -4px -4px #ff6b6b, 4px 4px #ff6b6b !important;
+    color: #ff9a9a !important;
+}
+
+.hand-tracking-hud-toggle.is-active .hand-indicator-label {
+    color: #ff9a9a;
+}
+
+.hand-tracking-overlay-toggle.hidden,
+.hand-tracking-hud-toggle.hidden {
+    display: none !important;
+}
+
 .hand-tracking-preview {
     position: absolute;
     inset: 0;
     width: 168px;
     height: 126px;
     object-fit: cover;
-    border: 3px solid #fff;
     background: rgba(0, 0, 0, 0.7);
-    box-shadow: 4px 4px 0 #000;
     transform: scaleX(-1);
     opacity: 0;
     transition: opacity 120ms ease;
@@ -373,7 +398,6 @@
     opacity: 0;
     transition: opacity 120ms ease;
 }
-
 .hand-tracking-preview.is-live {
     opacity: 1;
 }
@@ -403,7 +427,7 @@
 @media (max-width: 768px) {
     .hand-tracking-controls {
         right: 16px;
-        bottom: 106px;
+        bottom: 120px;
     }
 
     .hand-tracking-preview {
@@ -417,7 +441,7 @@
         height: 99px;
     }
 
-    .hand-tracking-indicator {
+    .hand-tracking-hud-toggle {
         width: 36px;
         transform: scale(1.05);
         min-width: 40px;
@@ -431,12 +455,92 @@
 @media (max-width: 480px) {
     .hand-tracking-controls {
         right: 10px;
-        bottom: 94px;
+        bottom: 106px;
     }
 
-    .hand-tracking-indicator {
+    .hand-tracking-hud-toggle {
         width: 30px;
         transform: scale(0.92);
         min-width: 34px;
+    }
+}
+
+/* ─── Hand Tutorial Modal ─────────────────────────────── */
+
+@keyframes tutorialSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(28px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+#hand-tutorial-modal {
+    animation: none;
+}
+
+#hand-tutorial-modal:not(.hidden) {
+    animation: tutorialSlideIn 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.tutorial-media-box {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #0a0a0a;
+    border: 2px dashed #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.tutorial-media-box img,
+.tutorial-media-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    image-rendering: pixelated;
+}
+
+.tutorial-step-label {
+    font-family: 'Joystick', monospace;
+    font-size: 9px;
+    color: #fff;
+    text-align: center;
+    line-height: 1.7;
+    letter-spacing: 0.5px;
+}
+
+.tutorial-step-label strong {
+    color: #8cd600;
+}
+
+#tutorial-play-btn {
+    transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+#tutorial-play-btn:hover {
+    transform: scale(1.06);
+}
+
+#tutorial-play-btn:active {
+    transform: scale(0.97);
+}
+
+#close-tutorial-btn {
+    transition: color 100ms ease;
+    line-height: 1;
+    padding: 4px 6px;
+}
+
+@media (max-width: 640px) {
+    .tutorial-step-label {
+        font-size: 8px;
     }
 }

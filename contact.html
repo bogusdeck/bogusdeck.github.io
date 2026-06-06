@@ -10,8 +10,8 @@
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="assets/css/global.css?v=20260607">
-    <link rel="stylesheet" href="assets/css/contact.css?v=20260607">
+    <link rel="stylesheet" href="assets/css/global.css?v=20260607b">
+    <link rel="stylesheet" href="assets/css/contact.css?v=20260607b">
     <style>
         body {
             background-color: #63adff;
@@ -188,6 +188,56 @@
             </div>
         </div>
     </div>
+
+    <!-- Hand Tracking Tutorial Modal -->
+    <div id="hand-tutorial-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4" style="background: rgba(0,0,0,0.82); backdrop-filter: blur(4px);">
+        <div class="boxxy w-full max-w-3xl flex flex-col gap-6 relative" style="background-color: rgba(0,0,0,0.94) !important; padding: 32px 28px 24px;">
+
+            <!-- Close -->
+            <button id="close-tutorial-btn" class="headingfont text-white absolute" style="top:14px; right:16px; font-size:11px; background:none; border:none; cursor:pointer; letter-spacing:1px;">✕ CLOSE</button>
+
+            <!-- Title -->
+            <h3 class="headingfont text-center" style="font-size:13px; color:#8cd600; text-shadow:2px 2px 0 #000; margin:0; letter-spacing:2px;">HAND CONTROL TUTORIAL</h3>
+
+            <!-- Two-column steps -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <!-- Step 1 – GIF -->
+                <div class="flex flex-col gap-3">
+                    <div class="tutorial-media-box" id="tutorial-gif-box">
+                        <!-- will be replaced when user provides the GIF -->
+                        <span class="headingfont animate-pulse" style="font-size:8px; color:#555; letter-spacing:1px;">GIF COMING SOON</span>
+                    </div>
+                    <p class="tutorial-step-label">
+                        <strong>STEP 1 — AIM</strong><br>
+                        Point your index finger at the screen.<br>
+                        The crosshair follows your fingertip.
+                    </p>
+                </div>
+
+                <!-- Step 2 – Image -->
+                <div class="flex flex-col gap-3">
+                    <div class="tutorial-media-box" id="tutorial-img-box">
+                        <!-- will be replaced when user provides the image -->
+                        <span class="headingfont animate-pulse" style="font-size:8px; color:#555; letter-spacing:1px;">IMAGE COMING SOON</span>
+                    </div>
+                    <p class="tutorial-step-label">
+                        <strong>STEP 2 — SHOOT</strong><br>
+                        Raise your thumb up, then snap it down<br>
+                        quickly to fire a shot.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Play -->
+            <div class="flex justify-center">
+                <button id="tutorial-play-btn" class="boxxy-green headingfont text-white" style="padding:12px 40px; font-size:11px; letter-spacing:2px;">▶ PLAY</button>
+            </div>
+
+        </div>
+    </div>
+
     <script src="assets/js/constants.js"></script>
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
@@ -682,7 +732,48 @@
     </script>
     <script src="assets/js/handTracking.js?v=20260607"></script>
     <script>
-        window.contactHandTracking = initHandTracking({ target: '#game-container', shootCooldown: 400 });
+        (function () {
+            const tutorialModal   = document.getElementById('hand-tutorial-modal');
+            const closeTutorialBtn = document.getElementById('close-tutorial-btn');
+            const tutorialPlayBtn  = document.getElementById('tutorial-play-btn');
+
+            let tutorialShown = false;
+
+            function openTutorial() {
+                tutorialModal.classList.remove('hidden');
+            }
+
+            function closeTutorial() {
+                tutorialModal.classList.add('hidden');
+            }
+
+            // Close (X) — dismiss tutorial AND disable hand tracking
+            closeTutorialBtn.addEventListener('click', function () {
+                closeTutorial();
+                if (window.contactHandTracking && window.contactHandTracking.enabled) {
+                    window.contactHandTracking.disable();
+                }
+                tutorialShown = false; // allow re-showing if user re-enables
+            });
+
+            // PLAY — dismiss tutorial, hand tracking stays on
+            tutorialPlayBtn.addEventListener('click', function () {
+                closeTutorial();
+            });
+
+            // Listen for hand tracking toggle events
+            const gameContainer = document.getElementById('game-container');
+            if (gameContainer) {
+                gameContainer.addEventListener('handtracking:toggle', function (e) {
+                    if (e.detail && e.detail.enabled && !tutorialShown) {
+                        tutorialShown = true;
+                        openTutorial();
+                    }
+                });
+            }
+
+            window.contactHandTracking = initHandTracking({ target: '#game-container', shootCooldown: 400 });
+        }());
     </script>
 </body>
 </html>
