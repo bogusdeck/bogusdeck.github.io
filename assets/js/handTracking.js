@@ -40,9 +40,11 @@
             this.previewVideo = null;
             this.previewCanvas = null;
             this.previewCtx = null;
-            this.toggleButton = null;
-            this.handIndicator = null;
+            this.previewFrame = null;
+            this.overlayToggleButton = null;
+            this.handToggleButton = null;
             this.flashLabel = null;
+            this.visibilityObserver = null;
             this.resizeObserver = null;
             this.enabled = false;
             this.lastShotAt = 0;
@@ -78,11 +80,11 @@
             const controls = document.createElement('div');
             controls.className = 'hand-tracking-controls';
 
-            const toggleButton = document.createElement('button');
-            toggleButton.type = 'button';
-            toggleButton.className = 'boxxy headingfont text-white w-48 md:w-auto px-6 py-2 text-[10px] md:text-[12px] text-center justify-center hand-tracking-toggle';
-            toggleButton.textContent = 'HAND ON';
-            toggleButton.addEventListener('click', this.toggle);
+            const overlayToggleButton = document.createElement('button');
+            overlayToggleButton.type = 'button';
+            overlayToggleButton.className = 'boxxy headingfont text-white w-48 md:w-auto px-6 py-2 text-[10px] md:text-[12px] text-center justify-center hand-tracking-overlay-toggle';
+            overlayToggleButton.textContent = 'HAND ON';
+            overlayToggleButton.addEventListener('click', this.toggle);
 
             const previewVideo = document.createElement('video');
             previewVideo.className = 'hand-tracking-preview';
@@ -98,11 +100,15 @@
             previewWrap.appendChild(previewVideo);
             previewWrap.appendChild(previewCanvas);
 
+            const previewFrame = document.createElement('div');
+            previewFrame.className = 'boxxy hand-tracking-preview-frame';
+            previewFrame.appendChild(previewWrap);
+
             const flashLabel = document.createElement('div');
             flashLabel.className = 'hand-tracking-fire-flash';
             flashLabel.textContent = 'FIRE 🔫';
 
-            controls.appendChild(previewWrap);
+            controls.appendChild(previewFrame);
             ui.appendChild(overlayCanvas);
             ui.appendChild(controls);
             ui.appendChild(flashLabel);
@@ -111,18 +117,19 @@
             const startOverlay = this.target.querySelector('#game-start-overlay');
             if (startOverlay) {
                 const btnContainer = startOverlay.querySelector('.flex') || startOverlay;
-                btnContainer.appendChild(toggleButton);
-            } else {
-                controls.appendChild(toggleButton);
+                btnContainer.appendChild(overlayToggleButton);
+                this.overlayToggleButton = overlayToggleButton;
             }
 
             const shotBox = this.target.querySelector('.shot-box');
             if (shotBox && shotBox.parentNode) {
-                const handIndicator = document.createElement('div');
-                handIndicator.className = 'boxxy-green hand-tracking-indicator hidden';
-                handIndicator.innerHTML = '<div class="hand-indicator-emoji">✋</div><div class="hand-indicator-label">HAND</div>';
-                shotBox.insertAdjacentElement('afterend', handIndicator);
-                this.handIndicator = handIndicator;
+                const handToggleButton = document.createElement('button');
+                handToggleButton.type = 'button';
+                handToggleButton.className = 'boxxy-green hand-tracking-hud-toggle';
+                handToggleButton.innerHTML = '<div class="hand-indicator-emoji">✋</div><div class="hand-indicator-label">HAND</div>';
+                handToggleButton.addEventListener('click', this.toggle);
+                shotBox.insertAdjacentElement('afterend', handToggleButton);
+                this.handToggleButton = handToggleButton;
             }
 
             this.ui = ui;
@@ -131,8 +138,10 @@
             this.previewVideo = previewVideo;
             this.previewCanvas = previewCanvas;
             this.previewCtx = previewCanvas.getContext('2d');
-            this.toggleButton = toggleButton;
+            this.previewFrame = previewFrame;
             this.flashLabel = flashLabel;
+            this.setupVisibilityObserver();
+            this.updateToggleSurfaces();
 
             if ('ResizeObserver' in global) {
                 this.resizeObserver = new ResizeObserver(this.handleResize);
@@ -186,8 +195,8 @@
 
             await this.camera.start();
             this.enabled = true;
-            this.toggleButton.textContent = 'HAND OFF';
-            this.updateHandIndicator();
+            this.previewFrame.classList.add('is-live');
+            this.updateToggleSurfaces();
             this.dispatchCustomEvent('handtracking:toggle', { enabled: true });
         }
 
@@ -206,6 +215,7 @@
             this.clearPreviewOverlay();
             this.flashLabel.classList.remove('is-visible');
             this.previewVideo.classList.remove('is-live');
+            this.previewFrame.classList.remove('is-live');
 
             if (this.camera && typeof this.camera.stop === 'function') {
                 this.camera.stop();
@@ -218,8 +228,7 @@
             }
             this.previewVideo.srcObject = null;
 
-            this.toggleButton.textContent = 'HAND ON';
-            this.updateHandIndicator();
+            this.updateToggleSurfaces();
             this.dispatchCustomEvent('handtracking:toggle', { enabled: false });
         }
 
@@ -247,8 +256,21 @@
                 global.removeEventListener('resize', this.handleResize);
             }
 
-            if (this.toggleButton) {
-                this.toggleButton.removeEventListener('click', this.toggle);
+            if (this.visibilityObserver) {
+                this.visibilityObserver.disconnect();
+                this.visibilityObserver = null;
+            }
+
+            if (this.overlayToggleButton && this.overlayToggleButton.parentNode) {
+                this.overlayToggleButton.removeEventListener('click', this.toggle);
+                this.overlayToggleButton.parentNode.removeChild(this.overlayToggleButton);
+            }
+
+            if (this.handToggleButton) {
+                this.handToggleButton.removeEventListener('click', this.toggle);
+                if (this.handToggleButton.parentNode) {
+                    this.handToggleButton.parentNode.removeChild(this.handToggleButton);
+                }
             }
 
             if (this.ui && this.ui.parentNode) {
@@ -256,12 +278,49 @@
             }
         }
 
-        updateHandIndicator() {
-            if (!this.handIndicator) {
+        setupVisibilityObserver() {
+            if (!('MutationObserver' in global)) {
                 return;
             }
 
-            this.handIndicator.classList.toggle('hidden', !this.enabled);
+            const startOverlay = this.target.querySelector('#game-start-overlay');
+            const hud = this.target.querySelector('.hud-container');
+            const formSection = this.target.querySelector('#form-section');
+            const observer = new MutationObserver(() => {
+                this.updateToggleSurfaces();
+            });
+
+            [startOverlay, hud, formSection].forEach((node) => {
+                if (node) {
+                    observer.observe(node, { attributes: true, attributeFilter: ['class'] });
+                }
+            });
+
+            this.visibilityObserver = observer;
+        }
+
+        updateToggleSurfaces() {
+            const startOverlay = this.target.querySelector('#game-start-overlay');
+            const hud = this.target.querySelector('.hud-container');
+            const formSection = this.target.querySelector('#form-section');
+            const overlayVisible = startOverlay ? !startOverlay.classList.contains('hidden') : false;
+            const hudVisible = hud ? !hud.classList.contains('hidden') : false;
+            const formVisible = formSection ? !formSection.classList.contains('hidden') : false;
+            const playing = hudVisible && !overlayVisible && !formVisible;
+
+            if (this.overlayToggleButton) {
+                this.overlayToggleButton.classList.toggle('hidden', !overlayVisible);
+                this.overlayToggleButton.textContent = this.enabled ? 'HAND OFF' : 'HAND ON';
+            }
+
+            if (this.handToggleButton) {
+                this.handToggleButton.classList.toggle('hidden', !playing);
+                this.handToggleButton.classList.toggle('is-active', this.enabled);
+                this.handToggleButton.setAttribute('aria-pressed', this.enabled ? 'true' : 'false');
+                this.handToggleButton.innerHTML = this.enabled
+                    ? '<div class="hand-indicator-emoji">✋</div><div class="hand-indicator-label">OFF</div>'
+                    : '<div class="hand-indicator-emoji">✋</div><div class="hand-indicator-label">HAND</div>';
+            }
         }
 
         handleResize() {

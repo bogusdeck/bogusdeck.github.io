@@ -150,7 +150,7 @@
                     <div class="headingfont text-green-400 text-center text-[10px] md:text-[13px] mb-4 px-4" style="text-shadow: 2px 2px 0px #000;">✓ 3 birds down. Form unlocked.</div>
                     <form id="contact-form" class="boxxy px-4 md:px-8 pb-6 pt-4 w-11/12 max-w-2xl" style="background-color: rgba(0, 0, 0, 0.6) !important;">
                         <h2 class="headingfont text-[16px] md:text-[20px] font-bold mb-6 text-center text-white">Contact Me</h2>
-                        
+
                         <!-- Grid for Name and Email -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 mb-4">
                             <div>
@@ -208,21 +208,20 @@
                         <img src="assets/images/contact/hand_tutorial.gif" alt="Hand aiming tutorial" style="image-rendering: pixelated;">
                     </div>
                     <p class="tutorial-step-label">
-                        <strong>STEP 1 — AIM</strong><br>
-                        Point your index finger at the screen.<br>
-                        The crosshair follows your fingertip.
+                        <strong style="text-transform: lowercase; color: #8cd600;">how to shoot?</strong><br>
+                        how to shoot the bird: point your index finger at the screen.<br>
+                        keep thumb straight and snap it down to middle finger for shooting.
                     </p>
                 </div>
 
                 <!-- Step 2 – Image -->
                 <div class="flex flex-col gap-3">
                     <div class="tutorial-media-box" id="tutorial-img-box">
-                        <img src="assets/images/contact/second_clean.png" alt="Hand shooting tutorial" style="image-rendering: pixelated;">
+                        <img src="assets/images/contact/point_towards_camera.png" alt="Hand shooting tutorial" style="image-rendering: pixelated;">
                     </div>
                     <p class="tutorial-step-label">
-                        <strong>STEP 2 — SHOOT</strong><br>
-                        Raise your thumb up, then snap it down<br>
-                        quickly to fire a shot.
+                        <strong style="text-transform: lowercase; color: #8cd600;">always point towards the camera</strong><br>
+                        for the gun to work properly point the finger towards the camera
                     </p>
                 </div>
 
@@ -667,22 +666,22 @@
             toast.className = 'boxxy-green headingfont fixed bottom-6 right-6 px-6 py-3 z-50 text-[12px] opacity-0 transition-opacity duration-300';
             toast.style.pointerEvents = 'none';
             toast.style.textShadow = '2px 2px 0px #000';
-            
+
             if (isError) {
                 toast.style.boxShadow = '0 -4px #000, 0 -8px #ff2a2a, 4px 0 #000, 4px -4px #ff2a2a, 8px 0 #ff2a2a, 0 4px #000, 0 8px #ff2a2a, -4px 0 #000, -4px 4px #ff2a2a, -8px 0 #ff2a2a, -4px -4px #ff2a2a, 4px 4px #ff2a2a';
                 toast.style.color = '#ff6b6b';
             } else {
                 toast.style.color = '#8cd600';
             }
-            
+
             toast.textContent = message;
             document.body.appendChild(toast);
-            
+
             setTimeout(() => {
                 toast.classList.remove('opacity-0');
                 toast.classList.add('opacity-100');
             }, 50);
-            
+
             setTimeout(() => {
                 toast.classList.remove('opacity-100');
                 toast.classList.add('opacity-0');
@@ -701,18 +700,18 @@
                 .then(() => {
                     showToast('✓ Message Sent Successfully!');
                     this.reset();
-                    
+
                     // Hide contact form overlay
                     const formSection = document.getElementById('form-section');
                     if (formSection) {
                         formSection.classList.add('hidden');
                         formSection.classList.remove('flex');
                     }
-                    
+
                     // Show game HUD again
                     const hud = document.querySelector('.hud-container');
                     if (hud) hud.classList.remove('hidden');
-                    
+
                     // Allow continue playing by resetting the game, unlocking permanently, and advancing the difficulty round
                     persistUnlockState(true);
                     difficultyRound++;
