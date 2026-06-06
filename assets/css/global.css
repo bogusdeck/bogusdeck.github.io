@@ -138,15 +138,6 @@ img, .img {
     padding: 0 10px;
 }
 
-@media (max-width: 767px) {
-    .navbar {
-        left: 12px;
-        right: 12px;
-        top: 12px;
-        height: 40px;
-    }
-}
-
 .nav-item {
     margin: 0 10px;
 }
@@ -246,7 +237,7 @@ img, .img {
 @media (max-width: 768px) {
     #mobile-menu {
         position: fixed !important;
-        top: 56px !important;
+        top: 61px !important;
         left: 12px !important;
         right: 12px !important;
         width: auto !important;
@@ -308,5 +299,3 @@ img, .img {
         color: #0D47A1 !important;
     }
 }
-
-
