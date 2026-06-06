@@ -38,21 +38,26 @@
     left: 40px;
     right: 40px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-end;
+    gap: 12px;
     z-index: 30;
     pointer-events: none;
     user-select: none;
 }
 
 .shot-box {
+    width: 62px;
     transform: scale(1.8);
     transform-origin: bottom left;
+    flex-shrink: 0;
 }
 
 .hit-box {
+    width: 176px;
     transform: scale(1.8);
     transform-origin: bottom center;
+    flex-shrink: 0;
 }
 
 /* SHOT Label and Bullets */
@@ -118,10 +123,13 @@
 
 /* SCORE Box layout (alternating pink/purple blocks on top) */
 .score-box {
+    width: 88px;
     transform: scale(1.8);
     transform-origin: bottom right;
     padding: 4px 8px !important;
     min-width: 90px;
+    flex-shrink: 0;
+    margin-left: auto;
 }
 
 .score-val {
@@ -152,12 +160,13 @@
     }
     
     .shot-box {
+        width: 56px;
         transform: scale(1.3);
         transform-origin: bottom left;
-        margin-left: 15px;
     }
     
     .hit-box {
+        width: 150px;
         transform: scale(1.2);
         transform-origin: bottom center;
         padding-left: 6px !important;
@@ -168,18 +177,19 @@
     .hit-container {
         gap: 2px !important;
     }
-    
+
     .hit-icon {
         width: 12px;
         height: 10px;
     }
     
     .score-box {
+        width: 70px;
         transform: scale(1.3);
         transform-origin: bottom right;
         min-width: 75px;
         padding: 2px 6px !important;
-        margin-right: 15px;
+        margin-left: auto;
     }
     
     .score-val {
@@ -209,11 +219,12 @@
     }
     
     .shot-box {
+        width: 48px;
         transform: scale(1.1);
-        margin-left: 10px;
     }
     
     .hit-box {
+        width: 126px;
         transform: scale(1.0);
         padding-left: 4px !important;
         padding-right: 4px !important;
@@ -223,18 +234,186 @@
     .hit-container {
         gap: 1px !important;
     }
-    
+
     .hit-icon {
         width: 10px;
         height: 9px;
     }
     
     .score-box {
+        width: 58px;
         transform: scale(1.1);
         min-width: 60px;
         padding: 1px 4px !important;
-        margin-right: 10px;
+        margin-left: auto;
     }
 }
 
+.hand-tracking-ui {
+    position: absolute;
+    inset: 0;
+    z-index: 45;
+    pointer-events: none;
+}
 
+.hand-tracking-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.hand-tracking-controls {
+    position: absolute;
+    right: 40px;
+    bottom: 126px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    pointer-events: none;
+}
+
+
+.hand-tracking-preview-wrap {
+    position: relative;
+    width: 168px;
+    height: 126px;
+}
+
+.hand-tracking-toggle {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-width: 0;
+    min-height: 0;
+    line-height: 1.2;
+    cursor: pointer;
+}
+
+.hand-tracking-toggle:hover {
+    color: #fff !important;
+}
+
+.hand-tracking-indicator {
+    width: 42px;
+    transform: scale(1.3);
+    transform-origin: bottom center;
+    min-width: 46px;
+    padding: 4px 5px !important;
+    pointer-events: none;
+    flex-shrink: 0;
+    align-self: flex-end;
+}
+
+.hand-indicator-emoji {
+    color: #fff;
+    font-size: 15px;
+    line-height: 1;
+    text-align: center;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.hand-indicator-label {
+    color: #8cd600;
+    font-size: 8px;
+    font-family: 'Joystick', monospace;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-top: 2px;
+}
+
+.hand-tracking-preview {
+    position: absolute;
+    inset: 0;
+    width: 168px;
+    height: 126px;
+    object-fit: cover;
+    border: 3px solid #fff;
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 4px 4px 0 #000;
+    transform: scaleX(-1);
+    opacity: 0;
+    transition: opacity 120ms ease;
+}
+
+.hand-tracking-preview-overlay {
+    position: absolute;
+    inset: 0;
+    width: 168px;
+    height: 126px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 120ms ease;
+}
+
+.hand-tracking-preview.is-live {
+    opacity: 1;
+}
+
+.hand-tracking-preview.is-live + .hand-tracking-preview-overlay {
+    opacity: 1;
+}
+
+.hand-tracking-fire-flash {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.92);
+    color: #fff36b;
+    text-shadow: 3px 3px 0 #000;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 18px;
+    opacity: 0;
+    transition: opacity 120ms ease, transform 120ms ease;
+}
+
+.hand-tracking-fire-flash.is-visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+@media (max-width: 768px) {
+    .hand-tracking-controls {
+        right: 16px;
+        bottom: 106px;
+    }
+
+    .hand-tracking-preview {
+        width: 132px;
+        height: 99px;
+    }
+
+    .hand-tracking-preview-wrap,
+    .hand-tracking-preview-overlay {
+        width: 132px;
+        height: 99px;
+    }
+
+    .hand-tracking-indicator {
+        width: 36px;
+        transform: scale(1.05);
+        min-width: 40px;
+    }
+
+    .hand-tracking-fire-flash {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hand-tracking-controls {
+        right: 10px;
+        bottom: 94px;
+    }
+
+    .hand-tracking-indicator {
+        width: 30px;
+        transform: scale(0.92);
+        min-width: 34px;
+    }
+}
