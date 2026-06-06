@@ -211,6 +211,7 @@
             this.lastHandSeenAt = 0;
             this.currentPoint = null;
             this.smoothedIndexPoint = null;
+            this.setTrackedCursorVisible(false);
             this.clearOverlay();
             this.clearPreviewOverlay();
             this.flashLabel.classList.remove('is-visible');
@@ -364,6 +365,7 @@
                 this.lastHandSeenAt = 0;
                 this.currentPoint = null;
                 this.smoothedIndexPoint = null;
+                this.setTrackedCursorVisible(false);
                 this.clearOverlay();
                 this.clearPreviewOverlay();
                 return;
@@ -379,6 +381,7 @@
             const point = this.mapNormalizedPointToTarget(smoothedIndexPoint);
 
             this.currentPoint = point;
+            this.setTrackedCursorVisible(true);
             this.drawCrosshair(point.x, point.y);
             this.drawPreviewMarker(smoothedIndexPoint);
             this.dispatchMove(point);
@@ -592,6 +595,10 @@
                 bubbles: true,
                 detail: detail
             }));
+        }
+
+        setTrackedCursorVisible(visible) {
+            this.target.classList.toggle('hand-tracking-cursor-hidden', visible);
         }
     }
 
