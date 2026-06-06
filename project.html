@@ -62,19 +62,21 @@
     <div class="scroll-container" id="scrollContainer">
         <div class="section-wrapper" id="sectionWrapper">
             <div class="section">
-                <div class="box w-2/3">
-                    <div class="content fonty tracking-wider md:text-[60px] mt-4 text-center">
-                        <p>My</p>
-                        <p>Projects</p>
-                        <div class="mt-4">
-                            <p class="hidden md:block headingfont text-[10px] text-gray-400 animate-pulse normal-case tracking-normal">Scroll down/up (wheel) to explore horizontally →</p>
-                            <p class="block md:hidden headingfont text-[8px] text-gray-400 animate-pulse normal-case tracking-normal">Swipe left to right (or right to left) to explore →</p>
+                <div class="flex flex-col items-center justify-center gap-6 w-full">
+                    <div class="box w-2/3">
+                        <div class="content fonty tracking-wider md:text-[60px] text-center">
+                            <p>My</p>
+                            <p>Projects</p>
                         </div>
+                        <div class="corner top-left"></div>
+                        <div class="corner top-right"></div>
+                        <div class="corner bottom-left"></div>
+                        <div class="corner bottom-right"></div>
                     </div>
-                    <div class="corner top-left"></div>
-                    <div class="corner top-right"></div>
-                    <div class="corner bottom-left"></div>
-                    <div class="corner bottom-right"></div>
+                    <div class="z-50 text-center">
+                        <p class="hidden md:block headingfont text-[10px] md:text-[12px] text-white animate-pulse normal-case tracking-normal bg-black bg-opacity-70 border-2 border-white px-4 py-2 shadow-[4px_4px_0px_0px_#000] rounded-none">Scroll down/up (wheel) to explore horizontally →</p>
+                        <p class="block md:hidden headingfont text-[9px] text-white animate-pulse normal-case tracking-normal bg-black bg-opacity-70 border-2 border-white px-3 py-1.5 shadow-[4px_4px_0px_0px_#000] rounded-none mx-auto max-w-[280px]">Swipe left to right (or right to left) to explore →</p>
+                    </div>
                 </div>
             </div>
             <div class="section">
