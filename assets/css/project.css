@@ -257,3 +257,9 @@ body {
 .mute-button.muted {
     background-image: url('../images/project/Starman.gif');
 }
+
+@media (max-width: 768px) {
+    .mute-button {
+        bottom: 34px;
+    }
+}

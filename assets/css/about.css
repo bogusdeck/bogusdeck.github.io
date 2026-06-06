@@ -104,7 +104,10 @@ html {
 
 .artwork-container {
     overflow-y: auto;
-    max-height: 83vh;
+    max-height: 55vh;
+    width: 100%;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
 }
 
 .artwork-container img {
@@ -114,10 +117,32 @@ html {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
+.artwork-title-wrapper {
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    margin-bottom: 0.5rem;
+    margin-top: 3.5rem;
+}
+
 .pagination-controls {
-    display: absolute;
+    position: absolute;
     bottom: 4px;
     align-items: center;
+}
+
+@media (min-width: 768px) {
+    .artwork-container {
+        max-height: 83vh;
+        width: auto;
+        padding: 0;
+    }
+    
+    .artwork-title-wrapper {
+        writing-mode: vertical-lr;
+        text-orientation: upright;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
 }
 
 /* .nes-btn {

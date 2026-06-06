@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TANV</title>
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="assets/images/indexbg/pixelboyhead.png">
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/bubblechat.css">
@@ -44,41 +44,43 @@
         }
 
         /* Testimonial Infinite Scrolling Ticker */
-        .testimonial-outer-box {
-            width: 91.666667% !important;
-            max-width: 850px !important;
-            margin: 0 auto !important;
-        }
-
-        .review-card .flex-grow p {
-            font-size: 10px !important;
-            line-height: 1.4 !important;
-        }
-
-        .testimonial-slider-container {
-            overflow: hidden;
-            width: 100%;
-            position: relative;
-            padding: 15px 0;
-            display: flex;
-        }
-
-        .testimonial-track {
-            display: flex;
-            width: max-content;
-            animation: marquee 50s linear infinite;
-        }
-
-        .testimonial-track:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes marquee {
-            0% {
-                transform: translateX(0);
+        @media (min-width: 768px) {
+            .testimonial-outer-box {
+                width: 91.666667% !important;
+                max-width: 850px !important;
+                margin: 0 auto !important;
             }
-            100% {
-                transform: translateX(-50%);
+
+            .review-card .flex-grow p {
+                font-size: 10px !important;
+                line-height: 1.4 !important;
+            }
+
+            .testimonial-slider-container {
+                overflow: hidden;
+                width: 100%;
+                position: relative;
+                padding: 15px 0;
+                display: flex;
+            }
+
+            .testimonial-track {
+                display: flex;
+                width: max-content;
+                animation: marquee 50s linear infinite;
+            }
+
+            .testimonial-track:hover {
+                animation-play-state: paused;
+            }
+
+            @keyframes marquee {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(-50%);
+                }
             }
         }
     </style>
@@ -86,7 +88,7 @@
 
 <body>
     <header class="w-full">
-        <nav class="navbar">
+        <nav class="navbar boxxy">
             <div class="navbar-desktop items-center justify-between w-full">
                 <div class="flex items-center space-x-4">
                     <a class="nav-item" href="blog.html">Blog</a>
@@ -147,7 +149,7 @@
         <img src="assets/images/indexbg/smallplanetleft.png" alt="Left Image"
             class="img left-image w-[25%] min-[425px]:w-[20%] md:w-[15%] top-[20%]">
         <img src="assets/images/indexbg/smallplanetright.png" alt="Right Image"
-            class="img right-image w-[30%] min-[425px]:w-[20%] md:w-[15%] z-50 top-[90%] ">
+            class="img right-image w-[30%] min-[425px]:w-[20%] md:w-[15%] z-0 top-[90%] ">
 
         <div
             class="flex flex-col items-center justify-center min-h-screen w-full md:w-3/4 lg:h-full mt-14 lg:mt-5 z-30">
@@ -236,7 +238,7 @@
     </div>
 
     <div class="section text-white">
-        <div class="relative min-h-screen flex flex-col items-center justify-center py-10">
+        <div class="relative md:min-h-screen flex flex-col items-center justify-center py-10">
             <div class="bg-gray-950 bg-opacity-70 relative w-[95%] md:w-11/12 lg:w-10/12 xl:w-9/12 p-6 md:p-10 lg:p-12 z-10 border-4 border-white text-left">
                 <h2 class="text-center text-xl md:text-3xl lg:text-4xl mb-12 headingfont text-[#ffcc00]">Work Experience</h2>
                 <div class="flex flex-col gap-10">
@@ -281,7 +283,7 @@
     </div>
 
     <div class="section text-white">
-        <div class="relative min-h-screen flex flex-col items-center justify-center py-10">
+        <div class="relative md:min-h-screen flex flex-col items-center justify-center py-10">
             <div class="bg-gray-950 bg-opacity-70 relative testimonial-outer-box py-4 md:py-8 px-0 z-10 border-4 border-white">
                 <h2 class="text-center text-2xl md:text-3xl lg:text-4xl mb-8 md:mb-12 headingfont">What People Say</h2>
 
@@ -711,8 +713,8 @@
         </div>
     </div>
 
-    <footer class="flex items-center justify-center bg-gray-900 py-4 w-full mt-10">
-        <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] mr-2">Copyright © 2023 --</p>
+    <footer class="flex flex-col md:flex-row items-center justify-center bg-gray-950 bg-opacity-50 py-6 w-full mt-10 gap-2 z-50">
+        <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px]">Copyright © 2023 --</p>
         <a href="mailto:tanishvashisth@gmail.com"
             class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth@gmail.com</a>
     </footer>

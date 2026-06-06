@@ -73,26 +73,34 @@ if (terminal) {
 // Modal Functionality
 document.addEventListener('DOMContentLoaded', () => {
   const menuToggle = document.getElementById('menu-toggle');
-  const modalBg = document.getElementById('modal-bg');
-  const closeModal = document.getElementById('close-modal');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-  if (menuToggle && modalBg) {
-    menuToggle.addEventListener('click', () => {
-      modalBg.classList.remove('hidden');
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', (event) => {
+      event.stopPropagation();
+      mobileMenu.classList.toggle('hidden');
     });
   }
 
-  if (closeModal && modalBg) {
-    closeModal.addEventListener('click', () => {
-      modalBg.classList.add('hidden');
-    });
-  }
+  document.addEventListener('click', (event) => {
+    if (!mobileMenu || mobileMenu.classList.contains('hidden')) {
+      return;
+    }
 
-  if (modalBg) {
-    modalBg.addEventListener('click', (e) => {
-      if (e.target === modalBg) {
-        modalBg.classList.add('hidden');
-      }
+    if (menuToggle && menuToggle.contains(event.target)) {
+      return;
+    }
+
+    if (!mobileMenu.contains(event.target)) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
+
+  if (mobileMenu) {
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
     });
   }
 });
@@ -106,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     height = window.innerHeight;
 
   function bindMouse() {
-    if (image) {
+    if (image && window.matchMedia('(pointer: fine) and (min-width: 768px)').matches) {
       document.addEventListener('mousemove', (event) => {
         let x = (event.clientX / width - 0.5) * 2;
         let y = (event.clientY / height - 0.5) * 2;
@@ -160,6 +168,7 @@ function updateBackgrounds() {
 }
 
 window.addEventListener('scroll', updateBackgrounds);
+updateBackgrounds();
 
 // GitHub Stats
 (function () {
@@ -267,13 +276,3 @@ window.addEventListener('scroll', updateBackgrounds);
     });
   }
 })();
-
-var menuToggleBtn = document.getElementById('menu-toggle');
-if (menuToggleBtn) {
-  menuToggleBtn.addEventListener('click', function () {
-    const menu = document.getElementById('mobile-menu');
-    if (menu) {
-      menu.classList.toggle('hidden');
-    }
-  });
-}

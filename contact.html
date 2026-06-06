@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Me!</title>
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="assets/images/indexbg/pixelboyhead.png">
     <meta name="description" content="Get in touch with Tanish Vashisth — open to work, collaborations, and conversations.">
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -51,7 +51,7 @@
 
 <body>
     <header class="w-full">
-        <nav class="navbar">
+        <nav class="navbar boxxy">
             <div class="navbar-desktop items-center justify-between w-full">
                 <div class="flex items-center space-x-4">
                     <a class="nav-item" href="blog.html">Blog</a>
@@ -133,9 +133,9 @@
             </div>
             <div id="game-start-overlay" class="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-60 gap-4 z-30">
                 <p class="headingfont text-white text-center text-[10px] md:text-[14px] px-4">Shoot 3 birds to unlock<br>the contact form</p>
-                <div class="flex flex-col md:flex-row items-center gap-3">
-                    <button id="contact-start-btn" class="boxxy headingfont text-white px-6 py-2 mr-4 text-[10px] md:text-[12px]">START</button>
-                    <button id="contact-message-btn" class="boxxy headingfont text-white px-6 py-2 text-[10px] md:text-[12px] hidden">SEND MESSAGE</button>
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-6">
+                    <button id="contact-start-btn" class="boxxy headingfont text-white w-48 md:w-auto px-6 py-2 md:mr-4 text-[10px] md:text-[12px] text-center justify-center">START</button>
+                    <button id="contact-message-btn" class="boxxy headingfont text-white w-48 md:w-auto px-6 py-2 text-[10px] md:text-[12px] text-center justify-center hidden">SEND MESSAGE</button>
                 </div>
             </div>
             <div id="shot-flash" class="hidden absolute inset-0 bg-white opacity-30 pointer-events-none z-40"></div>
@@ -176,8 +176,8 @@
             </div>
         </div>
     </div>
-    <footer class="flex items-center justify-center bg-gray-900 py-4 w-full">
-        <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] mr-2">Copyright © 2024 --</p>
+    <footer class="flex flex-col md:flex-row items-center justify-center bg-gray-950 bg-opacity-50 py-6 w-full mt-10 gap-2 z-50">
+        <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px]">Copyright © 2024 --</p>
         <a href="mailto:tanishvashisth@gmail.com"
             class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth@gmail.com</a>
     </footer>
