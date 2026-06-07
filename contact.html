@@ -10,8 +10,8 @@
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="assets/css/global.css?v=20260607f">
-    <link rel="stylesheet" href="assets/css/contact.css?v=20260607f">
+    <link rel="stylesheet" href="assets/css/global.css?v=20260607g">
+    <link rel="stylesheet" href="assets/css/contact.css?v=20260607g">
     <style>
         body {
             background-color: #63adff;
@@ -91,10 +91,10 @@
 
     <!-- Duck Hunt Game Gate -->
     <div id="game-section" class="w-full">
-        <div id="game-container" class="relative w-full overflow-hidden" style="height: 100vh; height: 100dvh; background-color: #63adff; cursor: url('assets/images/contact/crosshair.png') 12 12, crosshair;">
+        <div id="game-container" class="relative w-full overflow-hidden" style="height: 100vh; height: 100dvh; background-color: #63adff; cursor: url('assets/images/contact/crosshair.png') 12 12, crosshair; touch-action: manipulation;">
             <div id="duckhunt-bg" class="absolute inset-0 z-0" style="background-image: url('assets/images/contact/duckhuntbg.png'); background-repeat: repeat-x; background-size: auto 100%; image-rendering: pixelated; image-rendering: -moz-crisp-edges; image-rendering: crisp-edges;"></div>
             <div class="game-foreground absolute inset-0 pointer-events-none z-20" style="background-image: url('assets/images/contact/removebg.png'); background-repeat: repeat-x; background-size: auto 100%; image-rendering: pixelated; image-rendering: -moz-crisp-edges; image-rendering: crisp-edges;"></div>
-            <img src="assets/images/contact/flyduck.gif" id="contact-bird" class="img hidden absolute w-24 h-24 md:w-32 md:h-32 z-10" style="cursor: url('assets/images/contact/crosshair.png') 12 12, crosshair;" alt="Bird">
+            <img src="assets/images/contact/flyduck.gif" id="contact-bird" class="img hidden absolute w-24 h-24 md:w-32 md:h-32 z-10" style="cursor: url('assets/images/contact/crosshair.png') 12 12, crosshair; will-change: transform;" alt="Bird">
             <img src="assets/images/contact/laughingdog.gif" id="contact-dog" class="hidden absolute z-10" alt="Dog">
             <!-- Duck Hunt HUD -->
             <div class="hud-container">
@@ -455,7 +455,7 @@
 
         function openFormOverlay() {
             gameActive = false;
-            clearInterval(moveInterval);
+            stopBirdLoop();
             flySound.pause();
             bird.classList.add('hidden');
             const hud = document.querySelector('.hud-container');
@@ -494,10 +494,8 @@
             bird.style.pointerEvents = 'auto';
             updateHUD();
 
-            const containerRect = gameContainer.getBoundingClientRect();
-            const birdW = bird.offsetWidth || 112;
-            const birdH = bird.offsetHeight || 112;
-            const maxX = containerRect.width - birdW;
+            syncGameMetrics();
+            const maxX = Math.max(0, containerWidth - birdWidth);
 
             // Choose random color
             const colors = ['black', 'red', 'blue'];
@@ -505,11 +503,9 @@
 
             // Start near the grass line at the bottom
             birdX = Math.random() * maxX;
-            birdY = containerRect.height * 0.65;
-
-            bird.style.left = `${birdX}px`;
-            bird.style.top = `${birdY}px`;
-            bird.style.transform = 'none';
+            birdY = containerHeight * 0.65;
+            bird.style.left = '0';
+            bird.style.top = '0';
 
             // Velocities: get progressively faster as difficultyRound and birdsShot increase (5% per duck shot)
             const totalDucksShot = birdsShot + (difficultyRound - 1) * 3;
@@ -518,36 +514,42 @@
             vy = -(3 + Math.random() * 3) * speedMultiplier; // start by flying up diagonally
 
             bird.src = `assets/images/contact/duck_${currentBirdColor}_fly_diag.gif`;
-            bird.style.transform = vx < 0 ? 'scaleX(-1)' : 'none';
             bird.classList.remove('hidden', 'fall');
+            renderBirdPosition();
 
             flySound.currentTime = 0;
             flySound.play();
 
-            clearInterval(moveInterval);
-            moveInterval = setInterval(() => {
-                birdX += vx;
-                birdY += vy;
+            stopBirdLoop();
+            const animateBird = (now) => {
+                if (!gameActive || isShot || isEscaping) {
+                    stopBirdLoop();
+                    return;
+                }
 
-                const curW = gameContainer.offsetWidth;
-                const curH = gameContainer.offsetHeight;
-                const bw = bird.offsetWidth || 112;
-                const bh = bird.offsetHeight || 112;
+                if (!lastBirdFrameAt) {
+                    lastBirdFrameAt = now;
+                }
+
+                const step = Math.min(2, (now - lastBirdFrameAt) / 30 || 1);
+                lastBirdFrameAt = now;
+
+                birdX += vx * step;
+                birdY += vy * step;
+                const maxX = Math.max(0, containerWidth - birdWidth);
 
                 // Bounce horizontal walls
                 if (birdX <= 0) {
                     birdX = 0;
                     vx = -vx;
-                    bird.style.transform = vx < 0 ? 'scaleX(-1)' : 'none';
-                } else if (birdX >= curW - bw) {
-                    birdX = curW - bw;
+                } else if (birdX >= maxX) {
+                    birdX = maxX;
                     vx = -vx;
-                    bird.style.transform = vx < 0 ? 'scaleX(-1)' : 'none';
                 }
 
                 // Bounce vertical walls (top limit 100px to clear navbar, bottom limit 0.70 of screen height)
-                const minY = 100;
-                const maxY = curH * 0.70 - bh;
+                const minY = Math.max(72, containerHeight * 0.1);
+                const maxY = Math.max(minY, (containerHeight * 0.70) - birdHeight);
                 if (birdY <= minY) {
                     birdY = minY;
                     vy = -vy;
@@ -556,8 +558,7 @@
                     vy = -vy;
                 }
 
-                bird.style.left = `${birdX}px`;
-                bird.style.top = `${birdY}px`;
+                renderBirdPosition();
 
                 // Update GIF animation based on vertical velocity
                 if (Math.abs(vy) > 0.5) {
@@ -571,16 +572,17 @@
                 }
 
                 // 1.5% chance to change direction mid-air
-                if (Math.random() < 0.015) {
+                if (Math.random() < (0.015 * step)) {
                     vx = (vx > 0 ? 1 : -1) * (4 + Math.random() * 3) * speedMultiplier;
                     if (Math.random() < 0.3) {
                         vy = 0;
                     } else {
                         vy = (Math.random() > 0.5 ? 1 : -1) * (3 + Math.random() * 3) * speedMultiplier;
                     }
-                    bird.style.transform = vx < 0 ? 'scaleX(-1)' : 'none';
                 }
-            }, 30);
+                animationFrameId = requestAnimationFrame(animateBird);
+            };
+            animationFrameId = requestAnimationFrame(animateBird);
         }
 
         function flashScreen() {
@@ -593,7 +595,7 @@
         function onBirdShot() {
             if (!gameActive || isShot || isEscaping || bullets <= 0) return;
             isShot = true;
-            clearInterval(moveInterval);
+            stopBirdLoop();
             flySound.pause();
             bird.style.pointerEvents = 'none';
 
@@ -610,15 +612,15 @@
                 fallSound.currentTime = 0;
                 fallSound.play();
 
-                const curH = gameContainer.offsetHeight;
-                const targetY = curH * 0.75;
+                syncGameMetrics();
+                const targetY = containerHeight * 0.75;
                 let fallY = birdY;
 
-                const fallInterval = setInterval(() => {
+                const animateFall = () => {
                     fallY += 6;
-                    bird.style.top = `${fallY}px`;
+                    birdY = fallY;
+                    renderBirdPosition();
                     if (fallY >= targetY) {
-                        clearInterval(fallInterval);
                         bird.classList.add('hidden');
                         birdsShot++;
                         updateHUD();
@@ -639,8 +641,11 @@
                         } else {
                             setTimeout(spawnBird, 600);
                         }
+                        return;
                     }
-                }, 20);
+                    requestAnimationFrame(animateFall);
+                };
+                requestAnimationFrame(animateFall);
             }, 800);
         }
 
@@ -665,22 +670,25 @@
                     if (bullets === 0) {
                         // Bird flies away!
                         isEscaping = true;
-                        clearInterval(moveInterval);
+                        stopBirdLoop();
                         flySound.pause();
                         bird.style.pointerEvents = 'none';
 
                         let escapeY = birdY;
-                        const flyUpInterval = setInterval(() => {
+                        const animateEscape = () => {
                             escapeY -= 8;
-                            bird.style.top = escapeY + 'px';
+                            birdY = escapeY;
+                            renderBirdPosition();
                             if (escapeY < -120) {
-                                clearInterval(flyUpInterval);
                                 bird.classList.add('hidden');
                                 showDogAnimation(false, () => {
                                     spawnBird();
                                 });
+                                return;
                             }
-                        }, 30);
+                            requestAnimationFrame(animateEscape);
+                        };
+                        requestAnimationFrame(animateEscape);
                     }
                 }
             }

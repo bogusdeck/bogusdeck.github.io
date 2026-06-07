@@ -625,6 +625,7 @@
     #hand-tutorial-modal h3 {
         font-size: 10px !important;
         letter-spacing: 1px !important;
+        padding-top: 20px;
     }
 
     /* Compact play button */
