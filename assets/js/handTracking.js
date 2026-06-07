@@ -5,18 +5,27 @@
         target: null,
         mirrorX: true,
         maxNumHands: 1,
-        modelComplexity: 1,
+        modelComplexity: 0,
         shootCooldown: 400,
         flashDuration: 220,
+        lowPowerMode: null,
         camera: {
-            width: 640,
-            height: 480
+            width: 480,
+            height: 360
         },
         positionSmoothing: 0.35,
         fastMotionSmoothing: 0.6,
         motionBoostThreshold: 0.035,
         jitterDeadzone: 0.003,
         lostHandHoldMs: 120,
+        triggerConfirmFrames: 2,
+        triggerMinMovement: 0.008,
+        stationaryFireBlockMs: 180,
+        freshPointMaxAgeMs: 100,
+        previewCalibration: {
+            x: 0,
+            y: -0.018
+        },
         thumbArmThreshold: -0.01,
         thumbFireThreshold: 0.018,
         thumbRearmThreshold: 0.002,
@@ -49,10 +58,17 @@
             this.enabled = false;
             this.lastShotAt = 0;
             this.lastHandSeenAt = 0;
+            this.lastPointUpdatedAt = 0;
+            this.lastMotionAt = 0;
             this.thumbArmed = false;
+            this.thumbDownFrames = 0;
             this.hasHand = false;
             this.currentPoint = null;
             this.smoothedIndexPoint = null;
+            this.frameRequestPending = false;
+            this.lowPowerMode = typeof this.options.lowPowerMode === 'boolean'
+                ? this.options.lowPowerMode
+                : detectLowPowerMode(global);
 
             this.handleResults = this.handleResults.bind(this);
             this.handleResize = this.handleResize.bind(this);
@@ -182,14 +198,26 @@
             }
 
             await this.initHands();
+            const cameraOptions = this.lowPowerMode
+                ? { width: 320, height: 240 }
+                : this.options.camera;
 
             this.previewVideo.classList.add('is-live');
 
             this.camera = new global.Camera(this.previewVideo, {
-                width: this.options.camera.width,
-                height: this.options.camera.height,
+                width: cameraOptions.width,
+                height: cameraOptions.height,
                 onFrame: async () => {
-                    await this.hands.send({ image: this.previewVideo });
+                    if (this.frameRequestPending) {
+                        return;
+                    }
+
+                    this.frameRequestPending = true;
+                    try {
+                        await this.hands.send({ image: this.previewVideo });
+                    } finally {
+                        this.frameRequestPending = false;
+                    }
                 }
             });
 
@@ -208,9 +236,13 @@
             this.enabled = false;
             this.hasHand = false;
             this.thumbArmed = false;
+            this.thumbDownFrames = 0;
             this.lastHandSeenAt = 0;
+            this.lastPointUpdatedAt = 0;
+            this.lastMotionAt = 0;
             this.currentPoint = null;
             this.smoothedIndexPoint = null;
+            this.frameRequestPending = false;
             this.setTrackedCursorVisible(false);
             this.clearOverlay();
             this.clearPreviewOverlay();
@@ -333,7 +365,7 @@
 
         syncOverlaySize() {
             const rect = this.target.getBoundingClientRect();
-            const dpr = global.devicePixelRatio || 1;
+            const dpr = Math.min(global.devicePixelRatio || 1, this.lowPowerMode ? 1 : 1.5);
 
             this.overlayCanvas.width = Math.max(1, Math.round(rect.width * dpr));
             this.overlayCanvas.height = Math.max(1, Math.round(rect.height * dpr));
@@ -362,7 +394,9 @@
                 }
                 this.hasHand = false;
                 this.thumbArmed = false;
+                this.thumbDownFrames = 0;
                 this.lastHandSeenAt = 0;
+                this.lastPointUpdatedAt = 0;
                 this.currentPoint = null;
                 this.smoothedIndexPoint = null;
                 this.setTrackedCursorVisible(false);
@@ -374,24 +408,58 @@
             this.hasHand = true;
             this.lastHandSeenAt = Date.now();
             const indexTip = landmarks[8];
+            const indexDip = landmarks[7];
             const thumbTip = landmarks[4];
             const thumbIp = landmarks[3];
             const rawIndexPoint = this.getNormalizedIndexPoint(indexTip);
+            const previewIndexPoint = this.getProjectedIndexTip(indexTip, indexDip);
+            this.trackMotion(rawIndexPoint);
             const smoothedIndexPoint = this.smoothIndexPoint(rawIndexPoint);
             const point = this.mapNormalizedPointToTarget(smoothedIndexPoint);
 
             this.currentPoint = point;
+            this.lastPointUpdatedAt = Date.now();
             this.setTrackedCursorVisible(true);
             this.drawCrosshair(point.x, point.y);
-            this.drawPreviewMarker(smoothedIndexPoint);
+            this.drawPreviewMarker(previewIndexPoint);
             this.dispatchMove(point);
             this.detectTrigger(thumbTip, thumbIp, point);
+        }
+
+        trackMotion(rawPoint) {
+            const now = Date.now();
+            if (!this.smoothedIndexPoint) {
+                this.lastMotionAt = now;
+                return;
+            }
+
+            const deltaX = rawPoint.x - this.smoothedIndexPoint.x;
+            const deltaY = rawPoint.y - this.smoothedIndexPoint.y;
+            if (Math.sqrt((deltaX * deltaX) + (deltaY * deltaY)) >= this.options.triggerMinMovement) {
+                this.lastMotionAt = now;
+            }
         }
 
         getNormalizedIndexPoint(landmark) {
             return {
                 x: clamp(landmark.x, 0, 1),
                 y: clamp(landmark.y, 0, 1)
+            };
+        }
+
+        getProjectedIndexTip(indexTip, indexDip) {
+            const extension = 0.35;
+            return {
+                x: clamp(
+                    indexTip.x + ((indexTip.x - indexDip.x) * extension) + this.options.previewCalibration.x,
+                    0,
+                    1
+                ),
+                y: clamp(
+                    indexTip.y + ((indexTip.y - indexDip.y) * extension) + this.options.previewCalibration.y,
+                    0,
+                    1
+                )
             };
         }
 
@@ -452,14 +520,30 @@
 
             if (thumbDrop <= this.options.thumbRearmThreshold) {
                 this.thumbArmed = true;
+                this.thumbDownFrames = 0;
+            }
+
+            if (thumbDown && thumbCloseEnough) {
+                this.thumbDownFrames += 1;
+            } else {
+                this.thumbDownFrames = 0;
             }
 
             const now = Date.now();
-            if (!this.thumbArmed || !thumbDown || !thumbCloseEnough || (now - this.lastShotAt) < this.options.shootCooldown) {
+            const stalePoint = (now - this.lastPointUpdatedAt) > this.options.freshPointMaxAgeMs;
+            const stationaryGesture = (now - this.lastMotionAt) > this.options.stationaryFireBlockMs;
+            if (!this.thumbArmed ||
+                !thumbDown ||
+                !thumbCloseEnough ||
+                this.thumbDownFrames < this.options.triggerConfirmFrames ||
+                stalePoint ||
+                stationaryGesture ||
+                (now - this.lastShotAt) < this.options.shootCooldown) {
                 return;
             }
 
             this.thumbArmed = false;
+            this.thumbDownFrames = 0;
             this.lastShotAt = now;
             this.showFireFlash();
             this.dispatchClick(point);
@@ -557,23 +641,32 @@
 
         drawPreviewMarker(normalizedPoint) {
             const ctx = this.previewCtx;
-            const dpr = global.devicePixelRatio || 1;
             const width = this.previewCanvas.width;
             const height = this.previewCanvas.height;
-
-            ctx.clearRect(0, 0, width, height);
-            ctx.save();
-            ctx.scale(1 / dpr, 1 / dpr);
-
+            const cssWidth = this.previewCanvas.clientWidth || 1;
+            const cssHeight = this.previewCanvas.clientHeight || 1;
+            const canvasScale = width / cssWidth;
+            const videoWidth = this.previewVideo.videoWidth || cssWidth;
+            const videoHeight = this.previewVideo.videoHeight || cssHeight;
+            const coverScale = Math.max(cssWidth / videoWidth, cssHeight / videoHeight);
+            const renderedWidth = videoWidth * coverScale;
+            const renderedHeight = videoHeight * coverScale;
+            const offsetX = (cssWidth - renderedWidth) / 2;
+            const offsetY = (cssHeight - renderedHeight) / 2;
             const previewX = this.options.mirrorX ? (1 - normalizedPoint.x) : normalizedPoint.x;
-            const x = clamp(previewX, 0, 1) * width;
-            const y = clamp(normalizedPoint.y, 0, 1) * height;
+            const x = (offsetX + (clamp(previewX, 0, 1) * renderedWidth)) * canvasScale;
+            const y = (offsetY + (clamp(normalizedPoint.y, 0, 1) * renderedHeight)) * canvasScale;
+            const radius = 5 * canvasScale;
+
+            ctx.save();
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.clearRect(0, 0, width, height);
 
             ctx.beginPath();
-            ctx.arc(x, y, 5, 0, Math.PI * 2);
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
             ctx.fillStyle = '#ff2a2a';
             ctx.fill();
-            ctx.lineWidth = 2;
+            ctx.lineWidth = 2 * canvasScale;
             ctx.strokeStyle = '#ffffff';
             ctx.stroke();
             ctx.restore();
@@ -646,6 +739,14 @@
         const dx = a.x - b.x;
         const dy = a.y - b.y;
         return Math.sqrt((dx * dx) + (dy * dy));
+    }
+
+    function detectLowPowerMode(globalObject) {
+        const coarsePointer = globalObject.matchMedia && globalObject.matchMedia('(pointer: coarse)').matches;
+        const reducedMotion = globalObject.matchMedia && globalObject.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const lowCpu = typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4;
+        const lowMemory = typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4;
+        return coarsePointer || reducedMotion || lowCpu || lowMemory;
     }
 
     global.initHandTracking = function initHandTracking(options) {
