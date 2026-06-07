@@ -177,7 +177,7 @@
     .hud-container {
         left: 16px;
         right: 16px;
-        bottom: 22px;
+        bottom: calc(22px + env(safe-area-inset-bottom, 0px));
         height: 68px;
     }
     
@@ -239,7 +239,7 @@
     .hud-container {
         left: 14px;
         right: 14px;
-        bottom: 18px;
+        bottom: calc(18px + env(safe-area-inset-bottom, 0px));
         height: 58px;
     }
     
@@ -333,7 +333,7 @@
     .hand-tracking-controls {
         left: 16px !important;
         right: 16px !important;
-        bottom: 95px !important; /* Brought closer to the HUD (90px top of HUD) */
+        bottom: calc(95px + env(safe-area-inset-bottom, 0px)) !important;
         display: flex !important;
         flex-direction: row !important;
         justify-content: space-between !important;
@@ -369,7 +369,7 @@
     .hand-tracking-controls {
         left: 14px !important;
         right: 14px !important;
-        bottom: 80px !important; /* Brought closer to the HUD (76px top of HUD) */
+        bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
         width: calc(100% - 28px) !important;
     }
 
