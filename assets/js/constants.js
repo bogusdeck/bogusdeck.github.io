@@ -32,7 +32,7 @@ const MARIO_VOLUME_LEVEL = 0.3;
 // --------------------------------------------------------------------------
 // 4. CONTACT PAGE DUCK HUNT GAME CONSTANTS (contact.html / contact.js)
 // --------------------------------------------------------------------------
-const DUCKHUNT_BIRDS_NEEDED = 6;
+const DUCKHUNT_BIRDS_NEEDED = 3;
 const DUCKHUNT_TOTAL_BIRDS = 10;
 const DUCKHUNT_VOLUME_LEVEL = 0.3;
 const DUCKHUNT_BIRD_SPEED_MULTIPLIER = 1;
