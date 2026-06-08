@@ -267,6 +267,13 @@
 
         const bulletContainer = document.getElementById('bullet-container');
         const hitContainer = document.getElementById('hit-container');
+        const hud = document.querySelector('.hud-container');
+        const formSection = document.getElementById('form-section');
+        const hitIcons = hitContainer ? Array.from(hitContainer.querySelectorAll('.hit-icon')) : [];
+        let bulletEls = bulletContainer ? Array.from(bulletContainer.children) : [];
+        let lastRenderedBullets = null;
+        let lastRenderedScore = null;
+        let lastRenderedHitCount = null;
 
         const flySound = new Audio(DUCKHUNT_SOUNDS.wingFlap);
         const shotSound = new Audio(DUCKHUNT_SOUNDS.shot);
@@ -302,32 +309,33 @@
                 fragment.appendChild(b);
             }
             bulletContainer.replaceChildren(fragment);
+            bulletEls = Array.from(bulletContainer.children);
         }
 
         function updateHUD() {
             if (bulletContainer) {
                 ensureHUDBullets();
-                Array.from(bulletContainer.children).forEach((bulletEl, index) => {
-                    bulletEl.classList.toggle('spent', index >= bullets);
-                });
+                if (lastRenderedBullets !== bullets) {
+                    bulletEls.forEach((bulletEl, index) => {
+                        bulletEl.classList.toggle('spent', index >= bullets);
+                    });
+                    lastRenderedBullets = bullets;
+                }
             }
 
-            // Update score (10,000 points per bird shot)
-            if (scoreDisplay) {
-                scoreDisplay.textContent = (birdsShot * 10000).toString().padStart(6, '0');
+            const score = birdsShot * 10000;
+            if (scoreDisplay && lastRenderedScore !== score) {
+                scoreDisplay.textContent = score.toString().padStart(6, '0');
+                lastRenderedScore = score;
             }
 
-            // Update hit indicators (modulo 10 wrap around)
-            if (hitContainer) {
-                const hitIcons = hitContainer.querySelectorAll('.hit-icon');
+            const activeIndex = birdsShot % 10;
+            const activeHitCount = activeIndex === 0 && birdsShot > 0 ? 10 : activeIndex;
+            if (lastRenderedHitCount !== activeHitCount) {
                 hitIcons.forEach((icon, index) => {
-                    const activeIndex = birdsShot % 10;
-                    if (index < (activeIndex === 0 && birdsShot > 0 ? 10 : activeIndex)) {
-                        icon.classList.add('active');
-                    } else {
-                        icon.classList.remove('active');
-                    }
+                    icon.classList.toggle('active', index < activeHitCount);
                 });
+                lastRenderedHitCount = activeHitCount;
             }
         }
 
@@ -834,7 +842,7 @@
                 });
         });
     </script>
-    <script src="assets/js/handTracking.js?v=20260608d"></script>
+    <script src="assets/js/handTracking.js?v=20260608e"></script>
     <script>
         (function () {
             const tutorialModal   = document.getElementById('hand-tutorial-modal');

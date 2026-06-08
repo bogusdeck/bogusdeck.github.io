@@ -13,10 +13,12 @@
             width: 480,
             height: 360
         },
-        positionSmoothing: 0.35,
-        fastMotionSmoothing: 0.6,
-        motionBoostThreshold: 0.035,
-        jitterDeadzone: 0.003,
+        positionSmoothing: 0.18,
+        fastMotionSmoothing: 0.48,
+        motionBoostThreshold: 0.055,
+        jitterDeadzone: 0.010,
+        microJitterDeadzone: 0.006,
+        snapDistance: 0.18,
         lostHandHoldMs: 120,
         triggerConfirmFrames: 2,
         triggerMinMovement: 0.008,
@@ -477,13 +479,18 @@
             const deltaY = rawPoint.y - this.smoothedIndexPoint.y;
             const distance = Math.sqrt((deltaX * deltaX) + (deltaY * deltaY));
 
-            if (distance < this.options.jitterDeadzone) {
+            if (distance < this.options.microJitterDeadzone) {
+                return this.smoothedIndexPoint;
+            }
+
+            if (distance > this.options.snapDistance) {
+                this.smoothedIndexPoint = { x: rawPoint.x, y: rawPoint.y };
                 return this.smoothedIndexPoint;
             }
 
             const alpha = distance > this.options.motionBoostThreshold
                 ? this.options.fastMotionSmoothing
-                : this.options.positionSmoothing;
+                : this.options.positionSmoothing * clamp(distance / this.options.motionBoostThreshold, 0.35, 1);
 
             this.smoothedIndexPoint = {
                 x: this.smoothedIndexPoint.x + (deltaX * alpha),
