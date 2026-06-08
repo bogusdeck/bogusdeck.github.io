@@ -27,9 +27,10 @@
             y: -0.018
         },
         thumbArmThreshold: -0.01,
-        thumbFireThreshold: 0.018,
+        thumbFireThreshold: 0.014,
         thumbRearmThreshold: 0.002,
-        thumbCloseThreshold: 0.18
+        thumbCloseThreshold: 0.22,
+        thumbFireTravelThreshold: 0.035
     };
 
     class HandTrackingController {
@@ -62,6 +63,7 @@
             this.lastMotionAt = 0;
             this.thumbArmed = false;
             this.thumbDownFrames = 0;
+            this.thumbArmY = null;
             this.hasHand = false;
             this.currentPoint = null;
             this.smoothedIndexPoint = null;
@@ -237,6 +239,7 @@
             this.hasHand = false;
             this.thumbArmed = false;
             this.thumbDownFrames = 0;
+            this.thumbArmY = null;
             this.lastHandSeenAt = 0;
             this.lastPointUpdatedAt = 0;
             this.lastMotionAt = 0;
@@ -395,6 +398,7 @@
                 this.hasHand = false;
                 this.thumbArmed = false;
                 this.thumbDownFrames = 0;
+                this.thumbArmY = null;
                 this.lastHandSeenAt = 0;
                 this.lastPointUpdatedAt = 0;
                 this.currentPoint = null;
@@ -513,17 +517,23 @@
             const thumbRaised = thumbDrop < this.options.thumbArmThreshold;
             const thumbDown = thumbDrop > this.options.thumbFireThreshold;
             const thumbCloseEnough = thumbDistance < this.options.thumbCloseThreshold;
+            const thumbTravelDown = this.thumbArmY === null
+                ? 0
+                : thumbTip.y - this.thumbArmY;
+            const thumbMovedDown = thumbTravelDown > this.options.thumbFireTravelThreshold;
 
             if (thumbRaised) {
                 this.thumbArmed = true;
+                this.thumbArmY = thumbTip.y;
             }
 
             if (thumbDrop <= this.options.thumbRearmThreshold) {
                 this.thumbArmed = true;
                 this.thumbDownFrames = 0;
+                this.thumbArmY = thumbTip.y;
             }
 
-            if (thumbDown && thumbCloseEnough) {
+            if ((thumbDown || thumbMovedDown) && thumbCloseEnough) {
                 this.thumbDownFrames += 1;
             } else {
                 this.thumbDownFrames = 0;
@@ -533,7 +543,7 @@
             const stalePoint = (now - this.lastPointUpdatedAt) > this.options.freshPointMaxAgeMs;
             const stationaryGesture = (now - this.lastMotionAt) > this.options.stationaryFireBlockMs;
             if (!this.thumbArmed ||
-                !thumbDown ||
+                (!thumbDown && !thumbMovedDown) ||
                 !thumbCloseEnough ||
                 this.thumbDownFrames < this.options.triggerConfirmFrames ||
                 stalePoint ||
@@ -544,16 +554,20 @@
 
             this.thumbArmed = false;
             this.thumbDownFrames = 0;
+            this.thumbArmY = null;
             this.lastShotAt = now;
             this.showFireFlash();
             this.dispatchClick(point);
             this.dispatchCustomEvent('handtracking:fire', {
                 x: point.x,
                 y: point.y,
+                clientX: point.clientX,
+                clientY: point.clientY,
                 normalizedX: point.normalizedX,
                 normalizedY: point.normalizedY,
                 thumbDrop: thumbDrop,
-                thumbDistance: thumbDistance
+                thumbDistance: thumbDistance,
+                thumbTravelDown: thumbTravelDown
             });
         }
 
@@ -656,7 +670,7 @@
             const previewX = this.options.mirrorX ? (1 - normalizedPoint.x) : normalizedPoint.x;
             const x = (offsetX + (clamp(previewX, 0, 1) * renderedWidth)) * canvasScale;
             const y = (offsetY + (clamp(normalizedPoint.y, 0, 1) * renderedHeight)) * canvasScale;
-            const radius = 5 * canvasScale;
+            const radius = 3.5 * canvasScale;
 
             ctx.save();
             ctx.setTransform(1, 0, 0, 1, 0, 0);

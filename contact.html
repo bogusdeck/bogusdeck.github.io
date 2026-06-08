@@ -346,6 +346,11 @@
         let birdHeight = 112;
         let containerWidth = 0;
         let containerHeight = 0;
+        let lastShotAttempt = {
+            x: null,
+            y: null,
+            at: 0
+        };
 
         function syncGameMetrics() {
             containerWidth = gameContainer.clientWidth;
@@ -357,6 +362,90 @@
         function renderBirdPosition() {
             const facing = vx < 0 ? -1 : 1;
             bird.style.transform = `translate3d(${birdX}px, ${birdY}px, 0) scaleX(${facing})`;
+        }
+
+        function isBirdHit(clientX, clientY) {
+            if (bird.classList.contains('hidden')) return false;
+            const rect = bird.getBoundingClientRect();
+            return clientX >= rect.left &&
+                clientX <= rect.right &&
+                clientY >= rect.top &&
+                clientY <= rect.bottom;
+        }
+
+        function isDuplicateShotAttempt(clientX, clientY) {
+            const now = performance.now();
+            const duplicate = lastShotAttempt.x === clientX &&
+                lastShotAttempt.y === clientY &&
+                (now - lastShotAttempt.at) < 80;
+
+            lastShotAttempt = {
+                x: clientX,
+                y: clientY,
+                at: now
+            };
+
+            return duplicate;
+        }
+
+        function handleShotAttempt(event) {
+            if (!gameActive || isShot || isEscaping) return;
+            if (event.target === startButton || event.target === messageButton) return;
+            if (event.target && event.target.closest('#form-section, #hand-tutorial-modal, .hand-tracking-controls, .hand-tracking-overlay-toggle, .hand-tracking-hud-toggle, button, input, textarea, label, a')) {
+                return;
+            }
+
+            const { clientX, clientY } = event;
+            if (typeof clientX !== 'number' || typeof clientY !== 'number') return;
+            if (isDuplicateShotAttempt(clientX, clientY)) return;
+
+            if (isBirdHit(clientX, clientY)) {
+                event.stopPropagation();
+                onBirdShot();
+                return;
+            }
+
+            if (bullets <= 0) return;
+
+            bullets--;
+            misses++;
+            updateHUD();
+            missSound.currentTime = 0;
+            missSound.play();
+            flashScreen();
+
+            if (bullets === 0) {
+                isEscaping = true;
+                stopBirdLoop();
+                flySound.pause();
+                bird.style.pointerEvents = 'none';
+
+                let escapeY = birdY;
+                const animateEscape = () => {
+                    escapeY -= 8;
+                    birdY = escapeY;
+                    renderBirdPosition();
+                    if (escapeY < -120) {
+                        bird.classList.add('hidden');
+                        showDogAnimation(false, () => {
+                            spawnBird();
+                        });
+                        return;
+                    }
+                    requestAnimationFrame(animateEscape);
+                };
+                requestAnimationFrame(animateEscape);
+            }
+        }
+
+        function handleHandTrackingFire(event) {
+            if (!event || !event.detail) return;
+            handleShotAttempt({
+                target: gameContainer,
+                clientX: event.detail.clientX,
+                clientY: event.detail.clientY,
+                stopPropagation() {}
+            });
         }
 
         function stopBirdLoop() {
@@ -653,51 +742,9 @@
             openFormOverlay();
         }
 
-        // Miss click on background
-        gameContainer.addEventListener('click', (e) => {
-            if (!gameActive || isShot || isEscaping) return;
-            if (e.target === startButton || e.target === messageButton) return;
-
-            if (e.target !== bird) {
-                if (bullets > 0) {
-                    bullets--;
-                    misses++;
-                    updateHUD();
-                    missSound.currentTime = 0;
-                    missSound.play();
-                    flashScreen();
-
-                    if (bullets === 0) {
-                        // Bird flies away!
-                        isEscaping = true;
-                        stopBirdLoop();
-                        flySound.pause();
-                        bird.style.pointerEvents = 'none';
-
-                        let escapeY = birdY;
-                        const animateEscape = () => {
-                            escapeY -= 8;
-                            birdY = escapeY;
-                            renderBirdPosition();
-                            if (escapeY < -120) {
-                                bird.classList.add('hidden');
-                                showDogAnimation(false, () => {
-                                    spawnBird();
-                                });
-                                return;
-                            }
-                            requestAnimationFrame(animateEscape);
-                        };
-                        requestAnimationFrame(animateEscape);
-                    }
-                }
-            }
-        });
-
-        bird.addEventListener('click', (e) => {
-            e.stopPropagation();
-            onBirdShot();
-        });
+        gameContainer.addEventListener('pointerdown', handleShotAttempt);
+        gameContainer.addEventListener('mousedown', handleShotAttempt);
+        gameContainer.addEventListener('handtracking:fire', handleHandTrackingFire);
 
         syncStartOverlay();
 
@@ -787,7 +834,7 @@
                 });
         });
     </script>
-    <script src="assets/js/handTracking.js?v=20260607"></script>
+    <script src="assets/js/handTracking.js?v=20260608d"></script>
     <script>
         (function () {
             const tutorialModal   = document.getElementById('hand-tutorial-modal');
