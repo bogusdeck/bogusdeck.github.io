@@ -1,12 +1,22 @@
 
 
-.game-container {
+.game-container,
+#game-container {
     cursor: url('../images/contact/crosshair.png') 12 12, crosshair;
+    contain: layout paint style;
+    isolation: isolate;
+}
+
+#duckhunt-bg,
+.game-foreground {
+    contain: paint;
+    transform: translateZ(0);
 }
 
 .bird {
     cursor: url('../images/contact/crosshair.png') 12 12, crosshair;
-    transition: transform 0.1s ease-in-out;
+    backface-visibility: hidden;
+    contain: layout paint;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
     z-index: 10;
@@ -28,6 +38,9 @@
     z-index: 10;
     width: 11rem;
     height: 11rem;
+    backface-visibility: hidden;
+    contain: layout paint;
+    will-change: transform;
 }
 
 .fall {

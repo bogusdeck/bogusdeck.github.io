@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/global.css?v=20260607g">
-    <link rel="stylesheet" href="assets/css/contact.css?v=20260607g">
+    <link rel="stylesheet" href="assets/css/contact.css?v=20260608a">
     <style>
         body {
             background-color: #63adff;
@@ -30,6 +30,9 @@
             image-rendering: pixelated;
             image-rendering: crisp-edges;
             z-index: 10;
+            backface-visibility: hidden;
+            contain: layout paint;
+            will-change: transform;
         }
 
         #contact-bird.fall {
@@ -46,6 +49,9 @@
             pointer-events: none;
             user-select: none;
             z-index: 19;
+            backface-visibility: hidden;
+            contain: layout paint;
+            will-change: transform;
         }
     </style>
 </head>
@@ -354,6 +360,12 @@
         let birdHeight = 112;
         let containerWidth = 0;
         let containerHeight = 0;
+        let containerLeft = 0;
+        let containerTop = 0;
+        let playfieldMaxX = 0;
+        let playfieldMinY = 72;
+        let playfieldMaxY = 72;
+        let currentBirdFlightMode = '';
         let lastShotAttempt = {
             x: null,
             y: null,
@@ -361,10 +373,16 @@
         };
 
         function syncGameMetrics() {
+            const rect = gameContainer.getBoundingClientRect();
             containerWidth = gameContainer.clientWidth;
             containerHeight = gameContainer.clientHeight;
+            containerLeft = rect.left;
+            containerTop = rect.top;
             birdWidth = bird.offsetWidth || birdWidth;
             birdHeight = bird.offsetHeight || birdHeight;
+            playfieldMaxX = Math.max(0, containerWidth - birdWidth);
+            playfieldMinY = Math.max(72, containerHeight * 0.1);
+            playfieldMaxY = Math.max(playfieldMinY, (containerHeight * 0.70) - birdHeight);
         }
 
         function renderBirdPosition() {
@@ -374,11 +392,12 @@
 
         function isBirdHit(clientX, clientY) {
             if (bird.classList.contains('hidden')) return false;
-            const rect = bird.getBoundingClientRect();
-            return clientX >= rect.left &&
-                clientX <= rect.right &&
-                clientY >= rect.top &&
-                clientY <= rect.bottom;
+            const localX = clientX - containerLeft;
+            const localY = clientY - containerTop;
+            return localX >= birdX &&
+                localX <= birdX + birdWidth &&
+                localY >= birdY &&
+                localY <= birdY + birdHeight;
         }
 
         function isDuplicateShotAttempt(clientX, clientY) {
@@ -470,11 +489,8 @@
                 resizeFrameId = null;
                 syncGameMetrics();
                 if (bird.classList.contains('hidden')) return;
-                const maxX = Math.max(0, containerWidth - birdWidth);
-                const minY = Math.max(72, containerHeight * 0.1);
-                const maxY = Math.max(minY, (containerHeight * 0.70) - birdHeight);
-                birdX = Math.min(Math.max(birdX, 0), maxX);
-                birdY = Math.min(Math.max(birdY, minY), maxY);
+                birdX = Math.min(Math.max(birdX, 0), playfieldMaxX);
+                birdY = Math.min(Math.max(birdY, playfieldMinY), playfieldMaxY);
                 renderBirdPosition();
             });
         }
@@ -506,7 +522,7 @@
                     dogLaughingSound.play();
                 }
             }
-            const curH = gameContainer.offsetHeight;
+            const curH = containerHeight || gameContainer.clientHeight;
             const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
             const dogHeight = (isPerfect ? 14 : 11) * rootFontSize;
             const grassLineY = curH * 0.69;
@@ -518,30 +534,36 @@
             // Peak position keeps the dog's lower body inside the grass strip.
             const targetY = grassLineY - (dogHeight * visibleBodyRatio);
 
-            dog.style.top = `${dogY}px`;
+            dog.style.top = '0';
+            dog.style.transform = `translate3d(-50%, ${dogY}px, 0)`;
             dog.classList.remove('hidden');
 
-            const slideUp = setInterval(() => {
+            const slideUp = () => {
                 dogY -= 4;
-                dog.style.top = `${dogY}px`;
+                dog.style.transform = `translate3d(-50%, ${dogY}px, 0)`;
                 if (dogY <= targetY) {
-                    clearInterval(slideUp);
                     const delay = isPerfect ? 2000 : 1300;
                     setTimeout(() => {
-                        const slideDown = setInterval(() => {
+                        const slideDown = () => {
                             dogY += 4;
-                            dog.style.top = `${dogY}px`;
+                            dog.style.transform = `translate3d(-50%, ${dogY}px, 0)`;
                             if (dogY >= curH * 0.88) {
-                                clearInterval(slideDown);
                                 dog.classList.add('hidden');
+                                dog.style.transform = 'translateX(-50%)';
                                 dog.style.width = '';
                                 dog.style.height = '';
                                 if (callback) callback();
+                                return;
                             }
-                        }, 15);
+                            requestAnimationFrame(slideDown);
+                        };
+                        requestAnimationFrame(slideDown);
                     }, delay);
+                    return;
                 }
-            }, 15);
+                requestAnimationFrame(slideUp);
+            };
+            requestAnimationFrame(slideUp);
         }
 
         function persistUnlockState(isUnlocked) {
@@ -555,9 +577,7 @@
             stopBirdLoop();
             flySound.pause();
             bird.classList.add('hidden');
-            const hud = document.querySelector('.hud-container');
             if (hud) hud.classList.add('hidden');
-            const formSection = document.getElementById('form-section');
             if (formSection) {
                 formSection.classList.remove('hidden');
                 formSection.classList.add('flex');
@@ -592,14 +612,13 @@
             updateHUD();
 
             syncGameMetrics();
-            const maxX = Math.max(0, containerWidth - birdWidth);
 
             // Choose random color
             const colors = ['black', 'red', 'blue'];
             currentBirdColor = colors[Math.floor(Math.random() * colors.length)];
 
             // Start near the grass line at the bottom
-            birdX = Math.random() * maxX;
+            birdX = Math.random() * playfieldMaxX;
             birdY = containerHeight * 0.65;
             bird.style.left = '0';
             bird.style.top = '0';
@@ -611,6 +630,7 @@
             vy = -(3 + Math.random() * 3) * speedMultiplier; // start by flying up diagonally
 
             bird.src = `assets/images/contact/duck_${currentBirdColor}_fly_diag.gif`;
+            currentBirdFlightMode = 'diag';
             bird.classList.remove('hidden', 'fall');
             renderBirdPosition();
 
@@ -633,25 +653,22 @@
 
                 birdX += vx * step;
                 birdY += vy * step;
-                const maxX = Math.max(0, containerWidth - birdWidth);
 
                 // Bounce horizontal walls
                 if (birdX <= 0) {
                     birdX = 0;
                     vx = -vx;
-                } else if (birdX >= maxX) {
-                    birdX = maxX;
+                } else if (birdX >= playfieldMaxX) {
+                    birdX = playfieldMaxX;
                     vx = -vx;
                 }
 
                 // Bounce vertical walls (top limit 100px to clear navbar, bottom limit 0.70 of screen height)
-                const minY = Math.max(72, containerHeight * 0.1);
-                const maxY = Math.max(minY, (containerHeight * 0.70) - birdHeight);
-                if (birdY <= minY) {
-                    birdY = minY;
+                if (birdY <= playfieldMinY) {
+                    birdY = playfieldMinY;
                     vy = -vy;
-                } else if (birdY >= maxY) {
-                    birdY = maxY;
+                } else if (birdY >= playfieldMaxY) {
+                    birdY = playfieldMaxY;
                     vy = -vy;
                 }
 
@@ -659,12 +676,14 @@
 
                 // Update GIF animation based on vertical velocity
                 if (Math.abs(vy) > 0.5) {
-                    if (!bird.src.includes('diag')) {
+                    if (currentBirdFlightMode !== 'diag') {
                         bird.src = `assets/images/contact/duck_${currentBirdColor}_fly_diag.gif`;
+                        currentBirdFlightMode = 'diag';
                     }
                 } else {
-                    if (!bird.src.includes('horiz')) {
+                    if (currentBirdFlightMode !== 'horiz') {
                         bird.src = `assets/images/contact/duck_${currentBirdColor}_fly_horiz.gif`;
+                        currentBirdFlightMode = 'horiz';
                     }
                 }
 
@@ -758,9 +777,7 @@
 
         startButton.addEventListener('click', () => {
             startOverlay.classList.add('hidden');
-            const hud = document.querySelector('.hud-container');
             if (hud) hud.classList.remove('hidden');
-            const formSection = document.getElementById('form-section');
             if (formSection) formSection.classList.add('hidden');
             gameActive = true;
             if (!gameUnlockedPermanently) {
@@ -817,14 +834,12 @@
                     this.reset();
 
                     // Hide contact form overlay
-                    const formSection = document.getElementById('form-section');
                     if (formSection) {
                         formSection.classList.add('hidden');
                         formSection.classList.remove('flex');
                     }
 
                     // Show game HUD again
-                    const hud = document.querySelector('.hud-container');
                     if (hud) hud.classList.remove('hidden');
 
                     // Allow continue playing by resetting the game, unlocking permanently, and advancing the difficulty round
