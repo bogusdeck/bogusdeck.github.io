@@ -44,6 +44,10 @@
       "live": "https://xamp-ten.vercel.app",
       "playstore": "https://play.google.com/store/apps/details?id=org.fasfas.marketplace",
       "appstore": "https://apps.apple.com/in/app/fasfas-fashion-in-60-mins/id6788795633"
+    },
+    "cartping": {
+      "github": "https://github.com/bogusdeck/CartPing",
+      "live": "https://cartping.deqube.co.in"
     }
   },
   "tools": {
