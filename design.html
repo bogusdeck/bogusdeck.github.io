@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System - TANV</title>
+    <link rel="icon" type="image/png" href="assets/images/indexbg/pixelboyhead.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face {
+            font-family: 'Joystick';
+            src: url('assets/fonts/joystix_monospace.otf') format('opentype');
+        }
+
+        @font-face {
+            font-family: 'Gumball';
+            src: url('assets/fonts/title.TTF') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'mariofont';
+            src: url('assets/fonts/Super Plumber Brothers.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Proggy';
+            src: url('assets/fonts/ProggyMonoRegular.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Rainy';
+            src: url('assets/fonts/dogicapixel.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Minecraftia';
+            src: url('assets/fonts/Minecraftia.ttf') format('truetype');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            font-family: 'Joystick', monospace;
+            min-height: 100vh;
+        }
+
+        .font-Joystick { font-family: 'Joystick', monospace; }
+        .font-Gumball { font-family: 'Gumball', monospace; }
+        .font-mariofont { font-family: 'mariofont', monospace; }
+        .font-Proggy { font-family: 'Proggy', monospace; }
+        .font-Rainy { font-family: 'Rainy', monospace; }
+        .font-Minecraftia { font-family: 'Minecraftia', monospace; }
+        .font-PressStart { font-family: 'Press Start 2P', cursive; }
+
+        .boxxy {
+            box-shadow: 0 -4px #000, 0 -8px #fff, 4px 0 #000, 4px -4px #fff, 8px 0 #fff, 0 4px #000, 0 8px #fff, -4px 0 #000, -4px 4px #fff, -8px 0 #fff, -4px -4px #fff, 4px 4px #fff;
+            background-color: #000;
+        }
+
+        .boxxyw {
+            box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
+            background-color: #fff;
+        }
+
+        .pixel-border {
+            border: 4px solid #fff;
+            box-shadow: 6px 6px 0 #000;
+        }
+
+        .section-title {
+            color: #ffcc00;
+            text-shadow: 4px 4px 0 #000;
+            font-family: 'Gumball', monospace;
+            font-size: 28px;
+            letter-spacing: 4px;
+            margin-bottom: 8px;
+        }
+
+        .section-subtitle {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+            color: #888;
+            margin-bottom: 24px;
+        }
+
+        .label {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+            color: #ffcc00;
+            margin-bottom: 6px;
+        }
+
+        .sub-label {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 8px;
+            color: #888;
+            margin-bottom: 12px;
+        }
+
+        .grid-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .color-swatch {
+            width: 100%;
+            height: 80px;
+            border: 2px solid #fff;
+            display: flex;
+            align-items: flex-end;
+            padding: 8px;
+            font-size: 8px;
+            font-family: 'Press Start 2P', cursive;
+            color: #fff;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        .font-card {
+            background: #1a1a1a;
+            border: 4px solid #fff;
+            box-shadow: 6px 6px 0 #000;
+            padding: 20px;
+            position: relative;
+        }
+
+        .font-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 24px;
+            background: #000;
+            border-bottom: 4px solid #fff;
+        }
+
+        .font-card .window-dots {
+            position: absolute;
+            top: 6px;
+            left: 8px;
+            display: flex;
+            gap: 4px;
+            z-index: 2;
+        }
+
+        .font-card .window-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: block;
+        }
+
+        .font-card .window-dots span:nth-child(1) { background: #ff5f56; }
+        .font-card .window-dots span:nth-child(2) { background: #ffbd2e; }
+        .font-card .window-dots span:nth-child(3) { background: #27c93f; }
+
+        .font-content {
+            margin-top: 16px;
+        }
+
+        .font-sample {
+            font-size: 28px;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .font-sample-md {
+            font-size: 16px;
+            color: #c7d2fe;
+            margin-bottom: 6px;
+        }
+
+        .font-sample-sm {
+            font-size: 12px;
+            color: #93c5fd;
+        }
+
+        .bubble {
+            position: relative;
+            display: inline-block;
+            margin: 20px 30px;
+            text-align: center;
+            font-family: 'Press Start 2P', cursive;
+            background-color: #fff;
+            color: #000;
+            padding: 10px;
+            box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000;
+            box-sizing: border-box;
+            width: 200px;
+            font-size: 10px;
+        }
+
+        .bubble::after {
+            content: '';
+            display: block;
+            position: absolute;
+            box-sizing: border-box;
+        }
+
+        .bubble.shadow {
+            box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000, 4px 12px rgba(0, 0, 0, 0.1), 12px 12px rgba(0, 0, 0, 0.1), 8px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .bubble.left::after {
+            height: 4px;
+            width: 4px;
+            top: 20px;
+            left: -8px;
+            background: #fff;
+            box-shadow: -4px -4px #fff, -4px 0 #fff, -8px 0 #fff, 0 -8px #fff, -4px 4px #000, -8px 4px #000, -12px 4px #000, -16px 4px #000, -12px 0 #000, -8px -4px #000, -4px -8px #000, 0 -4px #fff;
+        }
+
+        .bubble.right::after {
+            height: 4px;
+            width: 4px;
+            top: 20px;
+            right: -8px;
+            background: #fff;
+            box-shadow: 4px -4px #fff, 4px 0 #fff, 8px 0 #fff, 0 -8px #fff, 4px 4px #000, 8px 4px #000, 12px 4px #000, 16px 4px #000, 12px 0 #000, 8px -4px #000, 4px -8px #000, 0 -4px #fff;
+        }
+
+        .bubble.hire {
+            background: #ffcc00 !important;
+            color: #000 !important;
+            box-shadow: 0 -4px #ffcc00, 0 -8px #000, 4px 0 #ffcc00, 4px -4px #000, 8px 0 #000, 0 4px #ffcc00, 0 8px #000, -4px 0 #ffcc00, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000 !important;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .bubble.mini {
+            width: 110px;
+            font-size: 16px;
+            padding: 16px;
+            font-family: monospace;
+        }
+
+        .bubble.medium {
+            width: 350px;
+        }
+
+        .bubble.large {
+            width: 560px;
+            font-size: 24px;
+            text-align: left;
+            text-transform: uppercase;
+        }
+
+        .bubble.grow {
+            width: auto;
+        }
+
+        .bubble.top::after {
+            height: 4px;
+            width: 4px;
+            top: -8px;
+            left: 32px;
+            box-shadow: 0 -4px #000, 0 -8px #000, 0 -12px #000, 0 -16px #000, -4px -12px #000, -8px -8px #000, -12px -4px #000, -4px -4px #fff, -8px -4px #fff, -4px -8px #fff, -4px 0 #fff, -8px 0 #fff, -12px 0 #fff;
+        }
+
+        .bubble.bottom::after {
+            height: 4px;
+            width: 4px;
+            bottom: -8px;
+            left: 32px;
+            box-shadow: 0 4px #000, 0 8px #000, 0 12px #000, 0 16px #000, -4px 12px #000, -8px 8px #000, -12px 4px #000, -4px 4px #fff, -8px 4px #fff, -4px 8px #fff, -4px 0 #fff, -8px 0 #fff, -12px 0 #fff;
+        }
+
+        .terminal-window {
+            background: #282828;
+            border: 4px solid #fff;
+            font-family: 'Proggy', monospace;
+        }
+
+        .terminal-header {
+            background: #000;
+            padding: 6px 10px;
+            border-bottom: 4px solid #fff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .terminal-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .terminal-body {
+            color: #33FF33;
+            padding: 12px;
+            font-size: 12px;
+            min-height: 100px;
+        }
+
+        .review-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #000;
+            padding: 12px;
+            width: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 8px;
+        }
+
+        .pfp {
+            width: 48px;
+            height: 48px;
+            background-image: url('assets/images/indexbg/testimony_sprites.jpg');
+            background-size: 192px 192px;
+            image-rendering: pixelated;
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+
+        .pfp-0 { background-position: 0 0; }
+        .pfp-1 { background-position: -48px 0; }
+        .pfp-2 { background-position: -96px 0; }
+        .pfp-3 { background-position: -144px 0; }
+        .pfp-4 { background-position: 0 -48px; }
+        .pfp-5 { background-position: -48px -48px; }
+        .pfp-6 { background-position: -96px -48px; }
+        .pfp-7 { background-position: -144px -48px; }
+        .pfp-8 { background-position: 0 -96px; }
+        .pfp-9 { background-position: -48px -96px; }
+        .pfp-10 { background-position: -96px -96px; }
+
+        .star { color: #facc15; }
+
+        .navbar {
+            box-shadow: 0 -4px #000, 0 -8px #fff, 4px 0 #000, 4px -4px #fff, 8px 0 #fff, 0 4px #000, 0 8px #fff, -4px 0 #000, -4px 4px #fff, -8px 0 #fff, -4px -4px #fff, 4px 4px #fff;
+            background-color: #000;
+            color: #fff;
+            top: 15px;
+            left: 20px;
+            right: 20px;
+            position: fixed;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            padding: 0 10px;
+        }
+
+        .navbar-demo {
+            position: absolute !important;
+            z-index: 1 !important;
+        }
+
+        .navbar-desktop {
+            display: none;
+        }
+
+        .navbar-mobile-demo {
+            display: flex;
+        }
+
+        @media (min-width: 768px) {
+            .navbar-desktop {
+                display: flex !important;
+            }
+            .navbar-mobile-demo {
+                display: none !important;
+            }
+        }
+
+        .nav-item {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .nav-item:hover {
+            color: #ffcc00;
+        }
+
+        .artwork-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .artwork-img {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #444;
+            border: 2px solid #000;
+        }
+
+        .nes-btn {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 8px 12px;
+            box-shadow: 0 -4px #000, 0 -8px #fff, 4px 0 #000, 4px -4px #fff, 8px 0 #fff, 0 4px #000, 0 8px #fff, -4px 0 #000, -4px 4px #fff, -8px 0 #fff, -4px -4px #fff, 4px 4px #fff;
+            cursor: pointer;
+        }
+
+        .nes-btn.is-error {
+            background: #e76e55;
+            color: #fff;
+        }
+
+        .nes-btn:disabled {
+            opacity: 0.5;
+        }
+
+        .pagination-demo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px 12px;
+            border: 2px solid #fff;
+            z-index: 50;
+        }
+
+        .pagination-demo .nes-btn,
+        .pagination-demo .nes-btn:disabled {
+            cursor: url('assets/images/indexbg/pixelboyhead.png') 12 12, pointer !important;
+        }
+
+        .page-info {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+            color: #fff;
+            margin: 0 8px;
+            min-width: 12px;
+            text-align: center;
+        }
+
+        .nes-btn-art {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 4px 8px;
+            box-shadow: 0 -4px #000, 0 -8px #fff, 4px 0 #000, 4px -4px #fff, 8px 0 #fff, 0 4px #000, 0 8px #fff, -4px 0 #000, -4px 4px #fff, -8px 0 #fff, -4px -4px #fff, 4px 4px #fff;
+            cursor: pointer;
+        }
+
+        .nes-btn-art:disabled {
+            opacity: 0.5;
+        }
+
+        .game-canvas {
+            background: #63adff;
+            border: 4px solid #000;
+            height: 200px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+        }
+
+        .bullet {
+            width: 16px;
+            height: 16px;
+            background: #fff;
+            border: 2px solid #000;
+            display: inline-block;
+            margin-right: 4px;
+        }
+
+        .bullet.spent {
+            background: #444;
+            opacity: 0.3;
+        }
+
+        .hud {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+        }
+
+        .z-layer {
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px;
+            margin-bottom: 4px;
+            border-left: 3px solid #ffcc00;
+        }
+
+        .z-layer-label {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 8px;
+            color: #ffcc00;
+        }
+
+        .breakpoint {
+            display: inline-block;
+            background: #5f5fec;
+            color: #fff;
+            padding: 4px 8px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 8px;
+            margin-right: 4px;
+        }
+
+        .responsive-preview {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .responsive-box {
+            border: 2px dashed #666;
+            padding: 8px;
+            min-width: 120px;
+        }
+
+        .responsive-box .label {
+            font-size: 8px;
+        }
+
+        .text-xs-sample { font-size: 6px; }
+        .text-sm-sample { font-size: 8px; }
+        .text-md-sample { font-size: 10px; }
+        .text-lg-sample { font-size: 14px; }
+        .text-xl-sample { font-size: 18px; }
+
+        .container-narrow { max-width: 320px; }
+        .container-tablet { max-width: 480px; }
+        .container-wide { max-width: 800px; }
+
+        .page-header {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+
+        .page-header h1 {
+            font-family: 'Gumball', monospace;
+            font-size: 36px;
+            color: #ffcc00;
+            text-shadow: 6px 6px 0 #000;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+            color: #888;
+        }
+
+        .toc-toggle {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 110;
+            background: #000;
+            border: 2px solid #fff;
+            color: #ffcc00;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+            padding: 8px 10px;
+            cursor: pointer;
+            display: block;
+        }
+
+        .toc-toggle:hover {
+            background: #1a1a1a;
+        }
+
+        .toc-sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 260px;
+            height: 100vh;
+            background: #000;
+            border-left: 4px solid #fff;
+            padding: 60px 20px 20px;
+            z-index: 99;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            box-shadow: -6px 0 0 #000;
+        }
+
+        .toc-sidebar.open {
+            transform: translateX(0);
+        }
+
+        .toc-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 98;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .toc-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .toc h3 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+            color: #ffcc00;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .toc ol {
+            list-style: decimal;
+            padding-left: 24px;
+        }
+
+        .toc li {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 8px;
+            color: #c7d2fe;
+            margin-bottom: 8px;
+        }
+
+        .toc a {
+            color: #c7d2fe;
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            color: #ffcc00;
+        }
+
+        @media (min-width: 1024px) {
+            .toc-toggle {
+                display: none;
+            }
+
+            .toc-sidebar {
+                transform: translateX(0);
+                width: 220px;
+                padding: 80px 16px 20px;
+            }
+
+            .toc-overlay {
+                display: none;
+            }
+
+            .toc-sidebar a:hover {
+                color: #ffcc00;
+                padding-left: 4px;
+                transition: padding-left 0.2s ease;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .toc-sidebar {
+                width: 260px;
+                padding: 80px 20px 20px;
+            }
+        }
+
+        main {
+            transition: margin-right 0.3s ease-in-out;
+        }
+
+        @media (min-width: 1024px) {
+            main {
+                margin-right: 220px;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            main {
+                margin-right: 260px;
+            }
+        }
+
+        section {
+            padding: 40px 20px;
+            border-top: 2px dashed #333;
+        }
+
+        section h2 {
+            font-family: 'Gumball', monospace;
+            font-size: 24px;
+            color: #ffcc00;
+            text-shadow: 4px 4px 0 #000;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .subsection {
+            margin-bottom: 24px;
+        }
+
+        .subsection h3 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 12px;
+            color: #a3e635;
+            margin-bottom: 12px;
+        }
+
+        .subsection h4 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+            color: #93c5fd;
+            margin-bottom: 8px;
+            margin-top: 12px;
+        }
+
+        .demo-card {
+            background: #1a1a1a;
+            border: 2px solid #fff;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .demo-card-title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 8px;
+            color: #ffcc00;
+            margin-bottom: 8px;
+        }
+
+        .swatch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 8px;
+        }
+
+        .flex-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .back-home {
+            position: fixed;
+            top: 12px;
+            right: 12px;
+            z-index: 100;
+        }
+
+        .back-home a {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 8px;
+            color: #ffcc00;
+            background: #000;
+            border: 2px solid #fff;
+            padding: 6px 10px;
+            text-decoration: none;
+        }
+
+        @keyframes typing-demo {
+            0%, 100% { content: ""; }
+            1%, 27% { content: "D"; }
+            3%, 25% { content: "De"; }
+            5%, 23% { content: "Dev"; }
+            7%, 21% { content: "Deve"; }
+            9%, 19% { content: "Devel"; }
+            11%, 17% { content: "Develo"; }
+            13%, 15% { content: "Develop"; }
+            14% { content: "Developer"; }
+            30%, 51% { content: "D"; }
+            32%, 49% { content: "Des"; }
+            34%, 47% { content: "Desi"; }
+            36%, 45% { content: "Desig"; }
+            38%, 43% { content: "Design"; }
+            40% { content: "Designer"; }
+            54%, 75% { content: "A"; }
+            56%, 73% { content: "Ar"; }
+            58%, 71% { content: "Art"; }
+            60%, 69% { content: "Arti"; }
+            62%, 67% { content: "Artis"; }
+            64% { content: "Artist"; }
+            78%, 96% { content: "H"; }
+            80%, 94% { content: "Hu"; }
+            82%, 92% { content: "Hum"; }
+            84%, 90% { content: "Huma"; }
+            86% { content: "Human"; }
+        }
+
+        @keyframes blink-demo {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .typewriter-demo {
+            --caret: #ffcc00;
+            color: #ffcc00;
+        }
+
+        .typewriter-demo::before {
+            content: "";
+            animation: typing-demo 13.5s infinite;
+        }
+
+        .typewriter-demo::after {
+            content: "";
+            border-right: 1px solid var(--caret);
+            animation: blink-demo 0.5s linear infinite;
+        }
+
+        .typewriter-demo.nocaret::after {
+            border-right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="back-home">
+        <a href="index.html">&lt; home</a>
+    </div>
+
+    <button id="toc-toggle" class="toc-toggle" aria-label="Toggle table of contents">☰ TOC</button>
+
+    <div id="toc-overlay" class="toc-overlay"></div>
+
+    <nav id="toc-sidebar" class="toc toc-sidebar">
+        <h3>// CONTENTS</h3>
+        <ol>
+            <li><a href="#colors" class="toc-link">Colors</a></li>
+            <li><a href="#typography" class="toc-link">Typography</a></li>
+            <li><a href="#layout" class="toc-link">Layout &amp; Spacing</a></li>
+            <li><a href="#components" class="toc-link">Components</a></li>
+            <li><a href="#responsive" class="toc-link">Responsive</a></li>
+        </ol>
+    </nav>
+
+    <main>
+        <header class="page-header">
+            <h1>DESIGN SYSTEM</h1>
+            <p>Retro 1-bit / NES pixel-art aesthetic</p>
+        </header>
+
+    <!-- ============== COLORS ============== -->
+    <section id="colors">
+        <h2>1. COLORS</h2>
+        <p class="section-subtitle" style="margin-bottom: 16px;">// click any swatch to copy its color code</p>
+
+        <div class="color-tabs">
+            <button class="color-tab active" data-page="brand">Brand &amp; Accent</button>
+            <button class="color-tab" data-page="backgrounds">Backgrounds</button>
+            <button class="color-tab" data-page="accents">Accent / Status</button>
+            <button class="color-tab" data-page="pfp">PFP Sprite Palette</button>
+        </div>
+
+        <div class="color-page active" data-page="brand">
+            <div class="swatch-grid">
+                <div class="color-card" data-color="#ffcc00" data-name="Retro Gold (CTA)">
+                    <div class="color-swatch clickable" style="background: #ffcc00; color: #000;">#ffcc00</div>
+                    <div class="sub-label">Retro Gold (CTA)</div>
+                </div>
+                <div class="color-card" data-color="#ffe066" data-name="Lighter Hover">
+                    <div class="color-swatch clickable" style="background: #ffe066; color: #000;">#ffe066</div>
+                    <div class="sub-label">Lighter Hover</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="color-page" data-page="backgrounds">
+            <div class="swatch-grid">
+                <div class="color-card" data-color="#000000" data-name="Pure Black">
+                    <div class="color-swatch clickable" style="background: #000000;">#000000</div>
+                    <div class="sub-label">Pure Black</div>
+                </div>
+                <div class="color-card" data-color="rgba(0,0,0,0.5)" data-name="Dark Overlay">
+                    <div class="color-swatch clickable" style="background: rgba(0,0,0,0.5); color: #fff;">rgba(0,0,0,.5)</div>
+                    <div class="sub-label">Dark Overlay</div>
+                </div>
+                <div class="color-card" data-color="#ffcc00" data-name="Yellow Section">
+                    <div class="color-swatch clickable" style="background: #ffcc00; color: #000;">#ffcc00</div>
+                    <div class="sub-label">Yellow Section</div>
+                </div>
+                <div class="color-card" data-color="#facc15" data-name="Yellow">
+                    <div class="color-swatch clickable" style="background: #facc15; color: #000;">#facc15</div>
+                    <div class="sub-label">Yellow</div>
+                </div>
+                <div class="color-card" data-color="#a3e635" data-name="Green Light">
+                    <div class="color-swatch clickable" style="background: #a3e635; color: #000;">#a3e635</div>
+                    <div class="sub-label">Green Light</div>
+                </div>
+                <div class="color-card" data-color="#93c5fd" data-name="Blue Light">
+                    <div class="color-swatch clickable" style="background: #93c5fd; color: #000;">#93c5fd</div>
+                    <div class="sub-label">Blue Light</div>
+                </div>
+                <div class="color-card" data-color="#c7d2fe" data-name="Indigo Light">
+                    <div class="color-swatch clickable" style="background: #c7d2fe; color: #000;">#c7d2fe</div>
+                    <div class="sub-label">Indigo Light</div>
+                </div>
+                <div class="color-card" data-color="#ffffff" data-name="White">
+                    <div class="color-swatch clickable" style="background: #ffffff; color: #000;">#ffffff</div>
+                    <div class="sub-label">White</div>
+                </div>
+                <div class="color-card" data-color="#63adff" data-name="Sky Blue (Game)">
+                    <div class="color-swatch clickable" style="background: #63adff;">#63adff</div>
+                    <div class="sub-label">Sky Blue (Game)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="color-page" data-page="accents">
+            <div class="swatch-grid">
+                <div class="color-card" data-color="#5f5fec" data-name="Blue (link)">
+                    <div class="color-swatch clickable" style="background: #5f5fec;">#5f5fec</div>
+                    <div class="sub-label">Blue (link)</div>
+                </div>
+                <div class="color-card" data-color="#33FF33" data-name="Terminal Green">
+                    <div class="color-swatch clickable" style="background: #33FF33; color: #000;">#33FF33</div>
+                    <div class="sub-label">Terminal Green</div>
+                </div>
+                <div class="color-card" data-color="#282828" data-name="Terminal Body">
+                    <div class="color-swatch clickable" style="background: #282828;">#282828</div>
+                    <div class="sub-label">Terminal Body</div>
+                </div>
+                <div class="color-card" data-color="#facc15" data-name="Rating">
+                    <div class="color-swatch clickable" style="background: #facc15; color: #000;">#facc15</div>
+                    <div class="sub-label">Rating</div>
+                </div>
+                <div class="color-card" data-color="#e76e55" data-name="Error Red">
+                    <div class="color-swatch clickable" style="background: #e76e55;">#e76e55</div>
+                    <div class="sub-label">Error Red</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="color-page" data-page="pfp">
+            <div class="swatch-grid">
+                <div class="color-card" data-color="#f8fafc" data-name="PFP Slate-50">
+                    <div class="color-swatch clickable" style="background: #f8fafc; color: #000;">#f8fafc</div>
+                    <div class="sub-label">PFP Slate-50</div>
+                </div>
+                <div class="color-card" data-color="#c7d2fe" data-name="PFP Indigo-200">
+                    <div class="color-swatch clickable" style="background: #c7d2fe; color: #000;">#c7d2fe</div>
+                    <div class="sub-label">PFP Indigo-200</div>
+                </div>
+                <div class="color-card" data-color="#93c5fd" data-name="PFP Blue-300">
+                    <div class="color-swatch clickable" style="background: #93c5fd; color: #000;">#93c5fd</div>
+                    <div class="sub-label">PFP Blue-300</div>
+                </div>
+                <div class="color-card" data-color="#a3e635" data-name="PFP Lime-400">
+                    <div class="color-swatch clickable" style="background: #a3e635; color: #000;">#a3e635</div>
+                    <div class="sub-label">PFP Lime-400</div>
+                </div>
+                <div class="color-card" data-color="#facc15" data-name="PFP Yellow-400">
+                    <div class="color-swatch clickable" style="background: #facc15; color: #000;">#facc15</div>
+                    <div class="sub-label">PFP Yellow-400</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="copy-toast" class="copy-toast">
+            <span id="copy-toast-text">Copied!</span>
+        </div>
+    </section>
+
+    <!-- ============== TYPOGRAPHY ============== -->
+    <section id="typography">
+        <h2>2. TYPOGRAPHY</h2>
+
+        <div class="subsection">
+            <h3>Font Families</h3>
+            <div class="grid-section">
+                <div class="font-card">
+                    <div class="window-dots"><span></span><span></span><span></span></div>
+                    <div class="font-content">
+                        <div class="label">Joystick (Primary body)</div>
+                        <div class="sub-label">assets/fonts/joystix_monospace.otf</div>
+                        <div class="font-sample font-Joystick">The quick brown fox jumps</div>
+                        <div class="font-sample-md font-Joystick">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</div>
+                        <div class="font-sample-sm font-Joystick">abcdefghijklmnopqrstuvwxyz !@#$%^&amp;*()</div>
+                    </div>
+                </div>
+
+                <div class="font-card">
+                    <div class="window-dots"><span></span><span></span><span></span></div>
+                    <div class="font-content">
+                        <div class="label">Gumball (Section titles)</div>
+                        <div class="sub-label">assets/fonts/title.TTF</div>
+                        <div class="font-sample font-Gumball">The quick brown fox jumps</div>
+                        <div class="font-sample-md font-Gumball">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</div>
+                        <div class="font-sample-sm font-Gumball">abcdefghijklmnopqrstuvwxyz !@#$%^&amp;*()</div>
+                    </div>
+                </div>
+
+                <div class="font-card">
+                    <div class="window-dots"><span></span><span></span><span></span></div>
+                    <div class="font-content">
+                        <div class="label">mariofont (Arcade titles)</div>
+                        <div class="sub-label">assets/fonts/Super Plumber Brothers.ttf</div>
+                        <div class="font-sample font-mariofont">The quick brown fox jumps</div>
+                        <div class="font-sample-md font-mariofont">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</div>
+                        <div class="font-sample-sm font-mariofont">abcdefghijklmnopqrstuvwxyz !@#$%^&amp;*()</div>
+                    </div>
+                </div>
+
+                <div class="font-card">
+                    <div class="window-dots"><span></span><span></span><span></span></div>
+                    <div class="font-content">
+                        <div class="label">Proggy (Code/Mono)</div>
+                        <div class="sub-label">assets/fonts/ProggyMonoRegular.ttf</div>
+                        <div class="font-sample font-Proggy">The quick brown fox jumps</div>
+                        <div class="font-sample-md font-Proggy">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</div>
+                        <div class="font-sample-sm font-Proggy">abcdefghijklmnopqrstuvwxyz !@#$%^&amp;*()</div>
+                    </div>
+                </div>
+
+                <div class="font-card">
+                    <div class="window-dots"><span></span><span></span><span></span></div>
+                    <div class="font-content">
+                        <div class="label">Rainy (Soft pixel body)</div>
+                        <div class="sub-label">assets/fonts/dogicapixel.ttf</div>
+                        <div class="font-sample font-Rainy">The quick brown fox jumps</div>
+                        <div class="font-sample-md font-Rainy">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</div>
+                        <div class="font-sample-sm font-Rainy">abcdefghijklmnopqrstuvwxyz !@#$%^&amp;*()</div>
+                    </div>
+                </div>
+
+                <div class="font-card">
+                    <div class="window-dots"><span></span><span></span><span></span></div>
+                    <div class="font-content">
+                        <div class="label">Press Start 2P (NES, CDN)</div>
+                        <div class="sub-label">fonts.googleapis.com</div>
+                        <div class="font-sample font-PressStart">The quick brown fox jumps</div>
+                        <div class="font-sample-md font-PressStart">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</div>
+                        <div class="font-sample-sm font-PressStart">abcdefghijklmnopqrstuvwxyz !@#$%^&amp;*()</div>
+                    </div>
+                </div>
+
+                <div class="font-card">
+                    <div class="window-dots"><span></span><span></span><span></span></div>
+                    <div class="font-content">
+                        <div class="label">Minecraftia (Optional)</div>
+                        <div class="sub-label">assets/fonts/Minecraftia.ttf</div>
+                        <div class="font-sample font-Minecraftia">The quick brown fox jumps</div>
+                        <div class="font-sample-md font-Minecraftia">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</div>
+                        <div class="font-sample-sm font-Minecraftia">abcdefghijklmnopqrstuvwxyz !@#$%^&amp;*()</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <h3>Typewriter Animation</h3>
+            <div class="demo-card">
+                <div class="demo-card-title">// cycles 13.5s: Developer &rarr; Designer &rarr; Artist &rarr; Human</div>
+                <div class="font-PressStart text-xs md:text-sm" style="color: #fff;">
+                    I am a <span class="typewriter-demo nocaret"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============== LAYOUT ============== -->
+    <section id="layout">
+        <h2>3. LAYOUT &amp; SPACING</h2>
+
+        <div class="subsection">
+            <h3>Breakpoints (Tailwind)</h3>
+            <div class="flex-row">
+                <div class="responsive-box">
+                    <div class="label">sm</div>
+                    <div class="sub-label">640px</div>
+                </div>
+                <div class="responsive-box">
+                    <div class="label">md</div>
+                    <div class="sub-label">768px (primary)</div>
+                </div>
+                <div class="responsive-box">
+                    <div class="label">lg</div>
+                    <div class="sub-label">1024px</div>
+                </div>
+                <div class="responsive-box">
+                    <div class="label">xl</div>
+                    <div class="sub-label">1280px</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <h3>Z-Index Scale</h3>
+            <div class="z-layer" style="z-index: 0;">
+                <div class="z-layer-label">z-0 — Decorative (planets)</div>
+            </div>
+            <div class="z-layer" style="z-index: 1;">
+                <div class="z-layer-label">z-1 — Background content</div>
+            </div>
+            <div class="z-layer" style="z-index: 2;">
+                <div class="z-layer-label">z-2 — Active section</div>
+            </div>
+            <div class="z-layer" style="z-index: 4;">
+                <div class="z-layer-label">z-4 — Navigation buttons</div>
+            </div>
+            <div class="z-layer" style="z-index: 50;">
+                <div class="z-layer-label">z-50 — Pagination / mobile menu</div>
+            </div>
+            <div class="z-layer" style="z-index: 100;">
+                <div class="z-layer-label">z-100 — Modals</div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <h3>Box Shadow Patterns (Pixel-art depth)</h3>
+            <div class="demo-card">
+                <div class="demo-card-title">// .boxxy (black bg, white outer ring) &mdash; used on testimonials, modals, terminals</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-bottom: 16px;">
+                    <div class="boxxy" style="padding: 20px; text-align: center; color: #fff; font-family: 'Press Start 2P', cursive; font-size: 10px;">
+                        .boxxy<br>
+                        <span style="color: #888; font-size: 8px;">black bg, white outer</span>
+                    </div>
+                    <div class="boxxyw" style="padding: 20px; text-align: center; color: #000; font-family: 'Press Start 2P', cursive; font-size: 10px;">
+                        .boxxyw<br>
+                        <span style="color: #555; font-size: 8px;">white bg, black outer</span>
+                    </div>
+                </div>
+
+                <div class="demo-card-title">// .bubble.shadow (with extra rgba depth shadows) &mdash; used on chat bubbles</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-bottom: 16px;">
+                    <div style="background: #fff; color: #000; padding: 16px 20px; font-family: 'Press Start 2P', cursive; font-size: 10px; text-align: center; box-shadow: 0 -4px #fff, 0 -8px #000, 4px 0 #fff, 4px -4px #000, 8px 0 #000, 0 4px #fff, 0 8px #000, -4px 0 #fff, -4px 4px #000, -8px 0 #000, -4px -4px #000, 4px 4px #000, 4px 12px rgba(0,0,0,0.1), 12px 12px rgba(0,0,0,0.1), 8px 8px rgba(0,0,0,0.1);">
+                        .bubble.shadow
+                    </div>
+                </div>
+
+                <div class="demo-card-title">// .boxxy-green (lime accent variant)</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-bottom: 16px;">
+                    <div style="background: #a3e635; color: #000; padding: 20px; text-align: center; font-family: 'Press Start 2P', cursive; font-size: 10px; box-shadow: 0 -4px #000, 0 -8px #8cd600, 4px 0 #000, 4px -4px #8cd600, 8px 0 #8cd600, 0 4px #000, 0 8px #8cd600, -4px 0 #000, -4px 4px #8cd600, -8px 0 #8cd600, -4px -4px #8cd600, 4px 4px #8cd600;">
+                        .boxxy-green
+                    </div>
+                </div>
+
+                <div class="demo-card-title">// Simple drop shadow (used on cards, modals)</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px;">
+                    <div style="background: #fff; color: #000; padding: 20px; text-align: center; font-family: 'Press Start 2P', cursive; font-size: 10px; border: 4px solid #000; box-shadow: 8px 8px 0 #000;">
+                        4px border + 8px black drop
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============== COMPONENTS ============== -->
+    <section id="components">
+        <h2>4. COMPONENTS</h2>
+
+        <div class="subsection">
+            <h3>4.1 Navigation Bar</h3>
+            <div class="demo-card">
+                <div class="demo-card-title">// position: fixed, top: 15px, height: 30px, boxxy pixel-shadow</div>
+
+                <div style="position: relative; min-height: 80px; background: #0a0a0a; padding: 0; margin-bottom: 16px;">
+                    <div class="demo-tag" style="position: absolute; top: 80px; left: 20px; color: #ffcc00; font-family: 'Press Start 2P', cursive; font-size: 8px;">// DESKTOP (md+)</div>
+                    <div class="navbar navbar-demo" style="position: absolute; top: 15px; left: 20px; right: 20px;">
+                        <div class="navbar-desktop items-center justify-between w-full">
+                            <div class="flex items-center space-x-4">
+                                <a class="nav-item" href="#">Blog</a>
+                                <a class="nav-item" href="#">Projects</a>
+                            </div>
+                            <a href="#" class="flex items-center justify-center" style="font-family: 'Press Start 2P', cursive; font-size: 12px; color: #ffcc00; text-decoration: none;">TANV</a>
+                            <div class="flex items-center space-x-4">
+                                <a class="nav-item" href="#">About</a>
+                                <a class="nav-item" href="#">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="position: relative; min-height: 80px; background: #0a0a0a; padding: 0; max-width: 480px;">
+                    <div class="demo-tag" style="position: absolute; top: 80px; left: 20px; color: #ffcc00; font-family: 'Press Start 2P', cursive; font-size: 8px;">// MOBILE (&lt;md)</div>
+                    <div class="navbar navbar-mobile-demo" style="position: absolute; top: 15px; left: 20px; right: 20px; display: flex;">
+                        <a href="#" style="font-family: 'Press Start 2P', cursive; font-size: 10px; color: #ffcc00; text-decoration: none;">TANV</a>
+                        <button style="background: none; border: none; color: #fff; cursor: pointer; font-size: 14px; font-family: 'Press Start 2P', cursive;">&#9776;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <h3>4.2 Chat Bubble</h3>
+            <div class="demo-card">
+                <div class="demo-card-title">// available variants &mdash; base .bubble + modifiers (size, tail, CTA)</div>
+
+                <div style="background: #5f5fec; padding: 20px; display: flex; flex-direction: column; gap: 16px;">
+
+                    <div>
+                        <div class="sub-label" style="color: #fff;">// .bubble (default) &mdash; white, pixel-shadow</div>
+                        <div class="bubble">Hello</div>
+                    </div>
+
+                    <div>
+                        <div class="sub-label" style="color: #fff;">// .bubble.shadow &mdash; + extra rgba depth</div>
+                        <div class="bubble shadow">Hello</div>
+                    </div>
+
+                    <div>
+                        <div class="sub-label" style="color: #fff;">// .bubble.left &mdash; tail on left</div>
+                        <div class="bubble left">Hello</div>
+                    </div>
+
+                    <div>
+                        <div class="sub-label" style="color: #fff;">// .bubble.right &mdash; tail on right</div>
+                        <div class="bubble right">Hello</div>
+                    </div>
+
+                    <div>
+                        <div class="sub-label" style="color: #fff;">// .bubble.mini &mdash; 110px / monospace</div>
+                        <div class="bubble mini">Hi</div>
+                    </div>
+
+                    <div>
+                        <div class="sub-label" style="color: #fff;">// .bubble.medium &mdash; 350px wide</div>
+                        <div class="bubble medium">A medium sized bubble</div>
+                    </div>
+
+                    <div>
+                        <div class="sub-label" style="color: #fff;">// .bubble.large &mdash; 560px, uppercase, 24px</div>
+                        <div class="bubble large">A large bubble</div>
+                    </div>
+
+                    <div>
+                        <div class="sub-label" style="color: #fff;">// .bubble.top &mdash; tail on top</div>
+                        <div class="bubble top">Hello</div>
+                    </div>
+
+                    <div>
+                        <div class="sub-label" style="color: #fff;">// .bubble.bottom &mdash; tail on bottom</div>
+                        <div class="bubble bottom">Hello</div>
+                    </div>
+
+                    <div>
+                        <div class="sub-label" style="color: #fff;">// .bubble.grow &mdash; width: initial (auto)</div>
+                        <div class="bubble grow">Auto width</div>
+                    </div>
+
+                    <div>
+                        <div class="sub-label" style="color: #fff;">// .bubble.hire &mdash; gold CTA (used for "Hire Me!")</div>
+                        <a href="#" class="bubble hire left">Hire Me!</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <h3>4.3 Terminal Window</h3>
+            <div class="demo-card">
+                <div class="demo-card-title">// IntersectionObserver triggered, 75ms/char</div>
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-dot" style="background: #ff5f56;"></div>
+                        <div class="terminal-dot" style="background: #ffbd2e;"></div>
+                        <div class="terminal-dot" style="background: #27c93f;"></div>
+                        <div class="font-PressStart" style="color: #fff; font-size: 8px; margin-left: 8px;">/home/mypc</div>
+                    </div>
+                    <div class="terminal-body font-Proggy">
+                        bash-3.2$ who am i<br>
+                        Tanish Vashisth<br>
+                        bash-3.2$ uname -a<br>
+                        Linux archlinux 6.5.8-arch1-1 x86_64 GNU/Linux
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <h3>4.4 Testimonial Card</h3>
+            <div class="demo-card">
+                <div class="demo-card-title">// pfp sprite (256x256 sheet) / star rating / 1-bit boxxy</div>
+                <div class="flex-row">
+                    <div class="review-card boxxy">
+                        <div class="pfp pfp-2"></div>
+                        <div class="font-PressStart" style="font-size: 10px; color: #fff;">The Compiler</div>
+                        <div class="font-PressStart" style="font-size: 8px; color: #888;">Syntax Police</div>
+                        <div class="star font-PressStart" style="font-size: 10px;">&#9733;&#9734;&#9734;&#9734;&#9734;</div>
+                        <div class="font-PressStart" style="font-size: 8px; color: #c7d2fe;">"Missing semicolon on line 324..."</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <h3>4.5 Work Experience</h3>
+            <div class="demo-card">
+                <div class="demo-card-title">// border-l-4 timeline, semi-transparent dark bg</div>
+                <div class="boxxy" style="background: rgba(0,0,0,0.7); padding: 16px;">
+                    <div style="border-left: 4px solid #fff; padding-left: 16px;">
+                        <div class="flex-row" style="justify-content: space-between;">
+                            <div class="font-PressStart" style="font-size: 10px; color: #fff;">Software Development Engineer 1 (SDE-1)</div>
+                            <div class="font-PressStart" style="font-size: 8px; color: #888;">Dec 2024 - June 2026</div>
+                        </div>
+                        <div class="font-PressStart" style="font-size: 9px; color: #93c5fd; margin: 4px 0;">Instahyre</div>
+                        <ul class="font-PressStart" style="font-size: 8px; color: #d1d5db; padding-left: 16px;">
+                            <li>Owned Jobs module; built recommendation engine &amp; LLM features</li>
+                            <li>Scaled critical APIs from 750ms to 120ms (84% latency reduction)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <h3>4.6 Pagination Component</h3>
+
+            <div class="demo-card">
+                <div class="demo-card-title">// Blog style &mdash; inline pagination, boxxy (dark)</div>
+                <div id="pagination" class="flex items-center justify-evenly md:justify-center my-6" style="background: #0a0a0a; padding: 20px;">
+                    <button id="prev-page" class="px-2 py-1 bg-gray-700 text-white boxxy h-[30px] text-[12px] md:text-[16px]"
+                        disabled style="font-family: 'Press Start 2P', cursive; min-width: 90px;">Previous</button>
+                    <span id="page-info" class="mx-4 text-white align-center md:mx-10 text-[16px]" style="font-family: 'Press Start 2P', cursive;">1</span>
+                    <button id="next-page"
+                        class="px-2 py-1 bg-gray-700 text-white boxxy h-[30px] text-[12px] md:text-[16px]" style="font-family: 'Press Start 2P', cursive; min-width: 90px;">Next</button>
+                </div>
+                <pre style="background: #000; color: #a3e635; padding: 12px; font-family: 'Proggy', monospace; font-size: 10px; overflow-x: auto; border: 2px solid #fff;"><code>&lt;div id="pagination" class="flex items-center justify-evenly md:justify-center my-6"&gt;
+  &lt;button class="px-2 py-1 bg-gray-700 text-white boxxy h-[30px] text-[12px] md:text-[16px]" disabled&gt;Previous&lt;/button&gt;
+  &lt;span id="page-info" class="mx-4 md:mx-10 text-[16px]"&gt;1&lt;/span&gt;
+  &lt;button class="px-2 py-1 bg-gray-700 text-white boxxy h-[30px] text-[12px] md:text-[16px]"&gt;Next&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <div class="demo-card">
+                <div class="demo-card-title">// Artwork style &mdash; fixed bottom, nes-btn (white), mobile center / desktop right</div>
+                <div style="position: relative; height: 160px; background: #0a0a0a; margin-bottom: 12px; border: 2px dashed #444;">
+                    <div class="demo-tag" style="position: absolute; top: 8px; left: 8px; color: #ffcc00; font-family: 'Press Start 2P', cursive; font-size: 8px;">// MOBILE (bottom-center)</div>
+                    <div class="pagination-demo" style="position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);">
+                        <button class="nes-btn-art text-[5px]" disabled>Previous</button>
+                        <span class="page-info">1</span>
+                        <button class="nes-btn-art text-[5px]">Next</button>
+                    </div>
+                </div>
+
+                <div style="position: relative; height: 160px; background: #0a0a0a; border: 2px dashed #444;">
+                    <div class="demo-tag" style="position: absolute; top: 8px; left: 8px; color: #ffcc00; font-family: 'Press Start 2P', cursive; font-size: 8px;">// DESKTOP (bottom-right)</div>
+                    <div class="pagination-demo" style="position: absolute; bottom: 8px; right: 8px;">
+                        <button class="nes-btn-art text-[5px]" disabled>Previous</button>
+                        <span class="page-info">3</span>
+                        <button class="nes-btn-art text-[5px]">Next</button>
+                    </div>
+                </div>
+
+                <pre style="background: #000; color: #a3e635; padding: 12px; font-family: 'Proggy', monospace; font-size: 10px; overflow-x: auto; border: 2px solid #fff; margin-top: 12px;"><code>/* Artwork: fixed bottom, hidden by default, shown on #bottom */
+.pagination-controls {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 8px 12px;
+  border: 2px solid #fff;
+}
+
+@media (min-width: 768px) {
+  .pagination-controls {
+    left: auto;
+    right: 8px;
+    transform: none;
+  }
+}</code></pre>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ============== RESPONSIVE ============== -->
+    <section id="responsive">
+        <h2>5. RESPONSIVE STRATEGY</h2>
+
+        <div class="subsection">
+            <h3>Typography Scale</h3>
+            <div class="demo-card">
+                <div class="demo-card-title">// mobile uses text-[Xpx] (pixel-precise), desktop scales up</div>
+                <div class="flex-row" style="flex-direction: column; align-items: flex-start; gap: 4px;">
+                    <div class="font-PressStart text-xs-sample">6px - micro labels</div>
+                    <div class="font-PressStart text-sm-sample">8px - small captions</div>
+                    <div class="font-PressStart text-md-sample">10px - body / nav</div>
+                    <div class="font-PressStart text-lg-sample">14px - section heads</div>
+                    <div class="font-PressStart text-xl-sample">18px - hero text</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <h3>Layout Differences</h3>
+            <div class="responsive-preview">
+                <div class="responsive-box container-narrow">
+                    <div class="label">Mobile</div>
+                    <div class="sub-label">grid-cols-2</div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px;">
+                        <div style="background: #5f5fec; height: 30px;"></div>
+                        <div style="background: #a3e635; height: 30px;"></div>
+                    </div>
+                </div>
+                <div class="responsive-box container-tablet">
+                    <div class="label">Tablet</div>
+                    <div class="sub-label">grid-cols-2</div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px;">
+                        <div style="background: #5f5fec; height: 30px;"></div>
+                        <div style="background: #a3e635; height: 30px;"></div>
+                    </div>
+                </div>
+                <div class="responsive-box container-wide">
+                    <div class="label">Desktop (lg+)</div>
+                    <div class="sub-label">grid-cols-4</div>
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;">
+                        <div style="background: #5f5fec; height: 30px;"></div>
+                        <div style="background: #a3e635; height: 30px;"></div>
+                        <div style="background: #ffcc00; height: 30px;"></div>
+                        <div style="background: #ef4444; height: 30px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <h3>Component Behavior</h3>
+            <div class="demo-card">
+                <table style="width: 100%; font-family: 'Press Start 2P', cursive; font-size: 8px; color: #c7d2fe; border-collapse: collapse;">
+                    <tr style="border-bottom: 2px solid #333;">
+                        <th style="text-align: left; padding: 6px; color: #ffcc00;">Component</th>
+                        <th style="text-align: left; padding: 6px; color: #ffcc00;">Mobile</th>
+                        <th style="text-align: left; padding: 6px; color: #ffcc00;">Desktop</th>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #333;">
+                        <td style="padding: 6px;">Testimonials</td>
+                        <td style="padding: 6px;">horizontal scroll-snap</td>
+                        <td style="padding: 6px;">marquee animation</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #333;">
+                        <td style="padding: 6px;">Artwork Grid</td>
+                        <td style="padding: 6px;">2 columns</td>
+                        <td style="padding: 6px;">4 columns</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #333;">
+                        <td style="padding: 6px;">Navigation</td>
+                        <td style="padding: 6px;">hamburger menu</td>
+                        <td style="padding: 6px;">horizontal bar</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 6px;">Pagination</td>
+                        <td style="padding: 6px;">bottom-center</td>
+                        <td style="padding: 6px;">bottom-right</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 40px 20px; border-top: 2px dashed #333;">
+        <div class="font-PressStart" style="font-size: 8px; color: #888;">
+            // TANV Design System - retro 1-bit / NES pixel-art aesthetic
+        </div>
+    </footer>
+    </main>
+
+    <script>
+        const tocToggle = document.getElementById('toc-toggle');
+        const tocSidebar = document.getElementById('toc-sidebar');
+        const tocOverlay = document.getElementById('toc-overlay');
+        const tocLinks = document.querySelectorAll('.toc-link');
+
+        function openToc() {
+            tocSidebar.classList.add('open');
+            tocOverlay.classList.add('open');
+        }
+
+        function closeToc() {
+            tocSidebar.classList.remove('open');
+            tocOverlay.classList.remove('open');
+        }
+
+        if (tocToggle) {
+            tocToggle.addEventListener('click', () => {
+                if (tocSidebar.classList.contains('open')) {
+                    closeToc();
+                } else {
+                    openToc();
+                }
+            });
+        }
+
+        if (tocOverlay) {
+            tocOverlay.addEventListener('click', closeToc);
+        }
+
+        tocLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 1024) {
+                    closeToc();
+                }
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && tocSidebar.classList.contains('open')) {
+                closeToc();
+            }
+        });
+    </script>
+</body>
+
+</html>

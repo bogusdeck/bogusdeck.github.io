@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Preview - TANV</title>
+    <link rel="icon" type="image/png" href="assets/images/indexbg/pixelboyhead.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Joystick';
+            src: url('assets/fonts/joystix_monospace.otf') format('opentype');
+        }
+
+        @font-face {
+            font-family: 'Gumball';
+            src: url('assets/fonts/title.TTF') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'mariofont';
+            src: url('assets/fonts/Super Plumber Brothers.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Proggy';
+            src: url('assets/fonts/ProggyMonoRegular.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Rainy';
+            src: url('assets/fonts/dogicapixel.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Minecraftia';
+            src: url('assets/fonts/Minecraftia.ttf') format('truetype');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            font-family: 'Press Start 2P', cursive;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            color: #ffcc00;
+            margin-bottom: 10px;
+            text-shadow: 4px 4px 0 #000;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 10px;
+            color: #888;
+            margin-bottom: 40px;
+        }
+
+        .font-card {
+            background: #1a1a1a;
+            border: 4px solid #fff;
+            box-shadow: 8px 8px 0 #000;
+            padding: 24px;
+            margin: 24px auto;
+            max-width: 1100px;
+            position: relative;
+        }
+
+        .font-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: #000;
+            border-bottom: 4px solid #fff;
+        }
+
+        .font-card .window-dots {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            display: flex;
+            gap: 6px;
+            z-index: 2;
+        }
+
+        .font-card .window-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: block;
+        }
+
+        .font-card .window-dots span:nth-child(1) {
+            background: #ff5f56;
+        }
+
+        .font-card .window-dots span:nth-child(2) {
+            background: #ffbd2e;
+        }
+
+        .font-card .window-dots span:nth-child(3) {
+            background: #27c93f;
+        }
+
+        .font-name {
+            margin-top: 20px;
+            font-size: 10px;
+            color: #ffcc00;
+            margin-bottom: 6px;
+        }
+
+        .file-name {
+            font-size: 8px;
+            color: #888;
+            margin-bottom: 16px;
+        }
+
+        .sample-large {
+            font-size: 36px;
+            color: #fff;
+            margin-bottom: 12px;
+            word-break: break-word;
+        }
+
+        .sample-medium {
+            font-size: 18px;
+            color: #c7d2fe;
+            margin-bottom: 12px;
+        }
+
+        .sample-small {
+            font-size: 12px;
+            color: #93c5fd;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .sample-pangram {
+            font-size: 14px;
+            color: #a3e635;
+            font-style: italic;
+        }
+
+        .font-Joystick {
+            font-family: 'Joystick', monospace;
+        }
+
+        .font-Gumball {
+            font-family: 'Gumball', monospace;
+        }
+
+        .font-mariofont {
+            font-family: 'mariofont', monospace;
+        }
+
+        .font-Proggy {
+            font-family: 'Proggy', monospace;
+        }
+
+        .font-Rainy {
+            font-family: 'Rainy', monospace;
+        }
+
+        .font-Minecraftia {
+            font-family: 'Minecraftia', monospace;
+        }
+
+        .font-PressStart {
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 10px;
+        }
+
+        .back-link a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Font Preview</h1>
+    <p class="subtitle">All fonts in the repo (used + unused)</p>
+
+    <!-- 1. Joystick (USED) -->
+    <div class="font-card">
+        <div class="window-dots">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="font-name">[1] Joystick (USING)</div>
+        <div class="file-name">assets/fonts/joystix_monospace.otf</div>
+        <div class="sample-large font-Joystick">The quick brown fox jumps</div>
+        <div class="sample-medium font-Joystick">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</div>
+        <div class="sample-small font-Joystick">abcdefghijklmnopqrstuvwxyz !@#$%^&amp;*()</div>
+        <div class="sample-pangram font-Joystick">Pack my box with five dozen liquor jugs.</div>
+    </div>
+
+    <!-- 2. Gumball (USED) -->
+    <div class="font-card">
+        <div class="window-dots">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="font-name">[2] Gumball (USING)</div>
+        <div class="file-name">assets/fonts/title.TTF</div>
+        <div class="sample-large font-Gumball">The quick brown fox jumps</div>
+        <div class="sample-medium font-Gumball">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</div>
+        <div class="sample-small font-Gumball">abcdefghijklmnopqrstuvwxyz !@#$%^&amp;*()</div>
+        <div class="sample-pangram font-Gumball">Pack my box with five dozen liquor jugs.</div>
+    </div>
+
+    <!-- 3. mariofont (USED) -->
+    <div class="font-card">
+        <div class="window-dots">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="font-name">[3] mariofont (USING)</div>
+        <div class="file-name">assets/fonts/Super Plumber Brothers.ttf</div>
+        <div class="sample-large font-mariofont">The quick brown fox jumps</div>
+        <div class="sample-medium font-mariofont">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</div>
+        <div class="sample-small font-mariofont">abcdefghijklmnopqrstuvwxyz !@#$%^&amp;*()</div>
+        <div class="sample-pangram font-mariofont">Pack my box with five dozen liquor jugs.</div>
+    </div>
+
+    <!-- 4. Proggy (USED) -->
+    <div class="font-card">
+        <div class="window-dots">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="font-name">[4] Proggy (USING)</div>
+        <div class="file-name">assets/fonts/ProggyMonoRegular.ttf</div>
+        <div class="sample-large font-Proggy">The quick brown fox jumps</div>
+        <div class="sample-medium font-Proggy">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</div>
+        <div class="sample-small font-Proggy">abcdefghijklmnopqrstuvwxyz !@#$%^&amp;*()</div>
+        <div class="sample-pangram font-Proggy">Pack my box with five dozen liquor jugs.</div>
+    </div>
+
+    <!-- 5. Rainy (USED) -->
+    <div class="font-card">
+        <div class="window-dots">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="font-name">[5] Rainy (USING)</div>
+        <div class="file-name">assets/fonts/dogicapixel.ttf</div>
+        <div class="sample-large font-Rainy">The quick brown fox jumps</div>
+        <div class="sample-medium font-Rainy">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</div>
+        <div class="sample-small font-Rainy">abcdefghijklmnopqrstuvwxyz !@#$%^&amp;*()</div>
+        <div class="sample-pangram font-Rainy">Pack my box with five dozen liquor jugs.</div>
+    </div>
+
+    <!-- 6. Minecraftia (UNUSED) -->
+    <div class="font-card">
+        <div class="window-dots">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="font-name">[6] Minecraftia (UNUSED)</div>
+        <div class="file-name">assets/fonts/Minecraftia.ttf</div>
+        <div class="sample-large font-Minecraftia">The quick brown fox jumps</div>
+        <div class="sample-medium font-Minecraftia">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</div>
+        <div class="sample-small font-Minecraftia">abcdefghijklmnopqrstuvwxyz !@#$%^&amp;*()</div>
+        <div class="sample-pangram font-Minecraftia">Pack my box with five dozen liquor jugs.</div>
+    </div>
+
+    <!-- 7. Press Start 2P (CDN) -->
+    <div class="font-card">
+        <div class="window-dots">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="font-name">[7] Press Start 2P (CDN)</div>
+        <div class="file-name">fonts.googleapis.com (Google Fonts)</div>
+        <div class="sample-large font-PressStart">The quick brown fox jumps</div>
+        <div class="sample-medium font-PressStart">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</div>
+        <div class="sample-small font-PressStart">abcdefghijklmnopqrstuvwxyz !@#$%^&amp;*()</div>
+        <div class="sample-pangram font-PressStart">Pack my box with five dozen liquor jugs.</div>
+    </div>
+
+    <div class="back-link">
+        <a href="index.html">&lt; back to home</a>
+    </div>
+</body>
+
+</html>
