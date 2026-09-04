@@ -38,6 +38,12 @@
     "discordWelcomeBot": {
       "github": "https://github.com/bogusdeck/Discord-welcome-bot",
       "live": "https://discord.gg/7GBTuQmXAX"
+    },
+    "fasfas": {
+      "github": "https://github.com/bogusdeck/fasfas",
+      "live": "https://xamp-ten.vercel.app",
+      "playstore": "https://play.google.com/store/apps/details?id=org.fasfas.marketplace",
+      "appstore": "https://apps.apple.com/in/app/fasfas-fashion-in-60-mins/id6788795633"
     }
   },
   "tools": {
