@@ -48,6 +48,20 @@
     "cartping": {
       "github": "https://github.com/bogusdeck/CartPing",
       "live": "https://cartping.deqube.co.in"
+    },
+    "minematrix": {
+      "github": "https://github.com/bogusdeck/minematrix"
+    },
+    "chatty": {
+      "github": "https://github.com/bogusdeck/Chatty",
+      "live": "https://chatty.deqube.co.in"
+    },
+    "neuralformExtension": {
+      "github": "https://github.com/bogusdeck/neuralform-extension"
+    },
+    "sqlsaga": {
+      "github": "https://github.com/bogusdeck/SQLsaga",
+      "live": "https://bogusdeck.github.io/SQLsaga/"
     }
   },
   "tools": {
