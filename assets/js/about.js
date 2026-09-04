@@ -233,6 +233,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateButtons() {
         Object.values(buttons).forEach(button => button.classList.add('hidden'));
+        const pagination = document.getElementById('pagination-controls');
+        if (pagination) pagination.classList.add('hidden');
         switch (currentSection) {
             case 'main':
                 buttons.left.classList.remove('hidden');
@@ -259,6 +261,10 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'bottom':
                 buttons.top.classList.remove('hidden');
                 buttons.top.textContent = 'MAIN';
+                if (pagination) {
+                    pagination.classList.remove('hidden');
+                    pagination.classList.add('flex');
+                }
                 break;
         }
     }
@@ -366,7 +372,10 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = startIndex; i > endIndex; i--) {
             const img = document.createElement('img');
             img.src = `${artworkFolder}${i}.jpg`;
-            img.alt = 'Artwork';
+            img.alt = `Artwork ${i}`;
+            img.classList.add('cursor-pointer');
+            img.style.cursor = `url('assets/images/indexbg/pixelboyhead.png') 12 12, pointer`;
+            img.addEventListener('click', () => openArtworkModal(`${artworkFolder}${i}.jpg`));
             artworkContainer.appendChild(img);
         }
 
@@ -375,6 +384,42 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('prev-page').disabled = currentPage === 1;
         document.getElementById('next-page').disabled = currentPage === Math.ceil(totalImages / imagesPerPage);
     }
+
+    const artworkModal = document.getElementById('artwork-modal');
+    const artworkModalImg = document.getElementById('artwork-modal-img');
+    const artworkModalClose = document.getElementById('artwork-modal-close');
+
+    function openArtworkModal(src) {
+        if (!artworkModal || !artworkModalImg) return;
+        artworkModalImg.src = src;
+        artworkModal.classList.remove('hidden');
+        artworkModal.classList.add('flex');
+    }
+
+    function closeArtworkModal() {
+        if (!artworkModal) return;
+        artworkModal.classList.add('hidden');
+        artworkModal.classList.remove('flex');
+        artworkModalImg.src = '';
+    }
+
+    if (artworkModalClose) {
+        artworkModalClose.addEventListener('click', closeArtworkModal);
+    }
+
+    if (artworkModal) {
+        artworkModal.addEventListener('click', (e) => {
+            if (e.target === artworkModal) {
+                closeArtworkModal();
+            }
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && artworkModal && !artworkModal.classList.contains('hidden')) {
+            closeArtworkModal();
+        }
+    });
 
     document.getElementById('prev-page').addEventListener('click', () => {
         if (currentPage > 1) {

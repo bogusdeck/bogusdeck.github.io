@@ -577,7 +577,8 @@ body {
     margin: 0 !important;
     box-sizing: border-box;
     display: grid !important;
-    grid-template-columns: 2rem minmax(0, 1fr);
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
     grid-template-areas:
       "name name"
       "avatar quote";
@@ -605,11 +606,13 @@ body {
     display: none !important;
   }
 
-  .review-card > :first-child > .rounded-full {
+  .review-card > :first-child > .rounded-full,
+  .review-card > :first-child > .pfp-sprite {
     grid-area: avatar;
     align-self: start;
     justify-self: start;
     margin-bottom: 0 !important;
+    flex-shrink: 0;
   }
 
   .review-card > :first-child > h3 {
@@ -629,6 +632,8 @@ body {
     align-items: flex-start !important;
     justify-content: flex-start !important;
     min-width: 0;
+    max-width: 100%;
+    width: 100%;
     height: 100%;
     overflow: hidden;
   }
@@ -637,8 +642,10 @@ body {
     text-align: left !important;
     margin: 0 !important;
     max-width: 100%;
+    width: 100%;
     overflow-wrap: anywhere;
     word-break: break-word;
+    overflow: hidden;
   }
 
   .testimonial-outer-box h2 {
@@ -656,9 +663,29 @@ body {
   }
 
   .review-card .w-16.h-16 {
-    width: 2rem !important;
-    height: 2rem !important;
+    width: 2.25rem !important;
+    height: 2.25rem !important;
   }
+
+  .review-card .pfp-sprite {
+    width: 2.25rem !important;
+    height: 2.25rem !important;
+    background-size: 9rem 9rem !important;
+    background-position: 0 0 !important;
+    border-radius: 50% !important;
+  }
+
+  .review-card .pfp-sprite-0 { background-position: 0 0 !important; }
+  .review-card .pfp-sprite-1 { background-position: -2.25rem 0 !important; }
+  .review-card .pfp-sprite-2 { background-position: -4.5rem 0 !important; }
+  .review-card .pfp-sprite-3 { background-position: -6.75rem 0 !important; }
+  .review-card .pfp-sprite-4 { background-position: 0 -2.25rem !important; }
+  .review-card .pfp-sprite-5 { background-position: -2.25rem -2.25rem !important; }
+  .review-card .pfp-sprite-6 { background-position: -4.5rem -2.25rem !important; }
+  .review-card .pfp-sprite-7 { background-position: -6.75rem -2.25rem !important; }
+  .review-card .pfp-sprite-8 { background-position: 0 -4.5rem !important; }
+  .review-card .pfp-sprite-9 { background-position: -2.25rem -4.5rem !important; }
+  .review-card .pfp-sprite-10 { background-position: -4.5rem -4.5rem !important; }
 
   .review-card .mb-4 {
     margin-bottom: 0 !important;
