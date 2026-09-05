@@ -2,7 +2,7 @@
 
 .game-container,
 #game-container {
-    cursor: url('../images/contact/crosshair.png') 12 12, crosshair;
+    cursor: url('images/crosshair.png') 12 12, crosshair;
     contain: layout paint style;
     isolation: isolate;
 }
@@ -14,7 +14,7 @@
 }
 
 .bird {
-    cursor: url('../images/contact/crosshair.png') 12 12, crosshair;
+    cursor: url('images/crosshair.png') 12 12, crosshair;
     backface-visibility: hidden;
     contain: layout paint;
     image-rendering: pixelated;
@@ -114,7 +114,7 @@
 .bullet {
     width: 8px;
     height: 14px;
-    background-image: url('../images/contact/hud_bullet.png');
+    background-image: url('images/hud_bullet.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -144,7 +144,7 @@
 .hit-icon {
     width: 16px;
     height: 14px;
-    background-image: url('../images/contact/hud_duck_white.png');
+    background-image: url('images/hud_duck_white.png');
     background-size: contain;
     background-repeat: no-repeat;
     image-rendering: pixelated;
@@ -152,7 +152,7 @@
 }
 
 .hit-icon.active {
-    background-image: url('../images/contact/hud_duck_red.png');
+    background-image: url('images/hud_duck_red.png');
 }
 
 /* SCORE Box layout (alternating pink/purple blocks on top) */

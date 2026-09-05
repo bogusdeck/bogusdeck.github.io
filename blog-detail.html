@@ -4,14 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Detail</title>
-    <link rel="icon" type="image/png" href="assets/images/indexbg/pixelboyhead.png">
+    <title>Blog Post</title>
+    <!-- Use the existing icon instead of getting 404 for favicon.ico -->
+    <link rel="icon" type="image/png" href="assets/index/images/pixelboyhead.png">
+    <meta name="description" content="Blog post details.">
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/global.css">
-    <style>
+    
+    <!-- Include components so we can use them! -->
+    <script src="components/navbar-menu.js"></script>
 
+    <style>
         body {
             background-color: black;
             background-repeat: repeat;
@@ -28,237 +33,147 @@
             flex-direction: column;
         }
 
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
+        .blog-content img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid white;
+            margin: 15px 0;
+        }
+        
+        .blog-content a {
+            color: #3b82f6;
+            text-decoration: underline;
         }
 
-        .img {
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
-            image-rendering: pixelated;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 100;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            max-width: 90%;
-            max-height: 90%;
-            overflow-y: auto;
-        }
-
-        .blog-content p {
-            margin-bottom: 1rem;
-        }
-
-        .blog-content ul,
-        .blog-content ol {
-            margin-left: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .blog-content ul li,
-        .blog-content ol li {
-            margin-bottom: 0.5rem;
-        }
-
-        .blog-content h1 {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-        }
-
-        .blog-content h2 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .blog-content h3 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
-
-        .blog-content h4 {
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .blog-content h5 {
-            font-size: 0.7rem;
-            margin-bottom: 1rem;
-        }
-
-        .blog-content h6 {
-            font-size: 0.5rem;
-            margin-bottom: 1rem;
+        .blog-content pre {
+            background: #1f2937;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border: 1px solid #374151;
+            font-family: 'Proggy', monospace;
+            font-size: 16px;
         }
 
         .blog-content code {
             font-family: 'Proggy', monospace;
-            background-color: #333;
-            color: #f8f8f2;
-            padding: 0.2em 0.4em;
-            border-radius: 3px;
+            background: #374151;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 14px;
         }
 
-        .blog-content pre {
-            font-family: 'Proggy', monospace;
-            background-color: #2e2e2e;
-            color: #f8f8f2;
-            padding: 1em;
-            border-radius: 3px;
-            overflow-x: auto;
+        .blog-content p, .blog-content li, .blog-content a {
+            font-family: 'Rainy', monospace;
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
 
-        .blog-content pre code {
-            display: block;
-            white-space: pre-wrap;
-            word-wrap: break-word;
+        .blog-content ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .blog-content ol {
+            list-style-type: decimal;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .blog-content blockquote {
+            border-left: 4px solid #ffcc00;
+            padding-left: 15px;
+            margin-left: 0;
+            margin-bottom: 15px;
+            color: #9ca3af;
+        }
+
+        .blog-content h1, .blog-content h2, .blog-content h3 {
+            font-family: 'Joystick', monospace;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            line-height: 1.4;
+            color: #ffcc00;
         }
     </style>
 </head>
 
 <body>
-    <header class="w-full">
-        <nav class="navbar boxxy">
-            <div class="navbar-desktop items-center justify-between w-full">
-                <div class="flex items-center space-x-4">
-                    <a class="nav-item" href="blog.html">Blog</a>
-                    <a class="nav-item" href="project.html">Projects</a>
-                </div>
-                <a href="/index.html" class="flex items-center justify-center">
-                    <img src="assets/images/indexbg/logo.png" alt="logo" class="h-8 img">
-                </a>
-                <div class="flex items-center space-x-4">
-                    <a class="nav-item" href="about.html">About</a>
-                    <a class="nav-item" href="contact.html">Contact</a>
-                </div>
-            </div>
-            <!-- Hamburger menu -->
-            <div class="md:hidden flex items-center justify-between w-full">
-                <a href="/index.html" class="flex items-center justify-start">
-                    <img src="assets/images/indexbg/logo.png" alt="logo" class="h-8 img">
-                </a>
-                <button id="menu-toggle" class="flex items-center justify-end">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
-            </div>
-            <div id="mobile-menu" class="hidden absolute top-0 right-0 bg-black w-full mt-14 z-50 text-right">
-                <a class="block py-2 px-4 text-white" href="index.html">Home</a>
-                <a class="block py-2 px-4 text-white" href="project.html">Projects</a>
-                <a class="block py-2 px-4 text-white" href="blog.html">Blog</a>
-                <a class="block py-2 px-4 text-white" href="about.html">About</a>
-                <a class="block py-2 px-4 text-white" href="contact.html">Contact</a>
-            </div>
-        </nav>
-    </header>
+    <!-- Using our new navbar component -->
+    <navbar-menu></navbar-menu>
 
-    <main class="py-6 mt-14 w-full px-4 sm:px-16 space-y-8 flex-grow" id="blog-detail-container"></main>
+    <main class="py-6 mt-14 w-full px-4 sm:px-16 space-y-8 flex-grow flex justify-center">
+        <div class="boxxy w-full max-w-4xl p-6 md:p-10" id="blog-detail-container">
+            <div class="text-center">
+                <p class="headingfont text-gray-400">Loading post...</p>
+            </div>
+        </div>
+    </main>
+
     <footer class="flex flex-col md:flex-row items-center justify-center bg-gray-950 bg-opacity-50 py-6 w-full mt-10 gap-2 z-50">
         <p class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px]">Copyright © 2024 --</p>
         <a href="mailto:tanishvashisth@gmail.com"
             class="text-white max-[320px]:text-[8px] text-[10px] lg:text-[16px] underline">tanishvashisth@gmail.com</a>
     </footer>
-    <script>
-        const blogDetailContainer = document.getElementById('blog-detail-container');
-        const urlParams = new URLSearchParams(window.location.search);
-        const postId = urlParams.get('id');
 
-        function fetchPostDetail(id) {
-            fetch(`https://dev.to/api/articles/${id}`)
-                .then(response => response.json())
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get('id');
+            const container = document.getElementById('blog-detail-container');
+
+            if (!postId) {
+                container.innerHTML = '<div class="text-center"><h2 class="title text-red-500">Error</h2><p class="headingfont mt-4">No article ID provided.</p><a href="blog.html" class="mt-6 inline-block bg-gray-700 px-4 py-2 text-white hover:bg-gray-600">Back to Blog</a></div>';
+                return;
+            }
+
+            fetch(`https://dev.to/api/articles/${postId}`)
+                .then(response => {
+                    if (!response.ok) throw new Error('Article not found');
+                    return response.json();
+                })
                 .then(post => {
-                    blogDetailContainer.innerHTML = `
-                        <div class="boxxy p-4 mx-4 relative">
-                            <!-- Dev.to external link icon -->
-                            <a href="${post.url}" target="_blank" rel="noopener noreferrer" class="absolute top-4 right-4 hover:opacity-75 transition-opacity duration-200" title="View original post on Dev.to">
-                                <img src="assets/images/logo/dev_logo.png" alt="Dev.to" class="w-12 h-12 img boxxy">
-                            </a>
-                            <img src="${post.cover_image}" alt="Banner Image" class="img w-8/12 h-auto mb-4 mx-auto block">
-                            <h1 class="text-lg md:text-xl lg:text-2xl font-bold text-center pr-12">${post.title}</h1>
-                            <p class="text-gray-400 mt-2 text-sm text-center"><small>Posted on ${new Date(post.published_at).toDateString()}</small></p>
-                            <div class="blog-content mt-4 textfont text-[12px]">
-                                ${post.body_html}
+                    // Update document title
+                    document.title = post.title;
+                    
+                    const tagsArray = post.tags || [];
+                    const tags = tagsArray.map(tag => `<span class="bg-blue-900 text-white text-[10px] px-2 py-1 mr-2 mb-2 border border-blue-500">#${tag}</span>`).join('');
+                    const coverImage = post.cover_image ? `<img src="${post.cover_image}" alt="Cover Image" class="w-full h-auto mb-6 border-4 border-white">` : '';
+
+                    container.innerHTML = `
+                        <div class="mb-4">
+                            <a href="blog.html" class="text-gray-400 hover:text-white headingfont text-sm">< Back to Posts</a>
+                        </div>
+                        ${coverImage}
+                        <h1 class="text-2xl md:text-3xl font-bold title mb-4 text-white" style="line-height: 1.4;">${post.title}</h1>
+                        <div class="flex items-center mb-6">
+                            <img src="${post.user.profile_image}" alt="${post.user.name}" class="w-10 h-10 rounded-full mr-3 border-2 border-white">
+                            <div>
+                                <p class="headingfont text-sm text-gray-200">${post.user.name}</p>
+                                <p class="headingfont text-xs text-gray-400">${new Date(post.published_at).toDateString()}</p>
                             </div>
                         </div>
+                        <div class="mb-8 flex flex-wrap">
+                            ${tags}
+                        </div>
+                        <div class="blog-content text-gray-200 bg-black bg-opacity-50 p-4 md:p-8 border border-gray-800">
+                            ${post.body_html}
+                        </div>
+                        <div class="mt-8 pt-6 border-t border-gray-800 text-center flex justify-center">
+                            <a href="${post.url}" target="_blank" rel="noopener noreferrer" class="boxxy bg-[#5f5fec] hover:bg-blue-600 px-6 py-3 text-white headingfont inline-flex items-center justify-center gap-4">
+                                <img src="assets/images/logo/dev_logo.png" alt="Dev.to" class="img w-10 h-auto border-2 border-white">
+                                <span>View on Dev.to</span>
+                            </a>
+                        </div>
                     `;
-                    addResponsiveClasses();
-                    addResponsiveCodeClasses();
                 })
-                .catch(error => console.error('Error fetching blog post detail:', error));
-        }
-        function addResponsiveCodeClasses() {
-            const blogContent = document.querySelector('.blog-content');
-            const codes = blogContent.querySelectorAll('code');
-            const pres = blogContent.querySelectorAll('pre');
-
-            codes.forEach(code => {
-                code.classList.add('text-[16px]', 'md:text-[20px]', 'lg:text-[25px]', 'codefont');
-            });
-
-            pres.forEach(pre => {
-                pre.classList.add('text-[16px]', 'md:text-[20px]', 'lg:text-[25px]', 'codefont');
-            });
-        }
-
-
-        function addResponsiveClasses() {
-            const blogContent = document.querySelector('.blog-content');
-            const headings = blogContent.querySelectorAll('h1, h2, h3, h4, h5, h6');
-
-            headings.forEach(heading => {
-                switch (heading.tagName.toLowerCase()) {
-                    case 'h1':
-                        heading.classList.add('text-lg', 'md:text-xl', 'lg:text-2xl', 'headingfont');
-                        break;
-                    case 'h2':
-                        heading.classList.add('text-lg', 'md:text-xl', 'lg:text-2xl', 'headingfont');
-                        break;
-                    case 'h3':
-                        heading.classList.add('text-md', 'md:text-lg', 'lg:text-xl', 'headingfont');
-                        break;
-                    case 'h4':
-                        heading.classList.add('text-sm', 'md:text-md', 'lg:text-lg', 'headingfont');
-                        break;
-                    case 'h5':
-                        heading.classList.add('text-xs', 'md:text-sm', 'lg:text-md', 'headingfont');
-                        break;
-                    case 'h6':
-                        heading.classList.add('text-xs', 'md:text-xs', 'lg:text-sm', 'headingfont');
-                        break;
-                }
-            });
-        }
-
-        if (postId) {
-            fetchPostDetail(postId);
-        } else {
-            blogDetailContainer.innerHTML = '<p class="text-center">Post not found.</p>';
-        }
-
-        document.getElementById('menu-toggle').addEventListener('click', () => {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
+                .catch(error => {
+                    console.error('Error fetching blog post:', error);
+                    container.innerHTML = '<div class="text-center"><h2 class="title text-red-500">Error</h2><p class="headingfont mt-4">Could not load the article. It may have been deleted or the API is down.</p><a href="blog.html" class="mt-6 inline-block bg-gray-700 px-4 py-2 text-white hover:bg-gray-600">Back to Blog</a></div>';
+                });
         });
     </script>
 </body>
-
 </html>

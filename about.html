@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Who am I?</title>
-    <link rel="icon" type="image/png" href="assets/images/indexbg/pixelboyhead.png">
+    <link rel="icon" type="image/png" href="assets/index/images/pixelboyhead.png">
     <link rel="stylesheet" href="assets/css/global.css">
-    <link rel="stylesheet" href="assets/css/about.css">
+    <link rel="stylesheet" href="assets/about/about.css">
     <link rel="stylesheet" href="assets/css/bubblechat.css">
     <meta name="description" content="About Tanish Vashisth — dev notes, CV, pixel artwork, tools and configs.">
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="assets/js/config.js"></script>
+    <script src="assets/js/utils/config.js"></script>
 </head>
 
 <body>
@@ -27,7 +27,7 @@
                     <a class="nav-item text-black" href="project.html">Projects</a>
                 </div>
                 <a href="/index.html" class="flex items-center justify-center">
-                    <img src="assets/images/indexbg/logo.png" alt="logo" class="h-8 img">
+                    <img src="assets/index/images/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <div class="flex items-center space-x-4">
                     <a class="nav-item text-black" href="about.html">About</a>
@@ -37,7 +37,7 @@
             <!-- Hamburger menu -->
             <div class="md:hidden flex items-center justify-between w-full">
                 <a href="/index.html" class="flex items-center justify-start">
-                    <img src="assets/images/indexbg/logo.png" alt="logo" class="h-8 img">
+                    <img src="assets/index/images/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <button id="menu-toggle" class="flex items-center justify-end">
                     <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -71,13 +71,13 @@
 
     <main class="relative w-full h-full overflow-hidden">
         <div id="main" class="Headingfont section flex items-center justify-center bg-gray-500 z-3">
-            <img src="assets/images/about/chickcomputer.gif" alt="chickwithcomputer">
+            <img src="assets/about/images/chickcomputer.gif" alt="chickwithcomputer">
         </div>
 
 
         <div id="left"
             class="section flex items-center justify-center transform -translate-x-full z-1 overflow-y-auto bg-cover bg-bottom img "
-            style="background-image: url('assets/images/about/rf_lg.gif');">
+            style="background-image: url('assets/about/images/rf_lg.gif');">
 
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-10 absolute top-[100px] px-4 w-full left-0 justify-items-center">
                 <a data-notion-note="python">
@@ -159,7 +159,7 @@
                         <a data-social="github" target="_blank" rel="noopener noreferrer"><img src="assets/images/logo/GHub.png" alt="github" class="img w-16 h-auto"></a>
                         <a data-social="linkedin" href="https://www.linkedin.com/in/tanishvashisth/" target="_blank" rel="noopener noreferrer"><img src="assets/images/logo/linkindin.png" alt="linkindin" class="img w-16 h-auto"></a>
                         <a data-social="replit" target="_blank" rel="noopener noreferrer"><img src="assets/images/logo/replit.png" alt="replit" class="img w-16 h-auto"></a>
-                        <a data-social="devto" href="https://dev.to/bogusdeck" target="_blank" rel="noopener noreferrer"><img src="assets/images/logo/dev_logo.png" alt="dev.to" class="img w-16 h-auto"></a>
+                        <a data-social="devto" href="https://dev.to/bogusdeck" target="_blank" rel="noopener noreferrer"><img src="assets/images/logo/dev_logo.png" alt="dev.to" class="img w-16 h-auto border-2 border-white"></a>
                         <a data-social="notion" target="_blank" rel="noopener noreferrer"><img src="assets/images/logo/notion.png" alt="notion" class="img w-16 h-auto"></a>
                     </div>
                 </div>
@@ -174,25 +174,25 @@
                 <div
                     class="order-1 flex flex-row md:flex-col items-center space-x-4 md:space-y-8 md:space-x-0 boxxy p-3">
                     <a data-tool="vscode" target="_blank" class="hover:opacity-75">
-                        <img src="assets/images/asprites/vscode.png" alt="VSCode" class="img w-32 h-auto">
+                        <img src="assets/about/asprites/vscode.png" alt="VSCode" class="img w-32 h-auto">
                     </a>
                     <a data-tool="neovim" target="_blank" class="hover:opacity-75">
-                        <img src="assets/images/asprites/nvim.png" alt="Neovim" class="img w-32 h-auto">
+                        <img src="assets/about/asprites/nvim.png" alt="Neovim" class="img w-32 h-auto">
                     </a>
                     <a data-tool="myConfig" target="_blank" class="hover:opacity-75">
-                        <img src="assets/images/asprites/archL.png" alt="Arch Linux" class="img w-32 h-auto">
+                        <img src="assets/about/asprites/archL.png" alt="Arch Linux" class="img w-32 h-auto">
                     </a>
                 </div>
                 <div
                     class="order-2 flex flex-row md:flex-col items-center space-x-4 md:space-y-8 md:space-x-0 boxxy p-3">
                     <a data-tool="photoshop" target="_blank" class="hover:opacity-75">
-                        <img src="assets/images/asprites/photoshop.png" alt="photoshop" class="img w-32 h-auto">
+                        <img src="assets/about/asprites/photoshop.png" alt="photoshop" class="img w-32 h-auto">
                     </a>
                     <a data-tool="aseprite" target="_blank" class="hover:opacity-75">
-                        <img src="assets/images/asprites/asprite.png" alt="asprite" class="img w-32 h-auto">
+                        <img src="assets/about/asprites/asprite.png" alt="asprite" class="img w-32 h-auto">
                     </a>
                     <a data-tool="discord" target="_blank" class="hover:opacity-75">
-                        <img src="assets/images/asprites/discord.png" alt="discord" class="img w-32 h-auto">
+                        <img src="assets/about/asprites/discord.png" alt="discord" class="img w-32 h-auto">
                     </a>
                 </div>
             </div>
@@ -231,8 +231,8 @@
             class="navigate-button absolute bottom-0 left-1/2 transform -translate-x-1/2 p-2 bg-black bg-opacity-50 text-white z-4">Artwork</button>
     </main>
 
-    <script src="assets/js/constants.js"></script>
-    <script src="assets/js/about.js"></script>
+    <script src="assets/js/utils/constants.js"></script>
+    <script src="assets/about/about.js"></script>
 </body>
 
 </html>

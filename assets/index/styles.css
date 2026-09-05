@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  background-image: url('../images/indexbg/bg0.png');
+  background-image: url('images/bg0.png');
   background-repeat: repeat;
   background-position: top center;
   background-attachment: scroll;

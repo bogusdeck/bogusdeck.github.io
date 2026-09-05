@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tanish's projects</title>
-    <link rel="icon" type="image/png" href="assets/images/indexbg/pixelboyhead.png">
+    <link rel="icon" type="image/png" href="assets/index/images/pixelboyhead.png">
     <link rel="stylesheet" href="assets/css/global.css">
-    <link rel="stylesheet" href="assets/css/project.css">
+    <link rel="stylesheet" href="assets/projects/project.css">
     <meta name="description" content="Projects by Tanish Vashisth — web apps, tools, and open source work.">
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="assets/js/config.js"></script>
+    <script src="assets/js/utils/config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.0.6/dist/locomotive-scroll.min.js"></script>
 </head>
 
@@ -27,7 +27,7 @@
                     <a class="nav-item text-black" href="project.html">Projects</a>
                 </div>
                 <a href="/index.html" class="flex items-center justify-center">
-                    <img src="assets/images/indexbg/logo.png" alt="logo" class="h-8 img">
+                    <img src="assets/index/images/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <div class="flex items-center space-x-4">
                     <a class="nav-item text-black" href="about.html">About</a>
@@ -37,7 +37,7 @@
             <!-- Hamburger menu -->
             <div class="md:hidden flex items-center justify-between w-full">
                 <a href="/index.html" class="flex items-center justify-start">
-                    <img src="assets/images/indexbg/logo.png" alt="logo" class="h-8 img">
+                    <img src="assets/index/images/logo.png" alt="logo" class="h-8 img">
                 </a>
                 <button id="menu-toggle" class="flex items-center justify-end">
                     <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -596,7 +596,7 @@
                 </div>
             </div> -->
             <div class="section relative">
-                <img id="castleImg" src="assets/images/project/castle.png" alt="Castle"
+                <img id="castleImg" src="assets/projects/images/castle.png" alt="Castle"
                     class="castle lg:w-64 lg:h-64 md:w-48 md:h-48 w-64 h-64" />
             </div>
         </div>
@@ -605,13 +605,13 @@
     <div class="hills"></div>
     <div class="floor"></div>
     <div class="character">
-        <img id="characterImg" src="assets/images/project/mario.png" alt="Character"
+        <img id="characterImg" src="assets/projects/images/mario.png" alt="Character"
             class="lg:w-32 lg:h-32 md:w-20 md:h-20 w-24 h-24" />
     </div>
     <div id="muteButton" class="mute-button muted"></div>
-    <audio id="backgroundSound" src="assets/audio/project/mariobgm.mp3" preload="auto" autoplay loop volume="0.5"></audio>
-    <audio id="sectionAppearSound" src="assets/audio/project/smb_coin.wav" preload="auto"></audio>
-    <audio id="characterDisappearSound" src="assets/audio/project/smb_stage_clear.wav" preload="auto"></audio>
+    <audio id="backgroundSound" src="assets/audio/projects/mariobgm.mp3" preload="auto" autoplay loop volume="0.5"></audio>
+    <audio id="sectionAppearSound" src="assets/audio/projects/smb_coin.wav" preload="auto"></audio>
+    <audio id="characterDisappearSound" src="assets/audio/projects/smb_stage_clear.wav" preload="auto"></audio>
 
 
     <div id="modal-bg" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -633,8 +633,8 @@
         </div>
     </footer>
 
-    <script src="assets/js/constants.js"></script>
-    <script src="assets/js/project.js"></script>
+    <script src="assets/js/utils/constants.js"></script>
+    <script src="assets/projects/project.js"></script>
 </body>
 
 </html>

@@ -182,7 +182,7 @@ html {
 
 #pagination-controls .nes-btn,
 #pagination-controls .nes-btn:disabled {
-    cursor: url('../images/indexbg/pixelboyhead.png') 12 12, pointer !important;
+    cursor: url('../index/images/pixelboyhead.png') 12 12, pointer !important;
 }
 
 

@@ -20,13 +20,13 @@ const TERMINAL_LINES = [
 // --------------------------------------------------------------------------
 const ARTWORK_TOTAL_IMAGES = 87;
 const ARTWORK_IMAGES_PER_PAGE = 12;
-const ARTWORK_FOLDER = '/assets/images/artwork/';
+const ARTWORK_FOLDER = '/assets/about/artwork/';
 
 // --------------------------------------------------------------------------
 // 3. PROJECTS PAGE MARIO CONSTANTS (project.js)
 // --------------------------------------------------------------------------
-const MARIO_RUNNING_GIF = "/assets/images/project/mariorunning.gif";
-const MARIO_IDLE_PNG = "/assets/images/project/mario.png";
+const MARIO_RUNNING_GIF = "/assets/projects/images/mariorunning.gif";
+const MARIO_IDLE_PNG = "/assets/projects/images/mario.png";
 const MARIO_VOLUME_LEVEL = 0.3;
 
 // --------------------------------------------------------------------------
@@ -50,9 +50,9 @@ const DUCKHUNT_SOUNDS = {
 
 // Character Image Path definitions
 const DUCKHUNT_IMAGES = {
-  defaultBird: '/assets/images/contact/flyduck.gif',
-  shotBird: '/assets/images/contact/shotduck.png',
-  deadBird: '/assets/images/contact/deadduck.gif',
-  perfectDog: '/assets/images/contact/perfect_dog.gif',
-  laughingDog: '/assets/images/contact/laughingdog.gif'
+  defaultBird: '/assets/contact/images/flyduck.gif',
+  shotBird: '/assets/contact/images/shotduck.png',
+  deadBird: '/assets/contact/images/deadduck.gif',
+  perfectDog: '/assets/contact/images/perfect_dog.gif',
+  laughingDog: '/assets/contact/images/laughingdog.gif'
 };

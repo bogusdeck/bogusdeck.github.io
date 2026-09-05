@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background: url("../images/project/bg.png") repeat-x;
+    background: url("images/bg.png") repeat-x;
     background-size: auto 100%;
     transition: background-position 0.3s ease-out;
     image-rendering: -webkit-optimize-contrast;
@@ -43,7 +43,7 @@ body {
     left: 0;
     width: 100%;
     height: 25vh;
-    background: url("../images/project/bghills.png") repeat-x;
+    background: url("images/bghills.png") repeat-x;
     background-size: auto 100%;
     transition: background-position 0.3s ease-out;
     z-index: 0;
@@ -59,7 +59,7 @@ body {
     left: 0;
     width: 100%;
     height: 10vh;
-    background: url("../images/project/floor.png") repeat-x;
+    background: url("images/floor.png") repeat-x;
     background-size: auto 100%;
     transition: background-position 0.3s ease-out;
     z-index: 2;
@@ -87,7 +87,7 @@ body {
 
 @media (max-width: 768px) {
     body {
-        background: url("../images/project/bgsm.png") repeat-x;
+        background: url("images/bgsm.png") repeat-x;
         background-size: auto 100%;
     }
 
@@ -251,11 +251,11 @@ body {
 }
 
 .mute-button.unmuted {
-    background-image: url('../images/project/qblock.gif');
+    background-image: url('images/qblock.gif');
 }
 
 .mute-button.muted {
-    background-image: url('../images/project/Starman.gif');
+    background-image: url('images/Starman.gif');
 }
 
 @media (max-width: 768px) {

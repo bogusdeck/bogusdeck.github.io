@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
             img.src = `${artworkFolder}${i}.jpg`;
             img.alt = `Artwork ${i}`;
             img.classList.add('cursor-pointer');
-            img.style.cursor = `url('assets/images/indexbg/pixelboyhead.png') 12 12, pointer`;
+            img.style.cursor = `url('assets/index/images/pixelboyhead.png') 12 12, pointer`;
             img.addEventListener('click', () => openArtworkModal(`${artworkFolder}${i}.jpg`));
             artworkContainer.appendChild(img);
         }
