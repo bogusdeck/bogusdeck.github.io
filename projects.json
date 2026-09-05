@@ -1,0 +1,241 @@
+{
+  "projects": [
+    {
+      "name": "FasFas",
+      "slug": "fasfas",
+      "description": "Multi-tenant fashion marketplace platform with brand onboarding, product/inventory management, and admin dashboard. Django REST backend, React Native/Expo mobile app, and Angular web frontend orchestrated with Docker Compose. Features brand auth, catalog parsing, warehouse management, and marketplace APIs.",
+      "tech": ["Django", "React Native", "Expo", "Angular", "TypeScript", "PostgreSQL", "Docker"],
+      "github": "https://github.com/bogusdeck/fasfas",
+      "urls": {
+        "live": "https://xamp-ten.vercel.app",
+        "website": "https://fasfas.in",
+        "playstore": "https://play.google.com/store/apps/details?id=org.fasfas.marketplace",
+        "appstore": "https://apps.apple.com/in/app/fasfas-fashion-in-60-mins/id6788795633"
+      }
+    },
+    {
+      "name": "MineMatrix",
+      "slug": "minematrix",
+      "description": "Rule-guarded Reinforcement Learning environment for Minecraft using Mineflayer, Gymnasium, and Stable-Baselines3. Built an RL agent that learns to play Minecraft under custom safety/rule constraints.",
+      "tech": ["Python", "JavaScript", "Mineflayer", "Gymnasium", "Stable-Baselines3", "Node.js"],
+      "github": "https://github.com/bogusdeck/minematrix",
+      "urls": {}
+    },
+    {
+      "name": "SQL Saga",
+      "slug": "sqlsaga",
+      "description": "An interactive terminal game that teaches SQL through a narrative mystery story. Players solve puzzles by writing real queries against an embedded engine.",
+      "tech": ["Go", "Bubble Tea", "Shell", "Ruby"],
+      "github": "https://github.com/bogusdeck/SQLsaga",
+      "urls": {
+        "live": "https://bogusdeck.github.io/SQLsaga/"
+      }
+    },
+    {
+      "name": "Chatty",
+      "slug": "chatty",
+      "description": "Secure 1-to-1 WebRTC video calling app with terminal aesthetics. Peer-to-peer encrypted, no recordings/logs persisted. Built-in games (Newlywed, Battleship), chat, screen sharing, and ring light — Go backend with vanilla JS frontend.",
+      "tech": ["Go", "JavaScript", "WebRTC", "HTML", "CSS"],
+      "github": "https://github.com/bogusdeck/Chatty",
+      "urls": {
+        "live": "https://chatty.deqube.co.in"
+      }
+    },
+    {
+      "name": "RIL IMS (Telecom Infrastructure Management)",
+      "slug": "ril-ims",
+      "description": "Full-stack telecom inventory platform (RILIMS) for managing data centers, racks, servers, and power analysis. Excel upload with validation, role-based auth (admin/circle_head), and an analytics dashboard with charts.",
+      "tech": ["FastAPI", "React", "PostgreSQL", "TypeScript", "Recharts", "Python"],
+      "github": "https://github.com/bogusdeck/RIL_IMS",
+      "urls": {}
+    },
+    {
+      "name": "CartPing",
+      "slug": "cartping",
+      "description": "Shopify app for abandoned cart recovery via WhatsApp for Indian D2C brands. Go backend + React/Vite/Tailwind frontend. Shopify OAuth/webhooks, WhatsApp provider integration, deployed on Oracle Cloud ARM with Nginx.",
+      "tech": ["Go", "React", "Vite", "Tailwind", "PostgreSQL", "Supabase", "Shopify API", "Nginx"],
+      "github": "https://github.com/bogusdeck/CartPing",
+      "urls": {
+        "live": "https://cartping.deqube.co.in"
+      }
+    },
+    {
+      "name": "NeuralForm Extension",
+      "slug": "neuralform-extension",
+      "description": "AI-powered Firefox extension (Manifest V3) for intelligent form auto-fill. Detects fields via name/id/placeholder/label/aria and fills personal/contact/address data. Firebase Firestore cloud sync with local fallback, hybrid AI for smart field detection, and a GSAP-animated landing page.",
+      "tech": ["JavaScript", "HTML", "CSS", "Python", "Firebase", "Firestore", "GSAP"],
+      "github": "https://github.com/bogusdeck/neuralform-extension",
+      "urls": {}
+    },
+    {
+      "name": "mcp-phabricator",
+      "slug": "mcp-phabricator",
+      "description": "A Model Context Protocol (MCP) server for Phabricator. Manage tasks, view revisions, and perform stack-aware code reviews with AI agents.",
+      "tech": ["TypeScript", "Node.js", "Model Context Protocol"],
+      "github": "https://github.com/bogusdeck/mcp-phabricator",
+      "urls": {}
+    },
+    {
+      "name": "Cipherify",
+      "slug": "cipherify",
+      "description": "Agency website built with GSAP animations and React. Smooth scroll-driven transitions and a polished, motion-heavy UI.",
+      "tech": ["React", "TypeScript", "GSAP", "CSS"],
+      "github": "https://github.com/bogusdeck/Cipherify",
+      "urls": {
+        "live": "https://cipherifyweb.vercel.app"
+      }
+    },
+    {
+      "name": "Casio Mod (Smartwatch PCB)",
+      "slug": "casio-mod",
+      "description": "Custom PCB smartwatch built inside a Casio F91W case. ESP32-C3 Mini, LiPo + charging circuit, custom LCD, magnetic pogo-pin charger. Long-distance watch-to-watch messaging over a Wi-Fi API. KiCad PCB design and ESP32 firmware with NTP sync and low-power UI.",
+      "tech": ["C", "ESP32-C3", "KiCad", "Kotlin", "Python"],
+      "github": "https://github.com/bogusdeck/casio-mod",
+      "urls": {}
+    },
+    {
+      "name": "Rune (Terminal AI Note Companion)",
+      "slug": "rune",
+      "description": "A terminal-based AI note-taking companion. Study topics, co-write markdown notes with an LLM, and preview them live — all from your terminal.",
+      "tech": ["Go", "Bubble Tea", "HTML", "CSS", "JavaScript"],
+      "github": "https://github.com/bogusdeck/Rune",
+      "urls": {
+        "live": "https://runecli.vercel.app/"
+      }
+    },
+    {
+      "name": "codemap.nvim",
+      "slug": "codemap-nvim",
+      "description": "Neovim plugin for competitive programming & scratch work. Two-pane workspace with shared input.txt/output.txt, runs Go/Python/JS/TS/Java/C++/Rust/Ruby, error highlighting, and nvim-dap debugging for Go/Python.",
+      "tech": ["Lua", "Neovim", "nvim-dap"],
+      "github": "https://github.com/bogusdeck/codemap.nvim",
+      "urls": {}
+    },
+    {
+      "name": "bogusvim",
+      "slug": "bogusvim",
+      "description": "Personal Neovim configuration. Lua-based setup with plugins, LSP, keymaps, and custom UI tuned for a fast development workflow.",
+      "tech": ["Lua", "Neovim", "LSP"],
+      "github": "https://github.com/bogusdeck/bogusvim",
+      "urls": {}
+    },
+    {
+      "name": "Discord Issue Bot",
+      "slug": "discord-issue",
+      "description": "Discord bot for GitHub issue management. Creates, tracks, and syncs GitHub issues directly from Discord channels via slash commands for creation, assignment, labels, and status updates.",
+      "tech": ["JavaScript", "Python", "discord.js", "GitHub API"],
+      "github": "https://github.com/bogusdeck/discord-issue",
+      "urls": {}
+    },
+    {
+      "name": "Capitalmini",
+      "slug": "capitalmini",
+      "description": "Financial calculator web app with EMI calculator for loans, hero carousel with Swiper, and a responsive UI. Work Sans + JetBrains Mono fonts with a gold/dark palette.",
+      "tech": ["Next.js 15", "React 19", "TypeScript", "Tailwind", "Swiper"],
+      "github": "https://github.com/bogusdeck/Capitalmini",
+      "urls": {
+        "live": "https://capitalmini.vercel.app"
+      }
+    },
+    {
+      "name": "Hyrelater (Job Portal)",
+      "slug": "hyrelater",
+      "description": "Job portal platform with employer/candidate registration, profiles, job listings, and applications. Django Tastypie REST API + Angular frontend with Bootstrap UI. Auth (signup/login) and PostgreSQL-ready.",
+      "tech": ["Django", "Angular", "Bootstrap", "Python", "Tastypie REST"],
+      "github": "https://github.com/bogusdeck/hyrelater",
+      "urls": {}
+    },
+    {
+      "name": "Mine Companion",
+      "slug": "mine-companion",
+      "description": "Minecraft AI/automation project. Mineflayer bot (Node.js) connects to a Paper/Spigot 1.20.x server while a Python RL agent learns to play via reinforcement learning. Offline-mode support for testing.",
+      "tech": ["JavaScript", "Python", "Mineflayer", "Node.js", "Paper", "Spigot"],
+      "github": "https://github.com/bogusdeck/Mine-companion",
+      "urls": {}
+    },
+    {
+      "name": "Pearch Plugin",
+      "slug": "pearch-plugin",
+      "description": "Browser companion plugin for Phabricator — quick search and lookup utilities for code reviews and tasks.",
+      "tech": ["Python", "JavaScript", "CSS"],
+      "github": "https://github.com/bogusdeck/Pearch-Plugin",
+      "urls": {}
+    },
+    {
+      "name": "PhabTask (VS Code)",
+      "slug": "phabtask",
+      "description": "VS Code extension that surfaces tasks assigned to you in Phabricator right inside the editor for faster triage.",
+      "tech": ["TypeScript", "JavaScript", "VS Code API"],
+      "github": "https://github.com/bogusdeck/PhabTask",
+      "urls": {}
+    },
+    {
+      "name": "GitHub Profile Graphs",
+      "slug": "github-profile-graphs",
+      "description": "Web app that generates graphs and stats cards for your GitHub profile README from the GitHub API.",
+      "tech": ["TypeScript", "Next.js", "GitHub API", "CSS"],
+      "github": "https://github.com/bogusdeck/Github-Profile-Graphs",
+      "urls": {}
+    },
+    {
+      "name": "Tamely",
+      "slug": "tamely",
+      "description": "Task management app with secure Firebase Authentication. Create, track, and manage tasks with dynamic timers, real-time progress dashboard, sections for completed and dropped tasks, and a detailed project log. Hosted on Vercel.",
+      "tech": ["JavaScript", "Firebase", "CSS"],
+      "github": "https://github.com/bogusdeck/Tamely",
+      "urls": {
+        "live": "https://tamely.vercel.app/"
+      }
+    },
+    {
+      "name": "TaskTreasury",
+      "slug": "task-treasury",
+      "description": "Web application with auth system and REST API endpoints for task management.",
+      "tech": ["JavaScript", "Python", "HTML", "CSS"],
+      "github": "https://github.com/bogusdeck/TaskTreasury",
+      "urls": {
+        "live": "https://tasktreasury.vercel.app/"
+      }
+    },
+    {
+      "name": "ReviewReward",
+      "slug": "review-reward",
+      "description": "Reward-based review platform web app.",
+      "tech": ["JavaScript", "Python", "CSS"],
+      "github": "https://github.com/bogusdeck/ReviewReward",
+      "urls": {
+        "live": "https://reviewreward.vercel.app/"
+      }
+    },
+    {
+      "name": "Review Authenticity Checker",
+      "slug": "review-authenticity-checker",
+      "description": "API to check if a text review is computer-generated (fake) or original (truthful).",
+      "tech": ["Python", "Procfile"],
+      "github": "https://github.com/bogusdeck/TEXT--review-checker-API",
+      "urls": {
+        "live": "https://reviewreward-production.up.railway.app/"
+      }
+    },
+    {
+      "name": "Discord Welcome Bot",
+      "slug": "discord-welcome-bot",
+      "description": "Discord welcome bot for technical servers, designed with a computer-geek aesthetic.",
+      "tech": ["Python", "discord.py"],
+      "github": "https://github.com/bogusdeck/Discord-welcome-bot",
+      "urls": {
+        "live": "https://discord.gg/7GBTuQmXAX"
+      }
+    },
+    {
+      "name": "RashtriyaTV News",
+      "slug": "rashtriyatv-news",
+      "description": "News frontend for rashtriyatv.com.",
+      "tech": ["JavaScript", "CSS"],
+      "github": "https://github.com/bogusdeck/rashtriyatv-news",
+      "urls": {
+        "live": "https://www.rashtriyatv.com/"
+      }
+    }
+  ]
+}
