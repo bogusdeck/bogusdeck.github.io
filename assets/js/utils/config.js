@@ -1,6 +1,6 @@
 // Configuration loader
 function loadConfig() {
-  return fetch('/config.json')
+  return fetch('data/config.json')
     .then(response => {
       if (!response.ok) {
         throw new Error('Failed to load configuration');
