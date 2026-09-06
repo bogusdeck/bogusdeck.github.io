@@ -1,0 +1,736 @@
+/* ==========================================================================
+   STUDY MATERIAL & ROADMAP STYLESHEET
+   Retro pixel art theme matching the main website
+   ========================================================================== */
+
+body {
+    background-color: #0d0d1a;
+    color: #fff;
+    font-family: 'Joystick', monospace;
+    padding-top: 53px;
+}
+
+/* --------------------------------------------------------------------------
+   1. STUDY INDEX PAGE (Topic Grid)
+   -------------------------------------------------------------------------- */
+.study-hero {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #1a1a2e;
+    background-image: url('../study/images/pixel_night_library.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.study-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(13, 13, 26, 0.7);
+    pointer-events: none;
+}
+
+.study-hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.study-hero-title {
+    font-family: 'Gumball', monospace;
+    font-size: clamp(2rem, 8vw, 5rem);
+    color: #ffcc00;
+    text-shadow: 4px 4px 0px #000, 8px 8px 0px #333;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.study-hero-subtitle {
+    font-family: 'Joystick', monospace;
+    font-size: clamp(0.8rem, 2.5vw, 1.2rem);
+    color: #ccc;
+    text-shadow: 2px 2px 0px #000;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.study-topics-grid {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.study-topics-title {
+    font-family: 'Joystick', monospace;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: #fff;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-shadow: 3px 3px 0px #000;
+}
+
+.study-topics-grid .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.topic-card {
+    position: relative;
+    background: #0d0d1a;
+    border: 4px solid #fff;
+    box-shadow: 
+        0 -4px #000, 0 -8px #fff, 
+        4px 0 #000, 4px -4px #fff, 8px 0 #fff, 
+        0 4px #000, 0 8px #fff, 
+        -4px 0 #000, -4px 4px #fff, -8px 0 #fff, 
+        -4px -4px #fff, 4px 4px #fff;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    overflow: hidden;
+}
+
+.topic-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 
+        0 -8px #000, 0 -12px #fff, 
+        8px 0 #000, 8px -8px #fff, 12px 0 #fff, 
+        0 8px #000, 0 12px #fff, 
+        -8px 0 #000, -8px 8px #fff, -12px 0 #fff, 
+        -8px -8px #fff, 8px 8px #fff;
+}
+
+.topic-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,204,0,0.1) 0%, rgba(255,204,0,0) 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.topic-card:hover::before {
+    opacity: 1;
+}
+
+.topic-card-icon {
+    width: 80px;
+    height: 80px;
+    margin: 1.5rem auto 1rem;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    filter: drop-shadow(4px 4px 0px #000);
+}
+
+.topic-card-title {
+    font-family: 'Joystick', monospace;
+    font-size: 1.2rem;
+    color: #ffcc00;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 0px #000;
+}
+
+.topic-card-desc {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    color: #aaa;
+    text-align: center;
+    padding: 0 1rem 1.5rem;
+    line-height: 1.5;
+}
+
+.topic-card-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: #222;
+}
+
+.topic-card-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #8cd600, #ffcc00);
+    transition: width 0.5s ease;
+}
+
+/* --------------------------------------------------------------------------
+   2. TOPIC DETAIL PAGE (Roadmap + Materials)
+   -------------------------------------------------------------------------- */
+.topic-page {
+    min-height: 100vh;
+    background: #0d0d1a;
+}
+
+.topic-header {
+    position: relative;
+    padding: 6rem 2rem 4rem;
+    text-align: center;
+    background-color: #1a1a2e;
+    background-image: url('../study/images/pixel_night_library.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    border-bottom: 4px solid #fff;
+    box-shadow: 0 8px 0 #ffcc00, 0 12px 0 #000;
+}
+
+.topic-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(13, 13, 26, 0.7);
+    pointer-events: none;
+}
+
+.topic-header-content {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.topic-icon-large {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    filter: drop-shadow(6px 6px 0px #000);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.topic-title {
+    font-family: 'Gumball', monospace;
+    font-size: clamp(2rem, 6vw, 4rem);
+    color: #ffcc00;
+    text-shadow: 4px 4px 0px #000, 8px 8px 0px #333;
+    margin-bottom: 1rem;
+}
+
+.topic-tagline {
+    font-family: 'Joystick', monospace;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: #8cd600;
+    text-shadow: 2px 2px 0px #000;
+    margin-bottom: 2rem;
+}
+
+.topic-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.topic-meta-item {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.65rem;
+    padding: 0.5rem 1rem;
+    background: #000;
+    border: 2px solid #fff;
+    box-shadow: 2px 2px 0px #ffcc00;
+    color: #fff;
+}
+
+.topic-meta-item span {
+    color: #ffcc00;
+    font-weight: bold;
+}
+
+/* Roadmap Section */
+.roadmap-section {
+    padding: 4rem 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.roadmap-title {
+    font-family: 'Joystick', monospace;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: #fff;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    text-shadow: 3px 3px 0px #000;
+    position: relative;
+}
+
+.roadmap-title::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #8cd600, #ffcc00);
+    margin: 1rem auto 0;
+    box-shadow: 0 2px 0 #000;
+}
+
+.roadmap-phases {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.roadmap-phase {
+    position: relative;
+    background: #1a1a2e;
+    border: 4px solid #fff;
+    box-shadow: 
+        0 -4px #000, 0 -8px #fff, 
+        4px 0 #000, 4px -4px #fff, 8px 0 #fff, 
+        0 4px #000, 0 8px #fff, 
+        -4px 0 #000, -4px 4px #fff, -8px 0 #fff, 
+        -4px -4px #fff, 4px 4px #fff;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.roadmap-phase:hover {
+    transform: translateX(8px);
+    box-shadow: 
+        0 -4px #000, 0 -8px #fff, 
+        4px 0 #000, 4px -4px #fff, 8px 0 #fff, 
+        0 4px #000, 0 8px #fff, 
+        -4px 0 #000, -4px 4px #fff, -8px 0 #fff, 
+        -4px -4px #fff, 4px 4px #fff,
+        8px 8px 0px #ffcc00;
+}
+
+.roadmap-phase-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.roadmap-phase-number {
+    font-family: 'Gumball', monospace;
+    font-size: 2rem;
+    color: #ffcc00;
+    text-shadow: 3px 3px 0px #000;
+    min-width: 60px;
+}
+
+.roadmap-phase-title {
+    font-family: 'Joystick', monospace;
+    font-size: 1.3rem;
+    color: #fff;
+    text-shadow: 2px 2px 0px #000;
+    flex: 1;
+    min-width: 150px;
+}
+
+.roadmap-phase-duration {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    color: #8cd600;
+    background: #000;
+    border: 2px solid #8cd600;
+    padding: 0.3rem 0.8rem;
+    box-shadow: 2px 2px 0px #000;
+}
+
+.roadmap-phase-desc {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.65rem;
+    color: #ccc;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.roadmap-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.roadmap-topic-tag {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.55rem;
+    padding: 0.4rem 0.8rem;
+    background: #000;
+    border: 2px solid #333;
+    color: #aaa;
+    transition: all 0.2s ease;
+    box-shadow: 1px 1px 0px #000;
+}
+
+.roadmap-topic-tag:hover {
+    border-color: #ffcc00;
+    color: #ffcc00;
+    transform: translateY(-2px);
+    box-shadow: 2px 2px 0px #ffcc00;
+}
+
+.roadmap-topic-tag.completed {
+    border-color: #8cd600;
+    color: #8cd600;
+    background: rgba(140, 214, 0, 0.1);
+}
+
+.roadmap-topic-tag.current {
+    border-color: #ffcc00;
+    color: #ffcc00;
+    background: rgba(255, 204, 0, 0.1);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/* Resources Section */
+.resources-section {
+    padding: 4rem 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #1a1a2e;
+    border-top: 4px solid #fff;
+    border-bottom: 4px solid #fff;
+    box-shadow: 0 -8px 0 #ffcc00, 0 -12px 0 #000;
+}
+
+.resources-title {
+    font-family: 'Joystick', monospace;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: #fff;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    text-shadow: 3px 3px 0px #000;
+}
+
+.resources-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.resources-tab {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.65rem;
+    padding: 0.6rem 1.2rem;
+    background: #000;
+    border: 2px solid #333;
+    color: #aaa;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 2px 2px 0px #000;
+}
+
+.resources-tab:hover {
+    border-color: #ffcc00;
+    color: #ffcc00;
+}
+
+.resources-tab.active {
+    border-color: #8cd600;
+    color: #8cd600;
+    background: rgba(140, 214, 0, 0.1);
+    box-shadow: 2px 2px 0px #8cd600;
+}
+
+.resources-content {
+    display: none;
+}
+
+.resources-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.resource-category {
+    margin-bottom: 2rem;
+}
+
+.resource-category-title {
+    font-family: 'Joystick', monospace;
+    font-size: 1rem;
+    color: #ffcc00;
+    text-shadow: 2px 2px 0px #000;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px dashed #333;
+}
+
+.resource-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.resource-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: #0d0d1a;
+    border: 2px solid #222;
+    box-shadow: 2px 2px 0px #000;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.resource-item:hover {
+    border-color: #ffcc00;
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px #ffcc00, 4px 4px 0px #000;
+}
+
+.resource-item-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    filter: drop-shadow(2px 2px 0px #000);
+}
+
+.resource-item-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.resource-item-title {
+    font-family: 'Joystick', monospace;
+    font-size: 0.8rem;
+    color: #fff;
+    text-shadow: 1px 1px 0px #000;
+    margin-bottom: 0.25rem;
+}
+
+.resource-item-desc {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.5rem;
+    color: #888;
+    line-height: 1.4;
+}
+
+.resource-item-type {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    background: #000;
+    border: 1px solid #333;
+    color: #8cd600;
+    white-space: nowrap;
+    margin-top: 0.5rem;
+    display: inline-block;
+}
+
+/* Progress Tracker */
+.progress-section {
+    padding: 4rem 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.progress-title {
+    font-family: 'Joystick', monospace;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: #fff;
+    margin-bottom: 2rem;
+    text-shadow: 3px 3px 0px #000;
+}
+
+.progress-circle {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 2rem;
+}
+
+.progress-circle svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.progress-circle-bg {
+    fill: none;
+    stroke: #222;
+    stroke-width: 12;
+}
+
+.progress-circle-fill {
+    fill: none;
+    stroke: url(#progressGradient);
+    stroke-width: 12;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s ease;
+}
+
+.progress-circle-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Gumball', monospace;
+    font-size: 3rem;
+    color: #ffcc00;
+    text-shadow: 3px 3px 0px #000;
+}
+
+.progress-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.progress-stat {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    color: #ccc;
+}
+
+.progress-stat-value {
+    font-family: 'Gumball', monospace;
+    font-size: 2rem;
+    color: #8cd600;
+    text-shadow: 2px 2px 0px #000;
+    display: block;
+}
+
+/* Footer CTA */
+.study-footer {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: #0d0d1a;
+    border-top: 4px solid #fff;
+    box-shadow: 0 -8px 0 #ffcc00, 0 -12px 0 #000;
+}
+
+.study-footer-text {
+    font-family: 'Joystick', monospace;
+    font-size: 1.2rem;
+    color: #fff;
+    text-shadow: 2px 2px 0px #000;
+    margin-bottom: 1.5rem;
+}
+
+.study-footer-link {
+    display: inline-block;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    padding: 0.8rem 1.5rem;
+    background: #000;
+    border: 2px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 4px 4px 0px #ffcc00, 4px 4px 0px #000;
+}
+
+.study-footer-link:hover {
+    background: #ffcc00;
+    color: #000;
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #fff, 6px 6px 0px #000;
+}
+
+/* --------------------------------------------------------------------------
+   3. RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .study-topics-grid {
+        padding: 2rem 1rem;
+    }
+    
+    .study-topics-grid .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .topic-header {
+        padding: 5rem 1rem 3rem;
+    }
+    
+    .roadmap-section,
+    .resources-section,
+    .progress-section {
+        padding: 2rem 1rem;
+    }
+    
+    .roadmap-phase-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .roadmap-phase:hover {
+        transform: none;
+    }
+    
+    .resource-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .progress-stats {
+        gap: 1rem;
+    }
+    
+    .progress-stat {
+        font-size: 0.55rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   4. PRINT STYLES
+   -------------------------------------------------------------------------- */
+@media print {
+    .topic-header::before,
+    .roadmap-phase:hover,
+    .resource-item:hover,
+    .study-footer-link:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    
+    .resources-tabs,
+    .progress-circle {
+        display: none;
+    }
+    
+    .resources-content {
+        display: block !important;
+    }
+}

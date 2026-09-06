@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Engineer Study Roadmap</title>
+    <link rel="icon" type="image/png" href="../assets/index/images/pixelboyhead.png">
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="../assets/css/study.css">
+    <meta name="description" content="AI Engineer learning roadmap — from fundamentals to advanced ML/AI systems. Retro pixel art themed study guide.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../assets/js/utils/config.js"></script>
+</head>
+
+<body>
+    <header class="w-full">
+        <nav class="navbar">
+            <div class="navbar-desktop items-center justify-between w-full">
+                <div class="flex items-center space-x-4">
+                    <a class="nav-item" href="../blog.html">Blog</a>
+                    <a class="nav-item" href="../project.html">Projects</a>
+                </div>
+                <a href="../index.html" class="flex items-center justify-center">
+                    <img src="../assets/index/images/logo.png" alt="logo" class="h-8 img">
+                </a>
+                <div class="flex items-center space-x-4">
+                    <a class="nav-item" href="../about.html">About</a>
+                    <a class="nav-item" href="../contact.html">Contact</a>
+                    <a class="nav-item" href="index.html">Study</a>
+                </div>
+            </div>
+            <!-- Hamburger menu -->
+            <div class="md:hidden flex items-center justify-between w-full">
+                <a href="../index.html" class="flex items-center justify-start">
+                    <img src="../assets/index/images/logo.png" alt="logo" class="h-8 img">
+                </a>
+                <button id="menu-toggle" class="flex items-center justify-end">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden absolute top-0 right-0 bg-black w-full mt-14 z-50 text-right">
+                <a class="block py-2 px-4 text-white" href="../index.html">Home</a>
+                <a class="block py-2 px-4 text-white" href="../project.html">Projects</a>
+                <a class="block py-2 px-4 text-white" href="../blog.html">Blog</a>
+                <a class="block py-2 px-4 text-white" href="../about.html">About</a>
+                <a class="block py-2 px-4 text-white" href="../contact.html">Contact</a>
+                <a class="block py-2 px-4 text-white" href="index.html">Study</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="study-hero">
+        <div class="study-hero-content">
+            <h1 class="study-hero-title">AI ENGINEER ROADMAP</h1>
+            <p class="study-hero-subtitle">Master the skills to build and deploy AI/ML systems. From fundamentals to advanced LLMs, MLOps, and production AI.</p>
+<div class="flex justify-center gap-4 flex-wrap">
+                <span class="topic-meta-item"><span>1</span> Topic</span>
+                <span class="topic-meta-item"><span>50+</span> Resources</span>
+                <span class="topic-meta-item"><span>∞</span> Growth</span>
+            </div>
+        </div>
+        <!-- Pixel decoration -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2" style="font-size: 2rem; color: #ffcc00; text-shadow: 2px 2px 0px #000; animation: bounce 1.5s infinite;">
+            <span>▼</span>
+            <span style="animation-delay: 0.1s;">▼</span>
+            <span style="animation-delay: 0.2s;">▼</span>
+        </div>
+    </section>
+
+    <!-- Topics Grid -->
+    <section class="study-topics-grid">
+        <h2 class="study-topics-title">YOUR AI ENGINEER JOURNEY</h2>
+        
+        <div class="grid" id="topicsGrid">
+            <!-- Topic cards will be rendered by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <footer class="study-footer">
+        <p class="study-footer-text">Ready to start your AI Engineering journey?</p>
+        <a href="ai-engineer/index.html" class="study-footer-link">START LEARNING</a>
+        <p style="margin-top: 2rem; font-family: 'Press Start 2P', cursive; font-size: 0.6rem; color: #666;">
+            Built with passion for aspiring AI Engineers
+        </p>
+    </footer>
+
+    <script>
+        // Topic data - AI Engineer focus
+        const topics = [
+            {
+                id: 'ai-engineer',
+                title: 'AI Engineer',
+                desc: 'Complete roadmap to become an AI Engineer: ML fundamentals, deep learning, LLMs, MLOps, and production AI systems.',
+                icon: '🤖',
+                progress: 0,
+                path: 'ai-engineer/index.html',
+                color: '#ff6b6b'
+            }
+        ];
+
+        // Render topic cards
+        const grid = document.getElementById('topicsGrid');
+        
+        topics.forEach((topic, index) => {
+            const card = document.createElement('a');
+            card.href = topic.path;
+            card.className = 'topic-card';
+            card.style.setProperty('--topic-color', topic.color);
+            card.innerHTML = `
+                <div class="topic-card-icon" style="font-size: 3rem; filter: drop-shadow(4px 4px 0px #000);">${topic.icon}</div>
+                <h3 class="topic-card-title">${topic.title}</h3>
+                <p class="topic-card-desc">${topic.desc}</p>
+                <div class="topic-card-progress">
+                    <div class="topic-card-progress-bar" style="width: ${topic.progress}%; background: ${topic.color};"></div>
+                </div>
+            `;
+            // Stagger animation
+            card.style.animationDelay = `${index * 0.1}s`;
+            card.style.animation = 'fadeInUp 0.5s ease forwards';
+            card.style.opacity = '0';
+            grid.appendChild(card);
+        });
+
+        // Add fadeInUp animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+                40% { transform: translateY(-10px); }
+                60% { transform: translateY(-5px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+
+</html>

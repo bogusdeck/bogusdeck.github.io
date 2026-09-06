@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Engineer Roadmap</title>
+    <link rel="icon" type="image/png" href="../../assets/index/images/pixelboyhead.png">
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/global.css">
+    <link rel="stylesheet" href="../../assets/css/study.css">
+    <meta name="description" content="AI Engineer learning roadmap — from fundamentals to advanced ML/AI systems. Retro pixel art themed study guide.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../../assets/js/utils/config.js"></script>
+</head>
+
+<body>
+    <header class="w-full">
+        <nav class="navbar">
+            <div class="navbar-desktop items-center justify-between w-full">
+                <div class="flex items-center space-x-4">
+                    <a class="nav-item" href="../../blog.html">Blog</a>
+                    <a class="nav-item" href="../../project.html">Projects</a>
+                </div>
+                <a href="../../index.html" class="flex items-center justify-center">
+                    <img src="../../assets/index/images/logo.png" alt="logo" class="h-8 img">
+                </a>
+                <div class="flex items-center space-x-4">
+                    <a class="nav-item" href="../../about.html">About</a>
+                    <a class="nav-item" href="../../contact.html">Contact</a>
+                    <a class="nav-item" href="../index.html">Study</a>
+                </div>
+            </div>
+            <!-- Hamburger menu -->
+            <div class="md:hidden flex items-center justify-between w-full">
+                <a href="../../index.html" class="flex items-center justify-start">
+                    <img src="../../assets/index/images/logo.png" alt="logo" class="h-8 img">
+                </a>
+                <button id="menu-toggle" class="flex items-center justify-end">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden absolute top-0 right-0 bg-black w-full mt-14 z-50 text-right">
+                <a class="block py-2 px-4 text-white" href="../../index.html">Home</a>
+                <a class="block py-2 px-4 text-white" href="../../project.html">Projects</a>
+                <a class="block py-2 px-4 text-white" href="../../blog.html">Blog</a>
+                <a class="block py-2 px-4 text-white" href="../../about.html">About</a>
+                <a class="block py-2 px-4 text-white" href="../../contact.html">Contact</a>
+                <a class="block py-2 px-4 text-white" href="../index.html">Study</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Topic Header -->
+    <section class="topic-header">
+        <div class="topic-header-content">
+            <div class="topic-icon-large" style="font-size: 4rem; filter: drop-shadow(6px 6px 0px #000);">🤖</div>
+            <h1 class="topic-title">AI ENGINEER ROADMAP</h1>
+            <p class="topic-tagline">From ML Fundamentals to Production AI Systems</p>
+            <div class="topic-meta">
+                <span class="topic-meta-item">Level: <span>Beginner → Advanced</span></span>
+                <span class="topic-meta-item">Duration: <span>6-12 Months</span></span>
+                <span class="topic-meta-item">Projects: <span>5+ Portfolio Projects</span></span>
+                <span class="topic-meta-item">Skills: <span>ML, DL, LLMs, MLOps</span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section class="roadmap-section">
+        <h2 class="roadmap-title">LEARNING PATH</h2>
+        
+        <div class="roadmap-phases">
+            <!-- Phase 1 -->
+            <div class="roadmap-phase">
+                <div class="roadmap-phase-header">
+                    <div class="roadmap-phase-number">01</div>
+                    <div>
+                        <h3 class="roadmap-phase-title">Foundations</h3>
+                        <p class="roadmap-phase-desc">Mathematics for ML (linear algebra, calculus, probability), Python programming, data manipulation with Pandas/Numpy, and basic statistics.</p>
+                    </div>
+                    <div class="roadmap-phase-duration">4-6 weeks</div>
+                </div>
+                <div class="roadmap-topics">
+                    <span class="roadmap-topic-tag">Linear Algebra</span>
+                    <span class="roadmap-topic-tag">Calculus</span>
+                    <span class="roadmap-topic-tag">Probability</span>
+                    <span class="roadmap-topic-tag">Python</span>
+                    <span class="roadmap-topic-tag">Pandas</span>
+                    <span class="roadmap-topic-tag">NumPy</span>
+                    <span class="roadmap-topic-tag">Statistics</span>
+                    <span class="roadmap-topic-tag">Data Visualization</span>
+                    <span class="roadmap-topic-tag completed">Environment Setup</span>
+                </div>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="roadmap-phase">
+                <div class="roadmap-phase-header">
+                    <div class="roadmap-phase-number">02</div>
+                    <div>
+                        <h3 class="roadmap-phase-title">Machine Learning</h3>
+                        <p class="roadmap-phase-desc">Supervised/unsupervised learning, model evaluation, feature engineering, and classic algorithms (regression, trees, SVMs, clustering).</p>
+                    </div>
+                    <div class="roadmap-phase-duration">4-6 weeks</div>
+                </div>
+                <div class="roadmap-topics">
+                    <span class="roadmap-topic-tag">Regression</span>
+                    <span class="roadmap-topic-tag">Classification</span>
+                    <span class="roadmap-topic-tag">Clustering</span>
+                    <span class="roadmap-topic-tag">Feature Eng</span>
+                    <span class="roadmap-topic-tag">Model Eval</span>
+                    <span class="roadmap-topic-tag">SVM</span>
+                    <span class="roadmap-topic-tag">Decision Trees</span>
+                    <span class="roadmap-topic-tag">Ensemble Methods</span>
+                    <span class="roadmap-topic-tag current">Cross Validation</span>
+                </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="roadmap-phase">
+                <div class="roadmap-phase-header">
+                    <div class="roadmap-phase-number">03</div>
+                    <div>
+                        <h3 class="roadmap-phase-title">Deep Learning</h3>
+                        <p class="roadmap-phase-desc">Neural networks, CNNs, RNNs, transformers, and frameworks like TensorFlow/PyTorch.</p>
+                    </div>
+                    <div class="roadmap-phase-duration">6-8 weeks</div>
+                </div>
+                <div class="roadmap-topics">
+                    <span class="roadmap-topic-tag">Neural Nets</span>
+                    <span class="roadmap-topic-tag">CNNs</span>
+                    <span class="roadmap-topic-tag">RNNs</span>
+                    <span class="roadmap-topic-tag">Transformers</span>
+                    <span class="roadmap-topic-tag">PyTorch</span>
+                    <span class="roadmap-topic-tag">TensorFlow</span>
+                    <span class="roadmap-topic-tag">Keras</span>
+                    <span class="roadmap-topic-tag">Autoencoders</span>
+                    <span class="roadmap-topic-tag">GANs</span>
+                </div>
+            </div>
+
+            <!-- Phase 4 -->
+            <div class="roadmap-phase">
+                <div class="roadmap-phase-header">
+                    <div class="roadmap-phase-number">04</div>
+                    <div>
+                        <h3 class="roadmap-phase-title">MLOps & Production</h3>
+                        <p class="roadmap-phase-desc">Model deployment, monitoring, scaling, CI/CD for ML, and cloud AI services (AWS SageMaker, GCP AI, Azure ML).</p>
+                    </div>
+                    <div class="roadmap-phase-duration">4-6 weeks</div>
+                </div>
+                <div class="roadmap-topics">
+                    <span class="roadmap-topic-tag">Model Deploy</span>
+                    <span class="roadmap-topic-tag">Docker</span>
+                    <span class="roadmap-topic-tag">Kubernetes</span>
+                    <span class="roadmap-topic-tag">CI/CD ML</span>
+                    <span class="roadmap-topic-tag">Monitoring</span>
+                    <span class="roadmap-topic-tag">AWS SageMaker</span>
+                    <span class="roadmap-topic-tag">MLflow</span>
+                    <span class="roadmap-topic-tag">Model Versioning</span>
+                    <span class="roadmap-topic-tag">A/B Testing</span>
+                </div>
+            </div>
+
+            <!-- Phase 5 -->
+            <div class="roadmap-phase">
+                <div class="roadmap-phase-header">
+                    <div class="roadmap-phase-number">05</div>
+                    <div>
+                        <h3 class="roadmap-phase-title">LLMs & Advanced AI</h3>
+                        <p class="roadmap-phase-desc">Large language models, prompt engineering, fine-tuning, embeddings, and AI agents.</p>
+                    </div>
+                    <div class="roadmap-phase-duration">6-8 weeks</div>
+                </div>
+                <div class="roadmap-topics">
+                    <span class="roadmap-topic-tag">LLM Basics</span>
+                    <span class="roadmap-topic-tag">Prompt Eng</span>
+                    <span class="roadmap-topic-tag">Fine-tuning</span>
+                    <span class="roadmap-topic-tag">Embeddings</span>
+                    <span class="roadmap-topic-tag">LangChain</span>
+                    <span class="roadmap-topic-tag">Hugging Face</span>
+                    <span class="roadmap-topic-tag">Vector DBs</span>
+                    <span class="roadmap-topic-tag">AI Agents</span>
+                    <span class="roadmap-topic-tag">RLHF</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources-section">
+        <h2 class="resources-title">RESOURCES & TOOLS</h2>
+        
+        <div class="resources-tabs">
+            <button class="resources-tab active" data-tab="free">FREE</button>
+            <button class="resources-tab" data-tab="paid">PAID</button>
+            <button class="resources-tab" data-tab="projects">PROJECTS</button>
+            <button class="resources-tab" data-tab="cheatsheets">CHEATSHEETS</button>
+        </div>
+
+        <div class="resources-content active" data-content="free">
+            <div class="resource-category">
+                <h3 class="resource-category-title">Foundations & Math</h3>
+                <div class="resource-list">
+                    <a href="https://www.3blue1brown.com/topics/linear-algebra" class="resource-item" target="_blank">
+                        <div class="resource-item-icon">📺</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">Essence of Linear Algebra</div>
+                            <div class="resource-item-desc">Beautiful visual explanations of vectors, matrices, and transformations.</div>
+                            <div class="resource-item-type">Video Series</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.khanacademy.org/math/statistics-probability" class="resource-item" target="_blank">
+                        <div class="resource-item-icon">📚</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">Statistics & Probability</div>
+                            <div class="resource-item-desc">Complete free course covering all statistics needed for ML.</div>
+                            <div class="resource-item-type">Interactive Course</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html" class="resource-item" target="_blank">
+                        <div class="resource-item-icon">🐼</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">Pandas Tutorial</div>
+                            <div class="resource-item-desc">Official pandas tutorials for data manipulation and analysis.</div>
+                            <div class="resource-item-type">Documentation</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://numpy.org/doc/stable/user/absolute_beginners.html" class="resource-item" target="_blank">
+                        <div class="resource-item-icon">🔢</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">NumPy Tutorial</div>
+                            <div class="resource-item-desc">Learn array operations, broadcasting, and numerical computing.</div>
+                            <div class="resource-item-type">Documentation</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="resource-category">
+                <h3 class="resource-category-title">Machine Learning</h3>
+                <div class="resource-list">
+                    <a href="https://scikit-learn.org/stable/tutorial.html" class="resource-item" target="_blank">
+                        <div class="resource-item-icon">📖</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">Scikit-learn Tutorial</div>
+                            <div class="resource-item-desc">Official guide to classic ML algorithms in Python.</div>
+                            <div class="resource-item-type">Documentation/Tutorial</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.coursera.org/learn/machine-learning" class="resource-item" target="_blank">
+                        <div class="resource-item-icon">🎓</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">Machine Learning by Andrew Ng</div>
+                            <div class="resource-item-desc">Classic introduction to ML (note: uses Octave, but concepts are valuable).</div>
+                            <div class="resource-item-type">Video Course</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://explained.ai/matrix-map/" class="resource-item" target="_blank">
+                        <div class="resource-item-icon">🗺️</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">Matrix Map for ML</div>
+                            <div class="resource-item-desc">Visual guide to understanding when to use different ML techniques.</div>
+                            <div class="resource-item-type">Reference Guide</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="resource-category">
+                <h3 class="resource-category-title">Deep Learning</h3>
+                <div class="resource-list">
+                    <a href="https://pytorch.org/tutorials/" class="resource-item" target="_blank">
+                        <div class="resource-item-icon">🔥</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">PyTorch Tutorials</div>
+                            <div class="resource-item-desc">Official tutorials covering basics to advanced deep learning.</div>
+                            <div class="resource-item-type">Tutorial Series</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.tensorflow.org/tutorials" class="resource-item" target="_blank">
+                        <div class="resource-item-icon">🌀</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">TensorFlow Tutorials</div>
+                            <div class="resource-item-desc">End-to-end examples for beginners and experts.</div>
+                            <div class="resource-item-type">Tutorial Series</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://deep-learning-study-roadmap.github.io/" class="resource-item" target="_blank">
+                        <div class="resource-item-icon">🧠</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">Deep Learning Book (Goodfellow et al.)</div>
+                            <div class="resource-item-desc">Free online version of the deep learning bible.</div>
+                            <div class="resource-item-type">Book (Free)</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="resource-category">
+                <h3 class="resource-category-title">MLOps & Deployment</h3>
+                <div class="resource-list">
+                    <a href="https://madewithml.com/" class="resource-item" target="_blank">
+                        <div class="resource-item-icon">⚙️</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">Made With ML</div>
+                            <div class="resource-item-desc">Free MLOps course covering deployment, monitoring, and scaling.</div>
+                            <div class="resource-item-type">Course</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.dagshub.com/blog/mlops" class="resource-item" target="_blank">
+                        <div class="resource-item-icon">📋</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">MLOps Guide</div>
+                            <div class="resource-item-desc">Comprehensive guide to MLOps practices and tools.</div>
+                            <div class="resource-item-type">Article/Blog</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.mlflow.org/docs/latest/getting-started/intro-quickstart/index.html" class="resource-item" target="_blank">
+                        <div class="resource-item-icon">💧</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">MLflow Tutorial</div>
+                            <div class="resource-item-desc">Track experiments, package code, and share models.</div>
+                            <div class="resource-item-type">Documentation</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="resources-content" data-content="paid">
+            <div class="resource-category">
+                <h3 class="resource-category-title">Specialized Courses</h3>
+                <div class="resource-list">
+                    <a href="https://www.deeplearning.ai/" class="resource-item" target="_blank">
+                        <div class="resource-item-icon">🎓</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">DeepLearning.AI Specializations</div>
+                            <div class="resource-item-desc">Andrew Ng's courses on neural networks, CNNs, NLP, and ML systems.</div>
+                            <div class="resource-item-type">Specialization</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.udemy.com/course/machinelearning/" class="resource-item" target="_blank">
+                        <div class="resource-item-icon">🎓</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">Machine Learning A-Z (Udemy)</div>
+                            <div class="resource-item-desc">Hands-on Python & R in data science.</div>
+                            <div class="resource-item-type">Video Course</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="resource-category">
+                <h3 class="resource-category-title">Books</h3>
+                <div class="resource-list">
+                    <a href="https://huyenchip.com/ml-interviews-book/" class="resource-item" target="_blank">
+                        <div class="resource-item-icon">📖</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">ML Interviews Book</div>
+                            <div class="resource-item-desc">By Eugene Chen - essential for AI engineering interviews.</div>
+                            <div class="resource-item-type">Book</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://llms-book.com/" class="resource-item" target="_blank">
+                        <div class="resource-item-icon">📖</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">LLMs from Scratch</div>
+                            <div class="resource-item-desc">Build a large language model from scratch with Raschka.</div>
+                            <div class="resource-item-type">Book</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="resources-content" data-content="projects">
+            <div class="resource-category">
+                <h3 class="resource-category-title">Portfolio Projects</h3>
+                <div class="resource-list">
+                    <a href="#" class="resource-item">
+                        <div class="resource-item-icon">🏥</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">Medical Diagnosis AI</div>
+                            <div class="resource-item-desc">Build a model to detect diseases from X-rays or MRI scans.</div>
+                            <div class="resource-item-type">Computer Vision</div>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="resource-item">
+                        <div class="resource-item-icon">💬</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">Customer Support Chatbot</div>
+                            <div class="resource-item-desc">Create an LLM-powered chatbot for business support.</div>
+                            <div class="resource-item-type">NLP/LLM</div>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="resource-item">
+                        <div class="resource-item-icon">📈</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">Stock Prediction System</div>
+                            <div class="resource-item-desc">Time series forecasting with LSTM and attention mechanisms.</div>
+                            <div class="resource-item-type">Time Series</div>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="resource-item">
+                        <div class="resource-item-icon">⚙️</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">ML Pipeline Automation</div>
+                            <div class="resource-item-desc">End-to-end automated ML pipeline with model monitoring.</div>
+                            <div class="resource-item-type">MLOps</div>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="resource-item">
+                        <div class="resource-item-icon">🎮</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">Game AI Agent</div>
+                            <div class="resource-item-desc">Create an AI that learns to play games using reinforcement learning.</div>
+                            <div class="resource-item-type">Reinforcement Learning</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="resources-content" data-content="cheatsheets">
+            <div class="resource-category">
+                <h3 class="resource-category-title">Quick References</h3>
+                <div class="resource-list">
+                    <a href="#" class="resource-item">
+                        <div class="resource-item-icon">📋</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">ML Algorithms Cheatsheet</div>
+                            <div class="resource-item-desc">When to use which algorithm and their tradeoffs.</div>
+                            <div class="resource-item-type">PDF/PNG</div>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="resource-item">
+                        <div class="resource-item-icon">📋</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">Deep Learning Cheatsheet</div>
+                            <div class="resource-item-desc">Layer types, activation functions, and architectures.</div>
+                            <div class="resource-item-type">PDF/PNG</div>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="resource-item">
+                        <div class="resource-item-icon">📋</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">SQL for Data Science</div>
+                            <div class="resource-item-desc">Essential queries for data extraction and manipulation.</div>
+                            <div class="resource-item-type">PDF/PNG</div>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="resource-item">
+                        <div class="resource-item-icon">📋</div>
+                        <div class="resource-item-content">
+                            <div class="resource-item-title">Linux Commands for ML</div>
+                            <div class="resource-item-desc">Essential shell commands for ML workflows.</div>
+                            <div class="resource-item-type">PDF/PNG</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Tracker -->
+    <section class="progress-section">
+        <h2 class="progress-title">YOUR PROGRESS</h2>
+        
+        <div class="progress-circle">
+            <svg viewBox="0 0 120 120">
+                <circle class="progress-circle-bg" cx="60" cy="60" r="50" />
+                <circle class="progress-circle-fill" cx="60" cy="60" r="50" 
+                    stroke-dasharray="0 314" />
+            </svg>
+            <div class="progress-circle-text">0%</div>
+        </div>
+        
+        <div class="progress-stats">
+            <div class="progress-stat">
+                <span class="progress-stat-value">0</span>
+                Modules Completed
+            </div>
+            <div class="progress-stat">
+                <span class="progress-stat-value">0</span>
+                Exercises Done
+            </div>
+            <div class="progress-stat">
+                <span class="progress-stat-value">0</span>
+                Projects Built
+            </div>
+            <div class="progress-stat">
+                <span class="progress-stat-value">0</span>
+                Hours Studied
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <footer class="study-footer">
+        <p class="study-footer-text">Ready to start your AI Engineering journey?</p>
+        <a href="https://www.3blue1brown.com/topics/linear-algebra" class="study-footer-link" target="_blank">BEGIN WITH MATH</a>
+        <p style="margin-top: 2rem; font-family: 'Press Start 2P', cursive; font-size: 0.6rem; color: #666;">
+            Built with passion for aspiring AI Engineers
+        </p>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.resources-tab');
+            const contents = document.querySelectorAll('.resources-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabName = this.getAttribute('data-tab');
+                    
+                    // Update active tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update active content
+                    contents.forEach(c => {
+                        c.classList.remove('active');
+                        if (c.getAttribute('data-content') === tabName) {
+                            c.classList.add('active');
+                        }
+                    });
+                });
+            });
+
+            // Progress circle animation (will be updated as user progresses)
+            const progressCircle = document.querySelector('.progress-circle-fill');
+            const progressText = document.querySelector('.progress-circle-text');
+            
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu on link click
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
