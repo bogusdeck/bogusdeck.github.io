@@ -15,7 +15,7 @@ class NavbarMenu extends HTMLElement {
                 <nav class="navbar">
                     <div class="navbar-desktop items-center justify-between w-full">
                         <div class="flex items-center space-x-4">
-                            <a class="nav-item ${isActive('study/index.html')}" href="study/index.html">Study</a>
+                            <a class="nav-item ${isActive('blog.html')}" href="blog.html">Blog</a>
                             <a class="nav-item ${isActive('project.html')}" href="project.html">Projects</a>
                         </div>
                         <a href="index.html" class="flex items-center justify-center">
@@ -43,7 +43,7 @@ class NavbarMenu extends HTMLElement {
                     <div id="mobile-menu" class="hidden absolute top-0 right-0 bg-black w-full mt-14 z-50 text-right border-b-2 border-white">
                         <a class="block py-3 px-4 text-white hover:bg-gray-800" href="index.html">Home</a>
                         <a class="block py-3 px-4 text-white hover:bg-gray-800" href="project.html">Projects</a>
-                        <a class="block py-3 px-4 text-white hover:bg-gray-800" href="study/index.html">Study</a>
+                        <a class="block py-3 px-4 text-white hover:bg-gray-800" href="blog.html">Blog</a>
                         <a class="block py-3 px-4 text-white hover:bg-gray-800" href="about.html">About</a>
                         <a class="block py-3 px-4 text-white hover:bg-gray-800" href="contact.html">Contact</a>
                     </div>
