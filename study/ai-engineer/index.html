@@ -74,457 +74,203 @@
         </div>
     </section>
 
-    <!-- Roadmap Section -->
-    <section class="roadmap-section">
-        <h2 class="roadmap-title">LEARNING PATH</h2>
-        
-        <div class="roadmap-phases">
-            <!-- Phase 0 -->
-            <div class="roadmap-phase">
-                <div class="roadmap-phase-header">
-                    <div class="roadmap-phase-number">00</div>
-                    <div>
-                        <h3 class="roadmap-phase-title">Production AI Foundations</h3>
-                        <p class="roadmap-phase-desc">Confirm you can ship LLM-enabled features *today* using your existing stack</p>
+    <!-- Interactive Study Interface -->
+    <section class="study-dashboard max-w-7xl mx-auto flex flex-col md:flex-row gap-8 p-4 my-8">
+        <!-- Sidebar -->
+        <aside class="w-full md:w-1/4">
+            <div class="sticky top-24 bg-black border-2 border-white boxxy p-4">
+                <h3 class="font-bold text-yellow-400 mb-4 border-b border-gray-700 pb-2 title" style="font-size: 1.2rem;">Roadmap</h3>
+                <ul class="space-y-4 font-['Press_Start_2P'] text-[10px] leading-loose">
+                    <li><a href="#phase0" class="hover:text-green-400 text-white block">Phase 0: Foundations</a></li>
+                    <li>
+                        <a href="#phase1" class="hover:text-green-400 text-white block">Phase 1: RAG</a>
+                        <ul class="pl-4 mt-2 space-y-2 text-gray-400">
+                            <li><a href="#phase1-week1" class="hover:text-white block">- Week 1: Embeddings</a></li>
+                            <li><a href="#phase1-week2" class="hover:text-white block">- Week 2: Retrieval</a></li>
+                            <li><a href="#phase1-week3" class="hover:text-white block">- Week 3: Generation</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#phase2" class="hover:text-green-400 text-white block">Phase 2: Agents</a>
+                        <ul class="pl-4 mt-2 space-y-2 text-gray-400">
+                            <li><a href="#phase2-week1" class="hover:text-white block">- Week 1: Raw Agents</a></li>
+                            <li><a href="#phase2-week2" class="hover:text-white block">- Week 2: Tool Use</a></li>
+                            <li><a href="#phase2-week3" class="hover:text-white block">- Week 3: Orchestration</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#phase3" class="hover:text-green-400 text-white block">Phase 3: Production</a>
+                        <ul class="pl-4 mt-2 space-y-2 text-gray-400">
+                            <li><a href="#phase3-week1" class="hover:text-white block">- Week 1: Optimization</a></li>
+                            <li><a href="#phase3-week2" class="hover:text-white block">- Week 2: Guardrails</a></li>
+                            <li><a href="#phase3-week3" class="hover:text-white block">- Week 3: Evals</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#phase4" class="hover:text-green-400 text-white block">Phase 4: Execution</a></li>
+                    <li><a href="#phase5" class="hover:text-green-400 text-white block">Phase 5: Portfolio</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="w-full md:w-3/4">
+            <div class="bg-black border-2 border-white boxxy p-6 md:p-10 space-y-12">
+                
+                <!-- Phase 0 -->
+                <div id="phase0" class="scroll-mt-24">
+                    <h2 class="text-2xl text-yellow-400 font-bold mb-4 title">Phase 0: Production AI Foundations</h2>
+                    <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                        <p class="mb-4">Confirm you can ship LLM-enabled features *today* using your existing stack.</p>
+                        
+                        <div class="p-6 border border-gray-700 bg-gray-900 mt-6 relative">
+                            <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                            <h4 class="text-white mb-2 text-sm">Add your material here</h4>
+                            <p class="text-gray-500">This section is ready for you to add detailed explanations, code snippets, or video embeds.</p>
+                        </div>
                     </div>
-                    <div class="roadmap-phase-duration">1 Week - *Verify, Don't Learn*</div>
                 </div>
-                <div class="roadmap-topics">
-                    <span class="roadmap-topic-tag completed">Python</span>
-                    <span class="roadmap-topic-tag completed">Async</span>
-                    <span class="roadmap-topic-tag completed">FastAPI</span>
-                    <span class="roadmap-topic-tag completed">API Design</span>
-                    <span class="roadmap-topic-tag completed">Docker</span>
-                    <span class="roadmap-topic-tag completed">K8s</span>
-                    <span class="roadmap-topic-tag completed">Vectors</span>
-                </div>
-            </div>
 
-            <!-- Phase 1 -->
-            <div class="roadmap-phase">
-                <div class="roadmap-phase-header">
-                    <div class="roadmap-phase-number">01</div>
-                    <div>
-                        <h3 class="roadmap-phase-title">RAG as Your Superpower</h3>
-                        <p class="roadmap-phase-desc">Build a production-grade RAG system where your Elasticsearch/Postgres experience gives you an 80% head start</p>
+                <hr class="border-gray-700 border-dashed">
+
+                <!-- Phase 1 -->
+                <div id="phase1" class="scroll-mt-24">
+                    <h2 class="text-2xl text-yellow-400 font-bold mb-6 title">Phase 1: RAG as Your Superpower</h2>
+                    
+                    <div id="phase1-week1" class="mt-8 scroll-mt-24">
+                        <h3 class="text-lg text-white mb-4 font-bold border-l-4 border-yellow-400 pl-3">Week 1: Embeddings + Chunking</h3>
+                        <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                            <div class="p-6 border border-gray-700 bg-gray-900 relative">
+                                <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                                <p class="text-gray-500">Add your Week 1 material here...</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="roadmap-phase-duration">3 Weeks - *Leverage Your Search/DB Expertise*</div>
-                </div>
-                <div class="roadmap-topics">
-                    <span class="roadmap-topic-tag current">RAG</span>
-                    <span class="roadmap-topic-tag">Hybrid Search</span>
-                    <span class="roadmap-topic-tag">Embeddings</span>
-                    <span class="roadmap-topic-tag">PostgreSQL</span>
-                    <span class="roadmap-topic-tag">Elasticsearch</span>
-                    <span class="roadmap-topic-tag">Reranking</span>
-                    <span class="roadmap-topic-tag">Evals</span>
-                </div>
-            </div>
-
-            <!-- Phase 2 -->
-            <div class="roadmap-phase">
-                <div class="roadmap-phase-header">
-                    <div class="roadmap-phase-number">02</div>
-                    <div>
-                        <h3 class="roadmap-phase-title">Agents as Stateful Services</h3>
-                        <p class="roadmap-phase-desc">Build agent systems where your Celery/Kafka/Redis experience is the differentiator</p>
+                    
+                    <div id="phase1-week2" class="mt-12 scroll-mt-24">
+                        <h3 class="text-lg text-white mb-4 font-bold border-l-4 border-yellow-400 pl-3">Week 2: Retrieval + Reranking</h3>
+                        <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                            <div class="p-6 border border-gray-700 bg-gray-900 relative">
+                                <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                                <p class="text-gray-500">Add your Week 2 material here...</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="roadmap-phase-duration">3 Weeks - *Apply Your Queueing/State Expertise*</div>
-                </div>
-                <div class="roadmap-topics">
-                    <span class="roadmap-topic-tag">Agents</span>
-                    <span class="roadmap-topic-tag">State Management</span>
-                    <span class="roadmap-topic-tag">ReAct</span>
-                    <span class="roadmap-topic-tag">Redis</span>
-                    <span class="roadmap-topic-tag">MCP Servers</span>
-                    <span class="roadmap-topic-tag">Tracing</span>
-                    <span class="roadmap-topic-tag">Caching</span>
-                </div>
-            </div>
 
-            <!-- Phase 3 -->
-            <div class="roadmap-phase">
-                <div class="roadmap-phase-header">
-                    <div class="roadmap-phase-number">03</div>
-                    <div>
-                        <h3 class="roadmap-phase-title">Production LLM Systems</h3>
-                        <p class="roadmap-phase-desc">Harden your AI systems for customer deployment – *this is your core competency domain*</p>
+                    <div id="phase1-week3" class="mt-12 scroll-mt-24">
+                        <h3 class="text-lg text-white mb-4 font-bold border-l-4 border-yellow-400 pl-3">Week 3: Generation + Evaluation</h3>
+                        <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                            <div class="p-6 border border-gray-700 bg-gray-900 relative">
+                                <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                                <p class="text-gray-500">Add your Week 3 material here...</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="roadmap-phase-duration">3 Weeks - *Where Your Backend Shines*</div>
                 </div>
-                <div class="roadmap-topics">
-                    <span class="roadmap-topic-tag">vLLM</span>
-                    <span class="roadmap-topic-tag">Prompt Caching</span>
-                    <span class="roadmap-topic-tag">SSE</span>
-                    <span class="roadmap-topic-tag">Guardrails</span>
-                    <span class="roadmap-topic-tag">Rate Limiting</span>
-                    <span class="roadmap-topic-tag">Evals in CI</span>
-                    <span class="roadmap-topic-tag">Monitoring</span>
-                </div>
-            </div>
 
-            <!-- Phase 4 -->
-            <div class="roadmap-phase">
-                <div class="roadmap-phase-header">
-                    <div class="roadmap-phase-number">04</div>
-                    <div>
-                        <h3 class="roadmap-phase-title">FDE-Specific Execution</h3>
-                        <p class="roadmap-phase-desc">Develop the *actual* FDE superpower: shipping value fast amid ambiguity</p>
+                <hr class="border-gray-700 border-dashed">
+
+                <!-- Phase 2 -->
+                <div id="phase2" class="scroll-mt-24">
+                    <h2 class="text-2xl text-yellow-400 font-bold mb-6 title">Phase 2: Agents as Stateful Services</h2>
+                    
+                    <div id="phase2-week1" class="mt-8 scroll-mt-24">
+                        <h3 class="text-lg text-white mb-4 font-bold border-l-4 border-yellow-400 pl-3">Week 1: Raw Agent Loops</h3>
+                        <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                            <div class="p-6 border border-gray-700 bg-gray-900 relative">
+                                <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                                <p class="text-gray-500">Add your Week 1 material here...</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="roadmap-phase-duration">Ongoing - *Embedded in Phases 1-3*</div>
-                </div>
-                <div class="roadmap-topics">
-                    <span class="roadmap-topic-tag">Rapid Scoping</span>
-                    <span class="roadmap-topic-tag">MVP</span>
-                    <span class="roadmap-topic-tag">Feedback Loop</span>
-                    <span class="roadmap-topic-tag">Technical Storytelling</span>
-                </div>
-            </div>
-
-            <!-- Phase 5 -->
-            <div class="roadmap-phase">
-                <div class="roadmap-phase-header">
-                    <div class="roadmap-phase-number">05</div>
-                    <div>
-                        <h3 class="roadmap-phase-title">Portfolio & Positioning</h3>
-                        <p class="roadmap-phase-desc">Make your backend→AI transition visible and credible</p>
+                    
+                    <div id="phase2-week2" class="mt-12 scroll-mt-24">
+                        <h3 class="text-lg text-white mb-4 font-bold border-l-4 border-yellow-400 pl-3">Week 2: Tool Use Patterns</h3>
+                        <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                            <div class="p-6 border border-gray-700 bg-gray-900 relative">
+                                <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                                <p class="text-gray-500">Add your Week 2 material here...</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="roadmap-phase-duration">Parallel to Phases 1-4</div>
-                </div>
-                <div class="roadmap-topics">
-                    <span class="roadmap-topic-tag">Portfolio</span>
-                    <span class="roadmap-topic-tag">Blog Posts</span>
-                    <span class="roadmap-topic-tag">Resume</span>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Resources Section -->
-    <section class="resources-section">
-        <h2 class="resources-title">RESOURCES & TOOLS</h2>
-        
-        <div class="resources-tabs">
-            <button class="resources-tab active" data-tab="free">FREE</button>
-            <button class="resources-tab" data-tab="paid">PAID</button>
-            <button class="resources-tab" data-tab="projects">PROJECTS</button>
-            <button class="resources-tab" data-tab="cheatsheets">CHEATSHEETS</button>
-        </div>
-
-        <div class="resources-content active" data-content="free">
-            <div class="resource-category">
-                <h3 class="resource-category-title">Foundations & Math</h3>
-                <div class="resource-list">
-                    <a href="https://www.3blue1brown.com/topics/linear-algebra" class="resource-item" target="_blank">
-                        <div class="resource-item-icon">📺</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">Essence of Linear Algebra</div>
-                            <div class="resource-item-desc">Beautiful visual explanations of vectors, matrices, and transformations.</div>
-                            <div class="resource-item-type">Video Series</div>
+                    <div id="phase2-week3" class="mt-12 scroll-mt-24">
+                        <h3 class="text-lg text-white mb-4 font-bold border-l-4 border-yellow-400 pl-3">Week 3: Orchestration & Observability</h3>
+                        <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                            <div class="p-6 border border-gray-700 bg-gray-900 relative">
+                                <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                                <p class="text-gray-500">Add your Week 3 material here...</p>
+                            </div>
                         </div>
-                    </a>
-                    
-                    <a href="https://www.khanacademy.org/math/statistics-probability" class="resource-item" target="_blank">
-                        <div class="resource-item-icon">📚</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">Statistics & Probability</div>
-                            <div class="resource-item-desc">Complete free course covering all statistics needed for ML.</div>
-                            <div class="resource-item-type">Interactive Course</div>
-                        </div>
-                    </a>
-                    
-                    <a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html" class="resource-item" target="_blank">
-                        <div class="resource-item-icon">🐼</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">Pandas Tutorial</div>
-                            <div class="resource-item-desc">Official pandas tutorials for data manipulation and analysis.</div>
-                            <div class="resource-item-type">Documentation</div>
-                        </div>
-                    </a>
-                    
-                    <a href="https://numpy.org/doc/stable/user/absolute_beginners.html" class="resource-item" target="_blank">
-                        <div class="resource-item-icon">🔢</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">NumPy Tutorial</div>
-                            <div class="resource-item-desc">Learn array operations, broadcasting, and numerical computing.</div>
-                            <div class="resource-item-type">Documentation</div>
-                        </div>
-                    </a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="resource-category">
-                <h3 class="resource-category-title">Machine Learning</h3>
-                <div class="resource-list">
-                    <a href="https://scikit-learn.org/stable/tutorial.html" class="resource-item" target="_blank">
-                        <div class="resource-item-icon">📖</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">Scikit-learn Tutorial</div>
-                            <div class="resource-item-desc">Official guide to classic ML algorithms in Python.</div>
-                            <div class="resource-item-type">Documentation/Tutorial</div>
-                        </div>
-                    </a>
+                <hr class="border-gray-700 border-dashed">
+                
+                <!-- Phase 3 -->
+                <div id="phase3" class="scroll-mt-24">
+                    <h2 class="text-2xl text-yellow-400 font-bold mb-6 title">Phase 3: Production LLM Systems</h2>
                     
-                    <a href="https://www.coursera.org/learn/machine-learning" class="resource-item" target="_blank">
-                        <div class="resource-item-icon">🎓</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">Machine Learning by Andrew Ng</div>
-                            <div class="resource-item-desc">Classic introduction to ML (note: uses Octave, but concepts are valuable).</div>
-                            <div class="resource-item-type">Video Course</div>
+                    <div id="phase3-week1" class="mt-8 scroll-mt-24">
+                        <h3 class="text-lg text-white mb-4 font-bold border-l-4 border-yellow-400 pl-3">Week 1: Inference Optimization</h3>
+                        <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                            <div class="p-6 border border-gray-700 bg-gray-900 relative">
+                                <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                                <p class="text-gray-500">Add your Week 1 material here...</p>
+                            </div>
                         </div>
-                    </a>
+                    </div>
                     
-                    <a href="https://explained.ai/matrix-map/" class="resource-item" target="_blank">
-                        <div class="resource-item-icon">🗺️</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">Matrix Map for ML</div>
-                            <div class="resource-item-desc">Visual guide to understanding when to use different ML techniques.</div>
-                            <div class="resource-item-type">Reference Guide</div>
+                    <div id="phase3-week2" class="mt-12 scroll-mt-24">
+                        <h3 class="text-lg text-white mb-4 font-bold border-l-4 border-yellow-400 pl-3">Week 2: Guardrails & Safety</h3>
+                        <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                            <div class="p-6 border border-gray-700 bg-gray-900 relative">
+                                <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                                <p class="text-gray-500">Add your Week 2 material here...</p>
+                            </div>
                         </div>
-                    </a>
-                </div>
-            </div>
+                    </div>
 
-            <div class="resource-category">
-                <h3 class="resource-category-title">Deep Learning</h3>
-                <div class="resource-list">
-                    <a href="https://pytorch.org/tutorials/" class="resource-item" target="_blank">
-                        <div class="resource-item-icon">🔥</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">PyTorch Tutorials</div>
-                            <div class="resource-item-desc">Official tutorials covering basics to advanced deep learning.</div>
-                            <div class="resource-item-type">Tutorial Series</div>
+                    <div id="phase3-week3" class="mt-12 scroll-mt-24">
+                        <h3 class="text-lg text-white mb-4 font-bold border-l-4 border-yellow-400 pl-3">Week 3: Evals as CI/CD</h3>
+                        <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                            <div class="p-6 border border-gray-700 bg-gray-900 relative">
+                                <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                                <p class="text-gray-500">Add your Week 3 material here...</p>
+                            </div>
                         </div>
-                    </a>
-                    
-                    <a href="https://www.tensorflow.org/tutorials" class="resource-item" target="_blank">
-                        <div class="resource-item-icon">🌀</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">TensorFlow Tutorials</div>
-                            <div class="resource-item-desc">End-to-end examples for beginners and experts.</div>
-                            <div class="resource-item-type">Tutorial Series</div>
-                        </div>
-                    </a>
-                    
-                    <a href="https://deep-learning-study-roadmap.github.io/" class="resource-item" target="_blank">
-                        <div class="resource-item-icon">🧠</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">Deep Learning Book (Goodfellow et al.)</div>
-                            <div class="resource-item-desc">Free online version of the deep learning bible.</div>
-                            <div class="resource-item-type">Book (Free)</div>
-                        </div>
-                    </a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="resource-category">
-                <h3 class="resource-category-title">MLOps & Deployment</h3>
-                <div class="resource-list">
-                    <a href="https://madewithml.com/" class="resource-item" target="_blank">
-                        <div class="resource-item-icon">⚙️</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">Made With ML</div>
-                            <div class="resource-item-desc">Free MLOps course covering deployment, monitoring, and scaling.</div>
-                            <div class="resource-item-type">Course</div>
+                <hr class="border-gray-700 border-dashed">
+                
+                <!-- Phase 4 -->
+                <div id="phase4" class="scroll-mt-24">
+                    <h2 class="text-2xl text-yellow-400 font-bold mb-4 title">Phase 4: FDE-Specific Execution</h2>
+                    <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                        <div class="p-6 border border-gray-700 bg-gray-900 mt-6 relative">
+                            <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                            <h4 class="text-white mb-2 text-sm">Add your material here</h4>
+                            <p class="text-gray-500">Add your material for Phase 4 here...</p>
                         </div>
-                    </a>
-                    
-                    <a href="https://www.dagshub.com/blog/mlops" class="resource-item" target="_blank">
-                        <div class="resource-item-icon">📋</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">MLOps Guide</div>
-                            <div class="resource-item-desc">Comprehensive guide to MLOps practices and tools.</div>
-                            <div class="resource-item-type">Article/Blog</div>
-                        </div>
-                    </a>
-                    
-                    <a href="https://www.mlflow.org/docs/latest/getting-started/intro-quickstart/index.html" class="resource-item" target="_blank">
-                        <div class="resource-item-icon">💧</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">MLflow Tutorial</div>
-                            <div class="resource-item-desc">Track experiments, package code, and share models.</div>
-                            <div class="resource-item-type">Documentation</div>
-                        </div>
-                    </a>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="resources-content" data-content="paid">
-            <div class="resource-category">
-                <h3 class="resource-category-title">Specialized Courses</h3>
-                <div class="resource-list">
-                    <a href="https://www.deeplearning.ai/" class="resource-item" target="_blank">
-                        <div class="resource-item-icon">🎓</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">DeepLearning.AI Specializations</div>
-                            <div class="resource-item-desc">Andrew Ng's courses on neural networks, CNNs, NLP, and ML systems.</div>
-                            <div class="resource-item-type">Specialization</div>
-                        </div>
-                    </a>
-                    
-                    <a href="https://www.udemy.com/course/machinelearning/" class="resource-item" target="_blank">
-                        <div class="resource-item-icon">🎓</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">Machine Learning A-Z (Udemy)</div>
-                            <div class="resource-item-desc">Hands-on Python & R in data science.</div>
-                            <div class="resource-item-type">Video Course</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="resource-category">
-                <h3 class="resource-category-title">Books</h3>
-                <div class="resource-list">
-                    <a href="https://huyenchip.com/ml-interviews-book/" class="resource-item" target="_blank">
-                        <div class="resource-item-icon">📖</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">ML Interviews Book</div>
-                            <div class="resource-item-desc">By Eugene Chen - essential for AI engineering interviews.</div>
-                            <div class="resource-item-type">Book</div>
-                        </div>
-                    </a>
-                    
-                    <a href="https://llms-book.com/" class="resource-item" target="_blank">
-                        <div class="resource-item-icon">📖</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">LLMs from Scratch</div>
-                            <div class="resource-item-desc">Build a large language model from scratch with Raschka.</div>
-                            <div class="resource-item-type">Book</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+                <hr class="border-gray-700 border-dashed">
 
-        <div class="resources-content" data-content="projects">
-            <div class="resource-category">
-                <h3 class="resource-category-title">Portfolio Projects</h3>
-                <div class="resource-list">
-                    <a href="#" class="resource-item">
-                        <div class="resource-item-icon">🏥</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">Medical Diagnosis AI</div>
-                            <div class="resource-item-desc">Build a model to detect diseases from X-rays or MRI scans.</div>
-                            <div class="resource-item-type">Computer Vision</div>
+                <!-- Phase 5 -->
+                <div id="phase5" class="scroll-mt-24">
+                    <h2 class="text-2xl text-yellow-400 font-bold mb-4 title">Phase 5: Portfolio & Positioning</h2>
+                    <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                        <div class="p-6 border border-gray-700 bg-gray-900 mt-6 relative">
+                            <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                            <h4 class="text-white mb-2 text-sm">Add your material here</h4>
+                            <p class="text-gray-500">Add your material for Phase 5 here...</p>
                         </div>
-                    </a>
-                    
-                    <a href="#" class="resource-item">
-                        <div class="resource-item-icon">💬</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">Customer Support Chatbot</div>
-                            <div class="resource-item-desc">Create an LLM-powered chatbot for business support.</div>
-                            <div class="resource-item-type">NLP/LLM</div>
-                        </div>
-                    </a>
-                    
-                    <a href="#" class="resource-item">
-                        <div class="resource-item-icon">📈</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">Stock Prediction System</div>
-                            <div class="resource-item-desc">Time series forecasting with LSTM and attention mechanisms.</div>
-                            <div class="resource-item-type">Time Series</div>
-                        </div>
-                    </a>
-                    
-                    <a href="#" class="resource-item">
-                        <div class="resource-item-icon">⚙️</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">ML Pipeline Automation</div>
-                            <div class="resource-item-desc">End-to-end automated ML pipeline with model monitoring.</div>
-                            <div class="resource-item-type">MLOps</div>
-                        </div>
-                    </a>
-                    
-                    <a href="#" class="resource-item">
-                        <div class="resource-item-icon">🎮</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">Game AI Agent</div>
-                            <div class="resource-item-desc">Create an AI that learns to play games using reinforcement learning.</div>
-                            <div class="resource-item-type">Reinforcement Learning</div>
-                        </div>
-                    </a>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="resources-content" data-content="cheatsheets">
-            <div class="resource-category">
-                <h3 class="resource-category-title">Quick References</h3>
-                <div class="resource-list">
-                    <a href="#" class="resource-item">
-                        <div class="resource-item-icon">📋</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">ML Algorithms Cheatsheet</div>
-                            <div class="resource-item-desc">When to use which algorithm and their tradeoffs.</div>
-                            <div class="resource-item-type">PDF/PNG</div>
-                        </div>
-                    </a>
-                    
-                    <a href="#" class="resource-item">
-                        <div class="resource-item-icon">📋</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">Deep Learning Cheatsheet</div>
-                            <div class="resource-item-desc">Layer types, activation functions, and architectures.</div>
-                            <div class="resource-item-type">PDF/PNG</div>
-                        </div>
-                    </a>
-                    
-                    <a href="#" class="resource-item">
-                        <div class="resource-item-icon">📋</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">SQL for Data Science</div>
-                            <div class="resource-item-desc">Essential queries for data extraction and manipulation.</div>
-                            <div class="resource-item-type">PDF/PNG</div>
-                        </div>
-                    </a>
-                    
-                    <a href="#" class="resource-item">
-                        <div class="resource-item-icon">📋</div>
-                        <div class="resource-item-content">
-                            <div class="resource-item-title">Linux Commands for ML</div>
-                            <div class="resource-item-desc">Essential shell commands for ML workflows.</div>
-                            <div class="resource-item-type">PDF/PNG</div>
-                        </div>
-                    </a>
-                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Progress Tracker -->
-    <section class="progress-section">
-        <h2 class="progress-title">YOUR PROGRESS</h2>
-        
-        <div class="progress-circle">
-            <svg viewBox="0 0 120 120">
-                <circle class="progress-circle-bg" cx="60" cy="60" r="50" />
-                <circle class="progress-circle-fill" cx="60" cy="60" r="50" 
-                    stroke-dasharray="0 314" />
-            </svg>
-            <div class="progress-circle-text">0%</div>
-        </div>
-        
-        <div class="progress-stats">
-            <div class="progress-stat">
-                <span class="progress-stat-value">0</span>
-                Modules Completed
-            </div>
-            <div class="progress-stat">
-                <span class="progress-stat-value">0</span>
-                Exercises Done
-            </div>
-            <div class="progress-stat">
-                <span class="progress-stat-value">0</span>
-                Projects Built
-            </div>
-            <div class="progress-stat">
-                <span class="progress-stat-value">0</span>
-                Hours Studied
-            </div>
-        </div>
+        </main>
     </section>
 
     <!-- Footer CTA -->
