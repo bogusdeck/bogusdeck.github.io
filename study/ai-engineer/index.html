@@ -63,11 +63,11 @@
     <section class="topic-header">
         <div class="topic-header-content">
             <div class="topic-icon-large" style="font-size: 4rem; filter: drop-shadow(6px 6px 0px #000);">🤖</div>
-            <h1 class="topic-title">AI ENGINEER ROADMAP</h1>
-            <p class="topic-tagline">From ML Fundamentals to Production AI Systems</p>
+            <h1 class="topic-title">GenAI FDE Roadmap</h1>
+            <p class="topic-tagline">Backend-First Accelerated</p>
             <div class="topic-meta">
                 <span class="topic-meta-item">Level: <span>Beginner → Advanced</span></span>
-                <span class="topic-meta-item">Duration: <span>6-12 Months</span></span>
+                <span class="topic-meta-item">Duration: <span>12-16 Weeks</span></span>
                 <span class="topic-meta-item">Projects: <span>5+ Portfolio Projects</span></span>
                 <span class="topic-meta-item">Skills: <span>ML, DL, LLMs, MLOps</span></span>
             </div>
@@ -79,26 +79,45 @@
         <h2 class="roadmap-title">LEARNING PATH</h2>
         
         <div class="roadmap-phases">
+            <!-- Phase 0 -->
+            <div class="roadmap-phase">
+                <div class="roadmap-phase-header">
+                    <div class="roadmap-phase-number">00</div>
+                    <div>
+                        <h3 class="roadmap-phase-title">Production AI Foundations</h3>
+                        <p class="roadmap-phase-desc">Confirm you can ship LLM-enabled features *today* using your existing stack</p>
+                    </div>
+                    <div class="roadmap-phase-duration">1 Week - *Verify, Don't Learn*</div>
+                </div>
+                <div class="roadmap-topics">
+                    <span class="roadmap-topic-tag completed">Python</span>
+                    <span class="roadmap-topic-tag completed">Async</span>
+                    <span class="roadmap-topic-tag completed">FastAPI</span>
+                    <span class="roadmap-topic-tag completed">API Design</span>
+                    <span class="roadmap-topic-tag completed">Docker</span>
+                    <span class="roadmap-topic-tag completed">K8s</span>
+                    <span class="roadmap-topic-tag completed">Vectors</span>
+                </div>
+            </div>
+
             <!-- Phase 1 -->
             <div class="roadmap-phase">
                 <div class="roadmap-phase-header">
                     <div class="roadmap-phase-number">01</div>
                     <div>
-                        <h3 class="roadmap-phase-title">Foundations</h3>
-                        <p class="roadmap-phase-desc">Mathematics for ML (linear algebra, calculus, probability), Python programming, data manipulation with Pandas/Numpy, and basic statistics.</p>
+                        <h3 class="roadmap-phase-title">RAG as Your Superpower</h3>
+                        <p class="roadmap-phase-desc">Build a production-grade RAG system where your Elasticsearch/Postgres experience gives you an 80% head start</p>
                     </div>
-                    <div class="roadmap-phase-duration">4-6 weeks</div>
+                    <div class="roadmap-phase-duration">3 Weeks - *Leverage Your Search/DB Expertise*</div>
                 </div>
                 <div class="roadmap-topics">
-                    <span class="roadmap-topic-tag">Linear Algebra</span>
-                    <span class="roadmap-topic-tag">Calculus</span>
-                    <span class="roadmap-topic-tag">Probability</span>
-                    <span class="roadmap-topic-tag">Python</span>
-                    <span class="roadmap-topic-tag">Pandas</span>
-                    <span class="roadmap-topic-tag">NumPy</span>
-                    <span class="roadmap-topic-tag">Statistics</span>
-                    <span class="roadmap-topic-tag">Data Visualization</span>
-                    <span class="roadmap-topic-tag completed">Environment Setup</span>
+                    <span class="roadmap-topic-tag current">RAG</span>
+                    <span class="roadmap-topic-tag">Hybrid Search</span>
+                    <span class="roadmap-topic-tag">Embeddings</span>
+                    <span class="roadmap-topic-tag">PostgreSQL</span>
+                    <span class="roadmap-topic-tag">Elasticsearch</span>
+                    <span class="roadmap-topic-tag">Reranking</span>
+                    <span class="roadmap-topic-tag">Evals</span>
                 </div>
             </div>
 
@@ -107,21 +126,19 @@
                 <div class="roadmap-phase-header">
                     <div class="roadmap-phase-number">02</div>
                     <div>
-                        <h3 class="roadmap-phase-title">Machine Learning</h3>
-                        <p class="roadmap-phase-desc">Supervised/unsupervised learning, model evaluation, feature engineering, and classic algorithms (regression, trees, SVMs, clustering).</p>
+                        <h3 class="roadmap-phase-title">Agents as Stateful Services</h3>
+                        <p class="roadmap-phase-desc">Build agent systems where your Celery/Kafka/Redis experience is the differentiator</p>
                     </div>
-                    <div class="roadmap-phase-duration">4-6 weeks</div>
+                    <div class="roadmap-phase-duration">3 Weeks - *Apply Your Queueing/State Expertise*</div>
                 </div>
                 <div class="roadmap-topics">
-                    <span class="roadmap-topic-tag">Regression</span>
-                    <span class="roadmap-topic-tag">Classification</span>
-                    <span class="roadmap-topic-tag">Clustering</span>
-                    <span class="roadmap-topic-tag">Feature Eng</span>
-                    <span class="roadmap-topic-tag">Model Eval</span>
-                    <span class="roadmap-topic-tag">SVM</span>
-                    <span class="roadmap-topic-tag">Decision Trees</span>
-                    <span class="roadmap-topic-tag">Ensemble Methods</span>
-                    <span class="roadmap-topic-tag current">Cross Validation</span>
+                    <span class="roadmap-topic-tag">Agents</span>
+                    <span class="roadmap-topic-tag">State Management</span>
+                    <span class="roadmap-topic-tag">ReAct</span>
+                    <span class="roadmap-topic-tag">Redis</span>
+                    <span class="roadmap-topic-tag">MCP Servers</span>
+                    <span class="roadmap-topic-tag">Tracing</span>
+                    <span class="roadmap-topic-tag">Caching</span>
                 </div>
             </div>
 
@@ -130,21 +147,19 @@
                 <div class="roadmap-phase-header">
                     <div class="roadmap-phase-number">03</div>
                     <div>
-                        <h3 class="roadmap-phase-title">Deep Learning</h3>
-                        <p class="roadmap-phase-desc">Neural networks, CNNs, RNNs, transformers, and frameworks like TensorFlow/PyTorch.</p>
+                        <h3 class="roadmap-phase-title">Production LLM Systems</h3>
+                        <p class="roadmap-phase-desc">Harden your AI systems for customer deployment – *this is your core competency domain*</p>
                     </div>
-                    <div class="roadmap-phase-duration">6-8 weeks</div>
+                    <div class="roadmap-phase-duration">3 Weeks - *Where Your Backend Shines*</div>
                 </div>
                 <div class="roadmap-topics">
-                    <span class="roadmap-topic-tag">Neural Nets</span>
-                    <span class="roadmap-topic-tag">CNNs</span>
-                    <span class="roadmap-topic-tag">RNNs</span>
-                    <span class="roadmap-topic-tag">Transformers</span>
-                    <span class="roadmap-topic-tag">PyTorch</span>
-                    <span class="roadmap-topic-tag">TensorFlow</span>
-                    <span class="roadmap-topic-tag">Keras</span>
-                    <span class="roadmap-topic-tag">Autoencoders</span>
-                    <span class="roadmap-topic-tag">GANs</span>
+                    <span class="roadmap-topic-tag">vLLM</span>
+                    <span class="roadmap-topic-tag">Prompt Caching</span>
+                    <span class="roadmap-topic-tag">SSE</span>
+                    <span class="roadmap-topic-tag">Guardrails</span>
+                    <span class="roadmap-topic-tag">Rate Limiting</span>
+                    <span class="roadmap-topic-tag">Evals in CI</span>
+                    <span class="roadmap-topic-tag">Monitoring</span>
                 </div>
             </div>
 
@@ -153,21 +168,16 @@
                 <div class="roadmap-phase-header">
                     <div class="roadmap-phase-number">04</div>
                     <div>
-                        <h3 class="roadmap-phase-title">MLOps & Production</h3>
-                        <p class="roadmap-phase-desc">Model deployment, monitoring, scaling, CI/CD for ML, and cloud AI services (AWS SageMaker, GCP AI, Azure ML).</p>
+                        <h3 class="roadmap-phase-title">FDE-Specific Execution</h3>
+                        <p class="roadmap-phase-desc">Develop the *actual* FDE superpower: shipping value fast amid ambiguity</p>
                     </div>
-                    <div class="roadmap-phase-duration">4-6 weeks</div>
+                    <div class="roadmap-phase-duration">Ongoing - *Embedded in Phases 1-3*</div>
                 </div>
                 <div class="roadmap-topics">
-                    <span class="roadmap-topic-tag">Model Deploy</span>
-                    <span class="roadmap-topic-tag">Docker</span>
-                    <span class="roadmap-topic-tag">Kubernetes</span>
-                    <span class="roadmap-topic-tag">CI/CD ML</span>
-                    <span class="roadmap-topic-tag">Monitoring</span>
-                    <span class="roadmap-topic-tag">AWS SageMaker</span>
-                    <span class="roadmap-topic-tag">MLflow</span>
-                    <span class="roadmap-topic-tag">Model Versioning</span>
-                    <span class="roadmap-topic-tag">A/B Testing</span>
+                    <span class="roadmap-topic-tag">Rapid Scoping</span>
+                    <span class="roadmap-topic-tag">MVP</span>
+                    <span class="roadmap-topic-tag">Feedback Loop</span>
+                    <span class="roadmap-topic-tag">Technical Storytelling</span>
                 </div>
             </div>
 
@@ -176,21 +186,15 @@
                 <div class="roadmap-phase-header">
                     <div class="roadmap-phase-number">05</div>
                     <div>
-                        <h3 class="roadmap-phase-title">LLMs & Advanced AI</h3>
-                        <p class="roadmap-phase-desc">Large language models, prompt engineering, fine-tuning, embeddings, and AI agents.</p>
+                        <h3 class="roadmap-phase-title">Portfolio & Positioning</h3>
+                        <p class="roadmap-phase-desc">Make your backend→AI transition visible and credible</p>
                     </div>
-                    <div class="roadmap-phase-duration">6-8 weeks</div>
+                    <div class="roadmap-phase-duration">Parallel to Phases 1-4</div>
                 </div>
                 <div class="roadmap-topics">
-                    <span class="roadmap-topic-tag">LLM Basics</span>
-                    <span class="roadmap-topic-tag">Prompt Eng</span>
-                    <span class="roadmap-topic-tag">Fine-tuning</span>
-                    <span class="roadmap-topic-tag">Embeddings</span>
-                    <span class="roadmap-topic-tag">LangChain</span>
-                    <span class="roadmap-topic-tag">Hugging Face</span>
-                    <span class="roadmap-topic-tag">Vector DBs</span>
-                    <span class="roadmap-topic-tag">AI Agents</span>
-                    <span class="roadmap-topic-tag">RLHF</span>
+                    <span class="roadmap-topic-tag">Portfolio</span>
+                    <span class="roadmap-topic-tag">Blog Posts</span>
+                    <span class="roadmap-topic-tag">Resume</span>
                 </div>
             </div>
         </div>
@@ -525,10 +529,10 @@
 
     <!-- Footer CTA -->
     <footer class="study-footer">
-        <p class="study-footer-text">Ready to start your AI Engineering journey?</p>
-        <a href="https://www.3blue1brown.com/topics/linear-algebra" class="study-footer-link" target="_blank">BEGIN WITH MATH</a>
+        <p class="study-footer-text">Ready to start your GenAI FDE journey?</p>
+        <a href="#roadmap" class="study-footer-link">BEGIN WITH PHASE 0</a>
         <p style="margin-top: 2rem; font-family: 'Press Start 2P', cursive; font-size: 0.6rem; color: #666;">
-            Built with passion for aspiring AI Engineers
+            Built with passion for aspiring GenAI FDEs
         </p>
     </footer>
 
