@@ -31,7 +31,6 @@
                 <div class="flex items-center space-x-4">
                     <a class="nav-item" href="../about.html">About</a>
                     <a class="nav-item" href="../contact.html">Contact</a>
-                    <a class="nav-item" href="index.html">Study</a>
                 </div>
             </div>
             <!-- Hamburger menu -->
@@ -54,7 +53,6 @@
                 <a class="block py-2 px-4 text-white" href="../blog.html">Blog</a>
                 <a class="block py-2 px-4 text-white" href="../about.html">About</a>
                 <a class="block py-2 px-4 text-white" href="../contact.html">Contact</a>
-                <a class="block py-2 px-4 text-white" href="index.html">Study</a>
             </div>
         </nav>
     </header>
@@ -64,17 +62,11 @@
         <div class="study-hero-content">
             <h1 class="study-hero-title">STUDY HALL</h1>
             <p class="study-hero-subtitle">Study resource material</p>
-<div class="flex justify-center gap-4 flex-wrap">
-                <span class="topic-meta-item"><span>1</span> Topic</span>
+            <div class="flex justify-center gap-4 flex-wrap">
+                <span class="topic-meta-item"><span>3</span> Topics</span>
                 <span class="topic-meta-item"><span>50+</span> Resources</span>
                 <span class="topic-meta-item"><span>∞</span> Growth</span>
             </div>
-        </div>
-        <!-- Pixel decoration -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2" style="font-size: 2rem; color: #ffcc00; text-shadow: 2px 2px 0px #000; animation: bounce 1.5s infinite;">
-            <span>▼</span>
-            <span style="animation-delay: 0.1s;">▼</span>
-            <span style="animation-delay: 0.2s;">▼</span>
         </div>
     </section>
 
@@ -97,7 +89,7 @@
     </footer>
 
     <script>
-        // Topic data - GenAI FDE focus
+            // Topic data - GenAI FDE focus
         const topics = [
             {
                 id: 'ai-engineer',
@@ -107,6 +99,24 @@
                 progress: 0,
                 path: 'ai-engineer/index.html',
                 color: '#ff6b6b'
+            },
+            {
+                id: 'llm-understanding',
+                title: 'LLM Understanding',
+                desc: 'Deep dive into how LLMs work, including architecture, training, and inference. Understand transformers, attention mechanisms, and scaling laws.',
+                icon: '🧠',
+                progress: 0,
+                path: 'llm-understanding/index.html',
+                color: '#4ecdc4'
+            },
+            {
+                id: 'ml-fundamentals',
+                title: 'ML Fundamentals',
+                desc: 'Core machine learning concepts, algorithms, and best practices. From linear regression to neural networks, build a strong foundation.',
+                icon: '📈',
+                progress: 0,
+                path: 'ml-fundamentals/index.html',
+                color: '#45b7d1'
             }
         ];
 

@@ -120,13 +120,1033 @@
                 <div id="phase0" class="scroll-mt-24">
                     <h2 class="text-2xl text-yellow-400 font-bold mb-4 title">Phase 0: Production AI Foundations</h2>
                     <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
-                        <p class="mb-4">Confirm you can ship LLM-enabled features *today* using your existing stack.</p>
-                        
-                        <div class="p-6 border border-gray-700 bg-gray-900 mt-6 relative">
-                            <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
-                            <h4 class="text-white mb-2 text-sm">Add your material here</h4>
-                            <p class="text-gray-500">This section is ready for you to add detailed explanations, code snippets, or video embeds.</p>
-                        </div>
+# Phase 0 — Foundations for GenAI / AI Engineering
+
+The purpose of Phase 0 isn't to teach you everything from scratch. You already have solid backend experience, so this phase is about **verifying and filling the gaps that become important once you start building LLM systems**.
+
+---
+
+# 1. Python for AI Engineering
+
+You already know Python, but GenAI systems use some Python patterns more heavily than traditional Django CRUD applications.
+
+The important areas are:
+
+```text
+Python
+├── Async / Await
+├── Type Hints
+├── Dataclasses / Pydantic
+├── Iterators / Generators
+├── Context Managers
+├── Packaging
+├── Dependency Management
+├── Environment Management
+└── Concurrency
+```
+
+---
+
+## 1.1 Async / Await
+
+You should be very comfortable with:
+
+```python
+async def fetch_data():
+    result = await api_call()
+    return result
+```
+
+The important distinction:
+
+```text
+async/await ≠ parallel execution
+```
+
+Async is primarily about **not blocking while waiting for I/O**.
+
+For example:
+
+```python
+response = await client.get(...)
+```
+
+While waiting for the network:
+
+```text
+Your coroutine
+     │
+     │ waiting
+     ▼
+event loop
+     │
+     ├── execute another request
+     ├── process another task
+     └── handle another connection
+```
+
+This becomes extremely important for LLM applications because a single request can involve:
+
+```text
+User
+ ↓
+LLM API
+ ↓
+Tool call
+ ↓
+Database
+ ↓
+Another API
+ ↓
+LLM API
+ ↓
+Response
+```
+
+Most of that time is **I/O waiting**.
+
+### Important concepts
+
+Know the difference between:
+
+```python
+async def
+await
+asyncio.run()
+asyncio.gather()
+asyncio.create_task()
+```
+
+Especially:
+
+```python
+results = await asyncio.gather(
+    call_llm_1(),
+    call_llm_2(),
+    call_llm_3(),
+)
+```
+
+This can be useful when multiple independent LLM/API calls need to happen concurrently.
+
+For example:
+
+```text
+                    ┌── LLM → summary
+                    │
+User → Backend ─────┼── LLM → classification
+                    │
+                    └── LLM → extraction
+```
+
+Instead of:
+
+```text
+summary
+  ↓
+classification
+  ↓
+extraction
+```
+
+you can potentially run them concurrently.
+
+---
+
+# 2. Concurrency vs Parallelism
+
+This distinction is worth being very clear about.
+
+### Concurrency
+
+Multiple tasks are **in progress** during overlapping periods.
+
+```text
+Task A ────────┐
+               │
+Task B ────────┤
+               │
+Task C ────────┘
+```
+
+### Parallelism
+
+Multiple tasks are literally executing at the same time on different CPU cores/workers.
+
+```text
+CPU 1 → Task A
+CPU 2 → Task B
+CPU 3 → Task C
+```
+
+For GenAI applications:
+
+| Work                  | Typical approach              |
+| --------------------- | ----------------------------- |
+| API calls             | Async                         |
+| DB/network I/O        | Async                         |
+| Multiple LLM requests | Async/concurrent              |
+| CPU-heavy processing  | Multiprocessing/workers       |
+| GPU inference         | Specialized inference systems |
+
+Don't automatically reach for threads/processes when the bottleneck is network latency.
+
+---
+
+# 3. Type Hints
+
+AI codebases can become messy very quickly because you're passing around:
+
+```text
+prompts
+messages
+tool calls
+tool results
+model responses
+schemas
+documents
+chunks
+metadata
+embeddings
+```
+
+Type hints make this manageable.
+
+Instead of:
+
+```python
+def process(data):
+    ...
+```
+
+prefer:
+
+```python
+def process(data: list[str]) -> dict[str, int]:
+    ...
+```
+
+And understand:
+
+```python
+Optional
+Union
+Literal
+TypedDict
+Protocol
+Generic
+TypeVar
+```
+
+Modern Python:
+
+```python
+def get_model(
+    provider: str,
+    model: str,
+) -> LLMClient | None:
+    ...
+```
+
+---
+
+# 4. Pydantic
+
+This becomes **very important** for AI engineering.
+
+You should understand Pydantic extremely well.
+
+Example:
+
+```python
+from pydantic import BaseModel
+
+
+class User(BaseModel):
+    name: str
+    age: int
+    email: str
+```
+
+Then:
+
+```python
+user = User(
+    name="Tanish",
+    age=25,
+    email="test@example.com",
+)
+```
+
+Pydantic validates and parses external data.
+
+This matters because LLM output is **untrusted model-generated data**.
+
+For example, you might ask:
+
+```text
+Extract customer information.
+Return:
+- name
+- email
+- phone
+```
+
+Instead of trusting the response:
+
+```python
+response["email"]
+```
+
+you want:
+
+```python
+class Customer(BaseModel):
+    name: str
+    email: str
+    phone: str
+```
+
+Then:
+
+```python
+customer = Customer.model_validate(response)
+```
+
+Think of Pydantic as the boundary between:
+
+```text
+Untrusted external data
+        ↓
+Validation
+        ↓
+Your application
+```
+
+This pattern will appear repeatedly throughout the roadmap.
+
+---
+
+# 5. Generators
+
+You should understand:
+
+```python
+yield
+```
+
+and:
+
+```python
+for chunk in generate():
+    print(chunk)
+```
+
+This becomes useful for **streaming LLM responses**.
+
+Instead of:
+
+```text
+User
+ ↓
+LLM
+ ↓
+wait 8 seconds
+ ↓
+Entire response
+```
+
+you can have:
+
+```text
+User
+ ↓
+LLM
+ ↓
+"Here"
+ ↓
+"is"
+ ↓
+"the"
+ ↓
+"answer"
+```
+
+Conceptually:
+
+```python
+def generate():
+    yield "Hello"
+    yield " "
+    yield "world"
+```
+
+Later you'll encounter:
+
+```text
+HTTP streaming
+SSE
+WebSockets
+async generators
+LLM token streaming
+```
+
+So understand both:
+
+```python
+def generator():
+    yield ...
+```
+
+and:
+
+```python
+async def generator():
+    yield ...
+```
+
+---
+
+# 6. Packaging
+
+You should understand how a production Python project is structured.
+
+A reasonable modern structure:
+
+```text
+my-ai-app/
+├── pyproject.toml
+├── uv.lock
+├── README.md
+├── .env
+├── .gitignore
+│
+├── src/
+│   └── my_ai_app/
+│       ├── __init__.py
+│       ├── api/
+│       ├── services/
+│       ├── models/
+│       ├── llm/
+│       ├── tools/
+│       └── config/
+│
+└── tests/
+```
+
+Understand:
+
+```text
+package
+module
+dependency
+virtual environment
+editable install
+pyproject.toml
+lock file
+```
+
+---
+
+# 7. uv / Poetry
+
+You don't need to become obsessed with package managers.
+
+You need to understand the problem they solve.
+
+Without proper dependency management:
+
+```text
+Machine A
+Python 3.11
+package X 1.2
+package Y 4.1
+
+Machine B
+Python 3.12
+package X 1.4
+package Y 4.3
+```
+
+Eventually:
+
+> "Works on my machine."
+
+A lock file gives you reproducibility.
+
+For example:
+
+```text
+pyproject.toml
+       ↓
+dependencies
+       ↓
+uv.lock
+       ↓
+exact versions
+```
+
+For your GenAI work, I'd recommend becoming comfortable with **uv**.
+
+You don't need to learn both uv and Poetry deeply.
+
+---
+
+# 8. Environment Variables & Configuration
+
+LLM applications commonly need:
+
+```text
+OPENAI_API_KEY
+ANTHROPIC_API_KEY
+DATABASE_URL
+REDIS_URL
+MODEL_NAME
+TEMPERATURE
+```
+
+Never:
+
+```python
+OPENAI_API_KEY = "sk-..."
+```
+
+Instead:
+
+```python
+import os
+
+api_key = os.environ["OPENAI_API_KEY"]
+```
+
+Or preferably use a configuration layer:
+
+```python
+from pydantic_settings import BaseSettings
+
+
+class Settings(BaseSettings):
+    openai_api_key: str
+    model_name: str = "..."
+```
+
+This becomes useful later when you have:
+
+```text
+Development
+Staging
+Production
+Local Ollama
+Cloud LLM
+```
+
+and want to switch providers without changing application code.
+
+---
+
+# 9. REST API Design
+
+You already have this.
+
+For GenAI, however, APIs often look slightly different.
+
+Traditional API:
+
+```http
+POST /users
+POST /orders
+GET /products
+```
+
+AI API:
+
+```http
+POST /chat
+POST /generate
+POST /embeddings
+POST /documents
+POST /agents/run
+POST /tools/execute
+```
+
+You should understand:
+
+* request/response schemas
+* authentication
+* rate limiting
+* pagination
+* idempotency
+* retries
+* timeouts
+* error handling
+
+Especially:
+
+### Timeouts
+
+Never assume an LLM request will return instantly.
+
+```python
+await client.chat.completions.create(
+    ...,
+    timeout=30,
+)
+```
+
+Your production architecture needs to account for:
+
+```text
+LLM slow
+   ↓
+request timeout
+   ↓
+retry?
+   ↓
+fallback?
+   ↓
+return graceful error?
+```
+
+We'll go much deeper into this in Phase 5.
+
+---
+
+# 10. gRPC
+
+You don't need deep gRPC knowledge for Phase 0.
+
+Understand the difference:
+
+```text
+REST
+JSON
+HTTP
+human-friendly
+```
+
+vs
+
+```text
+gRPC
+Protocol Buffers
+HTTP/2
+strongly typed
+efficient service-to-service communication
+```
+
+For example:
+
+```text
+API Gateway
+     ↓ gRPC
+AI Orchestrator
+     ↓ gRPC
+Inference Service
+```
+
+You should know:
+
+* protobuf
+* RPC
+* unary calls
+* streaming RPC
+* service definitions
+
+But don't spend significant time here right now.
+
+---
+
+# 11. Docker
+
+You already have this foundation.
+
+For GenAI, Docker becomes useful for:
+
+```text
+FastAPI application
+      ↓
+Docker
+      ↓
+PostgreSQL
+      ↓
+Redis
+      ↓
+Vector DB
+```
+
+A typical local AI stack might eventually look like:
+
+```text
+┌─────────────────────────┐
+│       FastAPI           │
+│      AI Backend         │
+└───────────┬─────────────┘
+            │
+    ┌───────┼─────────┐
+    ▼       ▼         ▼
+ Postgres  Redis    Ollama
+    │                 │
+ pgvector           LLM
+```
+
+Know:
+
+```text
+Dockerfile
+image
+container
+volume
+network
+environment variables
+docker compose
+health checks
+```
+
+---
+
+# 12. Kubernetes
+
+For Phase 0:
+
+**skim it.**
+
+You don't need to learn Kubernetes deeply before starting LLMs.
+
+Understand:
+
+```text
+Pod
+Deployment
+Service
+ConfigMap
+Secret
+Ingress
+Horizontal Pod Autoscaler
+```
+
+Conceptually:
+
+```text
+Internet
+   ↓
+Ingress
+   ↓
+Service
+   ↓
+Pods
+ ┌────┬────┬────┐
+ │ AI │ AI │ AI │
+ └────┴────┴────┘
+```
+
+Later, Phase 5 will revisit this when we discuss inference scaling.
+
+---
+
+# 13. Linear Algebra
+
+You don't need university-level mathematics.
+
+You need enough math to understand what's happening inside models.
+
+The most important concepts:
+
+```text
+Scalar
+Vector
+Matrix
+Tensor
+Dot product
+Matrix multiplication
+Norm
+Cosine similarity
+```
+
+---
+
+## 13.1 Vector
+
+A vector:
+
+```text
+x = [2, 4, 6]
+```
+
+can represent a point in a mathematical space.
+
+An embedding might look conceptually like:
+
+```text
+[0.12, -0.42, 0.81, 0.03, ...]
+```
+
+Real embeddings can have hundreds or thousands of dimensions.
+
+---
+
+# 14. Dot Product
+
+For:
+
+```text
+A = [a₁, a₂, a₃]
+
+B = [b₁, b₂, b₃]
+```
+
+the dot product is:
+
+```text
+A · B = a₁b₁ + a₂b₂ + a₃b₃
+```
+
+Example:
+
+```text
+A = [1, 2, 3]
+B = [4, 5, 6]
+
+A · B
+= 1×4 + 2×5 + 3×6
+= 32
+```
+
+Why do you care?
+
+Because dot products appear everywhere:
+
+```text
+Embeddings
+Attention
+Similarity search
+Neural networks
+```
+
+---
+
+# 15. Matrix Multiplication
+
+You should understand:
+
+```text
+A × B
+```
+
+and dimensions.
+
+For:
+
+```text
+A = (3 × 4)
+B = (4 × 2)
+```
+
+the result is:
+
+```text
+A × B = (3 × 2)
+```
+
+The middle dimensions must match.
+
+This is fundamental to neural networks.
+
+For example:
+
+```text
+X @ Wq
+```
+
+creates Query representations.
+
+---
+
+# 16. Norm
+
+For a vector:
+
+```text
+v = [3, 4]
+```
+
+its L2 norm is:
+
+```text
+√(3² + 4²)
+= 5
+```
+
+Conceptually:
+
+> How large is this vector?
+
+This becomes important when normalizing embeddings.
+
+---
+
+# 17. Cosine Similarity
+
+Extremely important for RAG.
+
+Cosine similarity:
+
+```text
+cos(θ) = (A · B) / (||A|| ||B||)
+```
+
+It measures the angle between two vectors.
+
+Conceptually:
+
+```text
+A ─────────→
+             ↘
+              ↘ B
+```
+
+If they point in similar directions:
+
+```text
+similarity ≈ 1
+```
+
+If they're perpendicular:
+
+```text
+similarity ≈ 0
+```
+
+If opposite:
+
+```text
+similarity ≈ -1
+```
+
+Example:
+
+```text
+"The dog is running"
+
+"The puppy is running"
+```
+
+should ideally have embeddings pointing in relatively similar directions.
+
+This is the mathematical foundation behind a lot of semantic search.
+
+---
+
+# 18. Probability
+
+You need basic probability concepts:
+
+```text
+Probability
+Conditional probability
+Probability distribution
+Expected value
+```
+
+Most importantly:
+
+```text
+P(next token | previous tokens)
+```
+
+An LLM is fundamentally learning a distribution over possible next tokens.
+
+For example:
+
+```text
+"The capital of France is"
+
+Paris      0.91
+London     0.02
+Berlin     0.01
+Madrid     0.01
+...
+```
+
+The model produces **logits**, which are transformed into probabilities.
+
+---
+
+# 19. Softmax
+
+Softmax converts logits into probabilities.
+
+Given:
+
+```text
+logits = [2.0, 1.0, 0.1]
+```
+
+softmax produces values that:
+
+```text
+sum = 1
+```
+
+Conceptually:
+
+```text
+logits
+   ↓
+softmax
+   ↓
+probability distribution
+```
+
+You'll see softmax constantly in transformer architectures.
+
+You don't need to memorize the formula immediately, but know what it does:
+
+> **It turns a vector of arbitrary scores into a probability distribution.**
+
+---
+
+# 20. Cross-Entropy
+
+This becomes important when you understand **how LLMs learn**.
+
+Suppose the correct next token is:
+
+```text
+Paris
+```
+
+The model predicts:
+
+```text
+Paris → 0.90
+London → 0.05
+Berlin → 0.03
+...
+```
+
+That's good.
+
+If it predicts:
+
+```text
+Paris → 0.01
+London → 0.70
+Berlin → 0.20
+```
+
+that's bad.
+
+Cross-entropy gives us a way to quantify how bad the prediction is.
+
+Training essentially tries to:
+
+```text
+minimize prediction error
+```
+
+through gradient-based optimization.
+
+You don't need to derive backpropagation yet.
                     </div>
                 </div>
 

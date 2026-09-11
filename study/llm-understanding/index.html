@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LLM Understanding Roadmap</title>
+    <link rel="icon" type="image/png" href="../../assets/index/images/pixelboyhead.png" />
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/css/global.css" />
+    <link rel="stylesheet" href="../../assets/css/study.css" />
+    <meta name="description" content="Deep dive into how LLMs work, including architecture, training, and inference." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../../assets/js/utils/config.js"></script>
+  </head>
+  <body>
+    <header class="w-full">
+      <nav class="navbar">
+        <div class="navbar-desktop items-center justify-between w-full">
+          <div class="flex items-center space-x-4">
+            <a class="nav-item" href="../../blog.html">Blog</a>
+            <a class="nav-item" href="../../project.html">Projects</a>
+          </div>
+          <a href="../../index.html" class="flex items-center justify-center">
+            <img
+              src="../../assets/index/images/logo.png"
+              alt="logo"
+              class="h-8 img"
+            />
+          </a>
+          <div class="flex items-center space-x-4">
+            <a class="nav-item" href="../../about.html">About</a>
+            <a class="nav-item" href="../../contact.html">Contact</a>
+          </div>
+        </div>
+        <!-- Hamburger menu -->
+        <div class="md:hidden flex items-center justify-between w-full">
+          <a href="../../index.html" class="flex items-center justify-start">
+            <img
+              src="../../assets/index/images/logo.png"
+              alt="logo"
+              class="h-8 img"
+            />
+          </a>
+          <button id="menu-toggle" class="flex items-center justify-end">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7">
+              </path>
+            </svg>
+          </button>
+        </div>
+        <div id="mobile-menu" class="hidden absolute top-0 right-0 bg-black w-full mt-14 z-50 text-right">
+          <a class="block py-2 px-4 text-white" href="../../index.html">Home</a>
+          <a class="block py-2 px-4 text-white" href="../../project.html">Projects</a>
+          <a class="block py-2 px-4 text-white" href="../../blog.html">Blog</a>
+          <a class="block py-2 px-4 text-white" href="../../about.html">About</a>
+          <a class="block py-2 px-4 text-white" href="../../contact.html">Contact</a>
+          <a class="block py-2 px-4 text-white" href="../index.html">Study</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Topic Header -->
+    <section class="topic-header">
+      <div class="topic-header-content">
+        <div class="topic-icon-large" style="font-size: 4rem; filter: drop-shadow(6px 6px 0px #000);">🧠</div>
+        <h1 class="topic-title">LLM Understanding Roadmap</h1>
+        <p class="topic-tagline">From Transformers to Production</p>
+        <div class="topic-meta">
+          <span class="topic-meta-item">Level: <span>Beginner → Advanced</span></span>
+          <span class="topic-meta-item">Duration: <span>8-12 Weeks</span></span>
+          <span class="topic-meta-item">Projects: <span>3+ Hands-on Projects</span></span>
+          <span class="topic-meta-item">Skills: <span>Transformer Architecture, Training, Inference, Alignment</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Study Interface -->
+    <section class="study-dashboard max-w-7xl mx-auto flex flex-col md:flex-row gap-8 p-4 my-8">
+      <!-- Sidebar -->
+      <aside class="w-full md:w-1/4">
+        <div class="sticky top-24 bg-black border-2 border-white boxxy p-4">
+          <h3 class="font-bold text-yellow-400 mb-4 border-b border-gray-700 pb-2 title" style="font-size: 1.2rem;">Roadmap</h3>
+          <ul class="space-y-4 font-['Press_Start_2P'] text-[10px] leading-loose">
+            <li><a href="#phase0" class="hover:text-green-400 text-white block">Phase 0: LLM Foundations</a></li>
+            <li>
+              <a href="#phase1" class="hover:text-green-400 text-white block">Phase 1: Transformer Architecture</a>
+              <ul class="pl-4 mt-2 space-y-2 text-gray-400">
+                <li><a href="#phase1-week1" class="hover:text-white block">- Week 1: Attention Mechanism</a></li>
+                <li><a href="#phase1-week2" class="hover:text-white block">- Week 2: Encoder-Decoder</a></li>
+                <li><a href="#phase1-week3" class="hover:text-white block">- Week 3: Decoder-Only Models</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#phase2" class="hover:text-green-400 text-white block">Phase 2: Training LLMs</a>
+              <ul class="pl-4 mt-2 space-y-2 text-gray-400">
+                <li><a href="#phase2-week1" class="hover:text-white block">- Week 1: Pretraining Objectives</a></li>
+                <li><a href="#phase2-week2" class="hover:text-white block">- Week 2: Scaling Laws</a></li>
+                <li><a href="#phase2-week3" class="hover:text-white block">- Week 3: Efficient Training</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#phase3" class="hover:text-green-400 text-white block">Phase 3: Inference & Optimization</a>
+              <ul class="pl-4 mt-2 space-y-2 text-gray-400">
+                <li><a href="#phase3-week1" class="hover:text-white block">- Week 1: Inference Basics</a></li>
+                <li><a href="#phase3-week2" class="hover:text-white block">- Week 2: Quantization & Pruning</a></li>
+                <li><a href="#phase3-week3" class="hover:text-white block">- Week 3: KV Caching & Speculative Decoding</a></li>
+              </ul>
+            </li>
+            <li><a href="#phase4" class="hover:text-green-400 text-white block">Phase 4: Advanced Topics</a></li>
+            <li><a href="#phase5" class="hover:text-green-400 text-white block">Phase 5: Projects & Applications</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="w-full md:w-3/4">
+        <div class="bg-black border-2 border-white boxxy p-6 md:p-10 space-y-12">
+          
+          <!-- Phase 0 -->
+          <div id="phase0" class="scroll-mt-24">
+            <h2 class="text-2xl text-yellow-400 font-bold mb-4 title">Phase 0: LLM Foundations</h2>
+            <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+              <p class="mb-4">Understand what LLMs are, their capabilities, and limitations.</p>
+              
+              <div class="p-6 border border-gray-700 bg-gray-900 mt-6 relative">
+                <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                <h4 class="text-white mb-2 text-sm">Add your material here</h4>
+                <p class="text-gray-500">This section is ready for you to add detailed explanations, code snippets, or video embeds.</p>
+              </div>
+            </div>
+          </div>
+          
+          <hr class="border-gray-700 border-dashed">
+          
+          <!-- Phase 1 -->
+          <div id="phase1" class="scroll-mt-24">
+            <h2 class="text-2xl text-yellow-400 font-bold mb-6 title">Phase 1: Transformer Architecture</h2>
+            
+            <div id="phase1-week1" class="mt-8 scroll-mt-24">
+              <h3 class="text-lg text-white mb-4 font-bold border-l-4 border-yellow-400 pl-3">Week 1: Attention Mechanism</h3>
+              <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                <div class="p-6 border border-gray-700 bg-gray-900 relative">
+                  <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                  <p class="text-gray-500">Add your Week 1 material here...</p>
+                </div>
+              </div>
+            </div>
+            
+            <div id="phase1-week2" class="mt-12 scroll-mt-24">
+              <h3 class="text-lg text-white mb-4 font-bold border-l-4 border-yellow-400 pl-3">Week 2: Encoder-Decoder</h3>
+              <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                <div class="p-6 border border-gray-700 bg-gray-900 relative">
+                  <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                  <p class="text-gray-500">Add your Week 2 material here...</p>
+                </div>
+              </div>
+            </div>
+            
+            <div id="phase1-week3" class="mt-12 scroll-mt-24">
+              <h3 class="text-lg text-white mb-4 font-bold border-l-4 border-yellow-400 pl-3">Week 3: Decoder-Only Models</h3>
+              <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                <div class="p-6 border border-gray-700 bg-gray-900 relative">
+                  <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                  <p class="text-gray-500">Add your Week 3 material here...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <hr class="border-gray-700 border-dashed">
+          
+          <!-- Phase 2 -->
+          <div id="phase2" class="scroll-mt-24">
+            <h2 class="text-2xl text-yellow-400 font-bold mb-6 title">Phase 2: Training LLMs</h2>
+            
+            <div id="phase2-week1" class="mt-8 scroll-mt-24">
+              <h3 class="text-lg text-white mb-4 font-bold border-l-4 border-yellow-400 pl-3">Week 1: Pretraining Objectives</h3>
+              <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                <div class="p-6 border border-gray-700 bg-gray-900 relative">
+                  <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                  <p class="text-gray-500">Add your Week 1 material here...</p>
+                </div>
+              </div>
+            </div>
+            
+            <div id="phase2-week2" class="mt-12 scroll-mt-24">
+              <h3 class="text-lg text-white mb-4 font-bold border-l-4 border-yellow-400 pl-3">Week 2: Scaling Laws</h3>
+              <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                <div class="p-6 border border-gray-700 bg-gray-900 relative">
+                  <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                  <p class="text-gray-500">Add your Week 2 material here...</p>
+                </div>
+              </div>
+            </div>
+            
+            <div id="phase2-week3" class="mt-12 scroll-mt-24">
+              <h3 class="text-lg text-white mb-4 font-bold border-l-4 border-yellow-400 pl-3">Week 3: Efficient Training</h3>
+              <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                <div class="p-6 border border-gray-700 bg-gray-900 relative">
+                  <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                  <p class="text-gray-500">Add your Week 3 material here...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <hr class="border-gray-700 border-dashed">
+          
+          <!-- Phase 3 -->
+          <div id="phase3" class="scroll-mt-24">
+            <h2 class="text-2xl text-yellow-400 font-bold mb-6 title">Phase 3: Inference & Optimization</h2>
+            
+            <div id="phase3-week1" class="mt-8 scroll-mt-24">
+              <h3 class="text-lg text-white mb-4 font-bold border-l-4 border-yellow-400 pl-3">Week 1: Inference Basics</h3>
+              <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                <div class="p-6 border border-gray-700 bg-gray-900 relative">
+                  <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                  <p class="text-gray-500">Add your Week 1 material here...</p>
+                </div>
+              </div>
+            </div>
+            
+            <div id="phase3-week2" class="mt-12 scroll-mt-24">
+              <h3 class="text-lg text-white mb-4 font-bold border-l-4 border-yellow-400 pl-3">Week 2: Quantization & Pruning</h3>
+              <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                <div class="p-6 border border-gray-700 bg-gray-900 relative">
+                  <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                  <p class="text-gray-500">Add your Week 2 material here...</p>
+                </div>
+              </div>
+            </div>
+            
+            <div id="phase3-week3" class="mt-12 scroll-mt-24">
+              <h3 class="text-lg text-white mb-4 font-bold border-l-4 border-yellow-400 pl-3">Week 3: KV Caching & Speculative Decoding</h3>
+              <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+                <div class="p-6 border border-gray-700 bg-gray-900 relative">
+                  <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                  <p class="text-gray-500">Add your Week 3 material here...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <hr class="border-gray-700 border-dashed">
+          
+          <!-- Phase 4 -->
+          <div id="phase4" class="scroll-mt-24">
+            <h2 class="text-2xl text-yellow-400 font-bold mb-4 title">Phase 4: Advanced Topics</h2>
+            <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+              <div class="p-6 border border-gray-700 bg-gray-900 mt-6 relative">
+                <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                <h4 class="text-white mb-2 text-sm">Add your material here</h4>
+                <p class="text-gray-500">Add your material for Phase 4 here...</p>
+              </div>
+            </div>
+          </div>
+          
+          <hr class="border-gray-700 border-dashed">
+          
+          <!-- Phase 5 -->
+          <div id="phase5" class="scroll-mt-24">
+            <h2 class="text-2xl text-yellow-400 font-bold mb-4 title">Phase 5: Projects & Applications</h2>
+            <div class="prose prose-invert max-w-none font-['Press_Start_2P'] text-[10px] leading-loose text-gray-300">
+              <div class="p-6 border border-gray-700 bg-gray-900 mt-6 relative">
+                <span class="absolute -top-3 left-4 bg-green-500 text-black px-2 py-1 text-[8px] font-bold">MATERIAL</span>
+                <h4 class="text-white mb-2 text-sm">Add your material here</h4>
+                <p class="text-gray-500">Add your material for Phase 5 here...</p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </main>
+    </section>
+
+    <!-- Footer CTA -->
+    <footer class="study-footer">
+      <p class="study-footer-text">Ready to start your LLM understanding journey?</p>
+      <a href="#roadmap" class="study-footer-link">BEGIN WITH PHASE 0</a>
+      <p style="margin-top: 2rem; font-family: 'Press Start 2P', cursive; font-size: 0.6rem; color: #666;">
+        Built with passion for aspiring AI engineers
+      </p>
+    </footer>
+
+    <script>
+      // Tab switching functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const tabs = document.querySelectorAll('.resources-tab');
+        const contents = document.querySelectorAll('.resources-content');
+        
+        tabs.forEach(tab => {
+          tab.addEventListener('click', function() {
+            const tabName = this.getAttribute('data-tab');
+            
+            // Update active tab
+            tabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Update active content
+            contents.forEach(c => {
+              c.classList.remove('active');
+              if (c.getAttribute('data-content') === tabName) {
+                c.classList.add('active');
+              }
+            });
+          });
+        });
+        
+        // Progress circle animation (will be updated as user progresses)
+        const progressCircle = document.querySelector('.progress-circle-fill');
+        const progressText = document.querySelector('.progress-circle-text');
+        
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
